@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" lang="en" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>飞瘾犯了</title>
+</head>
+
+<body>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+<style>
+	[img_lv]{
+		padding-left: 3px;
+		width: 40px;
+		height: 40px;
+	}
+
+	[color_green]{
+		color: green;
+	}
+	[color_red]{
+		color: red;
+	}
+	[weapon_u_color]{
+		color: #8007f7;
+	}
+	[btn_weapon]{
+		margin:10px 0;
+	}
+
+	[bb_info]{
+		background-color: #0e0a08;
+		border: 2px solid #e8c685 ;
+		border-radius: 3px;
+		width: 240px;
+	}
+	[pet_info]{
+		background-color: #e6e0e1;
+		border: 2px solid #e8c685 ;
+		border-radius: 3px;
+		width: 315px;
+		padding-top: 0;
+	}
+	/* 定义自定义光标样式 */
+	/* 如果浏览器不支持自定义光标，将使用 'auto' 作为备用 */
+	.custom-cursor {
+		cursor: url('img/鼠标.png'), auto;
+	}
+
+</style>
+
+<div class="container">
+	<div class="row" >
+		<div class="col-xs-3 pull-left">
+			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-primary" onclick="get_150_weapon_for_num(100)" >自动制作武器</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-primary" onclick="stop_get()()" >暂停</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-primary" onclick="incubate()" >孵化蛋</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-primary" onclick="pet_up()" >宠物升级</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-primary" onclick="sacrifice()" >献祭当前等级宠</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-primary" onclick="weapon_low_up()" >low卷精炼</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-primary" onclick="weapon_up()" >防暴精炼</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row hide">
+				<div class="col-xs-3">
+					<button class="btn btn-primary" onclick="weapon_up()" >穿洞精炼</button>
+				</div>
+				<div class="col-xs-3">
+					<button class="btn btn-primary" onclick="weapon_up()" >属性防暴精炼</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-primary"  onclick="up_u_weapon()" >武器升U</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-primary" onclick="wake_up()" >武器唤醒</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row" weapon_list></div>
+			<hr>
+		</div>
+
+		<div msg class="col-xs-9 pull-right" >
+			<hr>
+			<div pet_msg_div></div>
+			<hr>
+			<div c_div></div>
+			<div txt_div></div>
+			<div suc_div></div>
+		</div>
+
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		// 当页面加载完成后，给 body 元素添加自定义光标样式
+		$('body').addClass('custom-cursor');
+
+		// 如果你想在某个特定元素上更改鼠标图标，可以这样做：
+		$('[btn_weapon]').addClass('custom-cursor');
+	});
+
+	init();
+
+	//初始化
+	function init(){
+		$(data).each(function(i,obj){
+			var html_str = '<div class="col-xs-4" btn_weapon onclick="get_weapon('+i+')">';
+			html_str+='<img src="'+obj.imgUrl+'" alt="'+obj.name+'">';
+			html_str+='</div>';
+			$("[weapon_list]").append(html_str);
+		});
+	}
+
+	var stop = false;
+
+	function stop_get(){
+		stop = true;
+	}
+
+	function get_150_weapon_for_num(num){
+		if(stop){
+			stop = false;
+			return ;
+		}
+		get_150_weapon();
+		setTimeout(function() {
+			get_150_weapon_for_num(num);
+		}, 20); // 1000毫秒等于1秒
+	}
+
+	//制作武器基础概率 0.001%  闪亮12点 0.0015%
+	var get_weapon_probability = 0.000015;
+	//var get_weapon_probability_12 = 0.000015;
+	var get_150_weapon_num = 0
+	function get_150_weapon(){
+		let str;
+		// 生成一个0到1之间的随机数
+		let randomNum = Math.random().toFixed(6);
+		get_150_weapon_num++;
+		if(randomNum < get_weapon_probability){
+			str = '<div get_150_weapon class="row">';
+			str += '<span color_green>'+get_150_weapon_num+'次史诗武器制作成功!</span>';
+			str += '</div>';
+			$("[suc_div]").after(str);
+			stop = true;
+		}else{
+			str = '<div get_150_weapon class="row">';
+			str += '<span>2元/次,概率0.0015%</span><br><br>';
+			str += '<span>你的钱包:-'+get_150_weapon_num*2+'元</span><br><br>';
+			str += '<span color_red weapon_150_msg>史诗武器制作失败'+get_150_weapon_num+'次</span><br><br>';
+			str += '</div>';
+			$("[txt_div]").html(str);
+		}
+	}
+
+	let pet_lv;
+	let now_lv = 0;
+	let money = 0;
+	//献祭次数
+	let pet_num = 0;
+
+	//孵化蛋
+	function incubate(){
+		//献祭次数清0
+		pet_num = 0;
+		$("[txt_div]").html("");
+
+		//随机数组中的值
+		const pet = incubate_pet[Math.floor(Math.random() * incubate_pet.length)];
+
+		var str = '<div class="alert alert-info" pet_info  pet_lv="0" ><div class="row">';
+		str+='<div class="col-xs-12" ><span style="color: #da6443">'+pet.name+'</span></div><br>';
+		str+='<div class="col-xs-6" ><img src="img/pet/'+pet.name+'.png" style="width: 80px; height: 70px;" alt="'+pet.name+'"></div>';
+		str+='<div class="col-xs-6">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>';
+		//str+='<div class="col-xs-6">属性:<span style="color: #fb37b1" >'+pet.attributeStr+'+</span><span pet_value>'+pet.value+'</span></div>';
+		str+='</div><br><div class="row">';
+		str+='<div class="col-xs-12" pet_img_div><img lv_1 img_lv src="img/pet/等级1.png"  alt="等级1"></div><br>';
+		str+='</div></div>';
+		$("[txt_div]").prepend(str);
+	}
+
+	//宠物升级
+	function pet_up(){
+		//献祭次数清0
+		pet_num = 0;
+		pet_lv = $("[pet_lv]").attr("pet_lv");
+		if(pet_lv == null || pet_lv >= 6){
+			return;
+		}
+		var pet = pet_lv_item[pet_lv];
+
+		// 生成一个0到1之间的随机数
+		let randomNum = Math.random().toFixed(2);
+		var str = '<div class="row">';
+		//进化后的宠物等级
+		str += pet.lvStr+'->'+pet_lv_item[Number(pet_lv)+1].lvStr+'<br>';
+		str += '随机值:'+ randomNum +'<br>';
+
+		let pet_probability = 0;
+
+		for(var i=0 ; i < pet.list.length ; i++) {
+			if(i > 0){
+				str += '概率相加:'+ pet.list[i].probability+'+'+pet_probability+'<br>';
+				pet_probability = parseFloat(pet.list[i].probability) + parseFloat(pet_probability);
+			}else{
+				pet_probability = parseFloat(pet.list[i].probability);
+			}
+			pet_probability = parseFloat(pet_probability).toFixed(2);
+			str += '第'+(i+1)+'次概率:'+ pet_probability+'<br>';
+
+			//数字是否匹配
+			if(randomNum < pet_probability){
+				const lv = pet.list[i].name;
+				now_lv = lv;
+				str += '等级:'+ lv+'<br>';
+				$("[pet_img_div]").append('<img lv_'+pet_lv_item[Number(pet_lv)+1].lv+' img_lv src="img/pet/等级'+pet.list[i].name+'.png"  alt="等级">');
+				break;
+			}
+		}
+
+		$("[pet_lv_str]").html(pet_lv_item[Number(pet_lv)+1].lvStr);
+		pet_lv++;
+		str += '</div><br>';
+		$("[txt_div]").after(str);
+
+		$("[pet_lv]").attr("pet_lv",pet_lv);
+	}
+
+	//献祭
+	function sacrifice(){
+		pet_lv = $("[pet_lv]").attr("pet_lv");
+		if(pet_lv == null || pet_lv === 0){
+			return;
+		}
+
+		//s级 继续洗
+		if(pet_lv > 6){
+			pet_lv = 6;
+		}
+		const pet = pet_lv_item[pet_lv];
+		if(now_lv >= pet.list.length){
+			$("[txt_div]").after('<div class="row">当前等级已经最大值</div><br>');
+			return;
+		}
+
+		// 生成一个0到1之间的随机数
+		let randomNum = Math.random().toFixed(2);
+		var str = '<div class="row">'+pet.lvStr+'宠<br>';
+		str += '随机值:'+ randomNum +'<br>';
+
+		var pet_probability = 0;
+
+		for(var i=0 ; i <= pet.list.length ; i++) {
+			const lv = pet.list[i].name;
+			if(lv <= now_lv){
+				str += '<span color_red>等级没有变化</span>';
+				break;
+			}
+
+			if(i > 0){
+				str += '概率相加:'+ pet.list[i].probability+'+'+pet_probability+'<br>';
+				pet_probability = parseFloat(pet.list[i].probability) + parseFloat(pet_probability);
+			}else{
+				pet_probability = parseFloat(pet.list[i].probability);
+			}
+			pet_probability = parseFloat(pet_probability).toFixed(2);
+			str += '第'+(i+1)+'次概率:'+ pet_probability+'<br>';
+
+			//数字是否匹配
+			if(randomNum < pet_probability){
+				now_lv = lv;
+				str += '<span color_green>恭喜洗出等级:'+ lv+'</span>';
+				$("[lv_"+pet.lv+"]").remove();
+				$("[pet_img_div]").append('<img lv_'+pet.lv+' img_lv src="img/pet/等级'+pet.list[i].name+'.png" alt="等级">');
+				break;
+			}
+		}
+		str += '</div><br>';
+		$("[txt_div]").after(str);
+
+		//献祭次数
+		pet_num++;
+		$("[pet_"+pet.lv+"]").remove();
+
+		let html_money = parseFloat(pet.money*0.00000033).toFixed(2);
+
+
+		//统计数据
+		$("[pet_msg_div]").append('<div pet_'+pet.lv+' >'+pet.money+'金币/次,'+html_money+'元/次</br>'+pet.lvStr+'献祭次数:'+pet_num+'</div>');
+	}
+
+	//唤醒
+	function wake_up(){
+		if(wakeUpList == null){
+			return ;
+		}
+		$("[wake_up]").remove();
+
+		//随机数组中的值
+		const wakeUp = wakeUpList[Math.floor(Math.random() * wakeUpList.length)];
+		const percentage = wakeUp.item[Math.floor(Math.random() * wakeUp.item.length)];
+		$("[weapon_description]").after('<div wake_up></br><span style="color: #fe0f7a;" >'+wakeUp.name+(wakeUp.name ==="治疗" ? '+' : ' 造成伤害+')+percentage+"%"+'</span></div>');
+	}
+
+	function weapon_up(){
+		//武器已经强化到+10啦
+		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) === 10 || $("[weapon_up_lv]").length === 0){
+			return ;
+		}
+
+		//初始化
+		init_up();
+
+		var str = '<div class="row">';
+		// 生成一个0到1之间的随机数
+		let randomNum = Math.random();
+		//是否精炼成功
+		if(randomNum <= probability){
+			weapon_lv++;
+			str+='<div class="col-xs-6" color_green>精炼+'+weapon_lv+'成功!<br></div>';
+
+			if(weapon_lv !== 10){
+				//成功后重置概率
+				probability = upList[weapon_lv].probability;
+			}
+		}else {
+			//获取强化精炼数据
+			var upObj = upList[weapon_lv];
+			//失败次数
+			failure_num++;
+			//失败累加基础强化概率
+			probability = upObj.probability+probability;
+			//成功概率不能大于1
+			probability = probability >= 1 ? 1 : probability;
+			str+="<div class='col-xs-6' color_red>精炼失败!<br></div>";
+		}
+		str+="<div class='col-xs-6'>当前成功率"+probability+"</div><hr>";
+		//组装数据
+		txt_div_prepend(str);
+	}
+
+	function weapon_low_up(){
+		//武器已经强化到+10啦
+		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) === 10 || $("[weapon_up_lv]").length === 0){
+			return ;
+		}
+		//初始化
+		init_up();
+
+		var str = '<div class="row">';
+		// 生成一个0到1之间的随机数
+		let randomNum = Math.random();
+		//是否精炼成功
+		if(randomNum <= low_probability){
+			//升级
+			weapon_lv++;
+			var now_weapon_lv = weapon_lv === 0 ? "" : ("+"+weapon_lv);
+			str+='<div class="col-xs-6" color_green>low精炼'+now_weapon_lv+'成功!<br></div>';
+		}else {
+			//失败次数
+			failure_num++;
+
+			//+3以前失败不掉级
+			if(weapon_lv > 3){
+				//降级
+				weapon_lv--;
+				str+='<div class="col-xs-6" color_red>low精炼失败!掉级至+'+weapon_lv+'</div>';
+			}else{
+				str+='<div class="col-xs-6" color_red>low精炼失败!+3以前失败不掉级</div>';
+			}
+
+		}
+
+		str+='<div class="col-xs-6">当前成功率'+low_probability+'</div><hr>';
+		//组装数据
+		txt_div_prepend(str);
+	}
+
+	function txt_div_prepend(str){
+		$("[weapon_up_lv]").html(weapon_lv === 0 ? "" : ("+"+weapon_lv));
+		$("[weapon_up_lv]").attr("weapon_up_lv",weapon_lv);
+
+		str += '';
+		//次数
+		str+='</div><div class="row"><div class="col-xs-6">强化次数:'+up_num+'</div><div class="col-xs-6">失败次数:'+failure_num+'</div><hr></div>';
+
+		//总消耗
+		str+='<div class="row"><div class="col-xs-6">总共消耗</div><div class="col-xs-6">本次消耗</div>';
+		str+='<div class="col-xs-6">金币:'+gold+'<br>黄矿:'+yellow+'<br>绿矿:'+green+'<br>四点骰子:'+four_num+'<br>八点骰子:'+eight_num+'</div>';
+
+		//获取强化精炼数据
+		var upObj = upList[weapon_lv === 10 ? 9 : weapon_lv];
+		//本次消耗
+		str+='<div class="col-xs-6">金币:'+upObj.gold+'<br>黄矿:'+upObj.yellow+'<br>绿矿:'+upObj.green+'<br>四点骰子:'+upObj.four_num+'<br>八点骰子:'+upObj.eight_num+'</div>';
+		str+="</div><hr>";
+		//强化内容
+		$("[txt_div]").prepend(str);
+	}
+
+	function init_up(){
+		//获取当前强化等级
+		weapon_lv = $("[weapon_up_lv]").attr("weapon_up_lv");
+		weapon_lv = Number(weapon_lv);
+		//获取强化精炼数据
+		var upObj = upList[weapon_lv];
+		if(upObj == null){
+			return ;
+		}
+		up_num++;
+		gold += upObj.gold;
+		yellow += upObj.yellow;
+		green += upObj.green;
+
+		//当前等级大于5消耗8点
+		if(weapon_lv < 5){
+			four_num++;
+		}else{
+			eight_num++;
+		}
+
+		//第一次强化初始值
+		if(probability === 0.000000){
+			probability = upObj.probability;
+		}
+
+		//第一次强化初始值
+		low_probability = upObj.low_probability;
+
+		return upObj;
+	}
+
+	function up_u_weapon(){
+		// if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) !== 10){
+		// 	errorMsg("武器还没+10哦");
+		// 	return;
+		// }
+		if(weapon_index == null){
+			errorMsg("没有对应的武器类型");
+			return;
+		}
+		if(data[weapon_index] == null){
+			errorMsg("没有对应的武器类型");
+			return;
+		}
+
+		$("[up_u_weapon_div]").remove();
+
+		var arr = data[weapon_index].uList;
+		var value1 = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
+		var value2 = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
+
+		var list = [];
+		list.push(value1);
+		list.push(value2);
+
+		//还原数据
+		arr.push(value1);
+		arr.push(value2);
+
+		var str = "<div up_u_weapon_div>";
+		//组装属性值
+		for(var i=0 ; i < list.length ; i++){
+			var obj = list[i];
+			var num = Math.floor(Math.random()*(obj.max-obj.min+1));
+			var maxNum = obj.max;
+			var minNum = obj.min;
+			//最终计算出来的随机值
+			var randomNum = obj.min + num;
+
+			//缩进小数位
+			maxNum = obj.fixed == null ? maxNum : (maxNum/obj.fixed);
+			minNum = obj.fixed == null ? minNum : (minNum/obj.fixed);
+			randomNum = obj.fixed == null ? randomNum : (randomNum/obj.fixed);
+
+			//组装单位(例如 百分号)
+			randomNum = randomNum+obj.cur;
+			str +='<span style="color: #fffd43">'+ obj.name +'+' + randomNum + ' (' + minNum+'~'+maxNum+')'+obj.cur+'</span><br>';
+		}
+
+		str += "</div>";
+
+		$("[job_span]").before(str);
+	}
+
+	function get_weapon(index){
+		if(index == null){
+			errorMsg("没有对应的武器类型");
+			return;
+		}
+		if(data[index] == null){
+			errorMsg("没有对应的武器类型");
+			return;
+		}
+		up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0;
+		$("[txt_div]").html("");
+		//重置武器面板数值
+		$("[bb_info]").remove();
+		$("[up_u_weapon]").remove();
+
+		weapon_index = index;
+
+		wakeUpList = data[index].wakeUpList;
+
+		var str = '<div class="alert alert-info" bb_info >';
+		//武器名称
+		str += '<span weapon_u_color weapon_name>'+data[index].name+'</span><span weapon_u_color weapon_up_lv="0"></span></br>';
+		//武器类型
+		str += '<span style="color: aliceblue">'+data[index].type+'</span></br>';
+		//武器基础攻击
+		str += '<span style="color: aliceblue">基础攻击力:'+data[index].minAttack+'~'+data[index].maxAttack+'</span></br>';
+		//攻击速度
+		str += '<span style="color: aliceblue">攻击速度:'+data[index].attackSpeed+'</span></br>';
+		var list = data[index].list;
+
+		//组装属性值
+		for(var i=0 ; i < list.length ; i++){
+			var obj = list[i];
+
+			var num = Math.floor(Math.random()*(obj.max-obj.min+1));
+			var maxNum = obj.max;
+			var minNum = obj.min;
+			//最终计算出来的随机值
+			var randomNum = obj.min + num;
+
+			//缩进小数位
+			maxNum = obj.fixed == null ? maxNum : (maxNum/obj.fixed);
+			minNum = obj.fixed == null ? minNum : (minNum/obj.fixed);
+			randomNum = obj.fixed == null ? randomNum : (randomNum/obj.fixed);
+
+			//组装单位(例如 百分号)
+			randomNum = randomNum+obj.cur;
+			//承受伤害是减
+			var addStr = obj.name === "承受伤害" ? '-' : '+';
+			str +='<span style="color: #ffeaa5">'+ obj.name + addStr + randomNum + ' (' + minNum+'~'+maxNum+')'+obj.cur+'</span><br>';
+		}
+		//职业要求
+		str += '<span job_span style="color: aliceblue">职业要求:'+data[index].job+'</span></br>';
+		//等级要求
+		str += '<span style="color: aliceblue">等级要求:150</span></br>';
+		//品质
+		str += '<span style="color: aliceblue">品质: <span weapon_u_color>Ultimate</span></span></br>';
+		//描述
+		str += '<span style="color: aliceblue" weapon_description>描述:</br> '+data[index].description+'</span>';
+
+		//强化次数
+		// str += '</br></br><span style="color: #b3b3b3">强化次数: 0';
+		// str += '</br><span style="color: #b3b3b3">穿洞次数: 0';
+
+		$("[c_div]").prepend(str);
+	}
+
+	function errorMsg(str){
+		$("[txt_div]").prepend("<p class='alert alert-info' error_msg>"+str+"</p>");
+	}
+
+</script>
+
+</body>
+</html>
