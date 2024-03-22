@@ -619,6 +619,7 @@
 	];
 
 	let kill_num = 0;
+	let kill_hai_num = 0;
 
 	var pet_lv_item = [
 		{"lv":1,"lvStr":"F级","money":"2000000","list":[{"name":1,"probability":1}]},

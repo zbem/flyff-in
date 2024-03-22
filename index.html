@@ -205,7 +205,10 @@
 
 	function kill_hai_boss(){
 		let color_str;
-		kill_num++;
+
+		//清空兽王可汗击杀数量
+		kill_num = 0;
+		kill_hai_num++;
 
 		let randomValue = 0;
 		let str = '<div class="col-xs-12">本次击杀:<br>';
@@ -229,7 +232,7 @@
 		//升序排序
 		hai_boss_drop = hai_boss_drop.sort((a, b)=> b.num - a.num);
 		let item_str = '<div class="col-xs-12">统计:<br>';
-		item_str += "击杀数量:"+kill_num+"<br>";
+		item_str += "击杀数量:"+kill_hai_num+"<br>";
 		for (var t = 0; t < hai_boss_drop.length; t++) {
 			const items = hai_boss_drop[t];
 			if(items.num > 0){
@@ -242,6 +245,8 @@
 	}
 	function kill_boss(){
 		let color_str;
+		//清空海岛boss击杀数量
+		kill_num = 0;
 		kill_num++;
 
 		let randomValue = 0;
