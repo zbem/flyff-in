@@ -41,7 +41,7 @@
 			{"color":"red","name": "铁剑", "probability": 0.05, "num": 0}
 	];
 
-	const boss_drop = [
+	let boss_drop = [
 		// 8-12个
 		{"name":"被诅咒的首饰碎片","icon":"syssysscrscrapgarnet.png","category":"MATERIAL","rarity":"common","probability":1.00,"num":0},
 		{"name":"8点精炼骰子","icon":"genmatdieeight.png","category":"MATERIAL","rarity":"uncommon","probability":0.60,"num":0},

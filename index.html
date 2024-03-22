@@ -131,7 +131,6 @@
 					<button class="btn btn-primary" onclick="weapon_up()" >属性防暴精炼</button>
 				</div>
 			</div>
-			<hr>
 			<div class="row">
 				<div class="col-xs-6">
 					<button class="btn btn-primary"  onclick="up_u_weapon()" >武器升U</button>
@@ -149,8 +148,8 @@
 			<hr>
 			<div pet_msg_div></div>
 			<div c_div></div>
-			<div txt_div></div>
-			<div item_msg_div></div>
+			<div txt_div class="row"></div>
+			<div item_msg_div class="row"></div>
 				<table class="hide table table-bordered">
 					<thead>
 						<tr>
@@ -199,12 +198,11 @@
 	}
 
 	function kill_boss(){
-		let item_str = '<hr><div class="row">统计:<br>';
 		kill_num++;
-		item_str += "击杀数量:"+kill_num+"<br>";
 
 		let randomValue = 0;
-		let str = '<div class="row">本次击杀:<br>';
+		let str = '<div class="col-xs-12">本次击杀:<br>';
+
 		for (var i = 0; i < boss_drop.length; i++) {
 			let randomNum = Math.random().toFixed(3);
 			const items = boss_drop[i];
@@ -214,13 +212,23 @@
 				items.num++;
 				randomValue++;
 			}
-			item_str += '<span style="color: '+items.color+'">'+items.name+':'+items.num+'</span><br>';
+
 		}
 		str += '<span color_red >掉落物品数量:' + randomValue + '个</span><br><br>';
 		str += '</div>';
 		$("[txt_div]").html(str);
 
-		item_str += '</div><hr>';
+		//升序排序
+		boss_drop = boss_drop.sort((a, b)=> b.num - a.num);
+		let item_str = '<div class="col-xs-12">统计:<br>';
+		item_str += "击杀数量:"+kill_num+"<br>";
+		for (var t = 0; t < boss_drop.length; t++) {
+			const items = boss_drop[t];
+			if(items.num > 0){
+				item_str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'">'+items.name+'*'+items.num+'<br>';
+			}
+		}
+		item_str += '</div>';
 		$("[item_msg_div]").html(item_str);
 	}
 
