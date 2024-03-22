@@ -215,7 +215,7 @@
 			const items = boss_drop[i];
 
 			if (randomNum < items.probability) {
-				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? 'red' : items.rarity === 'probability' ? 'green' : '') + '"';
+				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
 				str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span><br>';
 				items.num = items.probability === 1 ? items.num+getRandomInt(8,12) :items.num+1;
 				randomValue++;
@@ -233,7 +233,7 @@
 		for (var t = 0; t < boss_drop.length; t++) {
 			const items = boss_drop[t];
 			if(items.num > 0){
-				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? 'red' : items.rarity === 'probability' ? 'green' : '') + '"';
+				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
 				item_str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
 			}
 		}
