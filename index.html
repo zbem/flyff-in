@@ -208,13 +208,14 @@
 			const items = boss_drop[i];
 
 			if (randomNum < items.probability) {
-				str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'">'+items.name+'<br>';
+				var color_str = 'style="color:'+ (items.rarity === 'veryrare' || items.rarity === 'unique' ? 'red' : items.rarity === 'probability' ? 'green'  : '')+'"';
+				str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span><br>';
 				items.num++;
 				randomValue++;
 			}
 
 		}
-		str += '<span color_red >掉落物品数量:' + randomValue + '个</span><br><br>';
+		str += '<span>掉落物品数量:' + randomValue + '</span>个<br><br>';
 		str += '</div>';
 		$("[txt_div]").html(str);
 
@@ -225,7 +226,8 @@
 		for (var t = 0; t < boss_drop.length; t++) {
 			const items = boss_drop[t];
 			if(items.num > 0){
-				item_str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'">'+items.name+'*'+items.num+'<br>';
+				var color_str = 'style="color:'+ (items.rarity === 'veryrare' || items.rarity === 'unique' ? 'red' : items.rarity === 'probability' ? 'green'  : '')+'"';
+				item_str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
 			}
 		}
 		item_str += '</div>';
