@@ -31,8 +31,7 @@ $(document).on('copy', function (){
 });
 
 $('.waifu-tool .fui-home').click(function (){
-    //window.location = 'https://www.fghrsh.net/';
-    window.location = window.location.protocol+'//'+window.location.hostname+'/'
+    window.location = 'https://zbem.github.io/flyff-in/';
 });
 
 $('.waifu-tool .fui-eye').click(function (){
@@ -48,8 +47,7 @@ $('.waifu-tool .fui-user').click(function (){
 });
 
 $('.waifu-tool .fui-info-circle').click(function (){
-    //window.open('https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02');
-    window.open('https://www.fghrsh.net/post/123.html');
+    window.open('https://zbem.github.io/flyff-in/');
 });
 
 $('.waifu-tool .fui-cross').click(function (){
@@ -96,18 +94,18 @@ $('.waifu-tool .fui-photo').click(function (){
             referrer.href = document.referrer;
             var domain = referrer.hostname.split('.')[1];
             if (window.location.hostname == referrer.hostname) {
-                text = '欢迎阅读<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
+                text = '欢迎来到<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
             } else if (domain == 'baidu') {
                 text = 'Hello! 来自 百度搜索 的朋友<br>你是搜索 <span style="color:#0099cc;">' + referrer.search.split('&wd=')[1].split('&')[0] + '</span> 找到的我吗？';
             } else if (domain == 'so') {
                 text = 'Hello! 来自 360搜索 的朋友<br>你是搜索 <span style="color:#0099cc;">' + referrer.search.split('&q=')[1].split('&')[0] + '</span> 找到的我吗？';
             } else if (domain == 'google') {
-                text = 'Hello! 来自 谷歌搜索 的朋友<br>欢迎阅读<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
+                text = 'Hello! 来自 谷歌搜索 的朋友<br>欢迎来到<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
             } else {
                 text = 'Hello! 来自 <span style="color:#0099cc;">' + referrer.hostname + '</span> 的朋友';
             }
         } else {
-            text = '欢迎阅读<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
+            text = '欢迎来到<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
         }
     }
     showMessage(text, 6000);
