@@ -23,7 +23,7 @@
 	 //图片地址
 	 https://api.flyff.com/image/item/weaswocrystal.png
 	 //物品地址
-	 https://api.flyff.com/item/14100
+	 https://api.flyff.com/item/15714
 	**/
 
 	var pet_lv_item = [
@@ -867,7 +867,7 @@
 				{"name":"风之真空","item": wakeUpItem},{"name":"雷霆之怒","item": wakeUpItem},
 				{"name":"冰枪投射","item": wakeUpItem},{"name":"地狱火海","item": wakeUpItem},
 				{"name":"地动山摇","item": wakeUpItem},{"name":"狂风怒吼","item": wakeUpItem},
-				{"name":"雷阵天惊","item": wakeUpItem},{"name":"毒云密布","item": wakeUpItem},
+				{"name":"雷震天惊","item": wakeUpItem},{"name":"毒云密布","item": wakeUpItem},
 				{"name":"雪山崩塌","item": wakeUpItem},{"name":"风雷狂袭","item": wakeUpItem},
 				{"name":"风沙吞噬","item": wakeUpItem},{"name":"陨石坠落","item": wakeUpItem},
 			]
@@ -916,7 +916,7 @@
 				{"name":"风之真空","item": wakeUpItem},{"name":"雷霆之怒","item": wakeUpItem},
 				{"name":"冰枪投射","item": wakeUpItem},{"name":"地狱火海","item": wakeUpItem},
 				{"name":"地动山摇","item": wakeUpItem},{"name":"狂风怒吼","item": wakeUpItem},
-				{"name":"雷阵天惊","item": wakeUpItem},{"name":"毒云密布","item": wakeUpItem},
+				{"name":"雷震天惊","item": wakeUpItem},{"name":"毒云密布","item": wakeUpItem},
 				{"name":"雪山崩塌","item": wakeUpItem},{"name":"风雷狂袭","item": wakeUpItem},
 				{"name":"风沙吞噬","item": wakeUpItem},{"name":"陨石坠落","item": wakeUpItem},
 			]
@@ -965,7 +965,7 @@
 				{"name":"风之真空","item": wakeUpItem},{"name":"雷霆之怒","item": wakeUpItem},
 				{"name":"冰枪投射","item": wakeUpItem},{"name":"地狱火海","item": wakeUpItem},
 				{"name":"地动山摇","item": wakeUpItem},{"name":"狂风怒吼","item": wakeUpItem},
-				{"name":"雷阵天惊","item": wakeUpItem},{"name":"毒云密布","item": wakeUpItem},
+				{"name":"雷震天惊","item": wakeUpItem},{"name":"毒云密布","item": wakeUpItem},
 				{"name":"雪山崩塌","item": wakeUpItem},{"name":"风雷狂袭","item": wakeUpItem},
 				{"name":"风沙吞噬","item": wakeUpItem},{"name":"陨石坠落","item": wakeUpItem},
 			]

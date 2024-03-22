@@ -58,6 +58,15 @@
 			<hr>
 			<div class="row">
 				<div class="col-xs-6">
+					<button class="btn btn-primary" onclick="kill_fu()" >击杀独眼蝠</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-primary" onclick="kill_gu()" >击杀砰砰菇</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-xs-6">
 					<button class="btn btn-primary" onclick="get_150_weapon_for_num(100)" >自动制作武器</button>
 				</div>
 				<div class="col-xs-6">
@@ -112,9 +121,9 @@
 		</div>
 
 		<div msg class="col-xs-9 pull-right" >
+			<div item_msg_div></div>
 			<hr>
 			<div pet_msg_div></div>
-			<hr>
 			<div c_div></div>
 			<div txt_div></div>
 			<div suc_div></div>
@@ -148,6 +157,58 @@
 
 	function stop_get(){
 		stop = true;
+	}
+
+	//10%-20% 橙汁
+	//10%-20% 发光石
+	//5%-10% 棒棒糖
+	//5%-10% 活力饮料100
+	//2%-5% 木剑
+	//2%-5% 铁剑
+	const drop = [
+		{"color":"#4e6ef2","name": "橙汁", "probability": 0.2, "num": 0},
+		{"color":"#4e6ef2","name": "发光石", "probability": 0.2, "num": 0},
+		{"color":"#4e6ef2","name": "棒棒糖", "probability": 0.1, "num": 0},
+		{"color":"#4e6ef2","name": "活力饮料100", "probability": 0.1, "num": 0},
+		{"color":"red","name": "木剑", "probability": 0.05, "num": 0},
+		{"color":"red","name": "铁剑", "probability": 0.05, "num": 0}
+	];
+
+	let kill_num = 0;
+
+	function kill_fu() {
+		let item_str = '<hr><div class="row">统计:<br>';
+		kill_num++;
+		item_str += "击杀数量:"+kill_num+"<br>";
+
+		let randomValue = 0;
+		let str = '<div class="row">本次击杀:<br>';
+		for (var i = 0; i < drop.length; i++) {
+			let randomNum = Math.random().toFixed(2);
+			const items = drop[i];
+
+			if (randomNum < items.probability) {
+				str += '<span color_red >' + items.name + '</span><br><br>';
+				items.num++;
+				randomValue++;
+			}
+			item_str += '<span style="color: '+items.color+'">'+items.name+':'+items.num+'</span><br>';
+		}
+		str += '<span color_red >掉落物品数量:' + randomValue + '个</span><br><br>';
+		str += '</div>';
+		$("[txt_div]").html(str);
+
+		if(randomValue === 4){
+			alert("4个");
+		}
+
+		item_str += '</div><hr>';
+		$("[item_msg_div]").html(item_str);
+	}
+
+	function getRandomValueFromArray(array) {
+		var randomIndex = Math.floor(Math.random() * array.length);
+		return array[randomIndex];
 	}
 
 	function get_150_weapon_for_num(num){
@@ -205,7 +266,7 @@
 		str+='<div class="col-xs-12" ><span style="color: #da6443">'+pet.name+'</span></div><br>';
 		str+='<div class="col-xs-6" ><img src="img/pet/'+pet.name+'.png" style="width: 80px; height: 70px;" alt="'+pet.name+'"></div>';
 		str+='<div class="col-xs-6">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>';
-		//str+='<div class="col-xs-6">属性:<span style="color: #fb37b1" >'+pet.attributeStr+'+</span><span pet_value>'+pet.value+'</span></div>';
+		str+='<div class="col-xs-6">属性:<span style="color: #fb37b1" >'+pet.attributeStr+'+</span><span pet_value>'+pet.value+'</span></div>';
 		str+='</div><br><div class="row">';
 		str+='<div class="col-xs-12" pet_img_div><img lv_1 img_lv src="img/pet/等级1.png"  alt="等级1"></div><br>';
 		str+='</div></div>';
@@ -257,6 +318,9 @@
 		$("[txt_div]").after(str);
 
 		$("[pet_lv]").attr("pet_lv",pet_lv);
+
+		//属性更新  TODO
+
 	}
 
 	//献祭
@@ -315,7 +379,7 @@
 		pet_num++;
 		$("[pet_"+pet.lv+"]").remove();
 
-		let html_money = parseFloat(pet.money*0.00000033).toFixed(2);
+		let html_money = parseFloat(pet.money*0.00000029).toFixed(2);
 
 
 		//统计数据
@@ -419,12 +483,12 @@
 
 		//总消耗
 		str+='<div class="row"><div class="col-xs-6">总共消耗</div><div class="col-xs-6">本次消耗</div>';
-		str+='<div class="col-xs-6">金币:'+gold+'<br>黄矿:'+yellow+'<br>绿矿:'+green+'<br>四点骰子:'+four_num+'<br>八点骰子:'+eight_num+'</div>';
+		str+='<div class="col-xs-6">金币:'+gold+'<br>黄矿:'+yellow+'<br>绿矿:'+green+'<br>四点骰子:'+four_num+'<br>六点骰子:'+eight_num+'</div>';
 
 		//获取强化精炼数据
 		var upObj = upList[weapon_lv === 10 ? 9 : weapon_lv];
 		//本次消耗
-		str+='<div class="col-xs-6">金币:'+upObj.gold+'<br>黄矿:'+upObj.yellow+'<br>绿矿:'+upObj.green+'<br>四点骰子:'+upObj.four_num+'<br>八点骰子:'+upObj.eight_num+'</div>';
+		str+='<div class="col-xs-6">金币:'+upObj.gold+'<br>黄矿:'+upObj.yellow+'<br>绿矿:'+upObj.green+'<br>四点骰子:'+upObj.four_num+'<br>六点骰子:'+upObj.eight_num+'</div>';
 		str+="</div><hr>";
 		//强化内容
 		$("[txt_div]").prepend(str);
