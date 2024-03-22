@@ -10,7 +10,7 @@
 <script type="text/javascript" src="js/jquery.js?v=202403221414"></script>
 <script type="text/javascript" src="js/base.js?v=202403221414"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css?v=202403221414">
-
+<link rel="stylesheet" type="text/css" href="live2d/assets/waifu.css?v=202403221414"/>
 <style>
 	[img_lv]{
 		padding-left: 3px;
@@ -140,37 +140,47 @@
 				</div>
 			</div>
 			<hr>
-			<div class="row" weapon_list></div>
-			<hr>
 		</div>
 
-		<div msg class="col-xs-9 pull-right" right_msg_div >
+		<div msg class="col-xs-6" right_msg_div >
 			<hr>
 			<div pet_msg_div></div>
 			<div c_div></div>
 			<div txt_div class="row"></div>
 			<div item_msg_div class="row"></div>
-				<table class="hide table table-bordered">
-					<thead>
-						<tr>
-							<th>物品名称</th>
-							<th>种类</th>
-							<th>品质</th>
-							<th>数量</th>
-						</tr>
-					</thead>
-					<tbody >
-
-					</tbody>
-				</table>
-
 			<div suc_div></div>
 		</div>
 
+		<div class="col-xs-3">
+			<hr>
+			<div class="row" weapon_list></div>
+			<hr>
+		</div>
+	</div>
+
+
+	<div class="waifu">
+		<div class="waifu-tips"></div>
+		<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+		<div class="waifu-tool">
+			<span class="fui-home"></span>
+			<span class="fui-chat"></span>
+			<span class="fui-eye"></span>
+			<span class="fui-user"></span>
+			<span class="fui-photo"></span>
+			<span class="fui-info-circle"></span>
+			<span class="fui-cross"></span>
+		</div>
 	</div>
 </div>
 
+<script src="live2d/assets/waifu-tips.js"></script>
+<script src="live2d/assets/live2d.js"></script>
+
 <script>
+
+	initModel("live2d/assets/")
+
 	$(document).ready(function() {
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
