@@ -50,9 +50,34 @@
 		cursor: url('img/鼠标.png'), auto;
 	}
 
+	body{
+		background: #000;
+	}
+	#snow{
+		//position: fixed;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		background: url('img/snow1.png'),  url('img/snow2.png');
+		animation: snow 15s linear infinite;
+	}
+	@keyframes snow{
+		0% {
+			background-position: 0 0, 0 0;
+		}
+		100% {
+			background-position: 500px 1000px, 500px 500px;
+		}
+	}
+
+	[right_msg_div]{
+		color: #ffffff;
+	}
+
 </style>
 
-<div class="container">
+<div class="container" id="snow">
 	<div class="row" >
 		<div class="col-xs-3 pull-left">
 			<hr>
@@ -120,12 +145,26 @@
 			<hr>
 		</div>
 
-		<div msg class="col-xs-9 pull-right" >
+		<div msg class="col-xs-9 pull-right" right_msg_div >
 			<hr>
 			<div pet_msg_div></div>
 			<div c_div></div>
 			<div txt_div></div>
 			<div item_msg_div></div>
+				<table class="hide table table-bordered">
+					<thead>
+						<tr>
+							<th>物品名称</th>
+							<th>种类</th>
+							<th>品质</th>
+							<th>数量</th>
+						</tr>
+					</thead>
+					<tbody >
+
+					</tbody>
+				</table>
+
 			<div suc_div></div>
 		</div>
 
