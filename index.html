@@ -211,7 +211,7 @@
 
 			if (randomNum < items.probability) {
 				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span><br>';
+				str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span><br>';
 				items.num++;
 				randomValue++;
 			}
@@ -229,7 +229,7 @@
 			const items = hai_boss_drop[t];
 			if(items.num > 0){
 				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				item_str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
+				item_str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
 			}
 		}
 		item_str += '</div>';
@@ -250,7 +250,7 @@
 
 			if (randomNum < items.probability) {
 				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span><br>';
+				str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span><br>';
 				items.num = items.probability === 1 ? items.num+getRandomInt(8,12) :items.num+1;
 				randomValue++;
 			}
@@ -268,7 +268,7 @@
 			const items = boss_drop[t];
 			if(items.num > 0){
 				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				item_str += '<img src="img/兽王可汗/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
+				item_str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
 			}
 		}
 		item_str += '</div>';
