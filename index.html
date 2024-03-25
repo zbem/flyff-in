@@ -188,16 +188,17 @@
 
 	function find_item(){
 		$("[txt_div]").html("");
-		const keyword = $("[keyword]").val();
-		if(keyword === ""){
-			return ;
-		}
 		$(items).each(function(i,obj){
 			$.ajax({
 				cache: true,
 				url: '/flyff-in/item_json/'+obj,
 				dataType: "json",
 				success: function (result){
+					const keyword = $("[keyword]").val();
+					if(keyword.trim() === ""){
+						return ;
+					}
+
 					$(result).each(function(e,item){
 						if(item.name != null && item.name.cns.includes(keyword)){
 							let html_str = '<div class="col-xs-12" >';
