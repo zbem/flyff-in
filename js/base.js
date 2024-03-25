@@ -24,6 +24,8 @@
 	 https://api.flyff.com/image/item/weaswocrystal.png
 	 //物品地址
 	 https://api.flyff.com/item/15714
+	 //怪物地址
+	 https://api.flyff.com/monster/3947
 	**/
 
 	//10%-20% 橙汁

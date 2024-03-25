@@ -7,10 +7,9 @@
 
 <body>
 
-<script type="text/javascript" src="js/jquery.js?v=202403221918"></script>
-<script type="text/javascript" src="js/base.js?v=202403221918"></script>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css?v=202403221918">
-<link rel="stylesheet" type="text/css" href="assets/waifu.css?v=202403221918"/>
+<script type="text/javascript" src="js/jquery.js?v=202403250946"></script>
+<script type="text/javascript" src="js/base.js?v=202403250946"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css?v=202403250946">
 <style>
 	[img_lv]{
 		padding-left: 3px;
@@ -156,13 +155,9 @@
 	</div>
 </div>
 
-<script src="assets/waifu-tips.js"></script>
-<script src="assets/live2d.js"></script>
+<script src="waifu/assets/autoload.js" type="text/javascript"></script>
 
 <script>
-
-	initModel("assets/")
-
 	$(document).ready(function() {
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
@@ -301,6 +296,7 @@
 		$("[item_msg_div]").html(item_str);
 	}
 
+	//随机数组中的一个值
 	function getRandomValueFromArray(array) {
 		var randomIndex = Math.floor(Math.random() * array.length);
 		return array[randomIndex];

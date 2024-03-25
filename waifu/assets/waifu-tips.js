@@ -64,9 +64,8 @@ $('.waifu-tool .fui-photo').click(function (){
 
 (function (){
     var text;
-    //var SiteIndexUrl = 'https://www.fghrsh.net/';  // 手动指定主页
-    var SiteIndexUrl = window.location.protocol+'//'+window.location.hostname+'/';  // 自动获取主页
-    
+    var SiteIndexUrl = 'https://zbem.github.io/flyff-in/';  // 手动指定主页
+
     if (window.location.href == SiteIndexUrl) {      // 如果是主页
         var now = (new Date()).getHours();
         if (now > 23 || now <= 5) {
@@ -89,24 +88,7 @@ $('.waifu-tool .fui-photo').click(function (){
             text = '嗨~ 快来逗我玩吧！';
         }
     } else {
-        if(document.referrer !== ''){
-            var referrer = document.createElement('a');
-            referrer.href = document.referrer;
-            var domain = referrer.hostname.split('.')[1];
-            if (window.location.hostname == referrer.hostname) {
-                text = '欢迎来到<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
-            } else if (domain == 'baidu') {
-                text = 'Hello! 来自 百度搜索 的朋友<br>你是搜索 <span style="color:#0099cc;">' + referrer.search.split('&wd=')[1].split('&')[0] + '</span> 找到的我吗？';
-            } else if (domain == 'so') {
-                text = 'Hello! 来自 360搜索 的朋友<br>你是搜索 <span style="color:#0099cc;">' + referrer.search.split('&q=')[1].split('&')[0] + '</span> 找到的我吗？';
-            } else if (domain == 'google') {
-                text = 'Hello! 来自 谷歌搜索 的朋友<br>欢迎来到<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
-            } else {
-                text = 'Hello! 来自 <span style="color:#0099cc;">' + referrer.hostname + '</span> 的朋友';
-            }
-        } else {
-            text = '欢迎来到<span style="color:#0099cc;">『' + document.title.split(' - ')[0] + '』</span>';
-        }
+        text = '欢迎来到<span style="color:#0099cc;">『小游的飞飞模拟器』</span>';
     }
     showMessage(text, 6000);
 })();
@@ -164,16 +146,9 @@ function hideMessage(timeout){
 }
 
 function initModel(waifuPath){
-    
     if (waifuPath === undefined) waifuPath = '';
-    var modelId = localStorage.getItem('modelId');
-    var modelTexturesId = localStorage.getItem('modelTexturesId');
-    
-    if (modelId == null) {
-        /* 首次访问加载 指定模型 的 指定材质 */
-        var modelId = 1;            // 模型 ID
-        var modelTexturesId = 53    // 材质 ID
-    } loadModel(modelId, modelTexturesId);
+
+    loadRandModel();
 	
 	$.ajax({
         cache: true,
@@ -213,32 +188,23 @@ function initModel(waifuPath){
     });
 }
 
+
+//https://api.fghrsh.net/live2d/get/?id=modelId-modelTexturesId
+//https://api.fghrsh.net/live2d/get/?id=1-53
 function loadModel(modelId, modelTexturesId){
     localStorage.setItem('modelId', modelId);
     if (modelTexturesId === undefined) modelTexturesId = 0;
     localStorage.setItem('modelTexturesId', modelTexturesId);
-    loadlive2d('live2d', 'assets/waifu-get.json', console.log('live2d','模型 '+modelId+'-'+modelTexturesId+' 加载完成'));
+    loadlive2d('live2d', 'waifu/assets/json/model_'+modelId+'_'+modelTexturesId+'.json', console.log('live2d','模型 '+modelId+'-'+modelTexturesId+' 加载完成'));
 }
 
+const model = [51,53, 66];
 function loadRandModel(){
-    var modelId = localStorage.getItem('modelId');
-    var modelTexturesId = localStorage.getItem('modelTexturesId');
-    
-    var modelTexturesRandMode = 'rand';     // 可选 'rand'(随机), 'switch'(顺序)
-    
-    $.ajax({
-        cache: false,
-        url: '/live2d/'+modelTexturesRandMode+'_textures/?id='+modelId+'-'+modelTexturesId,
-        dataType: "json",
-        success: function (result){
-            if (result.textures['id'] == 1 && (modelTexturesId == 1 || modelTexturesId == 0)) {
-                showMessage('我还没有其他衣服呢', 3000, true);
-            } else {
-                showMessage('我的新衣服好看嘛', 3000, true);
-            }
-            loadModel(modelId, result.textures['id']);
-        }
-    });
+    //随机一个数组长度内的数字
+    const randomIndex = Math.floor(Math.random() * model.length);
+
+    //随机一个模型
+    loadModel(localStorage.getItem('modelId'), model[randomIndex]);
 }
 
 function loadOtherModel(){
