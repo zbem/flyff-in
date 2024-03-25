@@ -195,7 +195,7 @@
 		$(items).each(function(i,obj){
 			$.ajax({
 				cache: false,
-				url: '/item_json/'+obj,
+				url: '/flyff-in/item_json/'+obj,
 				dataType: "json",
 				success: function (result){
 					$(result).each(function(e,item){
