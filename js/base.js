@@ -26,6 +26,8 @@
 	 https://api.flyff.com/item/15714
 	 //怪物地址
 	 https://api.flyff.com/monster/3947
+	 //怪物图片
+	 https://api.flyff.com/image/monster/{fileName}
 	**/
 
 

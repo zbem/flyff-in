@@ -188,10 +188,35 @@
 
 	function find_item(){
 		$("[txt_div]").html("");
+
 		$(items).each(function(i,obj){
 			$.ajax({
 				cache: true,
-				url: '/flyff-in/item_json/'+obj,
+				url: '/flyff-in/json/monster/'+obj,
+				dataType: "json",
+				success: function (result){
+					const keyword = $("[keyword]").val();
+					if(keyword.trim() === ""){
+						return ;
+					}
+
+					$(result).each(function(e,item){
+						if(item.name != null && item.name.cns.includes(keyword)){
+							let html_str = '<div class="col-xs-12" >';
+							const color_str = 'style="color:' + (item.rarity === 'common' ? '#78d9ff' : item.rarity === 'uncommon' ? '#c46200' : item.rarity === 'veryrare' || item.rarity === 'unique' ? '#d20000' : item.rarity === 'probability' ? 'green' : '') + '"';
+							html_str += '<img src="img/monster/'+item.icon+'" style="width: 20px; height: 20px;" alt="'+item.name.cns+'"><span '+color_str+'>'+item.name.cns+'</span><br>';
+							html_str+='</div>';
+							$("[txt_div]").append(html_str);
+						}
+					});
+				}
+			});
+		});
+
+		$(items).each(function(i,obj){
+			$.ajax({
+				cache: true,
+				url: '/flyff-in/json/item/'+obj,
 				dataType: "json",
 				success: function (result){
 					const keyword = $("[keyword]").val();
