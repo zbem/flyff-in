@@ -176,6 +176,20 @@
 			html_str+='</div>';
 			$("[weapon_list]").append(html_str);
 		});
+
+		// $(items).each(function(i,obj){
+		// 	$.ajax({
+		// 		cache: false,
+		// 		url: '/item_json/'+obj+'.json',
+		// 		dataType: "json",
+		// 		success: function (result){
+		// 			var html_str = '<div class="col-xs-4" btn_weapon>';
+		// 			html_str+='<img src="img/items/'+result.icon+'" alt="'+result.name.cns+'">';
+		// 			html_str+='</div>';
+		// 			$("[weapon_list]").append(html_str);
+		// 		}
+		// 	});
+		// });
 	}
 
 	let stop = false;
