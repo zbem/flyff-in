@@ -19,6 +19,11 @@ String.prototype.render = function (context) {
     });
 };
 
+const model = [
+    {"modelId":1,"modelTexturesId":[1,2,3,4,51,53,66,82,83,84,85,86,87]},
+    //{"modelId":2,"modelTexturesId":[1,2]},
+];
+
 var re = /x/;
 console.log(re);
 re.toString = function() {
@@ -198,13 +203,13 @@ function loadModel(modelId, modelTexturesId){
     loadlive2d('live2d', 'waifu/assets/json/model_'+modelId+'_'+modelTexturesId+'.json', console.log('live2d','模型 '+modelId+'-'+modelTexturesId+' 加载完成'));
 }
 
-const model = [51,53, 66];
 function loadRandModel(){
     //随机一个数组长度内的数字
-    const randomIndex = Math.floor(Math.random() * model.length);
-
+    const modelRand = Math.floor(Math.random() * model.length);
+    const model_obj = model[modelRand];
+    const modelTexturesRand = Math.floor(Math.random() * model_obj.modelTexturesId.length);
     //随机一个模型
-    loadModel(localStorage.getItem('modelId'), model[randomIndex]);
+    loadModel(model_obj.modelId, model_obj.modelTexturesId[modelTexturesRand]);
 }
 
 function loadOtherModel(){
