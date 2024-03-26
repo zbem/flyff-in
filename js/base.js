@@ -631,38 +631,37 @@
 	let kill_num = 0;
 	let kill_hai_num = 0;
 
+	const pet_lv_list = [
+		{"lv":1,"list": [{"E": 0.7}, {"D": 0.6}, {"C": 0.5}, {"B": 0.4}, {"A": 0.3}, {"S": 0.2}]},
+		{"lv":2,"list": [{"E": 0.3}, {"D": 0.4}, {"C": 0.5}, {"B": 0.6}, {"A": 0.7}, {"S": 0.8}]},
+		{"lv":3,"list": [{"D": 0.18}, {"C": 0.18}, {"B": 0.25}, {"A": 0.32}, {"S": 0.45}]},
+		{"lv":4,"list": [{"C": 0.06}, {"B": 0.06}, {"A": 0.09}, {"S": 0.15}]},
+		{"lv":5,"list": [{"B": 0.04}, {"A": 0.06}, {"S": 0.09}]},
+		{"lv":6,"list": [{"A": 0.04}, {"S": 0.06}]},
+		{"lv":7,"list": [{"A": 0.02}, {"S": 0.03}]},
+		{"lv":8,"list": [{"S": 0.02}]},
+		{"lv":9,"list": [{"S": 0.01}]},
+	];
 	var pet_lv_item = [
-		{"lv":1,"lvStr":"F级","money":"2000000","list":[{"name":1,"probability":1}]},
-		{"lv":2,"lvStr":"E级","money":"6200000","list":[{"name":2,"probability":0.3},{"name":1,"probability":0.7}]},
-		{"lv":3,"lvStr":"D级","money":"20800000","list":[{"name":3,"probability":0.18},{"name":2,"probability":0.25},{"name":1,"probability":0.57}]},
-		{"lv":4,"lvStr":"C级","money":"59550000","list":[{"name":4,"probability":0.06},{"name":3,"probability":0.18},{"name":2,"probability":0.31},{"name":1,"probability":0.45}]},
-		{"lv":5,"lvStr":"B级","money":"123800000","list":[{"name":5,"probability":0.04},{"name":4,"probability":0.1},{"name":3,"probability":0.18},{"name":2,"probability":0.28},{"name":1,"probability":0.4}]},
-		{"lv":6,"lvStr":"A级","money":"226050000","list":[{"name":7,"probability":0.02},{"name":6,"probability":0.04},{"name":5,"probability":0.07},{"name":4,"probability":0.12},{"name":3,"probability":0.17},{"name":2,"probability":0.23},{"name":1,"probability":0.35}]},
-		{"lv":7,"lvStr":"S级","money":"557050000","list":[{"name":9,"probability":0.01},{"name":8,"probability":0.02},{"name":7,"probability":0.04},{"name":6,"probability":0.06},{"name":5,"probability":0.09},{"name":4,"probability":0.13},{"name":3,"probability":0.17},{"name":2,"probability":0.21},{"name":1,"probability":0.27}]},
-	]
-
-	var pet_lv_list = [
-		{"lv":1,"defense":"6","criticalChance":"1%","criticalDamage":"2%","attribute":"1","attack":"7","hp":"96","list": [{"E": 0.7}, {"D": 0.6}, {"C": 0.5}, {"B": 0.4}, {"A": 0.3}, {"S": 0.2}]},
-		{"lv":2,"defense":"12","criticalChance":"2%","criticalDamage":"3%","attribute":"2","attack":"13","hp":"191","list": [{"E": 0.3}, {"D": 0.4}, {"C": 0.5}, {"B": 0.6}, {"A": 0.7}, {"S": 0.8}]},
-		{"lv":3,"defense":"24","criticalChance":"3%","criticalDamage":"4%","attribute":"4","attack":"27","hp":"383","list": [{"D": 0.18}, {"C": 0.18}, {"B": 0.25}, {"A": 0.32}, {"S": 0.45}]},
-		{"lv":4,"defense":"42","criticalChance":"4%","criticalDamage":"5%","attribute":"7","attack":"47","hp":"670","list": [{"C": 0.06}, {"B": 0.06}, {"A": 0.09}, {"S": 0.15}]},
-		{"lv":5,"defense":"66","criticalChance":"5%","criticalDamage":"6%","attribute":"11","attack":"73","hp":"1053","list": [{"B": 0.04}, {"A": 0.06}, {"S": 0.09}]},
-		{"lv":6,"defense":"88","criticalChance":"6%","criticalDamage":"7%","attribute":"15","attack":"95","hp":"1356","list": [{"A": 0.04}, {"S": 0.06}]},
-		{"lv":7,"defense":"102","criticalChance":"7%","criticalDamage":"9%","attribute":"17","attack":"113","hp":"1628","list": [{"A": 0.02}, {"S": 0.03}]},
-		{"lv":8,"defense":"140","criticalChance":"8%","criticalDamage":"11%","attribute":"24","attack":"165","hp":"2539","list": [{"S": 0.02}]},
-		{"lv":9,"defense":"198","criticalChance":"9%","criticalDamage":"16%","attribute":"33","attack":"220","hp":"3161","list": [{"S": 0.01}]},
+		{"lvStr":"F级","money":"2000000","list":[{"pet_lv":1,"probability":1}]},
+		{"lvStr":"E级","money":"6200000","list":[{"pet_lv":2,"probability":0.3},{"pet_lv":1,"probability":0.7}]},
+		{"lvStr":"D级","money":"20800000","list":[{"pet_lv":3,"probability":0.18},{"pet_lv":2,"probability":0.25},{"pet_lv":1,"probability":0.57}]},
+		{"lvStr":"C级","money":"59550000","list":[{"pet_lv":4,"probability":0.06},{"pet_lv":3,"probability":0.18},{"pet_lv":2,"probability":0.31},{"pet_lv":1,"probability":0.45}]},
+		{"lvStr":"B级","money":"123800000","list":[{"pet_lv":5,"probability":0.04},{"pet_lv":4,"probability":0.1},{"pet_lv":3,"probability":0.18},{"pet_lv":2,"probability":0.28},{"pet_lv":1,"probability":0.4}]},
+		{"lvStr":"A级","money":"226050000","list":[{"pet_lv":7,"probability":0.02},{"pet_lv":6,"probability":0.04},{"pet_lv":5,"probability":0.07},{"pet_lv":4,"probability":0.12},{"pet_lv":3,"probability":0.17},{"pet_lv":2,"probability":0.23},{"pet_lv":1,"probability":0.35}]},
+		{"lvStr":"S级","money":"557050000","list":[{"pet_lv":9,"probability":0.01},{"pet_lv":8,"probability":0.02},{"pet_lv":7,"probability":0.04},{"pet_lv":6,"probability":0.06},{"pet_lv":5,"probability":0.09},{"pet_lv":4,"probability":0.13},{"pet_lv":3,"probability":0.17},{"pet_lv":2,"probability":0.21},{"pet_lv":1,"probability":0.27}]},
 	]
 
 	var incubate_pet = [
-		{"name":"狐狸","value":pet_lv_list[0].attribute,"attributeStr":"智力"},
-		{"name":"老虎","value":pet_lv_list[0].attribute,"attributeStr":"力量",},
-		{"name":"兔子","value":pet_lv_list[0].attribute,"attributeStr":"敏捷",},
-		{"name":"狮子","value":pet_lv_list[0].attribute,"attributeStr":"体质",},
-		{"name":"飞龙","value":pet_lv_list[0].attack,"attributeStr":"攻击力"},
-		{"name":"狮鹫兽","value":pet_lv_list[0].defense,"attributeStr":"防御"},
-		{"name":"独角兽","value":pet_lv_list[0].hp,"attributeStr":"hp"},
-		{"name":"天使","value":pet_lv_list[0].criticalChance,"attributeStr":"暴击率"},
-		{"name":"帝王蟹","value":pet_lv_list[0].criticalDamage,"attributeStr":"暴击伤害"}
+		{"name":"狐狸","value":1,"attributeStr":"智力","value_list":[1,2,4,7,11,15,17,24,33],"cur":""},
+		{"name":"老虎","value":1,"attributeStr":"力量","value_list":[1,2,4,7,11,15,17,24,33],"cur":""},
+		{"name":"兔子","value":1,"attributeStr":"敏捷","value_list":[1,2,4,7,11,15,17,24,33],"cur":""},
+		{"name":"狮子","value":1,"attributeStr":"体质","value_list":[1,2,4,7,11,15,17,24,33],"cur":""},
+		{"name":"飞龙","value":7,"attributeStr":"攻击力","value_list":[7,13,27,47,73,95,113,165,220],"cur":""},
+		{"name":"狮鹫兽","value":6,"attributeStr":"防御","value_list":[6,12,24,42,66,88,102,140,198],"cur":""},
+		{"name":"独角兽","value":96,"attributeStr":"hp","value_list":[96,191,383,670,1053,1356,1628,2539,3161],"cur":""},
+		{"name":"天使","value":1,"attributeStr":"暴击率","value_list":[1,2,3,4,5,6,7,8,9],"cur":"%"},
+		{"name":"帝王蟹","value":2,"attributeStr":"暴击伤害","value_list":[2,3,4,5,6,7,9,11,16],"cur":"%"}
 	]
 
 	//唤醒百分比范围
