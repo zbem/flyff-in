@@ -79,7 +79,7 @@
 			<hr>
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-primary" onclick="get_150_weapon_for_num(100)" >自动制作武器</button>
+					<button class="btn btn-primary" onclick="get_150_weapon_for_num()" >自动制作武器</button>
 				</div>
 				<div class="col-xs-6">
 					<button class="btn btn-primary" onclick="stop_get()" >暂停</button>
@@ -97,7 +97,7 @@
 			<hr>
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-primary" onclick="sacrifice()" >献祭当前等级宠</button>
+					<button class="btn btn-primary" onclick="sacrifice()" >自动献祭当前等级宠</button>
 				</div>
 			</div>
 			<hr>
@@ -360,14 +360,14 @@
 		return array[randomIndex];
 	}
 
-	function get_150_weapon_for_num(num){
+	function get_150_weapon_for_num(){
 		if(stop){
 			stop = false;
 			return ;
 		}
 		get_150_weapon();
 		setTimeout(function() {
-			get_150_weapon_for_num(num);
+			get_150_weapon_for_num();
 		}, 20); // 1000毫秒等于1秒
 	}
 
@@ -472,10 +472,23 @@
 
 	}
 
-	//献祭
+	let sacrifice_stop = false;
 	function sacrifice(){
+		if(sacrifice_stop){
+			sacrifice_stop = false;
+			return ;
+		}
+		sacrifice_go();
+		setTimeout(function() {
+			sacrifice();
+		}, 20); // 1000毫秒等于1秒
+	}
+
+	//献祭
+	function sacrifice_go(){
 		pet_lv = $("[pet_lv]").attr("pet_lv");
 		if(pet_lv == null || pet_lv === 0){
+			sacrifice_stop = true;
 			return;
 		}
 
@@ -486,6 +499,7 @@
 		const pet = pet_lv_item[pet_lv];
 		if(now_lv >= pet.list.length){
 			$("[txt_div]").after('<div class="row">当前等级已经最大值</div><br>');
+			sacrifice_stop = true;
 			return;
 		}
 
@@ -529,8 +543,6 @@
 		$("[pet_"+pet.lv+"]").remove();
 
 		let html_money = parseFloat(pet.money*0.00000029).toFixed(2);
-
-
 		//统计数据
 		$("[pet_msg_div]").append('<div pet_'+pet.lv+' >'+pet.money+'金币/次,'+html_money+'元/次</br>'+pet.lvStr+'献祭次数:'+pet_num+'</div>');
 	}
