@@ -88,16 +88,7 @@
 			<hr>
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-primary" onclick="incubate()" >孵化蛋</button>
-				</div>
-				<div class="col-xs-6">
-					<button class="btn btn-primary" onclick="pet_up()" >宠物升级</button>
-				</div>
-			</div>
-			<hr>
-			<div class="row">
-				<div class="col-xs-6">
-					<button class="btn btn-primary" onclick="sacrifice()" >自动献祭当前等级宠</button>
+					<button class="btn btn-primary" onclick="one_pet()" >一键完美宠</button>
 				</div>
 			</div>
 			<hr>
@@ -423,7 +414,7 @@
 	}
 
 	//宠物升级
-	function pet_up(){
+	function pet_up_go(){
 		//献祭次数清0
 		pet_num = 0;
 		pet_lv = $("[pet_lv]").attr("pet_lv");
@@ -470,18 +461,32 @@
 
 		//属性更新  TODO
 
+
+		//献祭
+		sacrifice();
 	}
+
+	function one_pet(){
+		//孵化宠
+		incubate();
+
+		//宠物升级
+		pet_up_go();
+	}
+
 
 	let sacrifice_stop = false;
 	function sacrifice(){
 		if(sacrifice_stop){
 			sacrifice_stop = false;
+			pet_up_go();
 			return ;
 		}
+		//献祭
 		sacrifice_go();
 		setTimeout(function() {
 			sacrifice();
-		}, 20); // 1000毫秒等于1秒
+		}, 200); // 1000毫秒等于1秒
 	}
 
 	//献祭
