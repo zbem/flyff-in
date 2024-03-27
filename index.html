@@ -243,7 +243,7 @@
 						<div weapon_num_text>
 							物品(1/1)
 						</div>
-						<img weapon_img src="img/卢萨卡之剑.png" alt="Weapon Image">
+						<img weapon_img src="img/卢萨卡之剑.png" alt="Weapon Image" />
 						<div weapon_bottom_text></div>
 						<div weapon_remark_text>
 							为以上物品roll一个随机数，或者如果<br>
@@ -454,8 +454,8 @@
 		let nowNum = $("[weapon_num_text]").attr("now_num");
 
 		nowNum--;
-		if(nowNum <= 0){
-			nowNum = 0;
+		if(nowNum < 0){
+			return ;
 		}
 
 		get_weapon(boss_weapon_list[nowNum]);
@@ -608,9 +608,9 @@
 		let str = '<div class="col-xs-12">';
 		str+= '<div class="alert alert-info" pet_info  pet_lv="0" ><div class="row">';
 		str+='<div class="col-xs-12" ><span style="color: #da6443">'+pet.name+'</span></div><br>';
-		str+='<div class="col-xs-6" ><img src="img/pet/'+pet.name+'.png" style="width: 80px; height: 70px;" alt="'+pet.name+'"></div>';
-		str+='<div class="col-xs-6">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>';
-		str+='<div class="col-xs-6">属性:<span style="color: #fb37b1" >'+pet.attributeStr+'+</span><span pet_value>'+pet.value+'</span><span pet_cur>'+pet.cur+'</span></div>';
+		str+='<div class="col-xs-5" ><img src="img/pet/'+pet.name+'.png" style="width: 80px; height: 70px;" alt="'+pet.name+'"></div>';
+		str+='<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>';
+		str+='<div class="col-xs-7">属性:<span style="color: #fb37b1" >'+pet.attributeStr+'+</span><span pet_value>'+pet.value+'</span><span pet_cur>'+pet.cur+'</span></div>';
 		str+='</div><br><div class="row">';
 		str+='<div pet_img_div><label lv_1 pet_val="'+pet.value+'"><img img_lv src="img/pet/等级1.png" alt="'+pet.value+'"><br>+'+pet.value+pet.cur+'</label></div>';
 		str+='</div></div></div>';
