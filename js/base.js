@@ -316,15 +316,15 @@
 		{"id":"19929","name":"Rayne Suit","icon":"frinset06upper.png","category":"ARMOR","rarity":"veryrare","probability":0.0001,"num":0},
 		{"id":"16051","name":"Reine Suit","icon":"mrinset06upper.png","category":"ARMOR","rarity":"veryrare","probability":0.0001,"num":0},
 		{"id":"10319","name":"珊瑚短剑","icon":"weaswdhernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
-		{"id":"19897","name":"螺号","icon":"weaaxehernes.png","category":"WEAPON","rarity":"unique","probability":0.1001,"num":0},
-		{"id":"16014","name":"怒涛","icon":"weabowhernes.png","category":"WEAPON","rarity":"unique","probability":0.1001,"num":0},
-		{"id":"14971","name":"潮汐之拳","icon":"weaknuhernes.png","category":"WEAPON","rarity":"unique","probability":0.1001,"num":0},
-		{"id":"14000","name":"海潮回响","icon":"weastahernes.png","category":"WEAPON","rarity":"unique","probability":0.1001,"num":0},
-		{"id":"16918","name":"塞壬之歌","icon":"weachehernes.png","category":"WEAPON","rarity":"unique","probability":0.1001,"num":0},
-		{"id":"14402","name":"绝渊","icon":"weaaxthernes.png","category":"WEAPON","rarity":"unique","probability":0.1001,"num":0},
-		{"id":"13811","name":"猛兽","icon":"weaswthernes.png","category":"WEAPON","rarity":"unique","probability":0.1001,"num":0},
-		{"id":"13845","name":"呼风唤雨","icon":"weawanhernes.png","category":"WEAPON","rarity":"unique","probability":0.1001,"num":0},
-		{"id":"13024","name":"涡旋","icon":"weayoyhernes.png","category":"WEAPON","rarity":"unique","probability":0.1001,"num":0}
+		{"id":"19897","name":"螺号","icon":"weaaxehernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
+		{"id":"16014","name":"怒涛","icon":"weabowhernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
+		{"id":"14971","name":"潮汐之拳","icon":"weaknuhernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
+		{"id":"14000","name":"海潮回响","icon":"weastahernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
+		{"id":"16918","name":"塞壬之歌","icon":"weachehernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
+		{"id":"14402","name":"绝渊","icon":"weaaxthernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
+		{"id":"13811","name":"猛兽","icon":"weaswthernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
+		{"id":"13845","name":"呼风唤雨","icon":"weawanhernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
+		{"id":"13024","name":"涡旋","icon":"weayoyhernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0}
 	]
 
 	let boss_drop = [
