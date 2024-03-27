@@ -334,7 +334,7 @@
 	//初始化
 	function init(){
 		$(data).each(function(i,obj){
-			var html_str = `<div class="col-xs-4" btn_weapon onclick="get_weapon(${i})">`;
+			var html_str = `<div class="col-xs-4" btn_weapon onclick="get_weapon(${obj.id})">`;
 			html_str+=`<img src="${obj.imgUrl}" alt="${obj.name}">`;
 			html_str+=`</div>`;
 			$("[weapon_list]").append(html_str);
@@ -440,6 +440,12 @@
 			if(items.num > 0){
 				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
 				item_str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
+
+				//武器
+				if(items.rarity === 'veryrare' && items.category === 'WEAPON'){
+					get_weapon()
+				}
+
 			}
 		}
 		item_str += '</div>';
@@ -856,7 +862,6 @@
 
 		//第一次强化初始值
 		low_probability = upObj.low_probability;
-
 		return upObj;
 	}
 
@@ -869,14 +874,16 @@
 			errorMsg("没有对应的武器类型");
 			return;
 		}
-		if(data[weapon_index] == null){
+
+		const weaponObj = data.find(obj => obj.id === weapon_index);
+
+		if(weaponObj == null){
 			errorMsg("没有对应的武器类型");
 			return;
 		}
 
 		$("[up_u_weapon_div]").remove();
-
-		var arr = data[weapon_index].uList;
+		var arr = weaponObj.uList;
 		var value1 = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
 		var value2 = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
 
@@ -919,7 +926,9 @@
 			errorMsg("没有对应的武器类型");
 			return;
 		}
-		if(data[index] == null){
+
+		const weaponObj = data.find(obj => obj.id === index);
+		if(weaponObj == null){
 			errorMsg("没有对应的武器类型");
 			return;
 		}
@@ -930,18 +939,20 @@
 
 		weapon_index = index;
 
-		wakeUpList = data[index].wakeUpList;
+
+
+		wakeUpList = weaponObj.wakeUpList;
 
 		let str = '<div class="alert alert-info" bb_info >';
 		//武器名称
-		str += '<span color_red weapon_name>'+data[index].name+'</span><span color_red weapon_up_lv="0"></span></br>';
+		str += '<span color_red weapon_name>'+weaponObj.name+'</span><span color_red weapon_up_lv="0"></span></br>';
 		//武器类型
-		str += '<span style="color: aliceblue">'+data[index].type+'</span></br>';
+		str += '<span style="color: aliceblue">'+weaponObj.type+'</span></br>';
 		//武器基础攻击
-		str += '<span style="color: aliceblue">基础攻击力:'+data[index].minAttack+'~'+data[index].maxAttack+'</span></br>';
+		str += '<span style="color: aliceblue">基础攻击力:'+weaponObj.minAttack+'~'+weaponObj.maxAttack+'</span></br>';
 		//攻击速度
-		str += '<span style="color: aliceblue">攻击速度:'+data[index].attackSpeed+'</span></br>';
-		var list = data[index].list;
+		str += '<span style="color: aliceblue">攻击速度:'+weaponObj.attackSpeed+'</span></br>';
+		const list = weaponObj.list;
 
 		//组装属性值
 		for(var i=0 ; i < list.length ; i++){
@@ -961,24 +972,24 @@
 			//组装单位(例如 百分号)
 			randomNum = randomNum+obj.cur;
 			//承受伤害是减
-			var addStr = obj.name === "承受伤害" ? '-' : '+';
+			const addStr = obj.name === "承受伤害" ? '-' : '+';
 			str +='<span style="color: #ffeaa5">'+ obj.name + addStr + randomNum + ' (' + minNum+'~'+maxNum+')'+obj.cur+'</span><br>';
 		}
 		//职业要求
-		str += '<span job_span style="color: aliceblue">职业要求:'+data[index].job+'</span></br>';
+		str += '<span job_span style="color: aliceblue">职业要求:'+weaponObj.job+'</span></br>';
 		//等级要求
 		str += '<span style="color: aliceblue">等级要求:150</span></br>';
 		//品质
 		str += '<span style="color: aliceblue">品质: <span weapon_u_color>Ultimate</span></span></br>';
 		//描述
-		str += '<span style="color: aliceblue" weapon_description>描述:</br> '+data[index].description+'</span>';
+		str += '<span style="color: aliceblue" weapon_description>描述:</br> '+weaponObj.description+'</span>';
 
 		//强化次数
 		// str += '</br></br><span style="color: #b3b3b3">强化次数: 0';
 		// str += '</br><span style="color: #b3b3b3">穿洞次数: 0';
 
-		$("[weapon_bottom_text]").html(data[index].name);
-		$("[weapon_img]").attr("src",data[index].imgUrl)
+		$("[weapon_bottom_text]").html(weaponObj.name);
+		$("[weapon_img]").attr("src",weaponObj.imgUrl)
 
 		$(".weapon-attributes").prepend(str);
 		$("[weapon_roll_div]").removeClass("hide");

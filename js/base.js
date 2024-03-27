@@ -1219,7 +1219,6 @@
 				{"name": "十字震荡", "item": wakeUpItem}, {"name": "迟缓术", "item": wakeUpItem},
 				{"name": "死亡爆破", "item": wakeUpItem}, {"name": "背后突袭", "item": wakeUpItem},
 				{"name": "乾坤一掷", "item": ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]},
-				{"name": "毒箭", "item": wakeUpItem},
 			]
 		},
 		{
@@ -1260,7 +1259,6 @@
 				{"name": "十字震荡", "item": wakeUpItem}, {"name": "迟缓术", "item": wakeUpItem},
 				{"name": "死亡爆破", "item": wakeUpItem}, {"name": "背后突袭", "item": wakeUpItem},
 				{"name": "乾坤一掷", "item": ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]},
-				{"name": "毒箭", "item": wakeUpItem},
 			]
 		},
 		{
@@ -1301,7 +1299,6 @@
 				{"name": "十字震荡", "item": wakeUpItem}, {"name": "迟缓术", "item": wakeUpItem},
 				{"name": "死亡爆破", "item": wakeUpItem}, {"name": "背后突袭", "item": wakeUpItem},
 				{"name": "乾坤一掷", "item": ["2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]},
-				{"name": "毒箭", "item": wakeUpItem},
 			]
 		},
 		{
