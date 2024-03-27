@@ -158,8 +158,6 @@
 					</div>
 				</div>
 			</div>
-
-
 			<hr>
 			<div class="row" weapon_list></div>
 			<hr>
@@ -387,7 +385,7 @@
 			stop = false;
 			return ;
 		}
-		get_150_weapon();
+		get_150_weapon(1000);
 		setTimeout(function() {
 			get_150_weapon_for_num();
 		}, 20); // 1000毫秒等于1秒
@@ -397,24 +395,26 @@
 	var get_weapon_probability = 0.00001;
 	//var get_weapon_probability_12 = 0.000015;
 	var get_150_weapon_num = 0
-	function get_150_weapon(){
+	function get_150_weapon(num){
 		let str;
-		// 生成一个0到1之间的随机数
-		let randomNum = Math.random().toFixed(6);
-		get_150_weapon_num++;
-		if(randomNum < get_weapon_probability){
-			str = '<div get_150_weapon class="row">';
-			str += '<span color_green>'+get_150_weapon_num+'次史诗武器制作成功!</span>';
-			str += '</div>';
-			$("[suc_div]").after(str);
-			stop = true;
-		}else{
-			str = '<div get_150_weapon class="row">';
-			str += '<span>2元/次,概率0.001%</span><br><br>';
-			str += '<span>你的钱包:-'+get_150_weapon_num*2+'元</span><br><br>';
-			str += '<span color_red weapon_150_msg>史诗武器制作失败'+get_150_weapon_num+'次</span><br><br>';
-			str += '</div>';
-			$("[txt_div]").html(str);
+		for(var i=0 ; i < num ; i++) {
+			// 生成一个0到1之间的随机数
+			let randomNum = Math.random().toFixed(6);
+			get_150_weapon_num++;
+			if (randomNum < get_weapon_probability) {
+				str = '<div get_150_weapon class="col-xs-12">';
+				str += '<span color_green>' + get_150_weapon_num + '次史诗武器制作成功!</span>';
+				str += '</div>';
+				$("[suc_div]").after(str);
+				stop = true;
+			} else {
+				str = '<div get_150_weapon class="col-xs-12">';
+				str += '<span>2元/次,概率0.001%</span><br><br>';
+				str += '<span>你的钱包:-' + get_150_weapon_num * 2 + '元</span><br><br>';
+				str += '<span color_red>史诗武器制作失败' + get_150_weapon_num + '次</span><br><br>';
+				str += '</div>';
+				$("[txt_div]").html(str);
+			}
 		}
 	}
 
