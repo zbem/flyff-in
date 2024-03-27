@@ -42,7 +42,7 @@
 		background-color: #e6e0e1;
 		border: 2px solid #e8c685 ;
 		border-radius: 3px;
-		width: 315px;
+		width: 285px;
 		padding-top: 0;
 	}
 	/* 定义自定义光标样式 */
@@ -330,6 +330,8 @@
 		$("[item_msg_div]").html(item_str);
 	}
 	function kill_boss(){
+		$("[pet_msg_div]").html("");
+
 		let color_str;
 		//清空海岛boss击杀数量
 		kill_num = 0;
