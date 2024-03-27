@@ -160,7 +160,7 @@
 			<hr>
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-success" kill_hai_boss_btn onclick="kill_hai_boss()" >自动击杀海岛Boss</button>
+					<button class="btn btn-success" kill_boss_btn onclick="kill_hai_boss()" >自动击杀海岛Boss</button>
 				</div>
 			</div>
 			<hr>
@@ -406,10 +406,10 @@
 
 
 	function kill_hai_boss(){
-		$("[kill_hai_boss_btn]").attr("disabled",true);
+		$("[kill_boss_btn]").attr("disabled",true);
 		if(kill_hai_boss_stop){
 			kill_hai_boss_stop = false;
-			$("[kill_hai_boss_btn]").removeAttr("disabled");
+			$("[kill_boss_btn]").removeAttr("disabled");
 			return ;
 		}
 		kill_hai_boss_go();
