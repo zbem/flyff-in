@@ -1999,6 +1999,19 @@
 	let low_probability = 0.000000;
 	//唤醒列表
 	let wakeUpList = [];
-	
-	
-
+	let pet_lv;
+	let now_lv = 0;
+	let money = 0;
+	//献祭次数
+	let pet_num = 0;
+	//当前宠物
+	let now_pet;
+	let boss_weapon_list = [];
+	//制作武器基础概率 0.001%  闪亮12点 0.0015%
+	const get_weapon_probability = 0.00001;
+	//var get_weapon_probability_12 = 0.000015;
+	let get_150_weapon_num = 0;
+	let stop = false;
+	let sacrifice_stop = false;
+	let kill_hai_boss_stop = false;
+	let kill_boss_stop = false;

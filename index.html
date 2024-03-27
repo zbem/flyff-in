@@ -154,19 +154,19 @@
 			<hr>
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-success" onclick="kill_hai_boss()" >海岛Boss</button>
-				</div>
-				<div class="col-xs-6">
-					<button class="btn btn-danger" onclick="kill_boss()" >兽王可汗</button>
+					<button class="btn btn-danger" kill_boss_btn onclick="kill_boss()" >自动击杀兽王可汗</button>
 				</div>
 			</div>
 			<hr>
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-success" onclick="get_150_weapon_for_num()" >自动制作武器</button>
+					<button class="btn btn-success" kill_hai_boss_btn onclick="kill_hai_boss()" >自动击杀海岛Boss</button>
 				</div>
+			</div>
+			<hr>
+			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-success" onclick="stop_get()" >暂停</button>
+					<button class="btn btn-success" onclick="get_150_weapon_for_num()" >自动制作史诗武器</button>
 				</div>
 			</div>
 			<hr>
@@ -178,34 +178,11 @@
 			<hr>
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-success" onclick="weapon_low_up()" >low卷精炼</button>
-				</div>
-				<div class="col-xs-6">
-					<button class="btn btn-success" onclick="weapon_up()" >防暴精炼</button>
-				</div>
-			</div>
-			<hr>
-			<div class="row hide">
-				<div class="col-xs-3">
-					<button class="btn btn-success" onclick="weapon_up()" >穿洞精炼</button>
-				</div>
-				<div class="col-xs-3">
-					<button class="btn btn-success" onclick="weapon_up()" >属性防暴精炼</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-6">
-					<button class="btn btn-success"  onclick="up_u_weapon()" >武器升U</button>
-				</div>
-				<div class="col-xs-6">
-					<button class="btn btn-success" onclick="wake_up()" >武器唤醒</button>
-				</div>
-			</div>
-			<hr>
-			<div class="row">
-				<div class="col-xs-6">
 					<button class="btn btn-success" onclick="init_model()" >召唤看板娘</button>
 				</div>
+			</div>
+			<hr>
+			<div class="row">
 				<div class="col-xs-6">
 					<button class="btn btn-success" onclick="clear_div()" >清空信息</button>
 				</div>
@@ -285,6 +262,32 @@
 			<hr>
 			<div class="row" weapon_list></div>
 			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-success" onclick="weapon_low_up()" >low卷精炼</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-success" onclick="weapon_up()" >防暴精炼</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row hide">
+				<div class="col-xs-3">
+					<button class="btn btn-success" onclick="weapon_up()" >穿洞精炼</button>
+				</div>
+				<div class="col-xs-3">
+					<button class="btn btn-success" onclick="weapon_up()" >属性防暴精炼</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-success"  onclick="up_u_weapon()" >武器升U</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-success" onclick="wake_up()" >武器唤醒</button>
+				</div>
+			</div>
+			<hr>
 		</div>
 	</div>
 
@@ -338,8 +341,6 @@
 			$("[weapon_list]").append(html_str);
 		});
 	}
-
-	let stop = false;
 
 	function find_item(){
 		clear_div();
@@ -403,9 +404,21 @@
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	let boss_weapon_list = [];
 
 	function kill_hai_boss(){
+		$("[kill_hai_boss_btn]").attr("disabled",true);
+		if(kill_hai_boss_stop){
+			kill_hai_boss_stop = false;
+			$("[kill_hai_boss_btn]").removeAttr("disabled");
+			return ;
+		}
+		kill_hai_boss_go();
+		setTimeout(function() {
+			kill_hai_boss();
+		}, 20); // 1000毫秒等于1秒
+	}
+
+	function kill_hai_boss_go(){
 		let color_str;
 		//清空兽王可汗击杀数量
 		kill_num = 0;
@@ -422,7 +435,11 @@
 				randomValue++;
 				//武器
 				if(items.rarity === 'unique' && items.category === 'WEAPON'){
-					boss_weapon_list.push(items.id);
+					boss_weapon_list.unshift(items.id);
+					$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`)
+					$("[weapon_num_text]").attr("now_num",0);
+					get_weapon(boss_weapon_list[0]);
+					kill_hai_boss_stop = true;
 				}
 			}
 		}
@@ -440,13 +457,6 @@
 		}
 		item_str += '</div>';
 		$("[item_msg_div]").html(item_str);
-
-		$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`)
-		$("[weapon_num_text]").attr("now_num",0);
-
-		if(boss_weapon_list.length > 0){
-			get_weapon(boss_weapon_list[0]);
-		}
 	}
 
 	function previous_weapon(){
@@ -477,6 +487,18 @@
 
 
 	function kill_boss(){
+		$("[kill_boss_btn]").attr("disabled",true);
+		if(kill_boss_stop){
+			kill_boss_stop = false;
+			$("[kill_boss_btn]").removeAttr("disabled");
+			return ;
+		}
+		kill_boss_go();
+		setTimeout(function() {
+			kill_boss();
+		}, 20); // 1000毫秒等于1秒
+	}
+	function kill_boss_go(){
 		$("[pet_msg_div]").html("");
 
 		let color_str;
@@ -495,7 +517,12 @@
 				randomValue++;
 				//武器
 				if(items.rarity === 'unique' && items.category === 'WEAPON'){
-					boss_weapon_list.push(items.id);
+					boss_weapon_list.unshift(items.id);
+					$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`)
+					$("[weapon_num_text]").attr("now_num",0) ;
+					get_weapon(boss_weapon_list[0]);
+
+					kill_boss_stop = true;
 				}
 			}
 		}
@@ -513,39 +540,11 @@
 		}
 		item_str += '</div>';
 		$("[item_msg_div]").html(item_str);
-
-		$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`)
-		$("[weapon_num_text]").attr("now_num",0);
-
-		if(boss_weapon_list.length > 0){
-			get_weapon(boss_weapon_list[0]);
-		}
-	}
-
-	function kill_fu() {
-		let item_str = '<hr><div class="row">统计:<br>';
-		kill_num++;
-		item_str += "击杀数量:"+kill_num+"<br>";
-
-		let randomValue = 0;
-		for (var i = 0; i < drop.length; i++) {
-			let randomNum = Math.random().toFixed(2);
-			const items = drop[i];
-
-			if (randomNum < items.probability) {
-				items.num++;
-				randomValue++;
-			}
-			item_str += '<span style="color: '+items.color+'">'+items.name+':'+items.num+'</span><br>';
-		}
-
-		item_str += '</div><hr>';
-		$("[item_msg_div]").html(item_str);
 	}
 
 	//随机数组中的一个值
 	function getRandomValueFromArray(array) {
-		var randomIndex = Math.floor(Math.random() * array.length);
+		const randomIndex = Math.floor(Math.random() * array.length);
 		return array[randomIndex];
 	}
 
@@ -560,13 +559,9 @@
 		}, 20); // 1000毫秒等于1秒
 	}
 
-	//制作武器基础概率 0.001%  闪亮12点 0.0015%
-	var get_weapon_probability = 0.00001;
-	//var get_weapon_probability_12 = 0.000015;
-	var get_150_weapon_num = 0
 	function get_150_weapon(num){
 		let str;
-		for(var i=0 ; i < num ; i++) {
+		for(let i=0 ; i < num ; i++) {
 			// 生成一个0到1之间的随机数
 			let randomNum = Math.random().toFixed(6);
 			get_150_weapon_num++;
@@ -586,14 +581,6 @@
 			}
 		}
 	}
-
-	let pet_lv;
-	let now_lv = 0;
-	let money = 0;
-	//献祭次数
-	let pet_num = 0;
-	//当前宠物
-	let now_pet;
 
 	//孵化蛋
 	function incubate(){
@@ -641,8 +628,7 @@
 
 			//数字是否匹配
 			if(randomNum < pet_probability){
-				const lv = pet.list[i].pet_lv;
-				now_lv = lv;
+				now_lv = pet.list[i].pet_lv;
 				var pet_lv_value =now_pet.value_list[pet.list[i].pet_lv-1];
 				$("[pet_img_div]").append('<label lv_'+pet_lv_item[Number(pet_lv)+1].lvStr+' pet_val="'+pet_lv_value+'"><img img_lv src="img/pet/等级'+pet.list[i].pet_lv+'.png"  alt="等级"><br>+'+pet_lv_value+now_pet.cur+'</label>');
 				break;
@@ -673,8 +659,6 @@
 		pet_up_go();
 	}
 
-
-	let sacrifice_stop = false;
 	function sacrifice(){
 		if(sacrifice_stop){
 			sacrifice_stop = false;
@@ -708,7 +692,7 @@
 
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random().toFixed(2);
-		var pet_probability = 0;
+		let pet_probability = 0;
 
 		for(var i=0 ; i <= pet.list.length ; i++) {
 			const lv = pet.list[i].pet_lv;
@@ -772,7 +756,7 @@
 		//初始化
 		init_up();
 
-		var str = '<div class="row">';
+		let str = '<div class="row">';
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random();
 		//是否精炼成功
@@ -808,7 +792,7 @@
 		//初始化
 		init_up();
 
-		var str = '<div class="row">';
+		let str = '<div class="row">';
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random();
 		//是否精炼成功
@@ -848,7 +832,7 @@
 		str+='<div class="col-xs-6">金币:'+gold+'<br>黄矿:'+yellow+'<br>绿矿:'+green+'<br>四点骰子:'+four_num+'<br>六点骰子:'+eight_num+'</div>';
 
 		//获取强化精炼数据
-		var upObj = upList[weapon_lv === 10 ? 9 : weapon_lv];
+		const upObj = upList[weapon_lv === 10 ? 9 : weapon_lv];
 		//本次消耗
 		str+='<div class="col-xs-6">金币:'+upObj.gold+'<br>黄矿:'+upObj.yellow+'<br>绿矿:'+upObj.green+'<br>四点骰子:'+upObj.four_num+'<br>六点骰子:'+upObj.eight_num+'</div>';
 		str+="</div><hr>";
@@ -861,7 +845,7 @@
 		weapon_lv = $("[weapon_up_lv]").attr("weapon_up_lv");
 		weapon_lv = Number(weapon_lv);
 		//获取强化精炼数据
-		var upObj = upList[weapon_lv];
+		const upObj = upList[weapon_lv];
 		if(upObj == null){
 			return ;
 		}
@@ -917,7 +901,7 @@
 		arr.push(value1);
 		arr.push(value2);
 
-		var str = "<div up_u_weapon_div>";
+		let str = "<div up_u_weapon_div>";
 		//组装属性值
 		for(var i=0 ; i < list.length ; i++){
 			var obj = list[i];
