@@ -678,7 +678,7 @@
 			"job": "战士",
 			"attackSpeed": "非常快",
 			"type": "单手武器",
-			"imgUrl": "img/潮汐单手剑.png",
+			"imgUrl": "img/珊瑚短剑.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
 			"list": [
 				{"name": "暴击伤害", "min": 490, "max": 590, fixed: 10, cur: "%"},

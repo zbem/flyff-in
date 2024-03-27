@@ -63,6 +63,84 @@
 	[pet_msg_div]{
 		padding-bottom: 10px;
 	}
+	.image-frame {
+		display: inline-block;
+		overflow: hidden;
+		border-radius: 8px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		border: 2px solid #e8c685 ;
+	}
+
+	.image-frame img {
+		margin: 10px 120px 0 120px;
+		padding: 5px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		display: block;
+		height: auto;
+		border: 1px solid #e8c685 ;
+		border-radius: 3px;
+	}
+
+	.weapon-attributes {
+		position: absolute; /* 绝对定位 */
+		top: -5px; /* 紧贴图片框底部 */
+		left: 170px; /* 紧贴图片框左侧 */
+		opacity: 0; /* 初始时不可见 */
+		transition: opacity 0.3s ease; /* 过渡效果 */
+		visibility: hidden; /* 初始时不可见 */
+	}
+
+	[weapon_roll_text]{
+		border-top: 1px solid #e8c685 ;
+		border-radius: 5px;
+		text-align: center;
+		color: #ffffff;
+	}
+
+	[weapon_roll_text] span{
+		padding: 0 5px;
+		color: #3a4459;
+		font-size: 30px;
+	}
+
+	[weapon_top_text]{
+		text-align: center;
+		color: #ffffff;
+	}
+	[weapon_bottom_text]{
+		text-align: center;
+		color: #f0ad4e;
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+	[weapon_remark_text]{
+		text-align: center;
+		color: #f0ad4e;
+		font-size: 12px;
+	}
+	.image-frame:hover .weapon-attributes {
+		opacity: 1; /* 鼠标悬停时变为可见 */
+		visibility: visible; /* 鼠标悬停时变为可见 */
+	}
+
+	[weapon_num_text]{
+		text-align: center;
+		color: #f0ad4e;
+		font-size: 12px;
+	}
+
+	[weapon_btn_text]{
+		text-align: center;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-weight: bold;
+	}
+
+	[weapon_btn_text] button{
+		background-color: #0e0a08;
+		color: #FFFFFF;
+	}
+
 </style>
 
 <div class="container" >
@@ -143,11 +221,49 @@
 			<div txt_div class="row"></div>
 			<div item_msg_div class="row"></div>
 			<div suc_div class="row"></div>
+
+			<div class="row hide" weapon_roll_div>
+				<div class="col-xs-12" style="padding-top: 200px;margin-left: 120px">
+					<div class="image-frame">
+						<div class="weapon-attributes">
+						</div>
+						<div weapon_top_text>
+							拾取分配
+						</div>
+						<div weapon_roll_text>
+							<span>□</span>
+							<span>□</span>
+							<span>□</span>
+							<span>□</span>
+							<span>□</span>
+							<span>□</span>
+							<span>□</span>
+							<span>□</span>
+						</div>
+						<div weapon_num_text>
+							物品(1/1)
+						</div>
+						<img weapon_img src="img/卢萨卡之剑.png" alt="Weapon Image">
+						<div weapon_bottom_text></div>
+						<div weapon_remark_text>
+							为以上物品roll一个随机数，或者如果<br>
+							你不感兴趣，点击略过。计时器结束<br>
+							后，随机数字最高的玩家将获得该物<br>
+							品
+						</div>
+
+						<div weapon_btn_text>
+							<button>需要</button>
+							<button style="margin-left: 30px;">略过</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="col-xs-3">
 			<hr>
-			<div class="row" show_time>
+			<div class="row hide" show_time>
 				<div style="font-size: 20px;color: #ffffff;">时装达人秀</div>
 				<div class="ibox float-e-margins">
 					<div class="ibox-content">
@@ -173,7 +289,6 @@
 		</div>
 	</div>
 
-
 	<div class="waifu hide">
 		<div class="waifu-tips"></div>
 		<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
@@ -194,6 +309,7 @@
 <script>
 
 	function clear_div(){
+		$("[weapon_roll_div]").addClass("hide");
 		$("[pet_msg_div]").html("");
 		$("[c_div]").html("");
 		$("[txt_div]").html("");
@@ -816,9 +932,9 @@
 
 		wakeUpList = data[index].wakeUpList;
 
-		var str = '<div class="alert alert-info" bb_info >';
+		let str = '<div class="alert alert-info" bb_info >';
 		//武器名称
-		str += '<span weapon_u_color weapon_name>'+data[index].name+'</span><span weapon_u_color weapon_up_lv="0"></span></br>';
+		str += '<span color_red weapon_name>'+data[index].name+'</span><span color_red weapon_up_lv="0"></span></br>';
 		//武器类型
 		str += '<span style="color: aliceblue">'+data[index].type+'</span></br>';
 		//武器基础攻击
@@ -861,7 +977,11 @@
 		// str += '</br></br><span style="color: #b3b3b3">强化次数: 0';
 		// str += '</br><span style="color: #b3b3b3">穿洞次数: 0';
 
-		$("[c_div]").prepend(str);
+		$("[weapon_bottom_text]").html(data[index].name);
+		$("[weapon_img]").attr("src",data[index].imgUrl)
+
+		$(".weapon-attributes").prepend(str);
+		$("[weapon_roll_div]").removeClass("hide");
 	}
 
 	function errorMsg(str){
