@@ -122,6 +122,12 @@
 				</div>
 			</div>
 			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-success" onclick="init_model()" >召唤看板娘</button>
+				</div>
+			</div>
+			<hr>
 		</div>
 
 		<div msg class="col-xs-6" right_msg_div >
@@ -130,7 +136,7 @@
 			<div c_div></div>
 			<div txt_div class="row"></div>
 			<div item_msg_div class="row"></div>
-			<div suc_div></div>
+			<div suc_div class="row"></div>
 		</div>
 
 		<div class="col-xs-3">
@@ -165,7 +171,7 @@
 	</div>
 
 
-	<div class="waifu">
+	<div class="waifu hide">
 		<div class="waifu-tips"></div>
 		<canvas id="live2d" width="280" height="250" class="live2d"></canvas>
 		<div class="waifu-tool">
@@ -183,6 +189,11 @@
 <script src="waifu/assets/autoload.js" type="text/javascript"></script>
 
 <script>
+
+	function init_model(){
+		$(".waifu").removeClass("hide");
+		initModel('waifu/assets/');
+	}
 
 	$(document).ready(function() {
 		// 当页面加载完成后，给 body 元素添加自定义光标样式

@@ -14,6 +14,3 @@ $.ajax({
     cache: true,
     async: false
 });
-
-/* 在 initModel 前添加 */
-initModel('waifu/assets/');
