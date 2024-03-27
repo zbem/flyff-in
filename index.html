@@ -219,9 +219,9 @@
 			<div pet_msg_div></div>
 			<div c_div></div>
 			<div txt_div class="row"></div>
-			<div item_msg_div class="row"></div>
 			<div suc_div class="row"></div>
 
+			<div item_msg_div class="row"></div>
 			<div class="row hide" weapon_roll_div>
 				<div class="col-xs-12" style="padding-top: 200px;margin-left: 120px">
 					<div class="image-frame">
@@ -253,8 +253,8 @@
 						</div>
 
 						<div weapon_btn_text>
-							<button>需要</button>
-							<button style="margin-left: 30px;">略过</button>
+							<button onclick="previous_weapon()">上一个</button>
+							<button style="margin-left: 30px;" onclick="next_weapon()">下一个</button>
 						</div>
 					</div>
 				</div>
@@ -313,7 +313,6 @@
 		$("[pet_msg_div]").html("");
 		$("[c_div]").html("");
 		$("[txt_div]").html("");
-		$("[item_msg_div]").html("");
 		$("[suc_div]").html("");
 	}
 	function init_model(){
@@ -405,31 +404,29 @@
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
+	let boss_weapon_list = [];
+
 	function kill_hai_boss(){
 		let color_str;
-
 		//清空兽王可汗击杀数量
 		kill_num = 0;
 		kill_hai_num++;
 
 		let randomValue = 0;
-		let str = '<div class="col-xs-12">本次击杀:<br>';
 
 		for (var i = 0; i < hai_boss_drop.length; i++) {
 			let randomNum = Math.random().toFixed(3);
 			const items = hai_boss_drop[i];
 
 			if (randomNum < items.probability) {
-				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span><br>';
 				items.num++;
 				randomValue++;
+				//武器
+				if(items.rarity === 'unique' && items.category === 'WEAPON'){
+					boss_weapon_list.push(items.id);
+				}
 			}
-
 		}
-		str += '<span>掉落物品数量:' + randomValue + '</span>个<br><br>';
-		str += '</div>';
-		$("[txt_div]").html(str);
 
 		//升序排序
 		hai_boss_drop = hai_boss_drop.sort((a, b)=> b.num - a.num);
@@ -440,17 +437,46 @@
 			if(items.num > 0){
 				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
 				item_str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
-
-				//武器
-				if(items.rarity === 'veryrare' && items.category === 'WEAPON'){
-					get_weapon()
-				}
-
 			}
 		}
 		item_str += '</div>';
 		$("[item_msg_div]").html(item_str);
+
+		$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`)
+		$("[weapon_num_text]").attr("now_num",0);
+
+		if(boss_weapon_list.length > 0){
+			get_weapon(boss_weapon_list[0]);
+		}
 	}
+
+	function previous_weapon(){
+		let nowNum = $("[weapon_num_text]").attr("now_num");
+
+		nowNum--;
+		if(nowNum <= 0){
+			nowNum = 0;
+		}
+
+		get_weapon(boss_weapon_list[nowNum]);
+		$("[weapon_num_text]").html(`物品(${nowNum+1}/${boss_weapon_list.length})`);
+		$("[weapon_num_text]").attr("now_num",nowNum);
+	}
+
+	function next_weapon(){
+		let nowNum = $("[weapon_num_text]").attr("now_num");
+
+		nowNum++;
+		if(nowNum >= boss_weapon_list.length){
+			return;
+		}
+
+		get_weapon(boss_weapon_list[nowNum]);
+		$("[weapon_num_text]").html(`物品(${nowNum+1}/${boss_weapon_list.length})`);
+		$("[weapon_num_text]").attr("now_num",nowNum);
+	}
+
+
 	function kill_boss(){
 		$("[pet_msg_div]").html("");
 
@@ -460,23 +486,20 @@
 		kill_num++;
 
 		let randomValue = 0;
-		let str = '<div class="col-xs-12">本次击杀:<br>';
 
 		for (var i = 0; i < boss_drop.length; i++) {
 			let randomNum = Math.random().toFixed(3);
 			const items = boss_drop[i];
 
 			if (randomNum < items.probability) {
-				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span><br>';
 				items.num = items.probability === 1 ? items.num+getRandomInt(8,12) :items.num+1;
 				randomValue++;
+				//武器
+				if(items.rarity === 'unique' && items.category === 'WEAPON'){
+					boss_weapon_list.push(items.id);
+				}
 			}
-
 		}
-		str += '<span>掉落物品数量:' + randomValue + '</span>个<br><br>';
-		str += '</div>';
-		$("[txt_div]").html(str);
 
 		//升序排序
 		boss_drop = boss_drop.sort((a, b)=> b.num - a.num);
@@ -491,6 +514,13 @@
 		}
 		item_str += '</div>';
 		$("[item_msg_div]").html(item_str);
+
+		$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`)
+		$("[weapon_num_text]").attr("now_num",0);
+
+		if(boss_weapon_list.length > 0){
+			get_weapon(boss_weapon_list[0]);
+		}
 	}
 
 	function kill_fu() {
@@ -499,21 +529,16 @@
 		item_str += "击杀数量:"+kill_num+"<br>";
 
 		let randomValue = 0;
-		let str = '<div class="row">本次击杀:<br>';
 		for (var i = 0; i < drop.length; i++) {
 			let randomNum = Math.random().toFixed(2);
 			const items = drop[i];
 
 			if (randomNum < items.probability) {
-				str += '<span color_red >' + items.name + '</span><br><br>';
 				items.num++;
 				randomValue++;
 			}
 			item_str += '<span style="color: '+items.color+'">'+items.name+':'+items.num+'</span><br>';
 		}
-		str += '<span color_red >掉落物品数量:' + randomValue + '个</span><br><br>';
-		str += '</div>';
-		$("[txt_div]").html(str);
 
 		item_str += '</div><hr>';
 		$("[item_msg_div]").html(item_str);
@@ -805,9 +830,7 @@
 			}else{
 				str+='<div class="col-xs-6" color_red>low精炼失败!+3以前失败不掉级</div>';
 			}
-
 		}
-
 		str+='<div class="col-xs-6">当前成功率'+low_probability+'</div><hr>';
 		//组装数据
 		txt_div_prepend(str);
@@ -871,14 +894,14 @@
 		// 	return;
 		// }
 		if(weapon_index == null){
-			errorMsg("没有对应的武器类型");
+			errorMsg("没有对应的武器类型:"+weapon_index);
 			return;
 		}
 
 		const weaponObj = data.find(obj => obj.id === weapon_index);
 
 		if(weaponObj == null){
-			errorMsg("没有对应的武器类型");
+			errorMsg("没有对应的武器类型:"+weapon_index);
 			return;
 		}
 
@@ -923,13 +946,13 @@
 	function get_weapon(index){
 		clear_div();
 		if(index == null){
-			errorMsg("没有对应的武器类型");
+			errorMsg("get_weapon没有对应的武器类型"+index);
 			return;
 		}
 
-		const weaponObj = data.find(obj => obj.id === index);
+		const weaponObj = data.find(obj => obj.id === parseInt(index));
 		if(weaponObj == null){
-			errorMsg("没有对应的武器类型");
+			errorMsg("get_weapon没有对应的武器类型"+index);
 			return;
 		}
 		up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0;
@@ -938,9 +961,6 @@
 		$("[up_u_weapon]").remove();
 
 		weapon_index = index;
-
-
-
 		wakeUpList = weaponObj.wakeUpList;
 
 		let str = '<div class="alert alert-info" bb_info >';
