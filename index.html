@@ -60,6 +60,9 @@
 	[pet_img_div] label{
 		text-align: center;
 	}
+	[pet_msg_div]{
+		padding-bottom: 10px;
+	}
 </style>
 
 <div class="container" >
@@ -126,6 +129,9 @@
 				<div class="col-xs-6">
 					<button class="btn btn-success" onclick="init_model()" >召唤看板娘</button>
 				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-success" onclick="clear_div()" >清空信息</button>
+				</div>
 			</div>
 			<hr>
 		</div>
@@ -149,9 +155,6 @@
 							<div class="carousel-inner">
 								<div class="item active">
 									<img class="img-responsive" style="width: 300px;height: 320px" src="img/show/可爱的小游.png" alt="可爱的小游">
-								</div>
-								<div class="item">
-									<img class="img-responsive" style="width: 300px;height: 320px" src="img/show/可爱的小游2.png" alt="可爱的小游2">
 								</div>
 							</div>
 							<a data-slide="prev" href="#carousel1" class="left carousel-control">
@@ -190,6 +193,13 @@
 
 <script>
 
+	function clear_div(){
+		$("[pet_msg_div]").html("");
+		$("[c_div]").html("");
+		$("[txt_div]").html("");
+		$("[item_msg_div]").html("");
+		$("[suc_div]").html("");
+	}
 	function init_model(){
 		$(".waifu").removeClass("hide");
 		initModel('waifu/assets/');
@@ -208,9 +218,9 @@
 	//初始化
 	function init(){
 		$(data).each(function(i,obj){
-			var html_str = '<div class="col-xs-4" btn_weapon onclick="get_weapon('+i+')">';
-			html_str+='<img src="'+obj.imgUrl+'" alt="'+obj.name+'">';
-			html_str+='</div>';
+			var html_str = `<div class="col-xs-4" btn_weapon onclick="get_weapon(${i})">`;
+			html_str+=`<img src="${obj.imgUrl}" alt="${obj.name}">`;
+			html_str+=`</div>`;
 			$("[weapon_list]").append(html_str);
 		});
 	}
@@ -218,7 +228,7 @@
 	let stop = false;
 
 	function find_item(){
-		$("[txt_div]").html("");
+		clear_div();
 
 		$(items).each(function(i,obj){
 			$.ajax({
@@ -439,23 +449,22 @@
 
 	//孵化蛋
 	function incubate(){
+		clear_div();
 		//献祭次数清0
 		pet_num = 0;
-		$("[txt_div]").html("");
-
 		//随机数组中的值
 		const pet = incubate_pet[Math.floor(Math.random() * incubate_pet.length)];
 		//当前宠物
 		now_pet = pet;
-
-		var str = '<div class="alert alert-info" pet_info  pet_lv="0" ><div class="row">';
+		let str = '<div class="col-xs-12">';
+		str+= '<div class="alert alert-info" pet_info  pet_lv="0" ><div class="row">';
 		str+='<div class="col-xs-12" ><span style="color: #da6443">'+pet.name+'</span></div><br>';
 		str+='<div class="col-xs-6" ><img src="img/pet/'+pet.name+'.png" style="width: 80px; height: 70px;" alt="'+pet.name+'"></div>';
 		str+='<div class="col-xs-6">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>';
 		str+='<div class="col-xs-6">属性:<span style="color: #fb37b1" >'+pet.attributeStr+'+</span><span pet_value>'+pet.value+'</span><span pet_cur>'+pet.cur+'</span></div>';
 		str+='</div><br><div class="row">';
-		str+='<div pet_img_div><label lv_1 pet_val="'+pet.value+'"><img img_lv src="img/pet/等级1.png" alt="'+pet.value+'"><br>+'+pet.value+pet.cur+'</label></div><br>';
-		str+='</div></div>';
+		str+='<div pet_img_div><label lv_1 pet_val="'+pet.value+'"><img img_lv src="img/pet/等级1.png" alt="'+pet.value+'"><br>+'+pet.value+pet.cur+'</label></div>';
+		str+='</div></div></div>';
 		$("[txt_div]").prepend(str);
 	}
 
@@ -471,29 +480,21 @@
 
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random().toFixed(2);
-		var str = '<div class="row">';
-		//进化后的宠物等级
-		str += pet.lvStr+'->'+pet_lv_item[Number(pet_lv)+1].lvStr+'<br>';
-		str += '随机值:'+ randomNum +'<br>';
 
 		let pet_probability = 0;
 
 		for(var i=0 ; i < pet.list.length ; i++) {
 			if(i > 0){
-				str += '概率相加:'+ pet.list[i].probability+'+'+pet_probability+'<br>';
 				pet_probability = parseFloat(pet.list[i].probability) + parseFloat(pet_probability);
 			}else{
 				pet_probability = parseFloat(pet.list[i].probability);
 			}
 			pet_probability = parseFloat(pet_probability).toFixed(2);
-			str += '第'+(i+1)+'次概率:'+ pet_probability+'<br>';
 
 			//数字是否匹配
 			if(randomNum < pet_probability){
 				const lv = pet.list[i].pet_lv;
 				now_lv = lv;
-				str += '等级:'+ lv+'<br>';
-
 				var pet_lv_value =now_pet.value_list[pet.list[i].pet_lv-1];
 				$("[pet_img_div]").append('<label lv_'+pet_lv_item[Number(pet_lv)+1].lvStr+' pet_val="'+pet_lv_value+'"><img img_lv src="img/pet/等级'+pet.list[i].pet_lv+'.png"  alt="等级"><br>+'+pet_lv_value+now_pet.cur+'</label>');
 				break;
@@ -502,8 +503,6 @@
 
 		$("[pet_lv_str]").html(pet_lv_item[Number(pet_lv)+1].lvStr);
 		pet_lv++;
-		str += '</div><br>';
-		$("[txt_div]").after(str);
 		$("[pet_lv]").attr("pet_lv",pet_lv);
 
 		let now_pet_value = 0;
@@ -555,48 +554,36 @@
 		}
 		const pet = pet_lv_item[pet_lv];
 		if(now_lv >= pet.list.length){
-			$("[txt_div]").after('<div class="row">当前等级已经最大值</div><br>');
 			sacrifice_stop = true;
 			return;
 		}
 
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random().toFixed(2);
-		var str = '<div class="row">'+pet.lvStr+'宠<br>';
-		str += '随机值:'+ randomNum +'<br>';
-
 		var pet_probability = 0;
 
 		for(var i=0 ; i <= pet.list.length ; i++) {
 			const lv = pet.list[i].pet_lv;
 			if(lv <= now_lv){
-				str += '<span color_red>等级没有变化</span>';
 				break;
 			}
 
 			if(i > 0){
-				str += '概率相加:'+ pet.list[i].probability+'+'+pet_probability+'<br>';
 				pet_probability = parseFloat(pet.list[i].probability) + parseFloat(pet_probability);
 			}else{
 				pet_probability = parseFloat(pet.list[i].probability);
 			}
 			pet_probability = parseFloat(pet_probability).toFixed(2);
-			str += '第'+(i+1)+'次概率:'+ pet_probability+'<br>';
 
 			//数字是否匹配
 			if(randomNum < pet_probability){
 				now_lv = lv;
-				str += '<span color_green>恭喜洗出等级:'+ lv+'</span>';
 				$("[lv_"+pet.lvStr+"]").remove();
-
 				var pet_lv_value =now_pet.value_list[pet.list[i].pet_lv-1];
-
 				$("[pet_img_div]").append('<label lv_'+pet.lvStr+' pet_val="'+pet_lv_value+'"><img img_lv src="img/pet/等级'+pet.list[i].pet_lv+'.png" alt="等级"><br>+'+pet_lv_value+now_pet.cur+'</label>');
 				break;
 			}
 		}
-		str += '</div><br>';
-		$("[txt_div]").after(str);
 
 		//献祭次数
 		pet_num++;
@@ -809,6 +796,7 @@
 	}
 
 	function get_weapon(index){
+		clear_div();
 		if(index == null){
 			errorMsg("没有对应的武器类型");
 			return;
@@ -818,7 +806,6 @@
 			return;
 		}
 		up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0;
-		$("[txt_div]").html("");
 		//重置武器面板数值
 		$("[bb_info]").remove();
 		$("[up_u_weapon]").remove();
