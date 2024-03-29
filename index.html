@@ -140,6 +140,11 @@
 		color: #FFFFFF;
 	}
 
+	.visibility_div{
+		opacity: 1; /* 鼠标悬停时变为可见 */
+		visibility: visible; /* 鼠标悬停时变为可见 */
+	}
+
 </style>
 
 <div class="container" >
@@ -147,6 +152,23 @@
 		<div class="col-xs-3 pull-left">
 			<hr>
 			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-success" weapon_up onclick="weapon_low_up()" >low卷精炼</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-success" weapon_up onclick="weapon_up()" >防暴精炼</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-success" weapon_up  onclick="up_u_weapon()" >武器升U</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-success" weapon_up onclick="wake_up()" >武器唤醒</button>
+				</div>
+			</div>
+			<div class="row hide">
 				<div class="col-xs-12">
 					<input type="text" class="form-control" keyword onblur="find_item()" onkeyup="find_item()"  maxlength="30" name="position"/>
 				</div>
@@ -188,15 +210,32 @@
 				</div>
 			</div>
 			<hr>
+			<div class="row hide" show_time>
+				<div style="font-size: 20px;color: #ffffff;">时装达人秀</div>
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<div class="carousel slide" id="carousel1">
+							<div class="carousel-inner">
+								<div class="item active">
+									<img class="img-responsive" style="width: 300px;height: 320px" src="img/show/可爱的小游.png" alt="可爱的小游">
+								</div>
+							</div>
+							<a data-slide="prev" href="#carousel1" class="left carousel-control">
+								<span class="icon-prev"></span>
+							</a>
+							<a data-slide="next" href="#carousel1" class="right carousel-control">
+								<span class="icon-next"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" weapon_list></div>
+			<hr>
 		</div>
 
-		<div msg class="col-xs-6" right_msg_div >
+		<div msg class="col-xs-9" right_msg_div >
 			<hr>
-			<div pet_msg_div></div>
-			<div c_div></div>
-			<div txt_div class="row"></div>
-			<div suc_div class="row"></div>
-
 			<div class="row hide" weapon_roll_div>
 				<div class="col-xs-12" style="margin-left: 120px">
 					<div class="image-frame">
@@ -234,60 +273,11 @@
 					</div>
 				</div>
 			</div>
+			<div pet_msg_div></div>
+			<div c_div></div>
+			<div txt_div class="row"></div>
+			<div suc_div class="row"></div>
 			<div item_msg_div class="row"></div>
-		</div>
-
-		<div class="col-xs-3">
-			<hr>
-			<div class="row hide" show_time>
-				<div style="font-size: 20px;color: #ffffff;">时装达人秀</div>
-				<div class="ibox float-e-margins">
-					<div class="ibox-content">
-						<div class="carousel slide" id="carousel1">
-							<div class="carousel-inner">
-								<div class="item active">
-									<img class="img-responsive" style="width: 300px;height: 320px" src="img/show/可爱的小游.png" alt="可爱的小游">
-								</div>
-							</div>
-							<a data-slide="prev" href="#carousel1" class="left carousel-control">
-								<span class="icon-prev"></span>
-							</a>
-							<a data-slide="next" href="#carousel1" class="right carousel-control">
-								<span class="icon-next"></span>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<hr>
-			<div class="row" weapon_list></div>
-			<hr>
-			<div class="row">
-				<div class="col-xs-6">
-					<button class="btn btn-success" onclick="weapon_low_up()" >low卷精炼</button>
-				</div>
-				<div class="col-xs-6">
-					<button class="btn btn-success" onclick="weapon_up()" >防暴精炼</button>
-				</div>
-			</div>
-			<hr>
-			<div class="row hide">
-				<div class="col-xs-3">
-					<button class="btn btn-success" onclick="weapon_up()" >穿洞精炼</button>
-				</div>
-				<div class="col-xs-3">
-					<button class="btn btn-success" onclick="weapon_up()" >属性防暴精炼</button>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-6">
-					<button class="btn btn-success"  onclick="up_u_weapon()" >武器升U</button>
-				</div>
-				<div class="col-xs-6">
-					<button class="btn btn-success" onclick="wake_up()" >武器唤醒</button>
-				</div>
-			</div>
-			<hr>
 		</div>
 	</div>
 
@@ -340,6 +330,10 @@
 			html_str+=`</div>`;
 			$("[weapon_list]").append(html_str);
 		});
+
+		$("[weapon_up]").on("click",function(){
+			$(".weapon-attributes").addClass("visibility_div");
+		})
 	}
 
 	function find_item(){
@@ -461,7 +455,9 @@
 
 	function previous_weapon(){
 		let nowNum = $("[weapon_num_text]").attr("now_num");
-
+		if(nowNum == null){
+			return ;
+		}
 		nowNum--;
 		if(nowNum < 0){
 			return ;
@@ -474,7 +470,9 @@
 
 	function next_weapon(){
 		let nowNum = $("[weapon_num_text]").attr("now_num");
-
+		if(nowNum == null){
+			return ;
+		}
 		nowNum++;
 		if(nowNum >= boss_weapon_list.length){
 			return;
@@ -983,7 +981,7 @@
 		//等级要求
 		str += '<span style="color: aliceblue">等级要求:150</span></br>';
 		//品质
-		str += '<span style="color: aliceblue">品质: <span weapon_u_color>Ultimate</span></span></br>';
+		str += '<span style="color: aliceblue">品质: <span color_red>史诗</span></span></br>';
 		//描述
 		str += '<span style="color: aliceblue" weapon_description>描述:</br> '+weaponObj.description+'</span>';
 
