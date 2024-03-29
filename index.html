@@ -291,15 +291,15 @@
 </div>
 
 <div class="hide">
-	<img img_lv_1 src="img/pet/等级1.png" alt="1">
-	<img img_lv_2 src="img/pet/等级2.png" alt="2">
-	<img img_lv_3 src="img/pet/等级3.png" alt="3">
-	<img img_lv_4 src="img/pet/等级4.png" alt="4">
-	<img img_lv_5 src="img/pet/等级5.png" alt="5">
-	<img img_lv_6 src="img/pet/等级6.png" alt="6">
-	<img img_lv_7 src="img/pet/等级7.png" alt="7">
-	<img img_lv_8 src="img/pet/等级8.png" alt="8">
-	<img img_lv_9 src="img/pet/等级9.png" alt="9">
+	<img img_lv img_lv_1  src="img/pet/等级1.png" alt="1">
+	<img img_lv img_lv_2 src="img/pet/等级2.png" alt="2">
+	<img img_lv img_lv_3 src="img/pet/等级3.png" alt="3">
+	<img img_lv img_lv_4 src="img/pet/等级4.png" alt="4">
+	<img img_lv img_lv_5 src="img/pet/等级5.png" alt="5">
+	<img img_lv img_lv_6 src="img/pet/等级6.png" alt="6">
+	<img img_lv img_lv_7 src="img/pet/等级7.png" alt="7">
+	<img img_lv img_lv_8 src="img/pet/等级8.png" alt="8">
+	<img img_lv img_lv_9 src="img/pet/等级9.png" alt="9">
 </div>
 
 <script src="waifu/assets/autoload.js" type="text/javascript"></script>
@@ -640,7 +640,7 @@
 
 				const img_html = $("[img_lv_"+pet.list[i].pet_lv+"]")[0].outerHTML;
 
-				$("[pet_img_div]").append(`<label lv_${pet_lv_item[Number(pet_lv)+1].lvStr} pet_val="${pet_lv_value}">${img_html}<br>+'+pet_lv_value+now_pet.cur+`</label>`);
+				$("[pet_img_div]").append(`<label lv_${pet_lv_item[Number(pet_lv)+1].lvStr} pet_val="${pet_lv_value}">${img_html}<br>+${pet_lv_value+now_pet.cur}</label>`);
 				break;
 			}
 		}
