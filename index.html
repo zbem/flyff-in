@@ -319,7 +319,7 @@
 	//初始化
 	function init(){
 		$(data).each(function(i,obj){
-			var html_str = `<div class="col-xs-4" btn_weapon onclick="get_weapon(${obj.id})">`;
+			var html_str = `<div class="col-xs-4" btn_weapon onclick="get_weapon_go(${obj.id})">`;
 			html_str+=`<img src="${obj.imgUrl}" alt="${obj.name}">`;
 			html_str+=`</div>`;
 			$("[weapon_list]").append(html_str);
@@ -424,10 +424,7 @@
 				randomValue++;
 				//武器
 				if(items.rarity === 'unique' && items.category === 'WEAPON'){
-					boss_weapon_list.unshift(items.id);
-					$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`)
-					$("[weapon_num_text]").attr("now_num",0);
-					get_weapon(boss_weapon_list[0]);
+					get_weapon_go(items.id);
 					kill_hai_boss_stop = true;
 				}
 			}
@@ -511,11 +508,7 @@
 				randomValue++;
 				//武器
 				if(items.rarity === 'unique' && items.category === 'WEAPON'){
-					boss_weapon_list.unshift(items.id);
-					$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`)
-					$("[weapon_num_text]").attr("now_num",0) ;
-					get_weapon(boss_weapon_list[0]);
-
+					get_weapon_go(items.id);
 					kill_boss_stop = true;
 				}
 			}
@@ -918,6 +911,14 @@
 		str += "</div>";
 
 		$("[job_span]").before(str);
+	}
+
+
+	function get_weapon_go(id){
+		boss_weapon_list.unshift(id);
+		$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`);
+		$("[weapon_num_text]").attr("now_num",0);
+		get_weapon(id);
 	}
 
 	function get_weapon(index){
