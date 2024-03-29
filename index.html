@@ -147,19 +147,19 @@
 			<hr>
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-success" weapon_up onclick="weapon_low_up()" >low卷精炼</button>
+					<button class="btn btn-success" weapon_up onclick="weapon_low_up()" >low卷</button>
 				</div>
 				<div class="col-xs-6">
-					<button class="btn btn-success" weapon_up onclick="weapon_up()" >防暴精炼</button>
+					<button class="btn btn-success" weapon_up onclick="weapon_up()" >防暴</button>
 				</div>
 			</div>
 			<hr>
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-success" weapon_up  onclick="up_u_weapon()" >武器升U</button>
+					<button class="btn btn-success" weapon_up  onclick="up_u_weapon()" >升U</button>
 				</div>
 				<div class="col-xs-6">
-					<button class="btn btn-success" weapon_up onclick="wake_up()" >武器唤醒</button>
+					<button class="btn btn-success" weapon_up onclick="wake_up()" >唤醒</button>
 				</div>
 			</div>
 			<div class="row hide">
@@ -288,6 +288,18 @@
 			<span class="fui-cross"></span>
 		</div>
 	</div>
+</div>
+
+<div class="hide">
+	<img img_lv_1 src="img/pet/等级1.png" alt="1">
+	<img img_lv_2 src="img/pet/等级2.png" alt="2">
+	<img img_lv_3 src="img/pet/等级3.png" alt="3">
+	<img img_lv_4 src="img/pet/等级4.png" alt="4">
+	<img img_lv_5 src="img/pet/等级5.png" alt="5">
+	<img img_lv_6 src="img/pet/等级6.png" alt="6">
+	<img img_lv_7 src="img/pet/等级7.png" alt="7">
+	<img img_lv_8 src="img/pet/等级8.png" alt="8">
+	<img img_lv_9 src="img/pet/等级9.png" alt="9">
 </div>
 
 <script src="waifu/assets/autoload.js" type="text/javascript"></script>
@@ -578,15 +590,23 @@
 		const pet = incubate_pet[Math.floor(Math.random() * incubate_pet.length)];
 		//当前宠物
 		now_pet = pet;
-		let str = '<div class="col-xs-12">';
-		str+= '<div class="alert alert-info" pet_info  pet_lv="0" ><div class="row">';
-		str+='<div class="col-xs-12" ><span style="color: #da6443">'+pet.name+'</span></div><br>';
-		str+='<div class="col-xs-5" ><img src="img/pet/'+pet.name+'.png" style="width: 80px; height: 70px;" alt="'+pet.name+'"></div>';
-		str+='<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>';
-		str+='<div class="col-xs-7">属性:<span style="color: #fb37b1" >'+pet.attributeStr+'+</span><span pet_value>'+pet.value+'</span><span pet_cur>'+pet.cur+'</span></div>';
-		str+='</div><br><div class="row">';
-		str+='<div pet_img_div><label lv_1 pet_val="'+pet.value+'"><img img_lv src="img/pet/等级1.png" alt="'+pet.value+'"><br>+'+pet.value+pet.cur+'</label></div>';
-		str+='</div></div></div>';
+
+		const img_html = $("[img_lv_1]")[0].outerHTML;
+		let str = `
+			<div class="col-xs-12">
+				<div class="alert alert-info" pet_info  pet_lv="0" >
+					<div class="row">
+						<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
+						<div class="col-xs-5" ><img src="img/pet/${pet.name}.png" style="width: 80px; height: 70px;" alt="${pet.name}"></div>
+						<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>
+						<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
+					</div><br>
+					<div class="row">
+						<div pet_img_div><label lv_1 pet_val="${pet.value}">${img_html}<br>+${pet.value}${pet.cur}</label></div>
+					</div>
+				</div>
+			</div>
+		`;
 		$("[txt_div]").prepend(str);
 	}
 
@@ -616,8 +636,11 @@
 			//数字是否匹配
 			if(randomNum < pet_probability){
 				now_lv = pet.list[i].pet_lv;
-				var pet_lv_value =now_pet.value_list[pet.list[i].pet_lv-1];
-				$("[pet_img_div]").append('<label lv_'+pet_lv_item[Number(pet_lv)+1].lvStr+' pet_val="'+pet_lv_value+'"><img img_lv src="img/pet/等级'+pet.list[i].pet_lv+'.png"  alt="等级"><br>+'+pet_lv_value+now_pet.cur+'</label>');
+				const pet_lv_value = now_pet.value_list[pet.list[i].pet_lv - 1];
+
+				const img_html = $("[img_lv_"+pet.list[i].pet_lv+"]")[0].outerHTML;
+
+				$("[pet_img_div]").append(`<label lv_${pet_lv_item[Number(pet_lv)+1].lvStr} pet_val="${pet_lv_value}">${img_html}<br>+'+pet_lv_value+now_pet.cur+`</label>`);
 				break;
 			}
 		}
@@ -757,7 +780,7 @@
 			}
 		}else {
 			//获取强化精炼数据
-			var upObj = upList[weapon_lv];
+			const upObj = upList[weapon_lv];
 			//失败次数
 			failure_num++;
 			//失败累加基础强化概率
@@ -779,14 +802,14 @@
 		//初始化
 		init_up();
 
-		let str = '<div class="row">';
+		let str = '<div class="col-xs-12">';
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random();
 		//是否精炼成功
 		if(randomNum <= low_probability){
 			//升级
 			weapon_lv++;
-			var now_weapon_lv = weapon_lv === 0 ? "" : ("+"+weapon_lv);
+			const now_weapon_lv = weapon_lv === 0 ? "" : ("+" + weapon_lv);
 			str+='<div class="col-xs-6" color_green>low精炼'+now_weapon_lv+'成功!<br></div>';
 		}else {
 			//失败次数
@@ -810,12 +833,11 @@
 		$("[weapon_up_lv]").html(weapon_lv === 0 ? "" : ("+"+weapon_lv));
 		$("[weapon_up_lv]").attr("weapon_up_lv",weapon_lv);
 
-		str += '';
 		//次数
-		str+='</div><div class="row"><div class="col-xs-6">强化次数:'+up_num+'</div><div class="col-xs-6">失败次数:'+failure_num+'</div><hr></div>';
+		str+='</div><div class="col-xs-12"><div class="col-xs-6">强化次数:'+up_num+'</div><div class="col-xs-6">失败次数:'+failure_num+'</div><hr></div>';
 
 		//总消耗
-		str+='<div class="row"><div class="col-xs-6">总共消耗</div><div class="col-xs-6">本次消耗</div>';
+		str+='<div class="col-xs-12"><div class="col-xs-6">总共消耗</div><div class="col-xs-6">本次消耗</div>';
 		str+='<div class="col-xs-6">金币:'+gold+'<br>黄矿:'+yellow+'<br>绿矿:'+green+'<br>四点骰子:'+four_num+'<br>六点骰子:'+eight_num+'</div>';
 
 		//获取强化精炼数据
@@ -824,7 +846,7 @@
 		str+='<div class="col-xs-6">金币:'+upObj.gold+'<br>黄矿:'+upObj.yellow+'<br>绿矿:'+upObj.green+'<br>四点骰子:'+upObj.four_num+'<br>六点骰子:'+upObj.eight_num+'</div>';
 		str+="</div><hr>";
 		//强化内容
-		$("[txt_div]").prepend(str);
+		$("[txt_div]").html(str);
 	}
 
 	function init_up(){
