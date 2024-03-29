@@ -83,10 +83,8 @@
 
 	.weapon-attributes {
 		position: absolute; /* 绝对定位 */
-		left: 240px; /* 紧贴图片框左侧 */
-		opacity: 0; /* 初始时不可见 */
-		transition: opacity 0.3s ease; /* 过渡效果 */
-		visibility: hidden; /* 初始时不可见 */
+		left: 310px; /* 紧贴图片框左侧 */
+		opacity: 1; /* 鼠标悬停时变为可见 */
 	}
 
 	[weapon_roll_text]{
@@ -116,10 +114,6 @@
 		text-align: center;
 		color: #f0ad4e;
 		font-size: 12px;
-	}
-	.image-frame:hover .weapon-attributes {
-		opacity: 1; /* 鼠标悬停时变为可见 */
-		visibility: visible; /* 鼠标悬停时变为可见 */
 	}
 
 	[weapon_num_text]{
@@ -237,7 +231,7 @@
 		<div msg class="col-xs-9" right_msg_div >
 			<hr>
 			<div class="row hide" weapon_roll_div>
-				<div class="col-xs-12" style="margin-left: 120px">
+				<div class="col-xs-12" >
 					<div class="image-frame">
 						<div class="weapon-attributes">
 						</div>
@@ -400,6 +394,7 @@
 
 
 	function kill_hai_boss(){
+		$("[txt_div]").html("");
 		$("[kill_boss_btn]").attr("disabled",true);
 		if(kill_hai_boss_stop){
 			kill_hai_boss_stop = false;
@@ -485,6 +480,7 @@
 
 
 	function kill_boss(){
+		$("[txt_div]").html("");
 		$("[kill_boss_btn]").attr("disabled",true);
 		if(kill_boss_stop){
 			kill_boss_stop = false;
@@ -879,7 +875,7 @@
 			return;
 		}
 
-		const weaponObj = data.find(obj => obj.id === weapon_index);
+		const weaponObj = data.find(obj => obj.id === parseInt(weapon_index));
 
 		if(weaponObj == null){
 			errorMsg("没有对应的武器类型:"+weapon_index);
@@ -927,7 +923,7 @@
 	function get_weapon(index){
 		clear_div();
 		if(index == null){
-			errorMsg("get_weapon没有对应的武器类型"+index);
+			errorMsg("get_weapon没有对应的武器类型"+parseInt(index));
 			return;
 		}
 
