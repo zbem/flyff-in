@@ -1993,6 +1993,10 @@
 	
 	//强化次数,金币,黄矿,绿矿,失败次数,武器强化等级,4点数量,8点数量,武器索引值
 	let up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0 ,weapon_index = 0;
+	//使用low卷数量
+	let weapon_low_up_num=0;
+	//使用防暴卷数量
+	let weapon_up_num=0;
 	//成功概率
 	let probability = 0.000000;
 	//成功概率
@@ -2015,3 +2019,5 @@
 	let sacrifice_stop = false;
 	let kill_hai_boss_stop = false;
 	let kill_boss_stop = false;
+	let weapon_low_up_stop = false;
+	let weapon_up_stop = false;

@@ -19,10 +19,10 @@
 		<div class="col-xs-3 pull-left">
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-success" weapon_up onclick="weapon_low_up()" >low卷</button>
+					<button class="btn btn-success" weapon_up onclick="weapon_low_up(7)" >一键low7</button>
 				</div>
 				<div class="col-xs-6">
-					<button class="btn btn-success" weapon_up onclick="weapon_up()" >防暴</button>
+					<button class="btn btn-success" weapon_up onclick="weapon_up()" >一键防暴</button>
 				</div>
 			</div>
 			<hr>
@@ -643,11 +643,28 @@
 	}
 
 	function weapon_up(){
-		//武器已经强化到+10啦
-		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) === 10 || $("[weapon_up_lv]").length === 0){
+		$("[weapon_up]").attr("disabled",true);
+		if(weapon_up_stop){
+			weapon_up_stop = false;
+			$("[weapon_up]").removeAttr("disabled");
 			return ;
 		}
+		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) !== 10){
+			$("[txt_div]").html("");
+		}
 
+		weapon_up_go();
+		setTimeout(function() {
+			weapon_up();
+		}, 50); // 1000毫秒等于1秒
+	}
+	function weapon_up_go(){
+		//武器已经强化到+10啦
+		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) === 10 || $("[weapon_up_lv]").length === 0){
+			weapon_up_stop = true;
+			return ;
+		}
+		weapon_up_num++;
 		//初始化
 		init_up();
 
@@ -679,11 +696,32 @@
 		txt_div_prepend(str);
 	}
 
-	function weapon_low_up(){
-		//武器已经强化到+10啦
-		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) === 10 || $("[weapon_up_lv]").length === 0){
+	function weapon_low_up(num){
+		$("[weapon_up]").attr("disabled",true);
+		if(weapon_low_up_stop){
+			weapon_low_up_stop = false;
+			$("[weapon_up]").removeAttr("disabled");
 			return ;
 		}
+		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) !== 10){
+			$("[txt_div]").html("");
+		}
+
+		weapon_low_up_go(num);
+		setTimeout(function() {
+			weapon_low_up(num);
+		}, 50); // 1000毫秒等于1秒
+	}
+
+	function weapon_low_up_go(num){
+		//武器已经强化到+10啦
+		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) === 10 || $("[weapon_up_lv]").length === 0){
+			weapon_low_up_stop=true;
+			return ;
+		}
+
+		weapon_low_up_num++;
+
 		//初始化
 		init_up();
 
@@ -712,6 +750,10 @@
 		str+='<div class="col-xs-6">当前成功率'+low_probability+'</div><hr>';
 		//组装数据
 		txt_div_prepend(str);
+
+		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) === num){
+			weapon_low_up_stop=true;
+		}
 	}
 
 	function txt_div_prepend(str){
@@ -719,7 +761,8 @@
 		$("[weapon_up_lv]").attr("weapon_up_lv",weapon_lv);
 
 		//次数
-		str+='</div><div class="col-xs-12"><div class="col-xs-6">强化次数:'+up_num+'</div><div class="col-xs-6">失败次数:'+failure_num+'</div><hr></div>';
+		str+='</div><div class="col-xs-12"><div class="col-xs-6">强化总次数:'+up_num+'</div><div class="col-xs-6">失败次数:'+failure_num+'</div><hr></div>';
+		str+='<div class="col-xs-12"><div class="col-xs-6">low卷强化次数:'+weapon_low_up_num+'</div><div class="col-xs-6">防暴卷强化次数:'+weapon_up_num+'</div><hr></div>';
 
 		//总消耗
 		str+='<div class="col-xs-12"><div class="col-xs-6">总共消耗</div><div class="col-xs-6">本次消耗</div>';
