@@ -8,11 +8,11 @@
 
 <body>
 
-<script src="js/jquery.min.js?v=202404011926"></script>
-<script src="js/base.js?v=202404011926"></script>
-<script src="js/bootstrap.min.js?v=202404011926"></script>
-<link href="css/bootstrap.min.css?v=202404011926" rel="stylesheet" type="text/css">
-<link href="css/style.css?v=202404011926" rel="stylesheet" type="text/css">
+<script src="js/jquery.min.js?v=202404011952"></script>
+<script src="js/base.js?v=202404011952"></script>
+<script src="js/bootstrap.min.js?v=202404011952"></script>
+<link href="css/bootstrap.min.css?v=202404011952" rel="stylesheet" type="text/css">
+<link href="css/style.css?v=202404011952" rel="stylesheet" type="text/css">
 
 <div class="container" style="padding-top: 20px;border: 1px solid;" >
 	<div class="row" >
@@ -101,8 +101,8 @@
 		</div>
 
 		<div class="col-xs-9" right_msg_div >
-			<div class="row hide" weapon_roll_div>
-				<div class="col-xs-4 col-sm-6" >
+			<div class="row hide" weapon_roll_div float_left>
+				<div class="col-xs-12" >
 					<div class="image-frame">
 						<div weapon_top_text>
 							拾取分配
@@ -134,9 +134,7 @@
 							<button style="margin-left: 30px;" onclick="next_weapon()">下一个</button>
 						</div>
 					</div>
-				</div>
-				<div class="col-xs-8 col-sm-6">
-					<div class="weapon-attributes">
+					<div weapon-attributes float_left>
 					</div>
 				</div>
 			</div>
@@ -938,7 +936,7 @@
 		$("[weapon_bottom_text]").html(weaponObj.name);
 		$("[weapon_img]").attr("src",weaponObj.imgUrl)
 
-		$(".weapon-attributes").prepend(str);
+		$("[weapon-attributes]").prepend(str);
 		$("[weapon_roll_div]").removeClass("hide");
 	}
 
