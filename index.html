@@ -8,11 +8,11 @@
 
 <body>
 
-<script src="js/jquery.min.js?v=202404011952"></script>
-<script src="js/base.js?v=202404011952"></script>
-<script src="js/bootstrap.min.js?v=202404011952"></script>
-<link href="css/bootstrap.min.css?v=202404011952" rel="stylesheet" type="text/css">
-<link href="css/style.css?v=202404011952" rel="stylesheet" type="text/css">
+<script src="js/jquery.min.js?v=202404011956"></script>
+<script src="js/base.js?v=202404011956"></script>
+<script src="js/bootstrap.min.js?v=202404011956"></script>
+<link href="css/bootstrap.min.css?v=202404011956" rel="stylesheet" type="text/css">
+<link href="css/style.css?v=202404011956" rel="stylesheet" type="text/css">
 
 <div class="container" style="padding-top: 20px;border: 1px solid;" >
 	<div class="row" >
@@ -101,9 +101,9 @@
 		</div>
 
 		<div class="col-xs-9" right_msg_div >
-			<div class="row hide" weapon_roll_div float_left>
+			<div class="row hide" weapon_roll_div >
 				<div class="col-xs-12" >
-					<div class="image-frame">
+					<div class="image-frame" float_left>
 						<div weapon_top_text>
 							拾取分配
 						</div>
@@ -665,7 +665,7 @@
 		//初始化
 		init_up();
 
-		let str ='';
+		let str = '<hr><div class="row">';
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random();
 		//是否精炼成功
@@ -688,7 +688,7 @@
 			probability = probability >= 1 ? 1 : probability;
 			str+="<div class='col-xs-6' color_red>精炼失败!<br></div>";
 		}
-		str+="<div class='col-xs-6'>当前成功率"+probability+"</div><hr>";
+		str+="<div class='col-xs-6'>当前成功率"+probability+"</div></div><hr>";
 		//组装数据
 		txt_div_prepend(str);
 	}
