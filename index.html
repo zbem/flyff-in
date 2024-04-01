@@ -1,150 +1,22 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html" lang="en" xml:lang="en">
+<!doctype html>
+<html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="favicon icon" href="/img/html/favicon.png">
 	<title>飞瘾犯了</title>
 </head>
 
 <body>
 
-<script src="js/jquery.min.js?v=202403271921"></script>
-<script src="js/base.js?v=202403271921"></script>
-<script src="js/bootstrap.min.js?v=202403271921"></script>
-<link href="css/bootstrap.min.css?v=202403271921" rel="stylesheet" type="text/css">
-<link href="css/style.css?v=202403271921" rel="stylesheet" type="text/css">
-<style>
-	[img_lv]{
-		padding-left: 3px;
-		width: 40px;
-		height: 40px;
-	}
+<script src="js/jquery.min.js?v=202404011614"></script>
+<script src="js/base.js?v=202404011614"></script>
+<script src="js/bootstrap.min.js?v=202404011614"></script>
+<link href="css/bootstrap.min.css?v=202404011614" rel="stylesheet" type="text/css">
+<link href="css/style.css?v=202404011614" rel="stylesheet" type="text/css">
 
-	[color_green]{
-		color: green;
-	}
-	[color_red]{
-		color: red;
-	}
-	[weapon_u_color]{
-		color: #8007f7;
-	}
-	[btn_weapon]{
-		margin:10px 0;
-	}
-
-	[bb_info]{
-		background-color: #0e0a08;
-		border: 2px solid #e8c685 ;
-		border-radius: 3px;
-		width: 240px;
-	}
-	[pet_info]{
-		background-color: #e6e0e1;
-		border: 2px solid #e8c685 ;
-		border-radius: 3px;
-		width: 285px;
-		padding-top: 0;
-	}
-	/* 定义自定义光标样式 */
-	/* 如果浏览器不支持自定义光标，将使用 'auto' 作为备用 */
-	.custom-cursor {
-		cursor: url('img/鼠标.png'), auto;
-	}
-
-	body{
-		background: #000;
-	}
-	[right_msg_div]{
-		color: #ffffff;
-	}
-	[pet_img_div] label{
-		text-align: center;
-	}
-	[pet_msg_div]{
-		padding-bottom: 10px;
-	}
-	.image-frame {
-		display: inline-block;
-		overflow: hidden;
-		border-radius: 8px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-		border: 2px solid #e8c685 ;
-	}
-
-	.image-frame img {
-		margin: 10px 120px 0 120px;
-		padding: 5px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-		display: block;
-		height: auto;
-		border: 1px solid #e8c685 ;
-		border-radius: 3px;
-	}
-
-	.weapon-attributes {
-		position: absolute; /* 绝对定位 */
-		left: 310px; /* 紧贴图片框左侧 */
-		opacity: 1; /* 鼠标悬停时变为可见 */
-	}
-
-	[weapon_roll_text]{
-		border-top: 1px solid #e8c685 ;
-		border-radius: 5px;
-		text-align: center;
-		color: #ffffff;
-	}
-
-	[weapon_roll_text] span{
-		padding: 0 5px;
-		color: #3a4459;
-		font-size: 30px;
-	}
-
-	[weapon_top_text]{
-		text-align: center;
-		color: #ffffff;
-	}
-	[weapon_bottom_text]{
-		text-align: center;
-		color: #f0ad4e;
-		font-size: 20px;
-		margin-bottom: 20px;
-	}
-	[weapon_remark_text]{
-		text-align: center;
-		color: #f0ad4e;
-		font-size: 12px;
-	}
-
-	[weapon_num_text]{
-		text-align: center;
-		color: #f0ad4e;
-		font-size: 12px;
-	}
-
-	[weapon_btn_text]{
-		text-align: center;
-		padding-top: 10px;
-		padding-bottom: 10px;
-		font-weight: bold;
-	}
-
-	[weapon_btn_text] button{
-		background-color: #0e0a08;
-		color: #FFFFFF;
-	}
-
-	.visibility_div{
-		opacity: 1; /* 鼠标悬停时变为可见 */
-		visibility: visible; /* 鼠标悬停时变为可见 */
-	}
-
-</style>
-
-<div class="container" >
+<div class="container" style="padding-top: 20px;border: 1px solid;" >
 	<div class="row" >
 		<div class="col-xs-3 pull-left">
-			<hr>
 			<div class="row">
 				<div class="col-xs-6">
 					<button class="btn btn-success" weapon_up onclick="weapon_low_up()" >low卷</button>
@@ -228,8 +100,7 @@
 			<hr>
 		</div>
 
-		<div msg class="col-xs-9" right_msg_div >
-			<hr>
+		<div class="col-xs-9" right_msg_div >
 			<div class="row hide" weapon_roll_div>
 				<div class="col-xs-12" >
 					<div class="image-frame">
@@ -302,18 +173,33 @@
 	<img img_lv img_lv_9 src="img/pet/等级9.png" alt="9">
 </div>
 
-<script src="waifu/assets/autoload.js" type="text/javascript"></script>
-
 <script>
-
 	function clear_div(){
 		$("[weapon_roll_div]").addClass("hide");
 		$("[pet_msg_div]").html("");
 		$("[c_div]").html("");
 		$("[txt_div]").html("");
 		$("[suc_div]").html("");
+		$("[item_msg_div]").html("");
 	}
 	function init_model(){
+		// 加载 CSS
+		$("<link>").attr({href: "waifu/assets/waifu.css", rel: "stylesheet", type: "text/css"}).appendTo('head');
+
+		// 加载 JS
+		$.ajax({
+			url: 'waifu/assets/waifu-tips.js',
+			dataType:"script",
+			cache: true,
+			async: false
+		});
+		$.ajax({
+			url: 'waifu/assets/live2d.js',
+			dataType:"script",
+			cache: true,
+			async: false
+		});
+
 		$(".waifu").removeClass("hide");
 		initModel('waifu/assets/');
 	}
@@ -403,7 +289,6 @@
 		max = Math.floor(max);
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
-
 
 	function kill_hai_boss(){
 		$("[txt_div]").html("");
