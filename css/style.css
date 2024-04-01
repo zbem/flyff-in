@@ -66,12 +66,6 @@ body{
     border-radius: 3px;
 }
 
-.weapon-attributes {
-    position: absolute; /* 绝对定位 */
-    left: 310px; /* 紧贴图片框左侧 */
-    opacity: 1; /* 鼠标悬停时变为可见 */
-}
-
 [weapon_roll_text]{
     border-top: 1px solid #e8c685 ;
     border-radius: 5px;
@@ -117,11 +111,6 @@ body{
 [weapon_btn_text] button{
     background-color: #0e0a08;
     color: #FFFFFF;
-}
-
-.visibility_div{
-    opacity: 1; /* 鼠标悬停时变为可见 */
-    visibility: visible; /* 鼠标悬停时变为可见 */
 }
 
 h1,
