@@ -8,18 +8,26 @@
 
 <body>
 
-<script src="js/jquery.min.js?v=202404011956"></script>
-<script src="js/base.js?v=202404011956"></script>
-<script src="js/bootstrap.min.js?v=202404011956"></script>
-<link href="css/bootstrap.min.css?v=202404011956" rel="stylesheet" type="text/css">
-<link href="css/style.css?v=202404011956" rel="stylesheet" type="text/css">
+<script src="js/jquery.min.js?v=202404020006"></script>
+<script src="js/base.js?v=202404020006"></script>
+<script src="js/bootstrap.min.js?v=202404020006"></script>
+<link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="css/style.css?v=202404020006" rel="stylesheet" type="text/css">
 
 <div class="container" style="padding-top: 20px;border: 1px solid;" >
 	<div class="row" >
 		<div class="col-xs-3 pull-left">
 			<div class="row">
 				<div class="col-xs-6">
-					<button class="btn btn-success" weapon_up onclick="weapon_low_up(7)" >一键low7</button>
+					<button class="btn btn-success" onclick="lucky_box()" >抽本期时装盒子</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<div class="btn-group">
+						<button class="btn btn-success" weapon_up onclick="weapon_low_up()" >low7</button>
+					</div>
 				</div>
 				<div class="col-xs-6">
 					<button class="btn btn-success" weapon_up onclick="weapon_up()" >一键防暴</button>
@@ -138,8 +146,8 @@
 					</div>
 				</div>
 			</div>
-			<div pet_msg_div></div>
-			<div c_div></div>
+			<div pet_msg_div class="row"></div>
+			<div lucky_box_msg_div class="row"></div>
 			<div txt_div class="row"></div>
 			<div suc_div class="row"></div>
 			<div item_msg_div class="row"></div>
@@ -174,10 +182,59 @@
 </div>
 
 <script>
+	function lucky_box(){
+		let randomNum = Math.random().toFixed(2);
+		let luck_box_probability = 0;
+
+		for(let i=0 ; i < show_data.list.length ; i++) {
+			const data = show_data.list[i];
+			if(i > 0){
+				luck_box_probability = parseFloat(data.probability) + parseFloat(luck_box_probability);
+			}else{
+				luck_box_probability = parseFloat(data.probability);
+			}
+			luck_box_probability = luck_box_probability.toFixed(2);
+
+			//数字是否匹配
+			if(randomNum < luck_box_probability){
+				lucky_box_num++
+				data.open_num++;
+				$("[txt_div]").prepend(`
+					<div class="row">
+						<div class="col-xs-12">
+							<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">${i === 0 ? "运气太好了!":""}恭喜抽中 <span style="color: ${data.color}">${data.name}</span> !
+						</div>
+					</div>
+				`);
+				break;
+			}
+		}
+
+		let str = `<div class="row">`;
+		for(let i=0 ; i < show_data.list.length ; i++) {
+			const data = show_data.list[i];
+			if(data.open_num > 0){
+				str+=`
+				<div class="col-xs-12">
+					<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">抽中 <span style="color: ${data.color}">${data.name}</span>*${data.open_num}个 !
+				</div>
+			`;
+			}
+		}
+
+		str+=`
+			<div class="col-xs-12" style="padding-top: 10px">
+				统计:总数${lucky_box_num}个
+			</div>
+		</div>
+		<hr>`
+		$("[lucky_box_msg_div]").html(str);
+	}
+
 	function clear_div(){
 		$("[weapon_roll_div]").addClass("hide");
 		$("[pet_msg_div]").html("");
-		$("[c_div]").html("");
+		$("[msg_div]").html("");
 		$("[txt_div]").html("");
 		$("[suc_div]").html("");
 		$("[item_msg_div]").html("");
@@ -505,15 +562,15 @@
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random().toFixed(2);
 
-		let pet_probability = 0;
+		let pet_probability =0;
 
-		for(var i=0 ; i < pet.list.length ; i++) {
+		for(let i=0 ; i < pet.list.length ; i++) {
 			if(i > 0){
 				pet_probability = parseFloat(pet.list[i].probability) + parseFloat(pet_probability);
 			}else{
 				pet_probability = parseFloat(pet.list[i].probability);
 			}
-			pet_probability = parseFloat(pet_probability).toFixed(2);
+			pet_probability = pet_probability.toFixed(2);
 
 			//数字是否匹配
 			if(randomNum < pet_probability){
@@ -597,7 +654,7 @@
 			}else{
 				pet_probability = parseFloat(pet.list[i].probability);
 			}
-			pet_probability = parseFloat(pet_probability).toFixed(2);
+			pet_probability = pet_probability.toFixed(2);
 
 			//数字是否匹配
 			if(randomNum < pet_probability){
@@ -615,7 +672,7 @@
 
 		let html_money = parseFloat(pet.money*0.00000026).toFixed(2);
 		//统计数据
-		$("[pet_msg_div]").append('<div pet_'+pet.lvStr+' >'+pet.money+'金币/次,'+html_money+'元/次</br>'+pet.lvStr+'献祭次数:'+pet_num+'</div>');
+		$("[pet_msg_div]").append('<div class="col-xs-12" pet_'+pet.lvStr+' >'+pet.money+'金币/次,'+html_money+'元/次</br>'+pet.lvStr+'献祭次数:'+pet_num+'</div>');
 
 		let now_pet_value = 0;
 		$("[pet_val]").each(function(){
@@ -693,7 +750,13 @@
 		txt_div_prepend(str);
 	}
 
-	function weapon_low_up(num){
+	let low_num = 7;
+
+	function weapon_low_up_num_down(){
+
+	}
+
+	function weapon_low_up(){
 		$("[weapon_up]").attr("disabled",true);
 		if(weapon_low_up_stop){
 			weapon_low_up_stop = false;
@@ -704,9 +767,9 @@
 			$("[txt_div]").html("");
 		}
 
-		weapon_low_up_go(num);
+		weapon_low_up_go(low_num);
 		setTimeout(function() {
-			weapon_low_up(num);
+			weapon_low_up();
 		}, 50); // 1000毫秒等于1秒
 	}
 

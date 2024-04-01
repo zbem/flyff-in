@@ -30,6 +30,17 @@
 	 https://api.flyff.com/image/monster/{fileName}
 	**/
 
+	const show_data={
+		"name":"Future Easter Costume Lucky Box",
+		"list":[
+			{"open_num":0,"color":"blue","name":"Future Easter 10% Blue Set","probability":0.05},
+			{"open_num":0,"color":"red","name":"Future Easter 8% Red Set","probability":0.10},
+			{"open_num":0,"color":"green","name":"Future Easter 6% Green Set","probability":0.15},
+			{"open_num":0,"color":"purple","name":"Future Easter 2% Purple Set","probability":0.2},
+			{"open_num":0,"color":"yellow","name":"Future Easter 2% Yellow Set","probability":0.2},
+			{"open_num":0,"color":"pink","name":"Future Easter 4% Pink Set","probability":0.3}
+		],
+	}
 
 	const items= [
 		"0_1000.json","1000_2000.json","2000_3000.json","3000_4000.json","4000_5000.json","5000_6000.json","6000_7000.json","7000_8000.json","8000_9000.json",
@@ -1997,6 +2008,8 @@
 	let weapon_low_up_num=0;
 	//使用防暴卷数量
 	let weapon_up_num=0;
+	//抽取幸运礼盒次数
+	let lucky_box_num=0;
 	//成功概率
 	let probability = 0.000000;
 	//成功概率
