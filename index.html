@@ -697,9 +697,13 @@
 		$("[pet_value]").html(now_pet_value);
 	}
 
-
-
 	function attribute_wake_up(num){
+		const weaponObj = data.find(obj => obj.id === parseInt(weapon_index));
+		//没有武器
+		if(weaponObj == null){
+			return;
+		}
+
 		$("[attribute_up]").attr("disabled",true);
 		if(attribute_up_stop){
 			attribute_up_stop = false;
@@ -943,15 +947,9 @@
 		// 	errorMsg("武器还没+10哦");
 		// 	return;
 		// }
-		if(weapon_index == null){
-			errorMsg("没有对应的武器类型:"+weapon_index);
-			return;
-		}
-
 		const weaponObj = data.find(obj => obj.id === parseInt(weapon_index));
 
 		if(weaponObj == null){
-			errorMsg("没有对应的武器类型:"+weapon_index);
 			return;
 		}
 
