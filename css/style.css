@@ -41,7 +41,7 @@
 /* 定义自定义光标样式 */
 /* 如果浏览器不支持自定义光标，将使用 'auto' 作为备用 */
 .custom-cursor {
-    cursor: url('../img/鼠标.png'), auto;
+    cursor: url('../img/mouse.png'), auto;
 }
 
 body{

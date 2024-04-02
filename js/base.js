@@ -2052,6 +2052,12 @@
 	let lucky_box_num=0;
 	//唤醒属性次数
 	let attribute_num=0;
+	//low基础数字
+	let low_num = 7;
+	//当前唤醒值
+	let now_attribute;
+	//当前唤醒值索引值
+	let now_attribute_index;
 	//成功概率
 	let probability = 0.000000;
 	//成功概率
