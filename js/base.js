@@ -30,6 +30,46 @@
 	 https://api.flyff.com/image/monster/{fileName}
 	**/
 
+	const attribute_data=[
+	{
+		"name":"智力",
+		"list":[
+			{"open_num":0,"color":"blue","name":"+4","probability":0.01},
+			{"open_num":0,"color":"red","name":"+3","probability":0.05},
+			{"open_num":0,"color":"green","name":"+2","probability":0.3},
+			{"open_num":0,"color":"purple","name":"+1","probability":0.64},
+		],
+	},
+	{
+		"name":"体质",
+		"list":[
+			{"open_num":0,"color":"blue","name":"+4","probability":0.01},
+			{"open_num":0,"color":"red","name":"+3","probability":0.05},
+			{"open_num":0,"color":"green","name":"+2","probability":0.3},
+			{"open_num":0,"color":"purple","name":"+1","probability":0.64},
+		],
+	},
+	{
+		"name":"力量",
+		"list":[
+			{"open_num":0,"color":"blue","name":"+4","probability":0.01},
+			{"open_num":0,"color":"red","name":"+3","probability":0.05},
+			{"open_num":0,"color":"green","name":"+2","probability":0.3},
+			{"open_num":0,"color":"purple","name":"+1","probability":0.64},
+		],
+	},
+	{
+		"name":"敏捷",
+		"list":[
+			{"open_num":0,"color":"blue","name":"+4","probability":0.01},
+			{"open_num":0,"color":"red","name":"+3","probability":0.05},
+			{"open_num":0,"color":"green","name":"+2","probability":0.3},
+			{"open_num":0,"color":"purple","name":"+1","probability":0.64},
+		],
+	},
+	];
+
+
 	const show_data={
 		"name":"Future Easter Costume Lucky Box",
 		"list":[
@@ -2010,6 +2050,8 @@
 	let weapon_up_num=0;
 	//抽取幸运礼盒次数
 	let lucky_box_num=0;
+	//唤醒属性次数
+	let attribute_num=0;
 	//成功概率
 	let probability = 0.000000;
 	//成功概率
@@ -2034,3 +2076,4 @@
 	let kill_boss_stop = false;
 	let weapon_low_up_stop = false;
 	let weapon_up_stop = false;
+	let attribute_up_stop = false;
