@@ -84,7 +84,7 @@
 						<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
 					</div><br>
 					<div class="row">
-						<div pet_img_div><label lv_1 pet_val="${pet.value}">${img_html}<br>+${pet.value}${pet.cur}</label></div>
+						<div pet_img_div><label lv_f级 pet_val="${pet.value}">${img_html}<br>+${pet.value}${pet.cur}</label></div>
 					</div>
 				</div>
 			</div>
@@ -138,9 +138,6 @@
 
 		//属性更新
 		$("[pet_value]").html(now_pet_value);
-
-		//献祭
-		sacrifice();
 	}
 
 	//献祭
