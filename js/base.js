@@ -77,7 +77,7 @@
 			{"open_num":0,"color":"red","name":"Future Easter 8% Red Set","probability":0.10},
 			{"open_num":0,"color":"green","name":"Future Easter 6% Green Set","probability":0.15},
 			{"open_num":0,"color":"purple","name":"Future Easter 2% Purple Set","probability":0.2},
-			{"open_num":0,"color":"yellow","name":"Future Easter 2% Yellow Set","probability":0.2},
+			{"open_num":0,"color":"#FFD700","name":"Future Easter 2% Yellow Set","probability":0.2},
 			{"open_num":0,"color":"pink","name":"Future Easter 4% Pink Set","probability":0.3}
 		],
 	}
