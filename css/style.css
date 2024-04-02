@@ -62,6 +62,7 @@ body{
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border: 2px solid #e8c685 ;
+    background-color: #0e0a08;
 }
 
 .image-frame img {
@@ -3837,7 +3838,7 @@ nav.page-tabs .page-tabs-content {
 }
 
 #content-main {
-    height: calc(100% - 140px);
+    height: 100%;
     overflow: hidden;
 }
 

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en" xmlns="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="favicon icon" href="/img/html/favicon.png">
+	<title>飞瘾犯了-怪物</title>
+</head>
+
+<script src="js/base.js?v=202404020006"></script>
+<script src="js/bootstrap.min.js?v=202404020006"></script>
+<link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="css/style.css?v=202404020006" rel="stylesheet" type="text/css">
+
+
+<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<!-- Morris -->
+<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+
+<!-- Gritter -->
+<link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+<link href="css/animate.css" rel="stylesheet">
+
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>宠物专区</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div>
+						<div class="feed-activity-list">
+							<div class="feed-element">
+								<div class="media-body ">
+									<img alt="image" class="img-circle" src="img/monster/beastkingkhan1.png">
+									<button class="btn btn-danger" kill_boss_btn onclick="kill_boss()" >自动击杀兽王可汗</button>
+								</div>
+							</div>
+							<div class="feed-element">
+								<div class="media-body ">
+									<img alt="image" class="img-circle" src="img/items/petbarbarylion01_01.png">
+									<button class="btn btn-success" kill_boss_btn onclick="kill_hai_boss()" >自动击杀海岛Boss</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ibox float-e-margins"></div>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>弹框</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="row hide" weapon_roll_div >
+						<div class="col-xs-12" >
+							<div class="image-frame" float_left>
+								<div weapon_top_text>
+									拾取分配
+								</div>
+								<div weapon_roll_text>
+									<span>□</span>
+									<span>□</span>
+									<span>□</span>
+									<span>□</span>
+									<span>□</span>
+									<span>□</span>
+									<span>□</span>
+									<span>□</span>
+								</div>
+								<div weapon_num_text>
+									物品(1/1)
+								</div>
+								<img weapon_img src="img/卢萨卡之剑.png" alt="Weapon Image" />
+								<div weapon_bottom_text></div>
+								<div weapon_remark_text>
+									为以上物品roll一个随机数，或者如果<br>
+									你不感兴趣，点击略过。计时器结束<br>
+									后，随机数字最高的玩家将获得该物<br>
+									品
+								</div>
+
+								<div weapon_btn_text>
+									<button onclick="previous_weapon()">上一个</button>
+									<button style="margin-left: 30px;" onclick="next_weapon()">下一个</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>武器属性</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div weapon-attributes></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>成果</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div txt_div class="row"></div>
+					<div item_msg_div class="row"></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+	</div>
+</div>
+
+<!-- 全局js -->
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.6"></script>
+
+<!-- Flot -->
+<script src="js/plugins/flot/jquery.flot.js"></script>
+<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="js/plugins/flot/jquery.flot.spline.js"></script>
+<script src="js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="js/plugins/flot/jquery.flot.pie.js"></script>
+
+<!-- Peity -->
+<script src="js/plugins/peity/jquery.peity.min.js"></script>
+
+<!-- 自定义js -->
+<script src="js/content.js?v=1.0.0"></script>
+
+
+<!-- jQuery UI -->
+<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- GITTER -->
+<script src="js/plugins/gritter/jquery.gritter.min.js"></script>
+
+<!-- EayPIE -->
+<script src="js/plugins/easypiechart/jquery.easypiechart.js"></script>
+
+<!-- Sparkline -->
+<script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		//页面元素可移动
+		WinMove();
+
+		// 当页面加载完成后，给 body 元素添加自定义光标样式
+		$('body').addClass('custom-cursor');
+
+		// 如果你想在某个特定元素上更改鼠标图标，可以这样做：
+		$('[btn_weapon]').addClass('custom-cursor');
+	});
+
+	function kill_hai_boss(){
+		$("[txt_div]").html("");
+		$("[kill_boss_btn]").attr("disabled",true);
+		if(kill_hai_boss_stop){
+			kill_hai_boss_stop = false;
+			$("[kill_boss_btn]").removeAttr("disabled");
+			return ;
+		}
+		kill_hai_boss_go();
+		setTimeout(function() {
+			kill_hai_boss();
+		}, 20); // 1000毫秒等于1秒
+	}
+
+	function kill_hai_boss_go(){
+		let color_str;
+		//清空兽王可汗击杀数量
+		kill_num = 0;
+		kill_hai_num++;
+
+		let randomValue = 0;
+
+		for (var i = 0; i < hai_boss_drop.length; i++) {
+			let randomNum = Math.random().toFixed(3);
+			const items = hai_boss_drop[i];
+
+			if (randomNum < items.probability) {
+				items.num++;
+				randomValue++;
+				//武器
+				if(items.rarity === 'unique' && items.category === 'WEAPON'){
+					get_weapon_go(items.id);
+					kill_hai_boss_stop = true;
+				}
+			}
+		}
+
+		//升序排序
+		hai_boss_drop = hai_boss_drop.sort((a, b)=> b.num - a.num);
+		let item_str = '<div class="col-xs-12">统计:<br>';
+		item_str += "击杀数量:"+kill_hai_num+"<br>";
+		for (var t = 0; t < hai_boss_drop.length; t++) {
+			const items = hai_boss_drop[t];
+			if(items.num > 0){
+				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
+				item_str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
+			}
+		}
+		item_str += '</div>';
+		$("[item_msg_div]").html(item_str);
+	}
+
+	function kill_boss(){
+		$("[txt_div]").html("");
+		$("[kill_boss_btn]").attr("disabled",true);
+		if(kill_boss_stop){
+			kill_boss_stop = false;
+			$("[kill_boss_btn]").removeAttr("disabled");
+			return ;
+		}
+		kill_boss_go();
+		setTimeout(function() {
+			kill_boss();
+		}, 20); // 1000毫秒等于1秒
+	}
+	function kill_boss_go() {
+		$("[pet_msg_div]").html("");
+
+		let color_str;
+		//清空海岛boss击杀数量
+		kill_hai_num = 0;
+		kill_num++;
+
+		let randomValue = 0;
+
+		for (var i = 0; i < boss_drop.length; i++) {
+			let randomNum = Math.random().toFixed(3);
+			const items = boss_drop[i];
+
+			if (randomNum < items.probability) {
+				items.num = items.probability === 1 ? items.num + getRandomInt(8, 12) : items.num + 1;
+				randomValue++;
+				//武器
+				if (items.rarity === 'unique' && items.category === 'WEAPON') {
+					get_weapon_go(items.id);
+					kill_boss_stop = true;
+				}
+			}
+		}
+
+		//升序排序
+		boss_drop = boss_drop.sort((a, b) => b.num - a.num);
+		let item_str = '<div class="col-xs-12">统计:<br>';
+		item_str += "击杀数量:" + kill_num + "<br>";
+		for (var t = 0; t < boss_drop.length; t++) {
+			const items = boss_drop[t];
+			if (items.num > 0) {
+				color_str = 'style="color:' + (items.rarity === 'common' ? '#78d9ff' : items.rarity === 'uncommon' ? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
+				item_str += '<img src="img/items/' + items.icon + '" style="width: 20px; height: 20px;" alt="' + items.name + '"><span ' + color_str + '>' + items.name + '</span>*' + items.num + '<br>';
+			}
+		}
+		item_str += '</div>';
+		$("[item_msg_div]").html(item_str);
+	}
+
+	function getRandomInt(min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+</script>
+
+</body>
+</html>

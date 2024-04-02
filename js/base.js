@@ -2056,8 +2056,6 @@
 	let low_num = 7;
 	//当前唤醒值
 	let now_attribute;
-	//当前唤醒值索引值
-	let now_attribute_index;
 	//成功概率
 	let probability = 0.000000;
 	//成功概率
@@ -2078,8 +2076,119 @@
 	let get_150_weapon_num = 0;
 	let stop = false;
 	let sacrifice_stop = false;
+	let pet_up_stop = false;
 	let kill_hai_boss_stop = false;
 	let kill_boss_stop = false;
 	let weapon_low_up_stop = false;
 	let weapon_up_stop = false;
 	let attribute_up_stop = false;
+
+
+	function previous_weapon(){
+		let nowNum = $("[weapon_num_text]").attr("now_num");
+		if(nowNum == null){
+			return ;
+		}
+		nowNum--;
+		if(nowNum < 0){
+			return ;
+		}
+
+		get_weapon(boss_weapon_list[nowNum]);
+		$("[weapon_num_text]").html(`物品(${nowNum+1}/${boss_weapon_list.length})`);
+		$("[weapon_num_text]").attr("now_num",nowNum);
+	}
+
+	function next_weapon(){
+		let nowNum = $("[weapon_num_text]").attr("now_num");
+		if(nowNum == null){
+			return ;
+		}
+		nowNum++;
+		if(nowNum >= boss_weapon_list.length){
+			return;
+		}
+
+		get_weapon(boss_weapon_list[nowNum]);
+		$("[weapon_num_text]").html(`物品(${nowNum+1}/${boss_weapon_list.length})`);
+		$("[weapon_num_text]").attr("now_num",nowNum);
+	}
+
+	function get_weapon_go(id){
+		boss_weapon_list.unshift(id);
+		$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`);
+		$("[weapon_num_text]").attr("now_num",0);
+		get_weapon(id);
+	}
+
+	function get_weapon(index){
+		$("[txt_div]").html("");
+		if(index == null){
+			errorMsg("get_weapon没有对应的武器类型"+parseInt(index));
+			return;
+		}
+
+		const weaponObj = data.find(obj => obj.id === parseInt(index));
+		if(weaponObj == null){
+			errorMsg("get_weapon没有对应的武器类型"+index);
+			return;
+		}
+		up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0;
+		//重置武器面板数值
+		$("[bb_info]").remove();
+		$("[up_u_weapon]").remove();
+
+		weapon_index = index;
+		wakeUpList = weaponObj.wakeUpList;
+
+		let str = '<div class="alert alert-info" bb_info >';
+		//武器名称
+		str += '<span color_red attribute_name ></span><span color_red weapon_name>'+weaponObj.name+'</span><span color_red weapon_up_lv="0"></span></br>';
+		//武器类型
+		str += '<span style="color: aliceblue">'+weaponObj.type+'</span></br>';
+		//武器基础攻击
+		str += '<span style="color: aliceblue">基础攻击力:'+weaponObj.minAttack+'~'+weaponObj.maxAttack+'</span></br>';
+		//攻击速度
+		str += '<span style="color: aliceblue">攻击速度:'+weaponObj.attackSpeed+'</span></br>';
+		const list = weaponObj.list;
+
+		//组装属性值
+		for(var i=0 ; i < list.length ; i++){
+			var obj = list[i];
+
+			var num = Math.floor(Math.random()*(obj.max-obj.min+1));
+			var maxNum = obj.max;
+			var minNum = obj.min;
+			//最终计算出来的随机值
+			var randomNum = obj.min + num;
+
+			//缩进小数位
+			maxNum = obj.fixed == null ? maxNum : (maxNum/obj.fixed);
+			minNum = obj.fixed == null ? minNum : (minNum/obj.fixed);
+			randomNum = obj.fixed == null ? randomNum : (randomNum/obj.fixed);
+
+			//组装单位(例如 百分号)
+			randomNum = randomNum+obj.cur;
+			//承受伤害是减
+			const addStr = obj.name === "承受伤害" ? '-' : '+';
+			str +='<span style="color: #ffeaa5">'+ obj.name + addStr + randomNum + ' (' + minNum+'~'+maxNum+')'+obj.cur+'</span><br>';
+		}
+		//职业要求
+		str += '<span job_span style="color: aliceblue">职业要求:'+weaponObj.job+'</span></br>';
+		//等级要求
+		str += '<span style="color: aliceblue">等级要求:150</span></br>';
+		//品质
+		str += '<span style="color: aliceblue">品质: <span color_red>史诗</span></span></br>';
+		//描述
+		str += '<span style="color: aliceblue" weapon_description>描述:</br> '+weaponObj.description+'</span>';
+
+		//强化次数
+		// str += '</br></br><span style="color: #b3b3b3">强化次数: 0';
+		// str += '</br><span style="color: #b3b3b3">穿洞次数: 0';
+
+		$("[weapon_bottom_text]").html(weaponObj.name);
+		$("[weapon_img]").attr("src",weaponObj.imgUrl)
+
+		$("[weapon-attributes]").prepend(str);
+		$("[weapon_roll_div]").removeClass("hide");
+	}
