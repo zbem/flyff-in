@@ -1450,7 +1450,7 @@
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
 				{"name": "体质", "min": 25, "max": 30, fixed: 1, cur: ""},
-				{"name": "承受伤害", "min": 6, "max": 10, fixed: 1, cur: "%"},
+				{"name": "技能伤害", "min": 12, "max": 16, fixed: 1, cur: "%"},
 				{"name": "中毒概率", "min": 4, "max": 9, fixed: 1, cur: "%"},
 			],
 			"uList": [
