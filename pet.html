@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="favicon icon" href="/img/html/favicon.png">
+	<title>飞瘾犯了-宠物</title>
+</head>
+
+<body>
+
+<script src="js/jquery.min.js?v=202404020006"></script>
+<script src="js/base.js?v=202404020006"></script>
+<script src="js/bootstrap.min.js?v=202404020006"></script>
+<link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="css/style.css?v=202404020006" rel="stylesheet" type="text/css">
+
+<div class="container" style="padding-top: 20px;border: 1px solid;" >
+	<div class="row" >
+		<div class="col-xs-3 pull-left">
+			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-success" onclick="incubate()" >孵化蛋</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-success" onclick="pet_up_go()" >升级宠</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-xs-6">
+					<button class="btn btn-success" onclick="sacrifice()" >献祭当前宠</button>
+				</div>
+			</div>
+			<hr>
+		</div>
+
+		<div class="col-xs-9" right_msg_div >
+			<div pet_msg_div class="row"></div>
+			<div txt_div class="row"></div>
+		</div>
+	</div>
+</div>
+
+<div class="hide">
+	<img img_lv img_lv_1  src="img/pet/等级1.png" alt="1">
+	<img img_lv img_lv_2 src="img/pet/等级2.png" alt="2">
+	<img img_lv img_lv_3 src="img/pet/等级3.png" alt="3">
+	<img img_lv img_lv_4 src="img/pet/等级4.png" alt="4">
+	<img img_lv img_lv_5 src="img/pet/等级5.png" alt="5">
+	<img img_lv img_lv_6 src="img/pet/等级6.png" alt="6">
+	<img img_lv img_lv_7 src="img/pet/等级7.png" alt="7">
+	<img img_lv img_lv_8 src="img/pet/等级8.png" alt="8">
+	<img img_lv img_lv_9 src="img/pet/等级9.png" alt="9">
+</div>
+
+<script>
+	$(document).ready(function() {
+		// 当页面加载完成后，给 body 元素添加自定义光标样式
+		$('body').addClass('custom-cursor');
+
+		// 如果你想在某个特定元素上更改鼠标图标，可以这样做：
+		$('[btn_weapon]').addClass('custom-cursor');
+	});
+
+	//孵化蛋
+	function incubate(){
+		$("[txt_div]").html("");
+		//献祭次数清0
+		pet_num = 0;
+		//随机数组中的值
+		const pet = incubate_pet[Math.floor(Math.random() * incubate_pet.length)];
+		//当前宠物
+		now_pet = pet;
+
+		const img_html = $("[img_lv_1]")[0].outerHTML;
+		let str = `
+			<div class="col-xs-12">
+				<div class="alert alert-info" pet_info  pet_lv="0" >
+					<div class="row">
+						<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
+						<div class="col-xs-5" ><img src="img/pet/${pet.name}.png" style="width: 80px; height: 70px;" alt="${pet.name}"></div>
+						<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>
+						<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
+					</div><br>
+					<div class="row">
+						<div pet_img_div><label lv_1 pet_val="${pet.value}">${img_html}<br>+${pet.value}${pet.cur}</label></div>
+					</div>
+				</div>
+			</div>
+		`;
+		$("[txt_div]").prepend(str);
+	}
+
+	//宠物升级
+	function pet_up_go(){
+		//献祭次数清0
+		pet_num = 0;
+		pet_lv = $("[pet_lv]").attr("pet_lv");
+		if(pet_lv == null || pet_lv >= 6){
+			return;
+		}
+		var pet = pet_lv_item[pet_lv];
+
+		// 生成一个0到1之间的随机数
+		let randomNum = Math.random().toFixed(2);
+
+		let pet_probability =0;
+
+		for(let i=0 ; i < pet.list.length ; i++) {
+			if(i > 0){
+				pet_probability = parseFloat(pet.list[i].probability) + parseFloat(pet_probability);
+			}else{
+				pet_probability = parseFloat(pet.list[i].probability);
+			}
+			pet_probability = pet_probability.toFixed(2);
+
+			//数字是否匹配
+			if(randomNum < pet_probability){
+				now_lv = pet.list[i].pet_lv;
+				const pet_lv_value = now_pet.value_list[pet.list[i].pet_lv - 1];
+
+				const img_html = $("[img_lv_"+pet.list[i].pet_lv+"]")[0].outerHTML;
+
+				$("[pet_img_div]").append(`<label lv_${pet_lv_item[Number(pet_lv)+1].lvStr} pet_val="${pet_lv_value}">${img_html}<br>+${pet_lv_value+now_pet.cur}</label>`);
+				break;
+			}
+		}
+
+		$("[pet_lv_str]").html(pet_lv_item[Number(pet_lv)+1].lvStr);
+		pet_lv++;
+		$("[pet_lv]").attr("pet_lv",pet_lv);
+
+		let now_pet_value = 0;
+		$("[pet_val]").each(function(){
+			now_pet_value+= parseInt($(this).attr("pet_val"));
+		});
+
+		//属性更新
+		$("[pet_value]").html(now_pet_value);
+
+		//献祭
+		sacrifice();
+	}
+
+	//献祭
+	function sacrifice(){
+		pet_lv = $("[pet_lv]").attr("pet_lv");
+		if(pet_lv == null || pet_lv === 0){
+			return;
+		}
+
+		//s级 继续洗
+		if(pet_lv > 6){
+			pet_lv = 6;
+		}
+		const pet = pet_lv_item[pet_lv];
+		if(now_lv >= pet.list.length){
+			sacrifice_stop = true;
+			return;
+		}
+
+		// 生成一个0到1之间的随机数
+		let randomNum = Math.random().toFixed(2);
+		let pet_probability = 0;
+
+		for(var i=0 ; i <= pet.list.length ; i++) {
+			const lv = pet.list[i].pet_lv;
+			if(lv <= now_lv){
+				break;
+			}
+
+			if(i > 0){
+				pet_probability = parseFloat(pet.list[i].probability) + parseFloat(pet_probability);
+			}else{
+				pet_probability = parseFloat(pet.list[i].probability);
+			}
+			pet_probability = pet_probability.toFixed(2);
+
+			//数字是否匹配
+			if(randomNum < pet_probability){
+				now_lv = lv;
+				$("[lv_"+pet.lvStr+"]").remove();
+				var pet_lv_value =now_pet.value_list[pet.list[i].pet_lv-1];
+				$("[pet_img_div]").append('<label lv_'+pet.lvStr+' pet_val="'+pet_lv_value+'"><img img_lv src="img/pet/等级'+pet.list[i].pet_lv+'.png" alt="等级"><br>+'+pet_lv_value+now_pet.cur+'</label>');
+				break;
+			}
+		}
+
+		//献祭次数
+		pet_num++;
+		$("[pet_"+pet.lvStr+"]").remove();
+
+		let html_money = parseFloat(pet.money*0.00000026).toFixed(2);
+		//统计数据
+		$("[pet_msg_div]").append('<div class="col-xs-12" pet_'+pet.lvStr+' >'+pet.money+'金币/次,'+html_money+'元/次</br>'+pet.lvStr+'献祭次数:'+pet_num+'</div>');
+
+		let now_pet_value = 0;
+		$("[pet_val]").each(function(){
+			now_pet_value+= parseInt($(this).attr("pet_val"));
+		});
+
+		//属性更新
+		$("[pet_value]").html(now_pet_value);
+	}
+</script>
+
+</body>
+</html>
