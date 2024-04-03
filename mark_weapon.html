@@ -31,24 +31,16 @@
 				<div class="ibox-content">
 					<div class="feed-element">
 						<div class="media-body ">
-							<img alt="image" class="img-circle" src="img/items/syssysscrbxluck.png">
-							<button class="btn btn-success" onclick="lucky_box()" >制作武器</button>
+							<img alt="image" class="img-circle" src="img/items/syssysscrscrapamethyst.png">
+							<button class="btn btn-success" onclick="get_150_weapon_for_num()" >自动制作150史诗武器</button>
 						</div>
 					</div>
-				</div>
-			</div>
-
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>成果</h5>
-					<div class="ibox-tools">
-						<a class="collapse-link">
-							<i class="fa fa-chevron-up"></i>
-						</a>
+					<div class="feed-element">
+						<div class="media-body ">
+							<img alt="image" class="img-circle" src="img/items/genmatdiamond.png">
+							<button class="btn btn-success" onclick="get_120_weapon()" >制作120史诗武器</button>
+						</div>
 					</div>
-				</div>
-				<div class="ibox-content">
-					<div lucky_box_msg_div class="row"></div>
 				</div>
 			</div>
 
@@ -67,6 +59,20 @@
 				</div>
 				<div class="ibox-content">
 					<div txt_div class="row"></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>成果</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div suc_div class="row"></div>
 				</div>
 			</div>
 
@@ -95,54 +101,62 @@
 		// 如果你想在某个特定元素上更改鼠标图标，可以这样做：
 		$('[btn_weapon]').addClass('custom-cursor');
 	});
-	function lucky_box(){
-		let randomNum = Math.random().toFixed(2);
-		let luck_box_probability = 0;
 
-		for(let i=0 ; i < show_data.list.length ; i++) {
-			const data = show_data.list[i];
-			if(i > 0){
-				luck_box_probability = parseFloat(data.probability) + parseFloat(luck_box_probability);
-			}else{
-				luck_box_probability = parseFloat(data.probability);
-			}
-			luck_box_probability = luck_box_probability.toFixed(2);
 
-			//数字是否匹配
-			if(randomNum < luck_box_probability){
-				lucky_box_num++
-				data.open_num++;
-				$("[txt_div]").prepend(`
-					<div class="row">
-						<div class="col-xs-12">
-							<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">${i === 0 ? "运气太好了!":""}恭喜抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>随机数:${randomNum}概率:${luck_box_probability} !
-						</div>
-					</div>
+	function get_150_weapon_for_num(){
+		if(stop){
+			stop = false;
+			get_120_weapon_num = 0;
+			get_150_weapon_num = 0;
+			return ;
+		}
+		$("[suc_div]").html("");
+		get_150_weapon(1000);
+		setTimeout(function() {
+			get_150_weapon_for_num();
+		}, 20); // 1000毫秒等于1秒
+	}
+
+	function get_150_weapon(num){
+		for(let i=0 ; i < num ; i++) {
+			// 生成一个0到1之间的随机数
+			let randomNum = Math.random().toFixed(6);
+			get_150_weapon_num++;
+			if (randomNum < get_150_weapon_probability) {
+				$("[suc_div]").prepend(`
+					<div class="col-xs-12">
+						<span color_green>第${get_150_weapon_num}次史诗武器制作成功!</span>
+					</div><br>
 				`);
-				break;
+				stop = true;
+			} else {
+				$("[txt_div]").html(`
+				<div get_120_weapon class="col-xs-12">
+					<span color_red>史诗武器制作失败${get_150_weapon_num}次</span>
+				</div><br>
+			`);
 			}
 		}
+	}
 
-		let str = `<div class="row">`;
-		for(let i=0 ; i < show_data.list.length ; i++) {
-			const data = show_data.list[i];
-			if(data.open_num > 0){
-				str+=`
+	function get_120_weapon(){
+		// 生成一个0到1之间的随机数
+		let randomNum = Math.random().toFixed(6);
+		get_120_weapon_num++;
+		if (randomNum < get_120_weapon_probability) {
+			$("[suc_div]").prepend(`
 				<div class="col-xs-12">
-					<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">抽中 <span style="font-weight: bold;color: ${data.color}">${data.name}</span>*${data.open_num}个 !
-				</div>
-			`;
-			}
+					<span color_green>第${get_120_weapon_num}次史诗武器制作成功!</span>
+				</div><br>
+			`);
+			stop = true;
+		} else {
+			$("[txt_div]").html(`
+				<div get_120_weapon class="col-xs-12">
+					<span color_red>史诗武器制作失败${get_120_weapon_num}次</span>
+				</div><br>
+			`);
 		}
-
-		str+=`
-			<div class="col-xs-12" style="padding-top: 10px">
-				统计:总数${lucky_box_num}个
-			</div>
-		</div>
-		`
-
-		$("[lucky_box_msg_div]").html(str);
 	}
 </script>
 
