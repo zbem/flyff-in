@@ -680,35 +680,10 @@
 		{"id":"7436","name":"土属性装备卡片(4%)","icon":"genmateledesert.png","category":"MATERIAL","rarity":"rare","probability":0.0001,"num":0},
 	];
 
-
-	let item_json_list = [];
-	let monster_json_list = [];
-
-	$(json_items).each(function (i, obj) {
-		$.getJSON(`json/item/${obj}`).success(function(data){
-			item_json_list.push(data);
-		});
-		$.getJSON(`json/monster/${obj}`).success(function(data){
-			monster_json_list.push(data);
-		});
-	});
-
-
 	let kill_num = 0;
 	let kill_hai_num = 0;
 
-	const pet_lv_list = [
-		{"lv":1,"list": [{"E": 0.7}, {"D": 0.6}, {"C": 0.5}, {"B": 0.4}, {"A": 0.3}, {"S": 0.2}]},
-		{"lv":2,"list": [{"E": 0.3}, {"D": 0.4}, {"C": 0.5}, {"B": 0.6}, {"A": 0.7}, {"S": 0.8}]},
-		{"lv":3,"list": [{"D": 0.18}, {"C": 0.18}, {"B": 0.25}, {"A": 0.32}, {"S": 0.45}]},
-		{"lv":4,"list": [{"C": 0.06}, {"B": 0.06}, {"A": 0.09}, {"S": 0.15}]},
-		{"lv":5,"list": [{"B": 0.04}, {"A": 0.06}, {"S": 0.09}]},
-		{"lv":6,"list": [{"A": 0.04}, {"S": 0.06}]},
-		{"lv":7,"list": [{"A": 0.02}, {"S": 0.03}]},
-		{"lv":8,"list": [{"S": 0.02}]},
-		{"lv":9,"list": [{"S": 0.01}]},
-	];
-	var pet_lv_item = [
+	const pet_lv_item = [
 		{"lvStr":"F级","money":"2000000","list":[{"pet_lv":1,"probability":1}]},
 		{"lvStr":"E级","money":"6200000","list":[{"pet_lv":2,"probability":0.3},{"pet_lv":1,"probability":0.7}]},
 		{"lvStr":"D级","money":"20800000","list":[{"pet_lv":3,"probability":0.18},{"pet_lv":2,"probability":0.25},{"pet_lv":1,"probability":0.57}]},
@@ -718,7 +693,7 @@
 		{"lvStr":"S级","money":"557050000","list":[{"pet_lv":9,"probability":0.01},{"pet_lv":8,"probability":0.02},{"pet_lv":7,"probability":0.04},{"pet_lv":6,"probability":0.06},{"pet_lv":5,"probability":0.09},{"pet_lv":4,"probability":0.13},{"pet_lv":3,"probability":0.17},{"pet_lv":2,"probability":0.21},{"pet_lv":1,"probability":0.27}]},
 	]
 
-	var incubate_pet = [
+	const incubate_pet = [
 		{"name":"狐狸","value":1,"attributeStr":"智力","value_list":[1,2,4,7,11,15,17,24,33],"cur":""},
 		{"name":"老虎","value":1,"attributeStr":"力量","value_list":[1,2,4,7,11,15,17,24,33],"cur":""},
 		{"name":"兔子","value":1,"attributeStr":"敏捷","value_list":[1,2,4,7,11,15,17,24,33],"cur":""},
@@ -745,7 +720,7 @@
 			"attackSpeed": "非常快",
 			"type": "单手武器",
 			"imgUrl": "img/珊瑚短剑.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 490, "max": 590, fixed: 10, cur: "%"},
 				{"name": "暴击率", "min": 200, "max": 230, fixed: 10, cur: "%"},
@@ -788,7 +763,7 @@
 			"attackSpeed": "非常快",
 			"type": "单手武器",
 			"imgUrl": "img/卢萨卡的水晶剑.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 530, "max": 630, fixed: 10, cur: "%"},
 				{"name": "暴击率", "min": 220, "max": 260, fixed: 10, cur: "%"},
@@ -831,7 +806,7 @@
 			"attackSpeed": "非常快",
 			"type": "单手武器",
 			"imgUrl": "img/卢萨卡之剑.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "增加HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
 				{"name": "技能伤害", "min": 6, "max": 7, fixed: 1, cur: "%"},
@@ -874,7 +849,7 @@
 			"attackSpeed": "慢",
 			"type": "双手武器",
 			"imgUrl": "img/潮汐双手剑.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 590, "max": 690, fixed: 10, cur: "%"},
 				{"name": "暴击率", "min": 240, "max": 280, fixed: 10, cur: "%"},
@@ -916,7 +891,7 @@
 			"attackSpeed": "慢",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡的水晶巨剑.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 620, "max": 720, fixed: 10, cur: "%"},
 				{"name": "暴击率", "min": 260, "max": 300, fixed: 10, cur: "%"},
@@ -958,7 +933,7 @@
 			"attackSpeed": "慢",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡巨剑.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 28, "max": 35, fixed: 1, cur: "%"},
 				{"name": "体质", "min": 25, "max": 30, fixed: 1, cur: ""},
@@ -1001,7 +976,7 @@
 			"attackSpeed": "通用",
 			"type": "单手武器",
 			"imgUrl": "img/潮汐单手斧.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 530, "max": 630, fixed: 10, cur: "%"},
 				{"name": "暴击率", "min": 160, "max": 200, fixed: 10, cur: "%"},
@@ -1044,7 +1019,7 @@
 			"attackSpeed": "通用",
 			"type": "单手武器",
 			"imgUrl": "img/卢萨卡的水晶斧.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 550, "max": 650, fixed: 10, cur: "%"},
 				{"name": "暴击率", "min": 180, "max": 220, fixed: 10, cur: "%"},
@@ -1087,7 +1062,7 @@
 			"attackSpeed": "通用",
 			"type": "单手武器",
 			"imgUrl": "img/卢萨卡之斧.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 20, "max": 25, fixed: 1, cur: "%"},
 				{"name": "技能伤害", "min": 6, "max": 8, fixed: 1, cur: "%"},
@@ -1130,7 +1105,7 @@
 			"attackSpeed": "非常慢",
 			"type": "双手武器",
 			"imgUrl": "img/潮汐双手斧.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 520, "max": 620, fixed: 10, cur: "%"},
 				{"name": "暴击率", "min": 310, "max": 340, fixed: 10, cur: "%"},
@@ -1172,7 +1147,7 @@
 			"attackSpeed": "非常慢",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡的水晶巨斧.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 550, "max": 650, fixed: 10, cur: "%"},
 				{"name": "暴击率", "min": 320, "max": 360, fixed: 10, cur: "%"},
@@ -1215,7 +1190,7 @@
 			"attackSpeed": "非常慢",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡巨斧.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 28, "max": 35, fixed: 1, cur: "%"},
 				{"name": "体质", "min": 25, "max": 30, fixed: 1, cur: ""},
@@ -1258,7 +1233,7 @@
 			"attackSpeed": "快速",
 			"type": "双手武器",
 			"imgUrl": "img/潮汐溜溜球.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 540, "max": 640, fixed: 10, cur: "%"},
 				{"name": "力量", "min": 23, "max": 28, fixed: 1, cur: ""},
@@ -1298,7 +1273,7 @@
 			"attackSpeed": "快速",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡的水晶飞轮.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 570, "max": 670, fixed: 10, cur: "%"},
 				{"name": "力量", "min": 25, "max": 30, fixed: 1, cur: ""},
@@ -1338,7 +1313,7 @@
 			"attackSpeed": "快速",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡飞轮.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
 				{"name": "体质", "min": 25, "max": 30, fixed: 1, cur: ""},
@@ -1378,7 +1353,7 @@
 			"attackSpeed": "快速",
 			"type": "双手武器",
 			"imgUrl": "img/潮汐弓.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 550, "max": 650, fixed: 10, cur: "%"},
 				{"name": "攻击力", "min": 10, "max": 15, fixed: 1, cur: "%"},
@@ -1419,7 +1394,7 @@
 			"attackSpeed": "快速",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡的水晶弓.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 580, "max": 680, fixed: 10, cur: "%"},
 				{"name": "攻击力", "min": 12, "max": 17, fixed: 1, cur: "%"},
@@ -1460,7 +1435,7 @@
 			"attackSpeed": "快速",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡之弓.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
 				{"name": "体质", "min": 25, "max": 30, fixed: 1, cur: ""},
@@ -1501,7 +1476,7 @@
 			"attackSpeed": "慢",
 			"type": "双手武器",
 			"imgUrl": "img/潮汐法杖.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "全元素精通", "min": 18, "max": 23, fixed: 1, cur: "%"},
 				{"name": "释法速度", "min": 26, "max": 30, fixed: 1, cur: "%"},
@@ -1550,7 +1525,7 @@
 			"attackSpeed": "慢",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡的水晶法杖.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "全元素精通", "min": 20, "max": 25, fixed: 1, cur: "%"},
 				{"name": "释法速度", "min": 28, "max": 33, fixed: 1, cur: "%"},
@@ -1599,7 +1574,7 @@
 			"attackSpeed": "慢",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡法杖.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
 				{"name": "体质", "min": 25, "max": 30, fixed: 1, cur: ""},
@@ -1648,7 +1623,7 @@
 			"attackSpeed": "非常慢",
 			"type": "单手武器",
 			"imgUrl": "img/潮汐魔杖.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "攻击力", "min": 15, "max": 20, fixed: 1, cur: "%"},
 				{"name": "释法速度", "min": 23, "max": 28, fixed: 1, cur: "%"},
@@ -1693,7 +1668,7 @@
 			"attackSpeed": "非常慢",
 			"type": "单手武器",
 			"imgUrl": "img/卢萨卡的水晶魔杖.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "攻击力", "min": 17, "max": 22, fixed: 1, cur: "%"},
 				{"name": "释法速度", "min": 25, "max": 30, fixed: 1, cur: "%"},
@@ -1738,7 +1713,7 @@
 			"attackSpeed": "非常慢",
 			"type": "单手武器",
 			"imgUrl": "img/卢萨卡魔杖.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
 				{"name": "体质", "min": 25, "max": 30, fixed: 1, cur: ""},
@@ -1783,7 +1758,7 @@
 			"attackSpeed": "通用",
 			"type": "双手武器",
 			"imgUrl": "img/潮汐魔棒.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "攻击力", "min": 10, "max": 15, fixed: 1, cur: "%"},
 				{"name": "治疗", "min": 10, "max": 15, fixed: 1, cur: "%"},
@@ -1821,7 +1796,7 @@
 			"attackSpeed": "通用",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡的水晶魔棒.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "攻击力", "min": 12, "max": 17, fixed: 1, cur: "%"},
 				{"name": "治疗", "min": 12, "max": 17, fixed: 1, cur: "%"},
@@ -1859,7 +1834,7 @@
 			"attackSpeed": "通用",
 			"type": "双手武器",
 			"imgUrl": "img/卢萨卡魔棒.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
 				{"name": "体质", "min": 25, "max": 30, fixed: 1, cur: ""},
@@ -1898,7 +1873,7 @@
 			"attackSpeed": "快速",
 			"type": "单手武器",
 			"imgUrl": "img/潮汐拳套.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 480, "max": 580, fixed: 10, cur: "%"},
 				{"name": "暴击", "min": 280, "max": 340, fixed: 10, cur: "%"},
@@ -1940,7 +1915,7 @@
 			"attackSpeed": "快速",
 			"type": "单手武器",
 			"imgUrl": "img/卢萨卡的水晶拳.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得。",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。。",
 			"list": [
 				{"name": "暴击伤害", "min": 550, "max": 650, fixed: 10, cur: "%"},
 				{"name": "暴击", "min": 290, "max": 350, fixed: 10, cur: "%"},
@@ -1983,7 +1958,7 @@
 			"attackSpeed": "快速",
 			"type": "单手武器",
 			"imgUrl": "img/卢萨卡之拳.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊工会团队获得。",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
 				{"name": "体质", "min": 25, "max": 30, fixed: 1, cur: ""},
@@ -2056,9 +2031,6 @@
 		{"cur":"","name":"magicdefense","cns":"魔法防御"},
 	];
 
-
-
-
 	//武器强化数值
 	const upList = [
 		{"probability":0.888888,"low_probability":0.9,"gold":2000,"yellow":10,"green":10,"four_num":1,"eight_num":0},
@@ -2100,10 +2072,22 @@
 		{"probability":0.003089,"low_probability":0.045,"gold":250000,"yellow":148,"green":148,"four_num":0,"eight_num":1},
 		{"probability":0.000502,"low_probability":0.018,"gold":500000,"yellow":207,"green":207,"four_num":0,"eight_num":1},
 	];
+
+	const jewelry_data = [
+		{"icon":"genjewnecnornec01.png","name":{"cns":"生命之源项链"},"id":6803},
+		{"icon":"genjewnecnornec02.png","name":{"cns":"魔力之源项链"},"id":9233},
+		{"icon":"genjewnecnornec03.png","name":{"cns":"活力之源项链"},"id":8646},
+		{"icon":"genjewearnorear01.png","name":{"cns":"白银耳环"},"id":7178},
+		{"icon":"genjewearnorear02.png","name":{"cns":"金刚耳环"},"id":8369},
+		{"icon":"genjewrinnorrin01.png","name":{"cns":"力量戒指"},"id":5536},
+		{"icon":"genjewrinnorrin02.png","name":{"cns":"智力戒指"},"id":2064},
+		{"icon":"genjewrinnorrin03.png","name":{"cns":"敏捷戒指"},"id":1764},
+		{"icon":"genjewrinnorrin04.png","name":{"cns":"体质戒指"},"id":6531}
+	];
 	
 	//强化次数,金币,黄矿,绿矿,失败次数,武器强化等级,4点数量,8点数量,武器索引值
 	let up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0 ,weapon_index = 0;
-	//首饰强化等级
+	//首饰当前强化等级
 	let jewelry_lv = 0;
 	//8点使用数量
 	let jewelry_eight_num = 0;

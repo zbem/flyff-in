@@ -129,23 +129,23 @@
 <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
 <script>
-	const jewelry_data = [
-		{"icon":"genjewnecnornec01.png","name":{"cns":"生命之源项链"},"id":6803},
-		{"icon":"genjewnecnornec02.png","name":{"cns":"魔力之源项链"},"id":9233},
-		{"icon":"genjewnecnornec03.png","name":{"cns":"活力之源项链"},"id":8646},
-		{"icon":"genjewearnorear01.png","name":{"cns":"白银耳环"},"id":7178},
-		{"icon":"genjewearnorear02.png","name":{"cns":"金刚耳环"},"id":8369},
-		{"icon":"genjewrinnorrin01.png","name":{"cns":"力量戒指"},"id":5536},
-		{"icon":"genjewrinnorrin02.png","name":{"cns":"智力戒指"},"id":2064},
-		{"icon":"genjewrinnorrin03.png","name":{"cns":"敏捷戒指"},"id":1764},
-		{"icon":"genjewrinnorrin04.png","name":{"cns":"体质戒指"},"id":6531}
-	];
+	let item_json_list = [];
+	let monster_json_list = [];
 
 	$(document).ready(function() {
 		//页面元素可移动
 		WinMove();
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
+
+		$(json_items).each(function (i, obj) {
+			$.getJSON(`json/item/${obj}`).success(function(data){
+				item_json_list.push(data);
+			});
+			$.getJSON(`json/monster/${obj}`).success(function(data){
+				monster_json_list.push(data);
+			});
+		});
 
 		$(jewelry_data).each(function(i,obj){
 			if(obj == null){
@@ -192,11 +192,14 @@
 			errorMsg("get_jewelry没有对应的类型"+index);
 			return;
 		}
-
+		//首饰当前强化等级
+		jewelry_lv = 0;
 		//精炼次数初始化
 		jewelry_up_num = 0;
 		//失败次数
-		jewelry_failure_num =0;
+		jewelry_failure_num = 0;
+		//失败总次数
+		jewelry_failure_all_num = 0;
 
 		$("[weapon_bottom_text]").html(jewelry_Obj.name);
 

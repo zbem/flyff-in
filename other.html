@@ -77,6 +77,19 @@
 </div>
 
 <script>
+
+	let item_json_list = [];
+	let monster_json_list = [];
+
+	$(json_items).each(function (i, obj) {
+		$.getJSON(`json/item/${obj}`).success(function(data){
+			item_json_list.push(data);
+		});
+		$.getJSON(`json/monster/${obj}`).success(function(data){
+			monster_json_list.push(data);
+		});
+	});
+
 	function init_model(){
 		// 加载 CSS
 		$("<link>").attr({href: "waifu/assets/waifu.css", rel: "stylesheet", type: "text/css"}).appendTo('head');
