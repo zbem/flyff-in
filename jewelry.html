@@ -137,13 +137,9 @@
 			`);
 		});
 
-		setTimeout(function() {
-			$(json_items).each(function (i, obj) {
-				$.getJSON(`json/item/${obj}`).success(function(data){
-					item_json_list.push(data);
-				});
-			});
-		}, 500); // 1000毫秒等于1秒
+		$.getJSON(`json/jewelry.json`).success(function(data){
+			item_json_list.push(data);
+		});
 
 	});
 
