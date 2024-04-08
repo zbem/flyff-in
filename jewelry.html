@@ -130,22 +130,12 @@
 
 <script>
 	let item_json_list = [];
-	let monster_json_list = [];
 
 	$(document).ready(function() {
 		//页面元素可移动
 		WinMove();
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
-
-		$(json_items).each(function (i, obj) {
-			$.getJSON(`json/item/${obj}`).success(function(data){
-				item_json_list.push(data);
-			});
-			$.getJSON(`json/monster/${obj}`).success(function(data){
-				monster_json_list.push(data);
-			});
-		});
 
 		$(jewelry_data).each(function(i,obj){
 			if(obj == null){
@@ -158,6 +148,15 @@
 				</div>
 			`);
 		});
+
+		setTimeout(function() {
+			$(json_items).each(function (i, obj) {
+				$.getJSON(`json/item/${obj}`).success(function(data){
+					item_json_list.push(data);
+				});
+			});
+		}, 500); // 1000毫秒等于1秒
+
 	});
 
 	function find_item_json(keyword){
