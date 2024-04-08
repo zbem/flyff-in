@@ -82,7 +82,7 @@
 		],
 	}
 
-	const items= [
+	const json_items= [
 		"0_1000.json","1000_2000.json","2000_3000.json","3000_4000.json","4000_5000.json","5000_6000.json","6000_7000.json","7000_8000.json","8000_9000.json",
 		"9000_10000.json","10000_11000.json","11000_12000.json","12000_13000.json","13000_14000.json","14000_15000.json","15000_16000.json","16000_17000.json","17000_18000.json",
 		"17000_18000.json","19000_20000.json"
@@ -679,6 +679,20 @@
 		{"id":"8243","name":"雷属性装备卡片(4%)","icon":"genmatelegenerator.png","category":"MATERIAL","rarity":"rare","probability":0.0001,"num":0},
 		{"id":"7436","name":"土属性装备卡片(4%)","icon":"genmateledesert.png","category":"MATERIAL","rarity":"rare","probability":0.0001,"num":0},
 	];
+
+
+	let item_json_list = [];
+	let monster_json_list = [];
+
+	$(json_items).each(function (i, obj) {
+		$.getJSON(`json/item/${obj}`).success(function(data){
+			item_json_list.push(data);
+		});
+		$.getJSON(`json/monster/${obj}`).success(function(data){
+			monster_json_list.push(data);
+		});
+	});
+
 
 	let kill_num = 0;
 	let kill_hai_num = 0;
@@ -2002,8 +2016,54 @@
 		}
 	];
 
-	//强化数值
-	var upList = [
+	const jewelry_up_List = [
+		{"eight_probability":0.8888888889,"ten_probability":1},
+		{"eight_probability":0.8235294118,"ten_probability":1},
+		{"eight_probability":0.4581044448,"ten_probability":0.5569985570},
+		{"eight_probability":0.2493069984,"ten_probability":0.2968258491},
+		{"eight_probability":0.1418051957,"ten_probability":0.1688875608},
+		{"eight_probability":0.0911834689,"ten_probability":0.1088714130},
+		{"eight_probability":0.0610808317,"ten_probability":0.0724875434},
+		{"eight_probability":0.0409199117,"ten_probability":0.0505493442},
+		{"eight_probability":0.0282296525,"ten_probability":0.0322209144},
+		{"eight_probability":0.0177362748,"ten_probability":0.0209832282},
+		{"eight_probability":0.0120163682,"ten_probability":0.0171175271},
+		{"eight_probability":0.0095524157,"ten_probability":0.0136224870},
+		{"eight_probability":0.0054401086,"ten_probability":0.0077755964},
+		{"eight_probability":0.0038016583,"ten_probability":0.0054401086},
+		{"eight_probability":0.0024485555,"ten_probability":0.0035080404},
+		{"eight_probability":0.0013861777,"ten_probability":0.0019884101},
+		{"eight_probability":0.0006288876,"ten_probability":0.0008906052},
+		{"eight_probability":0.0001560417,"ten_probability":0.0002244043},
+		{"eight_probability":0.0000766121,"ten_probability":0.0001102193},
+		{"eight_probability":0.0000015698,"ten_probability":0.0000022601},
+	];
+
+	//生命,魔力,活力,白银,金刚,力量,智力,敏捷,体质
+	const jewelry_data = [6803,9233,8646,7178,8369,5536,2064,1764,6531];
+
+	const jewelry_data_enums = [
+		{"cur":"","name":"str","cns":"力量",},
+		{"cur":"","name":"int","cns":"智力",},
+		{"cur":"","name":"dex","cns":"敏捷",},
+		{"cur":"","name":"sta","cns":"体质",},
+		{"cur":"","name":"maxhp","cns":"最大HP",},
+		{"cur":"%","name":"hprestoration","cns":"HP恢复"},
+		{"cur":"","name":"maxmp","cns":"最大MP"},
+		{"cur":"%","name":"decreasedmpconsumption","cns":"MP消耗降低"},
+		{"cur":"","name":"mprecoveryafterkill","cns":"击杀后MP恢复"},
+		{"cur":"","name":"maxfp","cns":"最大FP"},
+		{"cur":"%","name":"fprecoveryautoattack","cns":"FP消耗降低"},
+		{"cur":"","name":"damage","cns":"追加伤害"},
+		{"cur":"","name":"def","cns":"防御"},
+		{"cur":"","name":"magicdefense","cns":"魔法防御"},
+	];
+
+
+
+
+	//武器强化数值
+	const upList = [
 		{"probability":0.888888,"low_probability":0.9,"gold":2000,"yellow":10,"green":10,"four_num":1,"eight_num":0},
 		{"probability":0.823529,"low_probability":0.85,"gold":4000,"yellow":14,"green":14,"four_num":1,"eight_num":0},
 		{"probability":0.75,"low_probability":0.8,"gold":8000,"yellow":20,"green":20,"four_num":1,"eight_num":0},
@@ -2015,9 +2075,9 @@
 		{"probability":0.003089,"low_probability":0.045,"gold":250000,"yellow":148,"green":148,"four_num":0,"eight_num":1},
 		{"probability":0.000502,"low_probability":0.018,"gold":500000,"yellow":207,"green":207,"four_num":0,"eight_num":1},
 	];
-	
+
 	//单手武器穿洞数值
-	var holeList = [
+	const holeList = [
 		{"probability":0.888888,"low_probability":0.9,"gold":2000,"yellow":10,"green":10,"four_num":1,"eight_num":0},
 		{"probability":0.823529,"low_probability":0.85,"gold":4000,"yellow":14,"green":14,"four_num":1,"eight_num":0},
 		{"probability":0.75,"low_probability":0.8,"gold":8000,"yellow":20,"green":20,"four_num":1,"eight_num":0},
@@ -2028,8 +2088,10 @@
 		{"probability":0.012016,"low_probability":0.09,"gold":125000,"yellow":105,"green":105,"four_num":0,"eight_num":1},
 		{"probability":0.003089,"low_probability":0.045,"gold":250000,"yellow":148,"green":148,"four_num":0,"eight_num":1},
 		{"probability":0.000502,"low_probability":0.018,"gold":500000,"yellow":207,"green":207,"four_num":0,"eight_num":1},
-	];//双手武器穿洞数值
-	var doubleholeList = [
+	];
+
+	//双手武器穿洞数值
+	const doubleholeList = [
 		{"probability":0.888888,"low_probability":0.9,"gold":2000,"yellow":10,"green":10,"four_num":1,"eight_num":0},
 		{"probability":0.823529,"low_probability":0.85,"gold":4000,"yellow":14,"green":14,"four_num":1,"eight_num":0},
 		{"probability":0.75,"low_probability":0.8,"gold":8000,"yellow":20,"green":20,"four_num":1,"eight_num":0},
@@ -2044,6 +2106,18 @@
 	
 	//强化次数,金币,黄矿,绿矿,失败次数,武器强化等级,4点数量,8点数量,武器索引值
 	let up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0 ,weapon_index = 0;
+	//首饰强化等级
+	let jewelry_lv = 0;
+	//8点使用数量
+	let jewelry_eight_num = 0;
+	//10点使用数量
+	let jewelry_ten_num = 0;
+	//首饰精炼次数
+	let jewelry_up_num = 0;
+	//首饰精炼失败次数
+	let jewelry_failure_num = 0;
+	//首饰精炼失败总次数
+	let jewelry_failure_all_num = 0;
 	//使用low卷数量
 	let weapon_low_up_num=0;
 	//使用防暴卷数量
@@ -2058,6 +2132,8 @@
 	let now_attribute;
 	//成功概率
 	let probability = 0.000000;
+	//首饰成功概率
+	let jewelry_probability = 0.0000000000;
 	//成功概率
 	let low_probability = 0.000000;
 	//唤醒列表
@@ -2194,4 +2270,8 @@
 
 		$("[weapon-attributes]").prepend(str);
 		$("[weapon_roll_div]").removeClass("hide");
+	}
+
+	function errorMsg(str){
+		$("[txt_div]").prepend("<p class='alert alert-info' error_msg>"+str+"</p>");
 	}

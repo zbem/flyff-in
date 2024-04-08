@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en" xmlns="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="favicon icon" href="/img/html/favicon.png">
+	<title>飞瘾犯了-首饰</title>
+</head>
+
+<link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="css/style.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<!-- Morris -->
+<link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+<!-- Gritter -->
+<link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+<link href="css/animate.css" rel="stylesheet">
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>操作区</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="feed-activity-list">
+						<img alt="image" class="img-circle" src="img/items/genmatdieeight.png">
+						<button class="btn btn-success" jewelry_up onclick="jewelry_up(8)" >8点精炼骰子</button>
+					</div>
+					<div class="feed-activity-list">
+						<img alt="image" class="img-circle" src="img/items/genmatdieten.png">
+						<button class="btn btn-success" jewelry_up onclick="jewelry_up(10)" >10点精炼骰子</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>首饰区</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="feed-activity-list">
+						<div class="row" jewelry_list></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>消息</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div jewelry_msg_div class="row"></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>成果</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div weapon-attributes></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+	</div>
+</div>
+
+<!-- 全局js -->
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.6"></script>
+<script src="js/base.js?v=202404020006"></script>
+<!-- 自定义js -->
+<script src="js/content.js?v=1.0.0"></script>
+<!-- jQuery UI -->
+<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<script>
+	let item_json;
+
+	$(document).ready(function() {
+		//页面元素可移动
+		WinMove();
+		// 当页面加载完成后，给 body 元素添加自定义光标样式
+		$('body').addClass('custom-cursor');
+
+		setTimeout(function() {
+			init();
+		}, 100); // 1000毫秒等于1秒
+	});
+
+
+	function init(){
+		$(jewelry_data).each(function(i,obj){
+			item_json = find_item_json(obj);
+			if(item_json == null){
+				return ;
+			}
+			$("[jewelry_list]").append(`
+				<div class="col-xs-4" btn_weapon onclick="get_jewelry(${item_json.id})">
+					<img src="img/items/${item_json.icon}" alt="${item_json.cns}"><br>
+					<span class="hide">${item_json.id}</span><br>
+				</div>
+			`);
+		});
+	}
+
+	function find_item_json(keyword){
+		if(keyword === null ||  keyword.toString().trim() === ""){
+			return ;
+		}
+		const item_list = item_json_list.flat();
+
+		for(let i = 0 ; i < item_list.length ; i++){
+			let item = item_list[i];
+
+			if ($("[json_id_" + item.id + "]").length !== 0) {
+				continue;
+			}
+
+			if (item.name != null && item.name.cns != null && item.name.cns.includes(keyword) || item.id === parseInt(keyword)) {
+				return item;
+			}
+		}
+	}
+
+	function get_jewelry(index){
+		$("[jewelry_div]").remove();
+		$("[jewelry_msg_div]").html("");
+		if(index == null){
+			errorMsg("get_jewelry没有对应的index:"+index);
+			return;
+		}
+
+		const jewelry_Obj = find_item_json(index);
+		if(jewelry_Obj == null){
+			errorMsg("get_jewelry没有对应的类型"+index);
+			return;
+		}
+
+		//精炼次数初始化
+		jewelry_up_num = 0;
+		//失败次数
+		jewelry_failure_num =0;
+
+		$("[weapon_bottom_text]").html(jewelry_Obj.name);
+
+		let htmlStr = '';
+		if(jewelry_Obj.upgradeLevels !== null){
+			let  upgradeLevels =  jewelry_Obj.upgradeLevels[jewelry_Obj.level-1].abilities;
+
+			$(upgradeLevels).each(function (i,obj){
+				let find_enums= jewelry_data_enums.find(e => e.name === obj.parameter);
+				htmlStr += `<span style="color: #dfce93" >${find_enums.cns}+${obj.add}${find_enums.cur}</span></br>`;
+			})
+		}
+
+		$("[weapon-attributes]").prepend(`
+			<div class="alert alert-info" jewelry_div  id="${jewelry_Obj.id}">
+			   	<div style="text-align: center">
+					<img src="img/items/${jewelry_Obj.icon}" alt="${jewelry_Obj.cns}"><br>
+				</div>
+				<span style="color: #ad5917" jewelry_name>${jewelry_Obj.name.cns}</span><span style="color: #ad5917" jewelry_lv="0"></span></br>
+				<div jewelry_value>${htmlStr}</div>
+				<span style="color: #ecebea" >等级要求:15</span></br>
+				<span style="color: #ecebea" >品质:</span><span style="color: #ad5917">精良</span></br>
+				<span style="color: #ecebea" jewelry_description>描述:</br>${jewelry_Obj.description.cns}</span></br>
+				<span style="color: #9f9e9b" >精炼次数:</span><span jewelry_num style="color: #9f9e9b">${jewelry_failure_num}</span></br>
+			</div>
+		 `);
+	}
+
+	function jewelry_up(dice){
+		//首饰已经强化到+20啦
+		if(Number($("[jewelry_lv]").attr("jewelry_lv")) === 20 || $("[jewelry_lv]").length === 0){
+			return ;
+		}
+		//获取当前强化等级
+		jewelry_lv = $("[jewelry_lv]").attr("jewelry_lv");
+		jewelry_lv = Number(jewelry_lv);
+
+		const jewelry_id = $("[jewelry_div]").attr("id");
+		const jewelry_obj = find_item_json(jewelry_id);
+		if(jewelry_obj == null){
+			errorMsg("get_jewelry没有对应的类型"+jewelry_lv);
+			return;
+		}
+
+		if(parseInt(dice) === 8){
+			jewelry_eight_num++;
+		}
+		if(parseInt(dice) === 10){
+			jewelry_ten_num++;
+		}
+
+		//获取强化精炼数据
+		const jewelry_up_obj = jewelry_up_List[jewelry_lv];
+		if(jewelry_up_obj == null){
+			return ;
+		}
+
+		//精炼次数
+		jewelry_up_num++;
+
+		//第一次强化初始值
+		if(jewelry_probability === 0.0000000000){
+			if(parseInt(dice) === 8){
+				jewelry_probability = jewelry_up_obj.eight_probability;
+			}
+			if(parseInt(dice) === 10){
+				jewelry_probability = jewelry_up_obj.ten_probability;
+			}
+		}
+
+		let str = '<hr>';
+		// 生成一个0到1之间的随机数
+		let randomNum = Math.random().toFixed(10);;
+		//是否精炼成功
+		if(randomNum <= jewelry_probability){
+			//成功后精炼次数清0;
+			jewelry_failure_num =0;
+			jewelry_lv++;
+			str+='<div class="col-xs-6" color_green>精炼+'+jewelry_lv+'成功!<br></div>';
+			if(jewelry_lv !== 20){
+				//成功后重置概率
+				if(parseInt(dice) === 8){
+					jewelry_probability = jewelry_up_List[jewelry_lv].eight_probability;
+				}
+				if(parseInt(dice) === 10){
+					jewelry_probability = jewelry_up_List[jewelry_lv].ten_probability;
+				}
+			}
+
+			//属性变更
+			if(jewelry_obj.upgradeLevels !== null){
+				let upgradeLevels =  jewelry_obj.upgradeLevels[jewelry_lv].abilities;
+				let htmlStr = '';
+				$(upgradeLevels).each(function (i,obj){
+					let find_enums= jewelry_data_enums.find(e => e.name === obj.parameter);
+					htmlStr += `<span style="color: #dfce93" >${find_enums.cns}+${obj.add}${find_enums.cur}</span></br>`;
+				})
+
+				$("[jewelry_value]").html(htmlStr);
+			}
+		}else {
+			//获取强化精炼数据
+			const upObj = jewelry_up_List[jewelry_lv];
+			//失败次数
+			jewelry_failure_num++;
+			//失败总次数
+			jewelry_failure_all_num++;
+			if(parseInt(dice) === 8){
+				//失败累加基础强化概率
+				jewelry_probability = upObj.eight_probability+jewelry_probability;
+			}
+			if(parseInt(dice) === 10){
+				//失败累加基础强化概率
+				jewelry_probability = upObj.ten_probability+jewelry_probability;
+			}
+
+			//成功概率不能大于1
+			jewelry_probability = jewelry_probability >= 1 ? 1 : jewelry_probability;
+
+			str+="<div class='col-xs-6' color_red>精炼失败!<br></div>";
+		}
+
+		$("[jewelry_num]").html(jewelry_failure_num);
+		$("[jewelry_lv]").html(jewelry_lv === 0 ? "" : ("+"+jewelry_lv));
+		$("[jewelry_lv]").attr("jewelry_lv",jewelry_lv);
+
+		str+=`
+			<div class='col-xs-6'>当前成功率${jewelry_probability}</div><br/>
+			<div class="col-xs-6">强化总次数:${jewelry_up_num}</div><div class="col-xs-6">失败总次数:${jewelry_failure_all_num}</div>
+		`;
+		//强化内容
+		$("[jewelry_msg_div]").html(str);
+	}
+
+</script>
+
+</body>
+</html>

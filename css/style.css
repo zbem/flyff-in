@@ -25,6 +25,17 @@
     margin:10px 0;
 }
 
+[jewelry_div] img{
+    margin-bottom: 5px;
+}
+
+[jewelry_div]{
+    background-color: #0e0a08;
+    border: 2px solid #e8c685 ;
+    border-radius: 15px;
+    width: 231px;
+}
+
 [bb_info]{
     background-color: #0e0a08;
     border: 2px solid #e8c685 ;
@@ -88,7 +99,12 @@ body{
     font-size: 30px;
 }
 
-[weapon_top_text]{
+[weapon_top_text],[jewelry_top_text]{
+    text-align: center;
+    color: #ffffff;
+}
+
+[weapon_top_text],[jewelry_top_text]{
     text-align: center;
     color: #ffffff;
 }
