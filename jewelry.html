@@ -44,19 +44,17 @@
 					</div>
 				</div>
 				<div class="ibox-content">
-					<div class="feed-activity-list">
-						<div class="form-group">
-							<div class="input-group" style="width: 20%" >
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<div class="input-group" >
 								<input type="text" class="form-control" placeholder = "强化数字" input_jewelry_up_num  maxlength="2" value="20"  ><br>
 								<div class="input-group-btn open">
 									<img alt="image" class="img-circle" src="img/items/genmatdieeight.png" onclick="jewelry_up_go(8)">
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="feed-activity-list">
-						<div class="form-group">
-							<div class="input-group" style="width: 20%" >
+						<div class="form-group col-sm-6">
+							<div class="input-group" >
 								<input type="text" class="form-control" placeholder = "强化数字" input_jewelry_up_num  maxlength="2" value="20" ><br>
 								<div class="input-group-btn open">
 									<img alt="image" class="img-circle" src="img/items/genmatdieten.png" onclick="jewelry_up_go(10)">
@@ -293,7 +291,7 @@
 			//首饰强化次数清0
 			jewelry_up_num=0
 			jewelry_lv++;
-			str+='<div class="col-xs-6" color_green>精炼+'+jewelry_lv+'成功!<br></div>';
+			str+='<div class="col-xs-12" color_green>精炼+'+jewelry_lv+'成功!<br></div>';
 			if(jewelry_lv !== 20){
 				//成功后重置概率
 				if(parseInt(dice) === 8){
@@ -338,7 +336,7 @@
 			//成功概率不能大于1
 			jewelry_probability = jewelry_probability >= 1 ? 1 : jewelry_probability;
 
-			str+=`<div class='col-xs-6' color_red>精炼+${jewelry_lv+1}失败!</div>`;
+			str+=`<div class='col-xs-12' color_red>精炼+${jewelry_lv+1}失败!</div>`;
 		}
 
 		$("[jewelry_num]").html(jewelry_failure_num);
@@ -346,9 +344,8 @@
 		$("[jewelry_lv]").attr("jewelry_lv",jewelry_lv);
 
 		str+=`
-			<div class='col-xs-6'>当前成功率${jewelry_probability}</div><br/>
 			<div class="col-xs-6">强化总次数:${jewelry_up_all_num}</div>
-			<div class="col-xs-6">失败总次数:${jewelry_failure_all_num}</div><br/>
+			<div class="col-xs-6">失败总次数:${jewelry_failure_all_num}</div>
 		`;
 		//强化内容
 		$("[jewelry_msg_div]").html(str);
