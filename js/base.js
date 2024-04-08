@@ -2039,9 +2039,6 @@
 		{"eight_probability":0.0000015698,"ten_probability":0.0000022601},
 	];
 
-	//生命,魔力,活力,白银,金刚,力量,智力,敏捷,体质
-	const jewelry_data = [6803,9233,8646,7178,8369,5536,2064,1764,6531];
-
 	const jewelry_data_enums = [
 		{"cur":"","name":"str","cns":"力量",},
 		{"cur":"","name":"int","cns":"智力",},
@@ -2161,6 +2158,7 @@
 	let weapon_low_up_stop = false;
 	let weapon_up_stop = false;
 	let attribute_up_stop = false;
+	let jewelry_up_stop = false;
 
 
 	function previous_weapon(){

@@ -21,7 +21,23 @@
 		<div class="col-sm-6">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<h5>操作区</h5>
+					<h5>首饰区</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="feed-activity-list">
+						<div class="row" jewelry_list></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>手动操作区</h5>
 					<div class="ibox-tools">
 						<a class="collapse-link">
 							<i class="fa fa-chevron-up"></i>
@@ -42,7 +58,7 @@
 
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<h5>首饰区</h5>
+					<h5>自动化</h5>
 					<div class="ibox-tools">
 						<a class="collapse-link">
 							<i class="fa fa-chevron-up"></i>
@@ -51,8 +67,18 @@
 				</div>
 				<div class="ibox-content">
 					<div class="feed-activity-list">
-						<div class="row" jewelry_list></div>
+						<div class="form-group">
+
+							<div class="input-group" style="width: 150px" >
+								<input type="text" class="form-control" placeholder = "强化数字" input_jewelry_up_num  maxlength="2" >
+								<div class="input-group-btn open">
+									<img alt="image" class="img-circle" src="img/items/genmatdieeight.png" onclick="jewelry_up_go(8)">
+									<img alt="image" class="img-circle" src="img/items/genmatdieten.png" onclick="jewelry_up_go(10)">
+								</div>
+							</div>
+						</div>
 					</div>
+
 				</div>
 			</div>
 
@@ -103,7 +129,17 @@
 <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
 <script>
-	let item_json;
+	const jewelry_data = [
+		{"icon":"genjewnecnornec01.png","name":{"cns":"生命之源项链"},"id":6803},
+		{"icon":"genjewnecnornec02.png","name":{"cns":"魔力之源项链"},"id":9233},
+		{"icon":"genjewnecnornec03.png","name":{"cns":"活力之源项链"},"id":8646},
+		{"icon":"genjewearnorear01.png","name":{"cns":"白银耳环"},"id":7178},
+		{"icon":"genjewearnorear02.png","name":{"cns":"金刚耳环"},"id":8369},
+		{"icon":"genjewrinnorrin01.png","name":{"cns":"力量戒指"},"id":5536},
+		{"icon":"genjewrinnorrin02.png","name":{"cns":"智力戒指"},"id":2064},
+		{"icon":"genjewrinnorrin03.png","name":{"cns":"敏捷戒指"},"id":1764},
+		{"icon":"genjewrinnorrin04.png","name":{"cns":"体质戒指"},"id":6531}
+	];
 
 	$(document).ready(function() {
 		//页面元素可移动
@@ -111,26 +147,18 @@
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
 
-		setTimeout(function() {
-			init();
-		}, 100); // 1000毫秒等于1秒
-	});
-
-
-	function init(){
 		$(jewelry_data).each(function(i,obj){
-			item_json = find_item_json(obj);
-			if(item_json == null){
+			if(obj == null){
 				return ;
 			}
 			$("[jewelry_list]").append(`
-				<div class="col-xs-4" btn_weapon onclick="get_jewelry(${item_json.id})">
-					<img src="img/items/${item_json.icon}" alt="${item_json.cns}"><br>
-					<span class="hide">${item_json.id}</span><br>
+				<div class="col-xs-4" btn_weapon onclick="get_jewelry(${obj.id})">
+					<img src="img/items/${obj.icon}" alt="${obj.name.cns}"><br>
+					<span class="hide">${obj.id}</span><br>
 				</div>
 			`);
 		});
-	}
+	});
 
 	function find_item_json(keyword){
 		if(keyword === null ||  keyword.toString().trim() === ""){
@@ -197,6 +225,47 @@
 		 `);
 	}
 
+	function kill_hai_boss(){
+		$("[txt_div]").html("");
+		$("[kill_boss_btn]").attr("disabled",true);
+		if(kill_hai_boss_stop){
+			kill_hai_boss_stop = false;
+			$("[kill_boss_btn]").removeAttr("disabled");
+			return ;
+		}
+		kill_hai_boss_go();
+		setTimeout(function() {
+			kill_hai_boss();
+		}, 20); // 1000毫秒等于1秒
+	}
+
+
+	let input_jewelry_up_num = 0;
+
+	function jewelry_up_go(dice){
+		const num = $("[input_jewelry_up_num]").val();
+		if(num === null || num === '' || num.trim() ==='' ){
+			return ;
+		}
+
+		input_jewelry_up_num = parseInt(num);
+
+		if(input_jewelry_up_num > 20){
+			input_jewelry_up_num = 20;
+		}
+
+		$("[jewelry_up]").attr("disabled",true);
+		if(jewelry_up_stop || input_jewelry_up_num === jewelry_lv){
+			jewelry_up_stop = false;
+			$("[jewelry_up]").removeAttr("disabled");
+			return ;
+		}
+		jewelry_up(dice);
+		setTimeout(function() {
+			jewelry_up_go(dice);
+		}, 20); // 1000毫秒等于1秒
+	}
+
 	function jewelry_up(dice){
 		//首饰已经强化到+20啦
 		if(Number($("[jewelry_lv]").attr("jewelry_lv")) === 20 || $("[jewelry_lv]").length === 0){
@@ -205,13 +274,6 @@
 		//获取当前强化等级
 		jewelry_lv = $("[jewelry_lv]").attr("jewelry_lv");
 		jewelry_lv = Number(jewelry_lv);
-
-		const jewelry_id = $("[jewelry_div]").attr("id");
-		const jewelry_obj = find_item_json(jewelry_id);
-		if(jewelry_obj == null){
-			errorMsg("get_jewelry没有对应的类型"+jewelry_lv);
-			return;
-		}
 
 		if(parseInt(dice) === 8){
 			jewelry_eight_num++;
@@ -258,16 +320,20 @@
 				}
 			}
 
-			//属性变更
-			if(jewelry_obj.upgradeLevels !== null){
-				let upgradeLevels =  jewelry_obj.upgradeLevels[jewelry_lv].abilities;
-				let htmlStr = '';
-				$(upgradeLevels).each(function (i,obj){
-					let find_enums= jewelry_data_enums.find(e => e.name === obj.parameter);
-					htmlStr += `<span style="color: #dfce93" >${find_enums.cns}+${obj.add}${find_enums.cur}</span></br>`;
-				})
+			const jewelry_id = $("[jewelry_div]").attr("id");
+			const jewelry_obj = find_item_json(jewelry_id);
+			if(jewelry_obj != null){
+				//属性变更
+				if(jewelry_obj.upgradeLevels !== null){
+					let upgradeLevels =  jewelry_obj.upgradeLevels[jewelry_lv].abilities;
+					let htmlStr = '';
+					$(upgradeLevels).each(function (i,obj){
+						let find_enums= jewelry_data_enums.find(e => e.name === obj.parameter);
+						htmlStr += `<span style="color: #dfce93" >${find_enums.cns}+${obj.add}${find_enums.cur}</span></br>`;
+					})
 
-				$("[jewelry_value]").html(htmlStr);
+					$("[jewelry_value]").html(htmlStr);
+				}
 			}
 		}else {
 			//获取强化精炼数据
@@ -301,6 +367,10 @@
 		`;
 		//强化内容
 		$("[jewelry_msg_div]").html(str);
+
+		if(input_jewelry_up_num === jewelry_lv){
+			jewelry_up_stop = true;
+		}
 	}
 
 </script>
