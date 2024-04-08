@@ -2095,6 +2095,8 @@
 	let jewelry_ten_num = 0;
 	//首饰精炼次数
 	let jewelry_up_num = 0;
+	//首饰精炼总次数
+	let jewelry_up_all_num = 0;
 	//首饰精炼失败次数
 	let jewelry_failure_num = 0;
 	//首饰精炼失败总次数

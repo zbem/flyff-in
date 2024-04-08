@@ -37,28 +37,7 @@
 
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<h5>手动操作区</h5>
-					<div class="ibox-tools">
-						<a class="collapse-link">
-							<i class="fa fa-chevron-up"></i>
-						</a>
-					</div>
-				</div>
-				<div class="ibox-content">
-					<div class="feed-activity-list">
-						<img alt="image" class="img-circle" src="img/items/genmatdieeight.png">
-						<button class="btn btn-success" jewelry_up onclick="jewelry_up(8)" >8点精炼骰子</button>
-					</div>
-					<div class="feed-activity-list">
-						<img alt="image" class="img-circle" src="img/items/genmatdieten.png">
-						<button class="btn btn-success" jewelry_up onclick="jewelry_up(10)" >10点精炼骰子</button>
-					</div>
-				</div>
-			</div>
-
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>自动化</h5>
+					<h5>操作区</h5>
 					<div class="ibox-tools">
 						<a class="collapse-link">
 							<i class="fa fa-chevron-up"></i>
@@ -68,17 +47,24 @@
 				<div class="ibox-content">
 					<div class="feed-activity-list">
 						<div class="form-group">
-
-							<div class="input-group" style="width: 150px" >
-								<input type="text" class="form-control" placeholder = "强化数字" input_jewelry_up_num  maxlength="2" >
+							<div class="input-group" style="width: 20%" >
+								<input type="text" class="form-control" placeholder = "强化数字" input_jewelry_up_num  maxlength="2" value="20"  ><br>
 								<div class="input-group-btn open">
 									<img alt="image" class="img-circle" src="img/items/genmatdieeight.png" onclick="jewelry_up_go(8)">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="feed-activity-list">
+						<div class="form-group">
+							<div class="input-group" style="width: 20%" >
+								<input type="text" class="form-control" placeholder = "强化数字" input_jewelry_up_num  maxlength="2" value="20" ><br>
+								<div class="input-group-btn open">
 									<img alt="image" class="img-circle" src="img/items/genmatdieten.png" onclick="jewelry_up_go(10)">
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 
@@ -111,6 +97,8 @@
 				</div>
 				<div class="ibox-content">
 					<div jewelry_msg_div class="row"></div>
+					<hr>
+					<div jewelry_all_msg class="row"></div>
 				</div>
 			</div>
 
@@ -181,6 +169,7 @@
 	function get_jewelry(index){
 		$("[jewelry_div]").remove();
 		$("[jewelry_msg_div]").html("");
+		$("[jewelry_all_msg]").html("");
 		if(index == null){
 			errorMsg("get_jewelry没有对应的index:"+index);
 			return;
@@ -193,8 +182,10 @@
 		}
 		//首饰当前强化等级
 		jewelry_lv = 0;
-		//精炼次数初始化
+		//首饰精炼次数
 		jewelry_up_num = 0;
+		//首饰精炼总次数
+		jewelry_up_all_num = 0;
 		//失败次数
 		jewelry_failure_num = 0;
 		//失败总次数
@@ -227,26 +218,12 @@
 		 `);
 	}
 
-	function kill_hai_boss(){
-		$("[txt_div]").html("");
-		$("[kill_boss_btn]").attr("disabled",true);
-		if(kill_hai_boss_stop){
-			kill_hai_boss_stop = false;
-			$("[kill_boss_btn]").removeAttr("disabled");
-			return ;
-		}
-		kill_hai_boss_go();
-		setTimeout(function() {
-			kill_hai_boss();
-		}, 20); // 1000毫秒等于1秒
-	}
-
-
 	let input_jewelry_up_num = 0;
 
 	function jewelry_up_go(dice){
 		const num = $("[input_jewelry_up_num]").val();
 		if(num === null || num === '' || num.trim() ==='' ){
+			jewelry_up(dice);
 			return ;
 		}
 
@@ -271,6 +248,7 @@
 	function jewelry_up(dice){
 		//首饰已经强化到+20啦
 		if(Number($("[jewelry_lv]").attr("jewelry_lv")) === 20 || $("[jewelry_lv]").length === 0){
+			jewelry_up_stop = true;
 			return ;
 		}
 		//获取当前强化等级
@@ -287,10 +265,12 @@
 		//获取强化精炼数据
 		const jewelry_up_obj = jewelry_up_List[jewelry_lv];
 		if(jewelry_up_obj == null){
+			jewelry_up_stop = true;
 			return ;
 		}
 
 		//精炼次数
+		jewelry_up_all_num++;
 		jewelry_up_num++;
 
 		//第一次强化初始值
@@ -308,8 +288,15 @@
 		let randomNum = Math.random().toFixed(10);
 		//是否精炼成功
 		if(randomNum <= jewelry_probability){
+			//成功后统计数据
+			$("[jewelry_all_msg]").prepend(`
+				<div class="col-xs-12">+${jewelry_lv+1}${jewelry_lv >= 9 ? '&nbsp;' : '&nbsp;&nbsp;&nbsp;'}次数:${jewelry_up_num}</div>
+			`);
+
 			//成功后精炼次数清0;
 			jewelry_failure_num =0;
+			//首饰强化次数清0
+			jewelry_up_num=0
 			jewelry_lv++;
 			str+='<div class="col-xs-6" color_green>精炼+'+jewelry_lv+'成功!<br></div>';
 			if(jewelry_lv !== 20){
@@ -356,7 +343,7 @@
 			//成功概率不能大于1
 			jewelry_probability = jewelry_probability >= 1 ? 1 : jewelry_probability;
 
-			str+=`<div class='col-xs-6' color_red>精炼+${jewelry_lv+1}失败!<br></div>`;
+			str+=`<div class='col-xs-6' color_red>精炼+${jewelry_lv+1}失败!</div>`;
 		}
 
 		$("[jewelry_num]").html(jewelry_failure_num);
@@ -365,7 +352,8 @@
 
 		str+=`
 			<div class='col-xs-6'>当前成功率${jewelry_probability}</div><br/>
-			<div class="col-xs-6">强化总次数:${jewelry_up_num}</div><div class="col-xs-6">失败总次数:${jewelry_failure_all_num}</div>
+			<div class="col-xs-6">强化总次数:${jewelry_up_all_num}</div>
+			<div class="col-xs-6">失败总次数:${jewelry_failure_all_num}</div><br/>
 		`;
 		//强化内容
 		$("[jewelry_msg_div]").html(str);
