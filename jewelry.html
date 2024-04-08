@@ -152,7 +152,7 @@
 				return ;
 			}
 			$("[jewelry_list]").append(`
-				<div class="col-xs-4" btn_weapon onclick="get_jewelry(${obj.id})">
+				<div class="col-xs-4" btn_weapon onclick="get_jewelry(${obj.id})" style="text-align: center;">
 					<img src="img/items/${obj.icon}" alt="${obj.name.cns}"><br>
 					<span class="hide">${obj.id}</span><br>
 				</div>
@@ -303,7 +303,7 @@
 
 		let str = '';
 		// 生成一个0到1之间的随机数
-		let randomNum = Math.random().toFixed(10);;
+		let randomNum = Math.random().toFixed(10);
 		//是否精炼成功
 		if(randomNum <= jewelry_probability){
 			//成功后精炼次数清0;
@@ -354,7 +354,7 @@
 			//成功概率不能大于1
 			jewelry_probability = jewelry_probability >= 1 ? 1 : jewelry_probability;
 
-			str+="<div class='col-xs-6' color_red>精炼失败!<br></div>";
+			str+=`<div class='col-xs-6' color_red>精炼+${jewelry_lv+1}失败!<br></div>`;
 		}
 
 		$("[jewelry_num]").html(jewelry_failure_num);
