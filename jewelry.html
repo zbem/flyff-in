@@ -49,14 +49,7 @@
 							<div class="input-group" >
 								<input type="text" class="form-control" placeholder = "强化数字" input_jewelry_up_num  maxlength="2" value="20"  ><br>
 								<div class="input-group-btn open">
-									<img alt="image" class="img-circle" src="img/items/genmatdieeight.png" onclick="jewelry_up_go(8)">
-								</div>
-							</div>
-						</div>
-						<div class="form-group col-sm-6">
-							<div class="input-group" >
-								<input type="text" class="form-control" placeholder = "强化数字" input_jewelry_up_num  maxlength="2" value="20" ><br>
-								<div class="input-group-btn open">
+									<img alt="image" style="padding-right: 10px;" class="img-circle" src="img/items/genmatdieeight.png" onclick="jewelry_up_go(8)">
 									<img alt="image" class="img-circle" src="img/items/genmatdieten.png" onclick="jewelry_up_go(10)">
 								</div>
 							</div>
@@ -343,7 +336,12 @@
 		$("[jewelry_lv]").html(jewelry_lv === 0 ? "" : ("+"+jewelry_lv));
 		$("[jewelry_lv]").attr("jewelry_lv",jewelry_lv);
 
+		let jewelry_probability_str = jewelry_probability*100;
+
+		jewelry_probability_str = parseFloat(jewelry_probability_str).toFixed(5);
+
 		str+=`
+			<div class='col-xs-12'>当前成功率${jewelry_probability_str}%</div>
 			<div class="col-xs-6">强化总次数:${jewelry_up_all_num}</div>
 			<div class="col-xs-6">失败总次数:${jewelry_failure_all_num}</div>
 		`;
