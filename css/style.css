@@ -2,9 +2,8 @@
     float: left !important;
 }
 [img_lv]{
-    padding-left: 3px;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
 }
 
 
@@ -40,14 +39,15 @@
     background-color: #0e0a08;
     border: 2px solid #e8c685 ;
     border-radius: 3px;
-    width: 240px;
+    width: 250px;
 }
 [pet_info]{
     background-color: #e6e0e1;
     border: 2px solid #e8c685 ;
     border-radius: 3px;
-    width: 285px;
+    width: 260px;
     padding-top: 0;
+    padding-bottom: 0;
 }
 /* 定义自定义光标样式 */
 /* 如果浏览器不支持自定义光标，将使用 'auto' 作为备用 */
