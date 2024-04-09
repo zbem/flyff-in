@@ -105,6 +105,15 @@
 	<img img_lv img_lv_7 src="img/pet/等级7.png" alt="7">
 	<img img_lv img_lv_8 src="img/pet/等级8.png" alt="8">
 	<img img_lv img_lv_9 src="img/pet/等级9.png" alt="9">
+	<img style="width: 80px; height: 70px;" alt="兔子" img_兔子 src="img/pet/兔子.png">
+	<img style="width: 80px; height: 70px;" alt="天使" img_天使 src="img/pet/天使.png">
+	<img style="width: 80px; height: 70px;" alt="帝王蟹" img_帝王蟹 src="img/pet/帝王蟹.png">
+	<img style="width: 80px; height: 70px;" alt="狐狸" img_狐狸 src="img/pet/狐狸.png">
+	<img style="width: 80px; height: 70px;" alt="独角兽" img_独角兽 src="img/pet/独角兽.png">
+	<img style="width: 80px; height: 70px;" alt="狮子" img_狮子 src="img/pet/狮子.png">
+	<img style="width: 80px; height: 70px;" alt="狮鹫兽" img_狮鹫兽 src="img/pet/狮鹫兽.png">
+	<img style="width: 80px; height: 70px;" alt="老虎" img_老虎 src="img/pet/老虎.png">
+	<img style="width: 80px; height: 70px;" alt="飞龙" img_飞龙 src="img/pet/飞龙.png">
 </div>
 
 <!-- 全局js -->
@@ -130,7 +139,6 @@
 
 	//一键献祭
 	function one_pet(){
-		$("[pet_btn]").attr("disabled",true);
 		//孵化宠
 		incubate();
 		//宠物升级
@@ -148,7 +156,6 @@
 		if(pet_up_stop && sacrifice_stop){
 			sacrifice_stop = false;
 			pet_up_stop = false;
-			$("[pet_btn]").removeAttr("disabled");
 			return ;
 		}
 
@@ -159,15 +166,13 @@
 		}
 		//献祭
 		sacrifice();
-		setTimeout(function() {
-			sacrifice_go();
-		}, 20); // 1000毫秒等于1秒
+		sacrifice_go();
 	}
-
 
 	//孵化蛋
 	function incubate(){
 		$("[txt_div]").html("");
+		$("[pet_msg_div]").html("");
 		//献祭次数清0
 		pet_num = 0;
 		//随机数组中的值
@@ -176,12 +181,14 @@
 		now_pet = pet;
 
 		const img_html = $("[img_lv_1]")[0].outerHTML;
+
+		const pte_img = $(`[img_${pet.name}]`)[0].outerHTML;
 		let str = `
 			<div class="col-xs-12">
 				<div class="alert alert-info" pet_info  pet_lv="0" >
 					<div class="row">
 						<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
-						<div class="col-xs-5" ><img src="img/pet/${pet.name}.png" style="width: 80px; height: 70px;" alt="${pet.name}"></div>
+						<div class="col-xs-5" >${pte_img}</div>
 						<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>
 						<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
 					</div><br>
