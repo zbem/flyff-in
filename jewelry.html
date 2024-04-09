@@ -288,7 +288,7 @@
 			//首饰强化次数清0
 			jewelry_up_num=0
 			jewelry_lv++;
-			str+='<div class="col-xs-12" color_green>精炼+'+jewelry_lv+'成功!<br></div>';
+			str+='<div class="col-xs-6" color_green>精炼+'+jewelry_lv+'成功!<br></div>';
 			if(jewelry_lv !== 20){
 				//成功后重置概率
 				if(parseInt(dice) === 8){
@@ -333,7 +333,7 @@
 			//成功概率不能大于1
 			jewelry_probability = jewelry_probability >= 1 ? 1 : jewelry_probability;
 
-			str+=`<div class='col-xs-12' color_red>精炼+${jewelry_lv+1}失败!</div>`;
+			str+=`<div class='col-xs-6' color_red>精炼+${jewelry_lv+1}失败!</div>`;
 		}
 
 		$("[jewelry_num]").html(jewelry_failure_num);
@@ -344,7 +344,7 @@
 		jewelry_probability_str = parseFloat(jewelry_probability_str).toFixed(5);
 
 		str+=`
-			<div class='col-xs-12'>当前成功率${jewelry_probability_str}%</div>
+			<div class='col-xs-6'>当前成功率${jewelry_probability_str}%</div>
 			<div class="col-xs-6">强化总次数:${jewelry_up_all_num}</div>
 			<div class="col-xs-6">失败总次数:${jewelry_failure_all_num}</div>
 		`;
