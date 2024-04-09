@@ -74,19 +74,6 @@
 				</div>
 				<div class="ibox-content">
 					<div pet_msg_div class="row"></div>
-				</div>
-			</div>
-
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>宠物成果</h5>
-					<div class="ibox-tools">
-						<a class="collapse-link">
-							<i class="fa fa-chevron-up"></i>
-						</a>
-					</div>
-				</div>
-				<div class="ibox-content">
 					<div txt_div class="row"></div>
 				</div>
 			</div>
@@ -184,17 +171,15 @@
 
 		const pte_img = $(`[img_${pet.name}]`)[0].outerHTML;
 		let str = `
-			<div class="col-xs-12">
-				<div class="alert alert-info" pet_info  pet_lv="0" >
-					<div class="row">
-						<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
-						<div class="col-xs-5" >${pte_img}</div>
-						<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>
-						<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
-					</div><br>
-					<div class="row">
-						<div pet_img_div><label lv_f级 pet_val="${pet.value}">${img_html}<br>+${pet.value}${pet.cur}</label></div>
-					</div>
+			<div class="alert alert-info" pet_info  pet_lv="0" >
+				<div class="row">
+					<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
+					<div class="col-xs-5" >${pte_img}</div>
+					<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>
+					<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
+				</div><br>
+				<div class="row">
+					<div pet_img_div><label lv_f级 pet_val="${pet.value}">${img_html}<br>+${pet.value}${pet.cur}</label></div>
 				</div>
 			</div>
 		`;
