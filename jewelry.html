@@ -274,9 +274,13 @@
 		let randomNum = Math.random().toFixed(10);
 		//是否精炼成功
 		if(randomNum <= jewelry_probability){
+
+			let jewelry_probability_str = jewelry_probability*100;
+			jewelry_probability_str = parseFloat(jewelry_probability_str).toFixed(5);
 			//成功后统计数据
 			$("[jewelry_all_msg]").prepend(`
-				<div class="col-xs-12">+${jewelry_lv+1}${jewelry_lv >= 9 ? '&nbsp;' : '&nbsp;&nbsp;&nbsp;'}次数:${jewelry_up_num}</div>
+				<div class="col-xs-6">+${jewelry_lv+1}${jewelry_lv >= 9 ? '&nbsp;' : '&nbsp;&nbsp;&nbsp;'}次数:${jewelry_up_num}</div>
+				<div class="col-xs-6">概率:${jewelry_probability_str}%</div>
 			`);
 
 			//成功后精炼次数清0;
@@ -337,7 +341,6 @@
 		$("[jewelry_lv]").attr("jewelry_lv",jewelry_lv);
 
 		let jewelry_probability_str = jewelry_probability*100;
-
 		jewelry_probability_str = parseFloat(jewelry_probability_str).toFixed(5);
 
 		str+=`
