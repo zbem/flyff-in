@@ -719,7 +719,7 @@
 			"job": "战士",
 			"attackSpeed": "非常快",
 			"type": "单手武器",
-			"imgUrl": "img/珊瑚短剑.png",
+			"imgUrl": "img/weapon/珊瑚短剑.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 490, "max": 590, fixed: 10, cur: "%"},
@@ -762,7 +762,7 @@
 			"job": "战士",
 			"attackSpeed": "非常快",
 			"type": "单手武器",
-			"imgUrl": "img/卢萨卡的水晶剑.png",
+			"imgUrl": "img/weapon/卢萨卡的水晶剑.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 530, "max": 630, fixed: 10, cur: "%"},
@@ -805,7 +805,7 @@
 			"job": "战士",
 			"attackSpeed": "非常快",
 			"type": "单手武器",
-			"imgUrl": "img/卢萨卡之剑.png",
+			"imgUrl": "img/weapon/卢萨卡之剑.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "增加HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
@@ -848,7 +848,7 @@
 			"job": "战士",
 			"attackSpeed": "慢",
 			"type": "双手武器",
-			"imgUrl": "img/潮汐双手剑.png",
+			"imgUrl": "img/weapon/潮汐双手剑.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 590, "max": 690, fixed: 10, cur: "%"},
@@ -890,7 +890,7 @@
 			"job": "战士",
 			"attackSpeed": "慢",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡的水晶巨剑.png",
+			"imgUrl": "img/weapon/卢萨卡的水晶巨剑.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 620, "max": 720, fixed: 10, cur: "%"},
@@ -932,7 +932,7 @@
 			"job": "战士",
 			"attackSpeed": "慢",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡巨剑.png",
+			"imgUrl": "img/weapon/卢萨卡巨剑.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 28, "max": 35, fixed: 1, cur: "%"},
@@ -975,7 +975,7 @@
 			"job": "战士",
 			"attackSpeed": "通用",
 			"type": "单手武器",
-			"imgUrl": "img/潮汐单手斧.png",
+			"imgUrl": "img/weapon/潮汐单手斧.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 530, "max": 630, fixed: 10, cur: "%"},
@@ -1018,7 +1018,7 @@
 			"job": "战士",
 			"attackSpeed": "通用",
 			"type": "单手武器",
-			"imgUrl": "img/卢萨卡的水晶斧.png",
+			"imgUrl": "img/weapon/卢萨卡的水晶斧.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 550, "max": 650, fixed: 10, cur: "%"},
@@ -1061,7 +1061,7 @@
 			"job": "战士",
 			"attackSpeed": "通用",
 			"type": "单手武器",
-			"imgUrl": "img/卢萨卡之斧.png",
+			"imgUrl": "img/weapon/卢萨卡之斧.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 20, "max": 25, fixed: 1, cur: "%"},
@@ -1104,7 +1104,7 @@
 			"job": "战士",
 			"attackSpeed": "非常慢",
 			"type": "双手武器",
-			"imgUrl": "img/潮汐双手斧.png",
+			"imgUrl": "img/weapon/潮汐双手斧.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 520, "max": 620, fixed: 10, cur: "%"},
@@ -1146,7 +1146,7 @@
 			"job": "战士",
 			"attackSpeed": "非常慢",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡的水晶巨斧.png",
+			"imgUrl": "img/weapon/卢萨卡的水晶巨斧.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 550, "max": 650, fixed: 10, cur: "%"},
@@ -1189,7 +1189,7 @@
 			"job": "战士",
 			"attackSpeed": "非常慢",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡巨斧.png",
+			"imgUrl": "img/weapon/卢萨卡巨斧.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 28, "max": 35, fixed: 1, cur: "%"},
@@ -1232,7 +1232,7 @@
 			"job": "弓箭手",
 			"attackSpeed": "快速",
 			"type": "双手武器",
-			"imgUrl": "img/潮汐溜溜球.png",
+			"imgUrl": "img/weapon/潮汐溜溜球.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 540, "max": 640, fixed: 10, cur: "%"},
@@ -1272,7 +1272,7 @@
 			"job": "弓箭手",
 			"attackSpeed": "快速",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡的水晶飞轮.png",
+			"imgUrl": "img/weapon/卢萨卡的水晶飞轮.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 570, "max": 670, fixed: 10, cur: "%"},
@@ -1312,7 +1312,7 @@
 			"job": "弓箭手",
 			"attackSpeed": "快速",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡飞轮.png",
+			"imgUrl": "img/weapon/卢萨卡飞轮.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
@@ -1352,7 +1352,7 @@
 			"job": "弓箭手",
 			"attackSpeed": "快速",
 			"type": "双手武器",
-			"imgUrl": "img/潮汐弓.png",
+			"imgUrl": "img/weapon/潮汐弓.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 550, "max": 650, fixed: 10, cur: "%"},
@@ -1393,7 +1393,7 @@
 			"job": "弓箭手",
 			"attackSpeed": "快速",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡的水晶弓.png",
+			"imgUrl": "img/weapon/卢萨卡的水晶弓.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 580, "max": 680, fixed: 10, cur: "%"},
@@ -1434,7 +1434,7 @@
 			"job": "弓箭手",
 			"attackSpeed": "快速",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡之弓.png",
+			"imgUrl": "img/weapon/卢萨卡之弓.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
@@ -1475,7 +1475,7 @@
 			"job": "魔导士",
 			"attackSpeed": "慢",
 			"type": "双手武器",
-			"imgUrl": "img/潮汐法杖.png",
+			"imgUrl": "img/weapon/潮汐法杖.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "全元素精通", "min": 18, "max": 23, fixed: 1, cur: "%"},
@@ -1524,7 +1524,7 @@
 			"job": "魔导士",
 			"attackSpeed": "慢",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡的水晶法杖.png",
+			"imgUrl": "img/weapon/卢萨卡的水晶法杖.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "全元素精通", "min": 20, "max": 25, fixed: 1, cur: "%"},
@@ -1573,7 +1573,7 @@
 			"job": "魔导士",
 			"attackSpeed": "慢",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡法杖.png",
+			"imgUrl": "img/weapon/卢萨卡法杖.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
@@ -1622,7 +1622,7 @@
 			"job": "魔导士",
 			"attackSpeed": "非常慢",
 			"type": "单手武器",
-			"imgUrl": "img/潮汐魔杖.png",
+			"imgUrl": "img/weapon/潮汐魔杖.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "攻击力", "min": 15, "max": 20, fixed: 1, cur: "%"},
@@ -1667,7 +1667,7 @@
 			"job": "魔导士",
 			"attackSpeed": "非常慢",
 			"type": "单手武器",
-			"imgUrl": "img/卢萨卡的水晶魔杖.png",
+			"imgUrl": "img/weapon/卢萨卡的水晶魔杖.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "攻击力", "min": 17, "max": 22, fixed: 1, cur: "%"},
@@ -1712,7 +1712,7 @@
 			"job": "魔导士",
 			"attackSpeed": "非常慢",
 			"type": "单手武器",
-			"imgUrl": "img/卢萨卡魔杖.png",
+			"imgUrl": "img/weapon/卢萨卡魔杖.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
@@ -1757,7 +1757,7 @@
 			"job": "圣职者",
 			"attackSpeed": "通用",
 			"type": "双手武器",
-			"imgUrl": "img/潮汐魔棒.png",
+			"imgUrl": "img/weapon/潮汐魔棒.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "攻击力", "min": 10, "max": 15, fixed: 1, cur: "%"},
@@ -1795,7 +1795,7 @@
 			"job": "圣职者",
 			"attackSpeed": "通用",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡的水晶魔棒.png",
+			"imgUrl": "img/weapon/卢萨卡的水晶魔棒.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "攻击力", "min": 12, "max": 17, fixed: 1, cur: "%"},
@@ -1833,7 +1833,7 @@
 			"job": "圣职者",
 			"attackSpeed": "通用",
 			"type": "双手武器",
-			"imgUrl": "img/卢萨卡魔棒.png",
+			"imgUrl": "img/weapon/卢萨卡魔棒.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
@@ -1872,7 +1872,7 @@
 			"job": "圣职者",
 			"attackSpeed": "快速",
 			"type": "单手武器",
-			"imgUrl": "img/潮汐拳套.png",
+			"imgUrl": "img/weapon/潮汐拳套.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 480, "max": 580, fixed: 10, cur: "%"},
@@ -1914,7 +1914,7 @@
 			"job": "圣职者",
 			"attackSpeed": "快速",
 			"type": "单手武器",
-			"imgUrl": "img/卢萨卡的水晶拳.png",
+			"imgUrl": "img/weapon/卢萨卡的水晶拳.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。。",
 			"list": [
 				{"name": "暴击伤害", "min": 550, "max": 650, fixed: 10, cur: "%"},
@@ -1957,7 +1957,7 @@
 			"job": "圣职者",
 			"attackSpeed": "快速",
 			"type": "单手武器",
-			"imgUrl": "img/卢萨卡之拳.png",
+			"imgUrl": "img/weapon/卢萨卡之拳.png",
 			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
