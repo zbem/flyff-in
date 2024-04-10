@@ -1627,7 +1627,7 @@
 			"list": [
 				{"name": "攻击力", "min": 15, "max": 20, fixed: 1, cur: "%"},
 				{"name": "释法速度", "min": 23, "max": 28, fixed: 1, cur: "%"},
-				{"name": "智力", "min": 23, "max": 28, cur: ""},
+				{"name": "智力", "min": 23, "max": 28, fixed: 1,cur: ""},
 				{"name": "水炸弹概率", "min": 4, "max": 9, fixed: 1, cur: "%"},
 			],
 			"uList": [
@@ -1915,7 +1915,7 @@
 			"attackSpeed": "快速",
 			"type": "单手武器",
 			"imgUrl": "img/weapon/卢萨卡的水晶拳.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。。",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "暴击伤害", "min": 550, "max": 650, fixed: 10, cur: "%"},
 				{"name": "暴击", "min": 290, "max": 350, fixed: 10, cur: "%"},
@@ -1958,7 +1958,7 @@
 			"attackSpeed": "快速",
 			"type": "单手武器",
 			"imgUrl": "img/weapon/卢萨卡之拳.png",
-			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。。",
+			"description": "在荒野中发现的制作精良的武器。它充满了力量。国人首把卢萨卡武器由小熊公会团队获得。",
 			"list": [
 				{"name": "最大HP", "min": 25, "max": 30, fixed: 1, cur: "%"},
 				{"name": "体质", "min": 25, "max": 30, fixed: 1, cur: ""},
@@ -2107,8 +2107,6 @@
 	let weapon_up_num=0;
 	//抽取幸运礼盒次数
 	let lucky_box_num=0;
-	//唤醒属性次数
-	let attribute_num=0;
 	//low基础数字
 	let low_num = 7;
 	//当前唤醒值
