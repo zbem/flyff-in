@@ -2119,8 +2119,6 @@
 	let weapon_up_num=0;
 	//抽取幸运礼盒次数
 	let lucky_box_num=0;
-	//low基础数字
-	let low_num = 7;
 	//当前唤醒值
 	let now_attribute;
 	//成功概率

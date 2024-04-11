@@ -64,17 +64,22 @@
 
 						<div class="feed-element">
 							<div class="media-body ">
-								<img alt="image"  src="img/items/syssysscrsmepro2.png">
-								<button class="btn btn-success" weapon_up onclick="weapon_low_up()" >low7</button>
-								<img alt="image"  src="img/items/syssysscrsmepro.png">
-								<button class="btn btn-success" weapon_up onclick="weapon_up()" >防暴</button>
-
+								<div class="form-group col-sm-3">
+									<div class="input-group" >
+										<input type="text" class="form-control" placeholder = "强化数字" input_weapon_up_num  maxlength="2" value="7"  ><br>
+										<div class="input-group-btn open">
+											<img alt="image"  src="img/items/syssysscrsmepro2.png" weapon_up onclick="weapon_low_up()">
+										</div>
+									</div>
+								</div>
 <!--								<img alt="image"  src="img/items/syssysscrpiepro.png">-->
 <!--								<button class="btn btn-success" weapon_up onclick="weapon_low_up()" >穿洞</button>-->
 							</div>
 						</div>
 						<div class="feed-element">
 							<div class="media-body ">
+								<img alt="image"  src="img/items/syssysscrsmepro.png">
+								<button class="btn btn-success" weapon_up onclick="weapon_up()" >防暴</button>
 								<img alt="image"  src="img/items/genmatorichalcum02.png">
 								<button class="btn btn-success" weapon_up  onclick="up_u_weapon()" >升U</button>
 								<img alt="image"  src="img/items/scrollskillawake.png">
@@ -422,16 +427,22 @@
 	}
 
 	function weapon_low_up(){
+		const low_num = $("[input_weapon_up_num]").val();
+		if(low_num === null || low_num === '' || low_num.trim() ==='' ){
+			$("[txt_div]").html(`<div class="col-xs-12">请输入强化等级!</div>`);
+			return ;
+		}
+
 		$("[weapon_up]").attr("disabled",true);
 		if(weapon_low_up_stop){
 			weapon_low_up_stop = false;
 			$("[weapon_up]").removeAttr("disabled");
 			return ;
 		}
+
 		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) !== 10){
 			$("[txt_div]").html("");
 		}
-
 		weapon_low_up_go(low_num);
 		setTimeout(function() {
 			weapon_low_up();
@@ -442,6 +453,7 @@
 		//武器已经强化到+10啦
 		if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) === 10 || $("[weapon_up_lv]").length === 0){
 			weapon_low_up_stop=true;
+			$("[txt_div]").html(`<div class="col-xs-12">没有选择武器!</div>`);
 			return ;
 		}
 
