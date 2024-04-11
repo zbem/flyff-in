@@ -1,3 +1,6 @@
+[operation_div] button{
+    width: 111px;
+}
 [float_left]{
     float: left !important;
 }

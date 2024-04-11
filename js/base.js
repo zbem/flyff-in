@@ -72,12 +72,12 @@
 	const show_now_data={
 		"name":"Shadow_Hunter",
 		"list":[
-			{"name":"Shadow Hunter 10% Black_Set",  "open_num":0,"color":"blue",    "url":"Shadow_Hunter_10_Black_Set",   "probability":0.05},
-			{"name":"Shadow Hunter 8% Grey_Set",    "open_num":0,"color":"red",     "url":"Shadow_Hunter_8_Grey_Set",     "probability":0.10},
-			{"name":"Shadow Hunter 6% Purple_Set",  "open_num":0,"color":"green",   "url":"Shadow_Hunter_6_Purple_Set",   "probability":0.15},
-			{"name":"Shadow Hunter 2% Green_Set",   "open_num":0,"color":"purple",  "url":"Shadow_Hunter_2_Green_Set",    "probability":0.2},
-			{"name":"Shadow Hunter 2% Blue_Set",    "open_num":0,"color":"#FFD700", "url":"Shadow_Hunter_2_Blue_Set",     "probability":0.2},
-			{"name":"Shadow Hunter 4% Burgundy_Set","open_num":0,"color":"pink",    "url":"Shadow_Hunter_4_Burgundy_Set", "probability":0.3}
+			{"name":"Shadow Hunter 10% Black Set",  "open_num":0,"color":"black", "url":"Shadow_Hunter_10_Black_Set",   "probability":0.05},
+			{"name":"Shadow Hunter 8% Grey Set",    "open_num":0,"color":"black", "url":"Shadow_Hunter_8_Grey_Set",     "probability":0.10},
+			{"name":"Shadow Hunter 6% Purple Set",  "open_num":0,"color":"black", "url":"Shadow_Hunter_6_Purple_Set",   "probability":0.15},
+			{"name":"Shadow Hunter 2% Green Set",   "open_num":0,"color":"black", "url":"Shadow_Hunter_2_Green_Set",    "probability":0.2},
+			{"name":"Shadow Hunter 2% Blue Set",    "open_num":0,"color":"black", "url":"Shadow_Hunter_2_Blue_Set",     "probability":0.2},
+			{"name":"Shadow Hunter 4% Burgundy Set","open_num":0,"color":"black", "url":"Shadow_Hunter_4_Burgundy_Set", "probability":0.3}
 		],
 	}
 

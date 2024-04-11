@@ -22,9 +22,9 @@
 						</a>
 					</div>
 				</div>
-				<div class="ibox-content">
+				<div class="ibox-content" operation_div>
 					<div class="feed-element">
-						<div class="form-group col-sm-3">
+						<div class="form-group col-sm-4">
 							<div class="input-group" >
 								<input type="text" class="form-control" placeholder = "数字" input_box_money_3 value="20元" style="min-width: 50px;" ><br>
 								<div class="input-group-btn open">
@@ -32,7 +32,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group col-sm-3">
+						<div class="form-group col-sm-4">
 							<div class="input-group" >
 								<input type="text" class="form-control" placeholder = "数字" input_box_money_4 value="25元" style="min-width: 50px;" ><br>
 								<div class="input-group-btn open">
@@ -40,7 +40,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group col-sm-3">
+						<div class="form-group col-sm-4">
 							<div class="input-group" >
 								<input type="text" class="form-control" placeholder = "数字" input_box_money_5 value="35元" style="min-width: 50px;" ><br>
 								<div class="input-group-btn open">
@@ -48,7 +48,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group col-sm-3">
+						<div class="form-group col-sm-4">
 							<div class="input-group" >
 								<input type="text" class="form-control" placeholder = "数字" input_box_money_2 value="30元" style="min-width: 50px;" ><br>
 								<div class="input-group-btn open">
@@ -56,7 +56,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group col-sm-3">
+						<div class="form-group col-sm-4">
 							<div class="input-group" >
 								<input type="text" class="form-control" placeholder = "数字" input_box_money_1 value="80元" style="min-width: 50px;" ><br>
 								<div class="input-group-btn open">
@@ -64,7 +64,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group col-sm-3">
+						<div class="form-group col-sm-4">
 							<div class="input-group" >
 								<input type="text" class="form-control" placeholder = "数字" input_box_money_0 value="220元" style="min-width: 50px;" ><br>
 								<div class="input-group-btn open">
@@ -72,14 +72,47 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group col-sm-3">
-							<img alt="image" class="img-circle" src="img/items/syssysscrbxluck.png">
-							<button class="btn btn-success" onclick="lucky_box()" >本期时装</button><br>
-						</div>
 					</div>
 				</div>
 			</div>
 
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>时装销售区</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div show_txt_div class="row"></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+
+		<div class="col-sm-6" >
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>幸运礼盒</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<img alt="image" class="img-circle" src="img/items/syssysscrbxluck.png">
+						<button class="btn btn-success" onclick="lucky_box()" >本期时装</button>
+					</div>
+				</div>
+			</div>
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>成果</h5>
@@ -94,10 +127,6 @@
 				</div>
 			</div>
 
-			<div class="ibox float-e-margins"></div>
-		</div>
-
-		<div class="col-sm-6">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>消息</h5>
@@ -170,16 +199,19 @@
 
 		const show_money = $(`[input_box_money_${index}]`).val();
 
-		$("[txt_div]").prepend(`
-			<div class="row">
-				<div class="col-xs-12">
-					<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">
-					<span style="font-weight: bold; color: ${data.color}">${data.name}</span><span style="padding-left:10px;color: red;font-size: 20px;font-weight: bold; ">${show_money}</span>
-					<br>
-					<img src="img/show/${show_now_data.name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-					<img src="img/show/${show_now_data.name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
-					<img src="img/show/${show_now_data.name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-					<img src="img/show/${show_now_data.name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}"><br>
+		$("[show_txt_div]").prepend(`
+			<div class="col-xs-6">
+				<div style="border: 1px #e7eaec solid;margin-bottom: 10px">
+					<div style="text-align: center;">
+						<span style="font-weight: bold; color: ${data.color}">${data.name}</span>&nbsp;
+						<span style="color: red;font-size: 20px;font-weight: bold; ">${show_money}</span>
+					</div>
+					<div style="text-align: center">
+						<img src="img/show/${show_now_data.name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${show_now_data.name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${show_now_data.name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${show_now_data.name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+					</div>
 				</div>
 			</div>
 		`);
