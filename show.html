@@ -118,7 +118,9 @@
 							<div class="input-group" >
 								<input type="text" class="form-control" placeholder = "数字" input_box_money_0 value="220元" style="min-width: 50px;" ><br>
 								<div class="input-group-btn open">
-									<button class="btn btn-success" onclick="show_img(0)" >10速黑色时装</button>
+									<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-success" onclick="show_img(0)" >
+										10速黑色时装
+									</button>
 								</div>
 							</div>
 						</div>
@@ -211,12 +213,12 @@
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_2_Green_Set/2.png">
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_4_Burgundy_Set/1.png">
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_4_Burgundy_Set/2.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_6_Purple_Set/2.png">
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_6_Purple_Set/1.png">
+	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_6_Purple_Set/2.png">
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_8_Grey_Set/1.png">
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_8_Grey_Set/2.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_10_Black_Set/2.png">
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_10_Black_Set/1.png">
+	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_10_Black_Set/2.png">
 </div>
 
 <!-- 全局js -->
@@ -281,7 +283,9 @@
 
 	function color_price_input(){
 		const g_price = Number($("[g_price]").val().replace(/,/g, ''));
-		if(g_price >= 100000000){
+		if(g_price >= 1000000000){
+			$("[g_price]").attr("style","color:#990099");
+		}else if(g_price >= 100000000){
 			$("[g_price]").attr("style","color:red");
 		} else if(g_price >= 10000000){
 			$("[g_price]").attr("style","color:#f78936");
