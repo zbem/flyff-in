@@ -1,0 +1,142 @@
+[operation_div] button{
+    width: 111px;
+}
+[float_left]{
+    float: left !important;
+}
+[img_lv]{
+    width: 35px;
+    height: 35px;
+}
+
+
+[color_white]{
+    color: white;
+}
+
+[color_green]{
+    color: green;
+}
+[color_red]{
+    color: red;
+}
+[weapon_u_color]{
+    color: #8007f7;
+}
+[btn_weapon]{
+    margin:10px 0;
+}
+
+[jewelry_div] img{
+    margin-bottom: 5px;
+}
+
+[jewelry_div]{
+    background-color: #0e0a08;
+    border: 2px solid #e8c685 ;
+    border-radius: 15px;
+    width: 231px;
+}
+
+[bb_info]{
+    background-color: #0e0a08;
+    border: 2px solid #e8c685 ;
+    border-radius: 3px;
+    width: 250px;
+}
+[pet_info]{
+    background-color: #e6e0e1;
+    border: 2px solid #e8c685 ;
+    border-radius: 3px;
+    width: 260px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+/* 定义自定义光标样式 */
+/* 如果浏览器不支持自定义光标，将使用 'auto' 作为备用 */
+.custom-cursor {
+    cursor: url('../img/mouse.png'), auto;
+}
+
+body{
+    background: #000;
+}
+[right_msg_div]{
+    color: #ffffff;
+}
+[pet_img_div] label{
+    text-align: center;
+}
+[pet_msg_div]{
+    padding-bottom: 10px;
+}
+.image-frame {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 2px solid #e8c685 ;
+    background-color: #0e0a08;
+}
+
+.image-frame img {
+    margin: 10px 120px 0 120px;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: block;
+    height: auto;
+    border: 1px solid #e8c685 ;
+    border-radius: 3px;
+}
+
+[weapon_roll_text]{
+    border-top: 1px solid #e8c685 ;
+    border-radius: 5px;
+    text-align: center;
+    color: #ffffff;
+}
+
+[weapon_roll_text] span{
+    padding: 0 5px;
+    color: #3a4459;
+    font-size: 30px;
+}
+
+[weapon_top_text],[jewelry_top_text]{
+    text-align: center;
+    color: #ffffff;
+}
+
+[weapon_top_text],[jewelry_top_text]{
+    text-align: center;
+    color: #ffffff;
+}
+[weapon_bottom_text]{
+    text-align: center;
+    color: #f0ad4e;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+[weapon_remark_text]{
+    text-align: center;
+    color: #f0ad4e;
+    font-size: 12px;
+}
+
+[weapon_num_text]{
+    text-align: center;
+    color: #f0ad4e;
+    font-size: 12px;
+}
+
+[weapon_btn_text]{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+[weapon_btn_text] button{
+    background-color: #0e0a08;
+    color: #FFFFFF;
+}

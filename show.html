@@ -6,11 +6,13 @@
 </head>
 
 <link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
-<link href="css/style.css?v=202404020006" rel="stylesheet" type="text/css">
 <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
+<link href="css/plugins/chosen/chosen.css" rel="stylesheet">
+<link href="css/style.css?v=4.1.0" rel="stylesheet">
+
 <body class="gray-bg">
-<div class="wrapper wrapper-content">
+<div class="wrapper wrapper-content animated fadeInRight">
 	<div class="row">
 		<div class="col-sm-6">
 			<div class="ibox float-e-margins">
@@ -24,35 +26,33 @@
 				</div>
 				<div class="ibox-content">
 					<div class="row">
-						<div class="form-group col-sm-12">
-							<div class="input-group m-b">
-								<span class="input-group-addon" style="width: 81px;">金币比例:</span>
-								<input type="text" class="form-control" placeholder = "数字" value="0.00000025" now_g_price onblur="init_input_price()">
-								<span class="input-group-addon" style="width: 81px;">钻比例:</span>
-								<input type="text" class="form-control" placeholder = "数字" value="0.052" now_f_price onblur="init_input_price()">
-							</div>
-						</div>
-					</div>
-					<div class="row">
+						<div class="col-sm-6">金币比例:</div>
+						<div class="col-sm-6">钻比例:</div>
 						<div class="form-group col-sm-6">
+							<select data-placeholder="请选择比例..." class="chosen-select col-xs-12" value="25" now_g_price onchange="init_input_price()">
+								<option value="">请选择比例</option>
+							</select>
+						</div>
+						<div class="form-group col-sm-6">
+							<select data-placeholder="请选择比例..." class="chosen-select col-xs-12" now_f_price onchange="init_input_price()">
+								<option value="">请选择比例</option>
+							</select>
+						</div>
+						<div class="form-group col-sm-12">
 							<div class="input-group m-b">
 								<span class="input-group-addon" style="width: 81px;" >金币:</span>
 								<input type="text" class="form-control" placeholder = "数字" value="100,000,000"  style="color: red" g_price onblur="g_input_price()">
 								<span class="input-group-addon">个</span>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-12">
 							<div class="input-group m-b">
 								<span class="input-group-addon" style="width: 81px;" >人民币:</span>
 								<input type="text" class="form-control" placeholder = "数字" value="25" r_price onblur="r_input_price()">
 								<span class="input-group-addon">元</span>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-12">
 							<div class="input-group m-b">
 								<span class="input-group-addon" style="width: 81px;">钻石:</span>
 								<input type="text" class="form-control" placeholder = "数字" value="481" f_price onblur="f_input_price()">
@@ -224,6 +224,9 @@
 <script src="js/bootstrap.min.js?v=3.3.6"></script>
 <script src="js/base.js?v=202404111603"></script>
 
+<!-- Chosen -->
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
 <!-- 自定义js -->
 <script src="js/content.js?v=1.0.0"></script>
 <!-- jQuery UI -->
@@ -239,7 +242,34 @@
 
 		// 如果你想在某个特定元素上更改鼠标图标，可以这样做：
 		$('[btn_weapon]').addClass('custom-cursor');
+
+		const config = {
+			'.chosen-select': {},
+			'.chosen-select-deselect': {
+				allow_single_deselect: true
+			},
+			'.chosen-select-no-single': {
+				disable_search_threshold: 10
+			},
+			'.chosen-select-no-results': {
+				no_results_text: 'Oops, nothing found!'
+			},
+			'.chosen-select-width': {
+				width: "95%"
+			}
+		};
+		for (const selector in config) {
+			$(selector).chosen(config[selector]);
+		}
 	});
+
+	for(let i = 1 ; i <= 100 ; i++){
+		$("[now_g_price]").append(`<option ${i===25 ?'selected':''} value="${i}" hassubinfo="true">${i}</option>`);
+		$("[now_f_price]").append(`<option ${i===52 ?'selected':''}  value="${i}" hassubinfo="true">${i}</option>`);
+	}
+
+	$("[g_checked]").click();
+	$("[f_checked]").click();
 
 	function formatNumberWithCommas(num) {
 		return Number(num).toLocaleString('en-US', {
@@ -261,21 +291,36 @@
 			$("[g_price]").removeAttr("style");
 		}
 	}
+
+	function get_now_g_price(){
+		//当前金价
+		let now_g_price = $("[now_g_price]").val();
+		//亿比例
+		return now_g_price/100000000;
+	}
+	function get_now_f_price(){
+		//当前金价
+		let now_f_price = $("[now_f_price]").val();
+		//千比例
+		return now_f_price/1000;
+	}
+
 	function init_input_price(){
 		//当前金价
-		const now_g_price = $("[now_g_price]").val();
+		let now_g_price = get_now_g_price();
 		//当前钻价
-		const now_f_price = $("[now_f_price]").val();
+		const now_f_price = get_now_f_price();
 		//元
 		const r_price = Number($("[r_price]").val().replace(/,/g, ''));
 		//金币
 		const g_price = Number($("[g_price]").val().replace(/,/g, ''));
+
 		//钻
 		const f_price = Number($("[f_price]").val().replace(/,/g, ''));
 		$("[r_price]").val(formatNumberWithCommas(r_price));
 
 		//计算金币
-		let new_g_price = parseFloat(r_price) / parseFloat(now_g_price);
+		let new_g_price = parseFloat(g_price) / parseFloat(now_g_price);
 		new_g_price = new_g_price.toFixed(0);
 		$("[g_price]").val(formatNumberWithCommas(new_g_price));
 
@@ -287,12 +332,11 @@
 		color_price_input();
 	}
 
-
 	function g_input_price(){
 		//当前金价
-		const now_g_price = $("[now_g_price]").val();
+		let now_g_price = get_now_g_price();
 		//当前钻价
-		const now_f_price = $("[now_f_price]").val();
+		const now_f_price = get_now_f_price();
 		//金币
 		const g_price = Number($("[g_price]").val().replace(/,/g, ''));
 
@@ -301,13 +345,8 @@
 		new_r_price = new_r_price.toFixed(2);
 		$("[r_price]").val(formatNumberWithCommas(new_r_price));
 
-		//计算金币
-		let new_g_price = parseFloat(r_price) / parseFloat(now_g_price);
-		new_g_price = new_g_price.toFixed(0);
-		$("[g_price]").val(formatNumberWithCommas(new_g_price));
-
 		//计算钻
-		let new_f_price = parseFloat(r_price) / parseFloat(now_f_price);
+		let new_f_price = parseFloat(new_r_price) / parseFloat(now_f_price);
 		new_f_price = new_f_price.toFixed(0);
 		$("[f_price]").val(formatNumberWithCommas(new_f_price));
 
@@ -317,9 +356,9 @@
 
 	function f_input_price(){
 		//当前金价
-		const now_g_price = $("[now_g_price]").val();
+		let now_g_price = get_now_g_price();
 		//当前钻价
-		const now_f_price = $("[now_f_price]").val();
+		const now_f_price = get_now_f_price();
 		//钻
 		const f_price = Number($("[f_price]").val().replace(/,/g, ''));
 
@@ -338,9 +377,9 @@
 
 	function r_input_price(){
 		//当前金价
-		const now_g_price = $("[now_g_price]").val();
+		let now_g_price = get_now_g_price();
 		//当前钻价
-		const now_f_price = $("[now_f_price]").val();
+		const now_f_price = get_now_f_price();
 		//元
 		const r_price = Number($("[r_price]").val().replace(/,/g, ''));
 		$("[r_price]").val(formatNumberWithCommas(r_price));
