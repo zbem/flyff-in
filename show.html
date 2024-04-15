@@ -29,27 +29,27 @@
 						<div class="col-sm-6">金币比例:</div>
 						<div class="col-sm-6">钻比例:</div>
 						<div class="form-group col-sm-6">
-							<select data-placeholder="请选择比例..." class="chosen-select col-xs-12" value="25" now_g_price onchange="init_input_price()">
+							<select data-placeholder="请选择比例..." class="chosen-select col-xs-12" value="25" now_g_price onchange="r_input_price()">
 								<option value="">请选择比例</option>
 							</select>
 						</div>
 						<div class="form-group col-sm-6">
-							<select data-placeholder="请选择比例..." class="chosen-select col-xs-12" now_f_price onchange="init_input_price()">
+							<select data-placeholder="请选择比例..." class="chosen-select col-xs-12" now_f_price onchange="r_input_price()">
 								<option value="">请选择比例</option>
 							</select>
-						</div>
-						<div class="form-group col-sm-12">
-							<div class="input-group m-b">
-								<span class="input-group-addon" style="width: 81px;" >金币:</span>
-								<input type="text" class="form-control" placeholder = "数字" value="100,000,000"  style="color: red" g_price onblur="g_input_price()">
-								<span class="input-group-addon">个</span>
-							</div>
 						</div>
 						<div class="form-group col-sm-12">
 							<div class="input-group m-b">
 								<span class="input-group-addon" style="width: 81px;" >人民币:</span>
 								<input type="text" class="form-control" placeholder = "数字" value="25" r_price onblur="r_input_price()">
 								<span class="input-group-addon">元</span>
+							</div>
+						</div>
+						<div class="form-group col-sm-12">
+							<div class="input-group m-b">
+								<span class="input-group-addon" style="width: 81px;" >金币:</span>
+								<input type="text" class="form-control" placeholder = "数字" value="100,000,000"  style="color: red" g_price onblur="g_input_price()">
+								<span class="input-group-addon">个</span>
 							</div>
 						</div>
 						<div class="form-group col-sm-12">
@@ -303,33 +303,6 @@
 		let now_f_price = $("[now_f_price]").val();
 		//千比例
 		return now_f_price/1000;
-	}
-
-	function init_input_price(){
-		//当前金价
-		let now_g_price = get_now_g_price();
-		//当前钻价
-		const now_f_price = get_now_f_price();
-		//元
-		const r_price = Number($("[r_price]").val().replace(/,/g, ''));
-		//金币
-		const g_price = Number($("[g_price]").val().replace(/,/g, ''));
-
-		//钻
-		const f_price = Number($("[f_price]").val().replace(/,/g, ''));
-		$("[r_price]").val(formatNumberWithCommas(r_price));
-
-		//计算金币
-		let new_g_price = parseFloat(g_price) / parseFloat(now_g_price);
-		new_g_price = new_g_price.toFixed(0);
-		$("[g_price]").val(formatNumberWithCommas(new_g_price));
-
-		//计算人民币 =  钻*当前钻价
-		let new_r_price = parseFloat(f_price) * parseFloat(now_f_price);
-		$("[r_price]").val(formatNumberWithCommas(new_r_price));
-
-		//颜色初始化
-		color_price_input();
 	}
 
 	function g_input_price(){
