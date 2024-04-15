@@ -15,6 +15,45 @@
 		<div class="col-sm-6">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
+					<h5>价格计算转换</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<div class="input-group m-b">
+								<span class="input-group-addon" style="width: 81px;">金币比例:</span>
+								<input type="text" class="form-control" placeholder = "数字" value="0.00000025" now_g_price>
+							</div>
+						</div>
+						<div class="form-group col-sm-6">
+							<div class="input-group m-b">
+								<span class="input-group-addon" style="width: 81px;">钻比例:</span>
+								<input type="text" class="form-control" placeholder = "数字" value="0.052" now_f_price>
+							</div>
+						</div>
+
+						<div class="form-group col-sm-12">
+							<div class="input-group m-b">
+								<span class="input-group-addon" style="width: 81px;" >金币:</span>
+								<input type="text" class="form-control" placeholder = "数字" value="100,000,000"  style="color: red" g_price onblur="g_input_price()">
+								<span class="input-group-addon" style="width: 81px;" >人民币:</span>
+								<input type="text" class="form-control" placeholder = "数字" value="25" r_price onblur="r_input_price()">
+								<span class="input-group-addon">元</span>
+								<span class="input-group-addon" style="width: 81px;">钻石:</span>
+								<input type="text" class="form-control" placeholder = "数字" value="481" f_price onblur="f_input_price()">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
 					<h5>操作专区</h5>
 					<div class="ibox-tools">
 						<a class="collapse-link">
@@ -91,9 +130,6 @@
 			</div>
 
 			<div class="ibox float-e-margins"></div>
-
-
-			<div class="ibox float-e-margins"></div>
 		</div>
 
 		<div class="col-sm-6" >
@@ -168,8 +204,8 @@
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_6_Purple_Set/1.png">
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_8_Grey_Set/1.png">
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_8_Grey_Set/2.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_10_Black_Set/1.png">
 	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_10_Black_Set/2.png">
+	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_10_Black_Set/1.png">
 </div>
 
 <!-- 全局js -->
@@ -193,6 +229,95 @@
 		// 如果你想在某个特定元素上更改鼠标图标，可以这样做：
 		$('[btn_weapon]').addClass('custom-cursor');
 	});
+
+	function formatNumberWithCommas(num) {
+		return Number(num).toLocaleString('en-US', {
+			style: 'decimal',
+			minimumFractionDigits: 0, // 如果需要小数部分，可以调整这个值
+			maximumFractionDigits: 0  // 如果需要小数部分，可以调整这个值
+		});
+	}
+
+	function color_price_input(){
+		const g_price = Number($("[g_price]").val().replace(/,/g, ''));
+		if(g_price >= 100000000){
+			$("[g_price]").attr("style","color:red");
+		} else if(g_price >= 10000000){
+			$("[g_price]").attr("style","color:#f78936");
+		} else if(g_price >= 1000000){
+			$("[g_price]").attr("style","color:#2b72ef");
+		}else{
+			$("[g_price]").removeAttr("style");
+		}
+	}
+
+	function g_input_price(){
+		//当前金价
+		const now_g_price = $("[now_g_price]").val();
+		//当前钻价
+		const now_f_price = $("[now_f_price]").val();
+		//金币
+		const g_price = Number($("[g_price]").val().replace(/,/g, ''));
+		$("[g_price]").val(formatNumberWithCommas(g_price));
+
+		//计算人民币 金币*当前金价
+		let new_r_price = parseFloat(g_price)*parseFloat(now_g_price);
+		new_r_price = new_r_price.toFixed(2);
+		$("[r_price]").val(formatNumberWithCommas(new_r_price));
+
+		//计算钻
+		let new_f_price = parseFloat(new_r_price) / parseFloat(now_f_price);
+		new_f_price = new_f_price.toFixed(0);
+		$("[f_price]").val(formatNumberWithCommas(new_f_price));
+
+		//颜色初始化
+		color_price_input();
+	}
+
+	function f_input_price(){
+		//当前金价
+		const now_g_price = $("[now_g_price]").val();
+		//当前钻价
+		const now_f_price = $("[now_f_price]").val();
+		//钻
+		const f_price = Number($("[f_price]").val().replace(/,/g, ''));
+		$("[f_price]").val(formatNumberWithCommas(f_price));
+
+		//计算人民币 =  钻*当前钻价
+		let new_r_price = parseFloat(f_price) * parseFloat(now_f_price);
+		$("[r_price]").val(formatNumberWithCommas(new_r_price));
+
+		//计算金币 = 人民币/当前金价
+		let new_g_price = parseFloat(new_r_price) / parseFloat(now_g_price);
+		new_g_price = new_g_price.toFixed(2);
+		$("[g_price]").val(formatNumberWithCommas(new_g_price));
+
+		//颜色初始化
+		color_price_input();
+	}
+
+	function r_input_price(){
+		//当前金价
+		const now_g_price = $("[now_g_price]").val();
+		//当前钻价
+		const now_f_price = $("[now_f_price]").val();
+		//元
+		const r_price = Number($("[r_price]").val().replace(/,/g, ''));
+		$("[r_price]").val(formatNumberWithCommas(r_price));
+
+		//计算金币
+		let new_g_price = parseFloat(r_price) / parseFloat(now_g_price);
+		new_g_price = new_g_price.toFixed(0);
+		$("[g_price]").val(formatNumberWithCommas(new_g_price));
+
+		//计算钻
+		let new_f_price = parseFloat(r_price) / parseFloat(now_f_price);
+		new_f_price = new_f_price.toFixed(0);
+		$("[f_price]").val(formatNumberWithCommas(new_f_price));
+
+		//颜色初始化
+		color_price_input();
+	}
 
 	function show_img(index){
 		let data = show_now_data.list[index];
