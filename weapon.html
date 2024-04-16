@@ -223,13 +223,12 @@
 
 		let str = `<div attribute_div>`;
 
+		let val_num = '';
 		for(let j=0 ; j < numList.length ; j++) {
 			let randomNum = Math.random().toFixed(2);
 			//重置概率
 			let attribute_probability = 0;
 			const new_attribute_data_list = attribute_data[numList[0]].list;
-
-			let val_num = '';
 
 			for (let i = 0; i < new_attribute_data_list.length; i++) {
 				const data = new_attribute_data_list[i];
