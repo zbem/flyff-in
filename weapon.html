@@ -220,7 +220,9 @@
 
 	//属性唤醒
 	function attribute_wake_up_list(numList){
-		$("[attribute_span]").remove();
+		$("[attribute_div]").remove();
+
+		let str = `<div attribute_div>`;
 
 		for(let j=0 ; j < numList.length ; j++) {
 			let randomNum = Math.random().toFixed(2);
@@ -240,13 +242,16 @@
 				//数字是否匹配
 				if (randomNum < attribute_probability) {
 					now_attribute = data.name;
-					$("[job_span]").before(`
-						<span attribute_span color_white>${attribute_data[numList[j]].name}${data.name === '+4' ? '+3' :data.name}<br></span>
-					`);
+					str +=`
+						<span  color_white>${attribute_data[numList[j]].name}${data.name === '+4' ? '+3' :data.name}<br></span>
+					`;
 					break;
 				}
 			}
 		}
+		str +=`</div>`;
+		$("[job_span]").before(str);
+
 		const attribute_html = `${attribute_data[numList[0]].name}和${attribute_data[numList[1]].name}`;
 		//武器属性唤醒值
 		$("[attribute_name]").html(`${attribute_html}的`);
@@ -272,7 +277,9 @@
 		let randomNum = Math.random().toFixed(2);
 		let attribute_probability = 0;
 
-		$("[attribute_span]").remove();
+		$("[attribute_div]").remove();
+
+		let str = `<div attribute_div>`;
 
 		for(let i=0 ; i < attribute_data[num].list.length ; i++) {
 			const data = attribute_data[num].list[i];
@@ -286,12 +293,16 @@
 			//数字是否匹配
 			if (randomNum < attribute_probability) {
 				now_attribute = data.name;
-				$("[job_span]").before(`
-					<span attribute_span color_white>${attribute_data[num].name}${data.name}<br></span>
-				`);
+				str +=`
+					<span  color_white>${attribute_data[numList[j]].name}${data.name === '+4' ? '+3' :data.name}<br></span>
+				`;
 				break;
 			}
 		}
+
+		str +=`</div>`;
+		$("[job_span]").before(str);
+
 		//武器属性值
 		$("[attribute_name]").html(`${attribute_data[num].name}的`);
 
@@ -354,8 +365,8 @@
 
 		str += "</div>";
 
-		if($("[attribute_span]").length != 0){
-			$("[attribute_span]").before(str);
+		if($("[attribute_div]").length != 0){
+			$("[attribute_div]").before(str);
 		}else{
 			$("[job_span]").before(str);
 		}
