@@ -124,6 +124,10 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="form-group col-sm-12">
+
+						</div>
 					</div>
 				</div>
 			</div>
@@ -281,6 +285,14 @@
 		});
 	}
 
+	function r_formatNumberWithCommas(num) {
+		return Number(num).toLocaleString('en-US', {
+			style: 'decimal',
+			minimumFractionDigits: 2, // 如果需要小数部分，可以调整这个值
+			maximumFractionDigits: 2  // 如果需要小数部分，可以调整这个值
+		});
+	}
+
 	function color_price_input(){
 		const g_price = Number($("[g_price]").val().replace(/,/g, ''));
 		if(g_price >= 1000000000){
@@ -320,7 +332,7 @@
 		//计算人民币 金币*当前金价
 		let new_r_price = parseFloat(g_price)*parseFloat(now_g_price);
 		new_r_price = new_r_price.toFixed(2);
-		$("[r_price]").val(formatNumberWithCommas(new_r_price));
+		$("[r_price]").val(r_formatNumberWithCommas(new_r_price));
 
 		//计算钻
 		let new_f_price = parseFloat(new_r_price) / parseFloat(now_f_price);
@@ -341,7 +353,8 @@
 
 		//计算人民币 =  钻*当前钻价
 		let new_r_price = parseFloat(f_price) * parseFloat(now_f_price);
-		$("[r_price]").val(formatNumberWithCommas(new_r_price));
+		new_r_price = new_r_price.toFixed(2);
+		$("[r_price]").val(r_formatNumberWithCommas(new_r_price));
 
 		//计算金币 = 人民币/当前金价
 		let new_g_price = parseFloat(new_r_price) / parseFloat(now_g_price);
@@ -357,9 +370,9 @@
 		let now_g_price = get_now_g_price();
 		//当前钻价
 		const now_f_price = get_now_f_price();
-		//元
+		//人民币
 		const r_price = Number($("[r_price]").val().replace(/,/g, ''));
-		$("[r_price]").val(formatNumberWithCommas(r_price));
+		$("[r_price]").val(r_formatNumberWithCommas(r_price));
 
 		//计算金币
 		let new_g_price = parseFloat(r_price) / parseFloat(now_g_price);
