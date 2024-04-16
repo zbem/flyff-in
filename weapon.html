@@ -86,7 +86,6 @@
 								<button class="btn btn-success" weapon_up  onclick="up_u_weapon()" >升U</button>
 								<img alt="image"  src="img/items/scrollskillawake.png">
 								<button class="btn btn-success" weapon_up onclick="wake_up()" >技唤</button>
-
 							</div>
 						</div>
 						<div class="feed-element">
@@ -218,7 +217,7 @@
 		}
 	}
 
-	//属性唤醒
+	//多属性唤醒
 	function attribute_wake_up_list(numList){
 		$("[attribute_div]").remove();
 
@@ -228,8 +227,10 @@
 			let randomNum = Math.random().toFixed(2);
 			//重置概率
 			let attribute_probability = 0;
-			//移除+4
-			const new_attribute_data_list = attribute_data[numList[j]].list;
+			const new_attribute_data_list = attribute_data[numList[0]].list;
+
+			let val_num = '';
+
 			for (let i = 0; i < new_attribute_data_list.length; i++) {
 				const data = new_attribute_data_list[i];
 				if (i > 0) {
@@ -241,9 +242,15 @@
 
 				//数字是否匹配
 				if (randomNum < attribute_probability) {
-					now_attribute = data.name;
+					//第一次是+3的话,则返回+2
+					if(val_num === "+3"){
+						val_num = data.name === '+4' || data.name === '+3'  ? '+2' :data.name;
+					}else{
+						val_num = data.name === '+4' ? '+3' :data.name;
+					}
+
 					str +=`
-						<span  color_white>${attribute_data[numList[j]].name}${data.name === '+4' ? '+3' :data.name}<br></span>
+						<span  color_white>${attribute_data[numList[j]].name}${val_num}<br></span>
 					`;
 					break;
 				}
@@ -294,7 +301,7 @@
 			if (randomNum < attribute_probability) {
 				now_attribute = data.name;
 				str +=`
-					<span  color_white>${attribute_data[numList[j]].name}${data.name === '+4' ? '+3' :data.name}<br></span>
+					<span  color_white>${attribute_data[num].name}${data.name === '+4' ? '+3' :data.name}<br></span>
 				`;
 				break;
 			}
