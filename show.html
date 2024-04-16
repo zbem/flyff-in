@@ -126,6 +126,16 @@
 						</div>
 
 						<div class="form-group col-sm-12">
+							<div class="input-group" >
+								<div class="input-group-btn open">
+									<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-danger" onclick="init_show_img()" >
+										重置数据
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group col-sm-12">
 
 						</div>
 					</div>
@@ -277,6 +287,17 @@
 	$("[g_checked]").click();
 	$("[f_checked]").click();
 
+
+	function init_show_img(){
+		$("[input_box_money_0]").val("220元");
+		$("[input_box_money_1]").val("80元");
+		$("[input_box_money_2]").val("30元");
+		$("[input_box_money_3]").val("20元");
+		$("[input_box_money_4]").val("25元");
+		$("[input_box_money_5]").val("35元");
+		$("[show_txt_div]").html("");
+	}
+
 	function formatNumberWithCommas(num) {
 		return Number(num).toLocaleString('en-US', {
 			style: 'decimal',
@@ -403,10 +424,10 @@
 						<span style="color: red;font-size: 20px;font-weight: bold; ">${show_money}</span>
 					</div>
 					<div style="text-align: center">
-						<img src="img/show/${show_now_data.name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-						<img src="img/show/${show_now_data.name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
-						<img src="img/show/${show_now_data.name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-						<img src="img/show/${show_now_data.name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${show_now_data.file_name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${show_now_data.file_name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${show_now_data.file_name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${show_now_data.file_name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
 					</div>
 				</div>
 			</div>
@@ -436,10 +457,10 @@
 							<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">
 							${i === 0 ? "运气太好了!" : ""}恭喜抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}!</span>
 							<br>
-							<img src="img/show/${show_now_data.name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${show_now_data.name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${show_now_data.name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${show_now_data.name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${show_now_data.file_name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${show_now_data.file_name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${show_now_data.file_name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${show_now_data.file_name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
 						</div>
 					</div>
 				`);

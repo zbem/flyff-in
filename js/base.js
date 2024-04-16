@@ -70,7 +70,8 @@
 	];
 
 	const show_now_data={
-		"name":"Shadow_Hunter",
+		"file_name":"Shadow_Hunter",
+		"cns_name":"暗影猎手",
 		"list":[
 			{"name":"Shadow Hunter 10% Black Set",  "open_num":0,"color":"black", "url":"Shadow_Hunter_10_Black_Set",   "probability":0.05},
 			{"name":"Shadow Hunter 8% Grey Set",    "open_num":0,"color":"black", "url":"Shadow_Hunter_8_Grey_Set",     "probability":0.10},
