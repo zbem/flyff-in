@@ -53,8 +53,14 @@
 							</div>
 							<div class="feed-element">
 								<div class="media-body ">
-									<img alt="image" class="img-circle" src="img/items/petchicken.png">
+									<img alt="image" class="img-circle" src="img/items/eveeasteregg.png">
 									<button class="btn btn-success" pet_btn onclick="one_pet()" >一键完美宠</button>
+								</div>
+							</div>
+							<div class="feed-element">
+								<div class="media-body ">
+									<img alt="image" class="img-circle" src="img/items/petbarbarylion01_02.png">
+									<button class="btn btn-success" pet_btn onclick="pet_show()" >洗宠物外观</button>
 								</div>
 							</div>
 						</div>
@@ -76,10 +82,36 @@
 				</div>
 				<div class="ibox-content">
 					<div pet_msg_div class="row"></div>
+				</div>
+			</div>
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>成果</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
 					<div txt_div class="row"></div>
 				</div>
 			</div>
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>洗宠消息</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div show_pet_msg_div class="row"></div>
+				</div>
+			</div>
 		</div>
+
 		<div class="ibox float-e-margins"></div>
 	</div>
 </div>
@@ -94,15 +126,15 @@
 	<img img_lv img_lv_7 src="img/pet/等级7.png" alt="7">
 	<img img_lv img_lv_8 src="img/pet/等级8.png" alt="8">
 	<img img_lv img_lv_9 src="img/pet/等级9.png" alt="9">
-	<img style="width: 80px; height: 70px;" alt="兔子" img_兔子 src="img/pet/兔子.png">
-	<img style="width: 80px; height: 70px;" alt="天使" img_天使 src="img/pet/天使.png">
-	<img style="width: 80px; height: 70px;" alt="帝王蟹" img_帝王蟹 src="img/pet/帝王蟹.png">
-	<img style="width: 80px; height: 70px;" alt="狐狸" img_狐狸 src="img/pet/狐狸.png">
-	<img style="width: 80px; height: 70px;" alt="独角兽" img_独角兽 src="img/pet/独角兽.png">
-	<img style="width: 80px; height: 70px;" alt="狮子" img_狮子 src="img/pet/狮子.png">
-	<img style="width: 80px; height: 70px;" alt="狮鹫兽" img_狮鹫兽 src="img/pet/狮鹫兽.png">
-	<img style="width: 80px; height: 70px;" alt="老虎" img_老虎 src="img/pet/老虎.png">
-	<img style="width: 80px; height: 70px;" alt="飞龙" img_飞龙 src="img/pet/飞龙.png">
+	<img alt="兔子" img_兔子 src="img/pet/兔子.png">
+	<img alt="天使" img_天使 src="img/pet/天使.png">
+	<img alt="帝王蟹" img_帝王蟹 src="img/pet/帝王蟹.png">
+	<img alt="狐狸" img_狐狸 src="img/pet/狐狸.png">
+	<img alt="独角兽" img_独角兽 src="img/pet/独角兽.png">
+	<img alt="狮子" img_狮子 src="img/pet/狮子.png">
+	<img alt="狮鹫兽" img_狮鹫兽 src="img/pet/狮鹫兽.png">
+	<img alt="老虎" img_老虎 src="img/pet/老虎.png">
+	<img alt="飞龙" img_飞龙 src="img/pet/飞龙.png">
 </div>
 
 <!-- 全局js -->
@@ -125,6 +157,80 @@
 		// 如果你想在某个特定元素上更改鼠标图标，可以这样做：
 		$('[btn_weapon]').addClass('custom-cursor');
 	});
+
+	//洗外观
+	function pet_show(){
+		if($("[now_pet_img]") == null || $("[now_pet_img]").length === 0){
+			alert("没有宠物");
+			return ;
+		}
+
+		const pet_box = blindBox().drawItem();
+
+		$("[now_pet_img]").attr("src","img/items/"+pet_box.name);
+		$("[now_pet_img]").attr("alt",pet_box.id);
+	}
+
+	function blindBox() {
+		//次数
+		pet_box_num++;
+		const totalItems = 28;
+		const lowProbabilityItem = [0,1,2,3,4,5]; // 低概率物品索引
+		const lowProbability = 0.005; // 低概率物品被抽中的概率
+
+		// 计算其他物品的平均概率
+		const averageProbability = (1 - lowProbability*lowProbabilityItem.length) / (totalItems - lowProbabilityItem.length);
+
+		// 创建一个数组来存储每个物品及其对应的概率
+		const items = Array.from({ length: pet_file_list.length }, (_, index) => {
+			if (lowProbabilityItem.includes(index)) {
+				return { id: index+1, probability: lowProbability,name:pet_file_list[index] };
+			} else {
+				return { id: index+1, probability: averageProbability,name:pet_file_list[index] };
+			}
+		});
+
+		// 抽选物品的函数
+		function drawItem() {
+			let item_probability = 0;
+			for (let i = 0; i < items.length; i++) {
+				if(i > 0){
+					item_probability = parseFloat(items[i].probability) + parseFloat(item_probability);
+				}else{
+					item_probability = parseFloat(items[i].probability);
+				}
+				item_probability = item_probability.toFixed(2);
+				// 生成一个0到1之间的随机数
+				let randomNum = Math.random().toFixed(2);
+
+				//数字是否匹配
+				if(randomNum < item_probability){
+					item_probability = (item_probability*100).toFixed(2);
+					if(lowProbabilityItem.includes(i)){
+						//洗出了稀有宠
+						$("[show_pet_msg_div]").prepend(`
+						<div class="col-xs-12" >
+							<img style="width: 30px; height: 30px;" alt="${items[i].id}" src="img/items/${items[i].name}">第${pet_box_num}次洗出了稀有宠,概率:${item_probability}%
+						</div>`);
+					}else{
+						//洗了几次
+						$("[show_pet_msg_div]").prepend(`
+						<div class="col-xs-12" >
+							<img style="width: 30px; height: 30px;" alt="${items[i].id}" src="img/items/${items[i].name}">第${pet_box_num}次,概率:${item_probability}%
+						</div>`);
+					}
+
+					return items[i];
+				}
+			}
+		}
+
+		return {
+			items: items.map(item => item.id), // 返回物品ID数组，用于展示或其他用途
+			drawItem: drawItem // 返回抽选物品的函数
+		};
+	}
+
 
 	//一键献祭
 	function one_pet(){
@@ -169,19 +275,16 @@
 		//当前宠物
 		now_pet = pet;
 
-		const img_html = $("[img_lv_1]")[0].outerHTML;
-
-		const pte_img = $(`[img_${pet.name}]`)[0].outerHTML;
 		let str = `
 			<div class="alert alert-info" pet_info  pet_lv="0" >
 				<div class="row">
 					<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
-					<div class="col-xs-5" >${pte_img}</div>
+					<div class="col-xs-5" ><img style="width: 80px; height: 70px;" now_pet_img alt="${pet.name}" img_${pet.name} src="img/pet/${pet.name}.png"></div>
 					<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>
 					<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
-				</div><br>
+				</div>
 				<div class="row">
-					<div pet_img_div><label lv_f级 pet_val="${pet.value}">${img_html}<br>+${pet.value}${pet.cur}</label></div>
+					<div pet_img_div><label lv_f级 pet_val="${pet.value}"><img img_lv img_lv_1  src="img/pet/等级1.png" alt="1"><br>+${pet.value}${pet.cur}</label></div>
 				</div>
 			</div>
 		`;
