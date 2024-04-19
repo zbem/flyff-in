@@ -2,7 +2,7 @@
 <html lang="en" xmlns="">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>飞瘾犯了-下载图片</title>
+	<title>飞瘾犯了-裁剪图片</title>
 </head>
 
 <link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
@@ -10,6 +10,7 @@
 
 <link href="css/plugins/chosen/chosen.css" rel="stylesheet">
 <link href="css/style.css?v=4.1.0" rel="stylesheet">
+<link href="css/fly.css?v=4.1.0" rel="stylesheet">
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -17,17 +18,24 @@
 		<div class="col-sm-6">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<h5>下载图片</h5>
+					<h5>裁剪图片</h5>
 					<div class="ibox-tools">
 						<a class="collapse-link">
 							<i class="fa fa-chevron-up"></i>
 						</a>
 					</div>
 				</div>
+
 				<div class="ibox-content">
 					<div class="row">
-						<div id="myElement" style="width: 300px; height: 200px; ">
+						<div class="form-group col-sm-6">
+							<select data-placeholder="请选择时装..." class="chosen-select col-xs-12" value="25" sel_img onchange="change_img()">
+								<option value="">请选择时装</option>
+							</select>
 						</div>
+					</div>
+
+					<div class="row" download_img >
 					</div>
 				</div>
 			</div>
@@ -37,8 +45,7 @@
 
 	</div>
 </div>
-<div class="hide">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_2_Blue_Set/1.png">
+<div class="hide"  hide_div>
 </div>
 
 <!-- 全局js -->
@@ -65,28 +72,54 @@
 		// 如果你想在某个特定元素上更改鼠标图标，可以这样做：
 		$('[btn_weapon]').addClass('custom-cursor');
 
+		for(let i=0 ; i < show_all_data.length ; i++) {
+			const show_data = show_all_data[i];
+			$("[hide_div]").append(`<h2>${show_data.cns_name}</h2>`);
+			for(let j=0 ; j < show_data.list.length ; j++) {
+				const show_data_now = show_data.list[j];
+				$("[hide_div]").append(`
+					<img show_img alt="${show_data.cns_name}" src="img/show/${show_data.file_name}(F)/${show_data_now.url}/1.png">
+					<img show_img alt="${show_data.cns_name}" src="img/show/${show_data.file_name}(M)/${show_data_now.url}/1.png">
+				`);
+			}
+			$("[hide_div]").append(`<br>`);
+		}
 
-
-		var canvas = document.createElement('canvas');
-		canvas.width = 300;
-		canvas.height = 200;
-
-		var ctx = canvas.getContext('2d');
-		ctx.fillStyle = '#ffffff'; // 假设这是你的元素的背景色
-		ctx.fillRect(0, 0, 300, 200);
-
-		var imgDataUrl = canvas.toDataURL('https://zbem.github.io/flyff-in/img/show/Shadow_Hunter(M)/Shadow_Hunter_2_Blue_Set/1.png');
-
-		var img = $('<img>').attr('src', imgDataUrl);
-		$('body').append(img); // 将图片添加到页面中
-
-		$('<a>').attr({
-			href: imgDataUrl,
-			download: '1.png'
-		}).html("下载图片").appendTo('#myElement'); // 添加到页面中
-
+		for(let i = 1 ; i <= show_all_data.length ; i++){
+			$("[sel_img]").append(`<option ${i===1 ?'selected':''} value="${i}" hassubinfo="true">${show_all_data[i].en_name}&nbsp;${show_all_data[i].cns_name}</option>`);
+		}
 	});
 
+	function change_img() {
+
+		const index = $("[sdel_img]").val;
+
+
+	}
+	function change_img2(){
+		// 创建一个新的容器元素，并设置其宽度和高度
+		const container =  $('<div>').attr({
+			position: 'relative',
+			overflow: 'hidden',// 确保图片不会超出容器
+			download: 'downloaded_image.png'
+		}).appendTo('[download_img]').append($("#myElement"));
+
+		// 使用 html2canvas 捕获容器元素的截图
+		html2canvas(container[0], {
+			scale: 1, // 如果你想提高截图的质量，可以增加 scale
+			width:120,
+			height:200
+		}).then(canvas => {
+			// 创建一个下载链接
+			$('<a>').attr({
+				href: canvas.toDataURL('image/png'),
+				download: 'downloaded_image.png'
+			}).html("下载图片").appendTo('[download_img]');
+		}).catch(error => {
+			console.error('捕获元素截图失败：', error);
+		});
+
+	}
 </script>
 
 </body>

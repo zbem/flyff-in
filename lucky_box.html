@@ -95,8 +95,8 @@
 		let randomNum = Math.random().toFixed(2);
 		let luck_box_probability = 0;
 
-		for(let i=0 ; i < show_data.list.length ; i++) {
-			const data = show_data.list[i];
+		for(let i=0 ; i < show_all_data[1].list.length ; i++) {
+			const data = show_all_data[1].list[i];
 			if(i > 0){
 				luck_box_probability = parseFloat(data.probability) + parseFloat(luck_box_probability);
 			}else{
@@ -120,8 +120,8 @@
 		}
 
 		let str = `<div class="row">`;
-		for(let i=0 ; i < show_data.list.length ; i++) {
-			const data = show_data.list[i];
+		for(let i=0 ; i < show_all_data[1].list.length ; i++) {
+			const data = show_all_data[1].list[i];
 			if(data.open_num > 0){
 				str+=`
 				<div class="col-xs-12">
