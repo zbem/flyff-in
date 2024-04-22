@@ -252,9 +252,6 @@
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
 
-		// 如果你想在某个特定元素上更改鼠标图标，可以这样做：
-		$('[btn_weapon]').addClass('custom-cursor');
-
 		const config = {
 			'.chosen-select': {},
 			'.chosen-select-deselect': {
@@ -277,7 +274,7 @@
 
 	for(let i = 1 ; i <= 100 ; i++){
 		$("[now_g_price]").append(`<option ${i===22 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
-		$("[now_f_price]").append(`<option ${i===52 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
+		$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
 	}
 
 	function init_show_img(){

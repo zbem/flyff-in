@@ -30,6 +30,14 @@
 	 https://api.flyff.com/image/monster/{fileName}
 	**/
 
+	const dungeon_consume_data = [
+		{"id":1171,"name":"鲁莽药水"},
+		{"id":1295,"name":"迅捷药水"},
+		{"id":9480,"name":"清澈药水"},
+		{"id":1171,"name":"鲁莽药水"},
+		{"id":1171,"name":"鲁莽药水"},
+	]
+
 	const show_all_data=
 	[
 		{

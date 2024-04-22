@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en" xmlns="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>飞瘾犯了-计算</title>
+</head>
+
+<link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+
+<link href="css/style.css?v=4.1.0" rel="stylesheet">
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>计算</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="form-group col-sm-4">
+							<label>副本
+								<select data-placeholder="请选择副本..." class="form-control" value="25" now_g_price onchange="r_input_price()">
+									<option value="">请选择副本</option>
+									<option value="1" selected>荒野</option>
+									<option value="2" >海底</option>
+								</select>
+							</label>
+							<label>人数
+								<select data-placeholder="请选择人数..." class="form-control" now_f_price onchange="r_input_price()">
+									<option value="">请选择比例</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8" selected>8</option>
+								</select>
+							</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-4">
+							<div class="input-group m-b">
+								<img src="img/items/agonyore01.png" alt="释放药水" />
+								<label>副本消耗药品:
+									<select data-placeholder="请选择药品..." class="form-control" sel_item onchange="r_input_price()">
+										<option value="">请选择药品</option>
+									</select>
+									<input type="text" class="form-control" placeholder = "数字" value="25" r_price>
+								</label>
+							</div>
+							<div class="input-group m-b">
+								<label>摆摊价格:
+									<input type="text" class="form-control" placeholder = "数字" value="100,000,000"  style="color: red" g_price  >
+								</label>
+							</div>
+							<div class="input-group m-b">
+								<label>钻石:
+									<input type="text" class="form-control" placeholder = "数字" value="481" f_price  >
+								</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<button >计算</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+
+	</div>
+</div>
+
+<!-- 全局js -->
+<script src="js/jquery.min.js?v=202404111603"></script>
+<script src="js/bootstrap.min.js?v=3.3.6"></script>
+<script src="js/base.js?v=202404111603"></script>
+
+<!-- 自定义js -->
+<script src="js/content.js?v=1.0.0"></script>
+<!-- jQuery UI -->
+<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		//页面元素可移动
+		WinMove();
+
+		// 当页面加载完成后，给 body 元素添加自定义光标样式
+		$('body').addClass('custom-cursor');
+	});
+
+	function formatNumberWithCommas(num) {
+		return Number(num).toLocaleString('en-US', {
+			style: 'decimal',
+			minimumFractionDigits: 0, // 如果需要小数部分，可以调整这个值
+			maximumFractionDigits: 0  // 如果需要小数部分，可以调整这个值
+		});
+	}
+
+	function r_formatNumberWithCommas(num) {
+		let r_num = Number(num).toLocaleString('en-US', {
+			style: 'decimal',
+			minimumFractionDigits: 2, // 如果需要小数部分，可以调整这个值
+			maximumFractionDigits: 2  // 如果需要小数部分，可以调整这个值
+		});
+
+		return Number(r_num).toString();
+	}
+
+	function color_price_input(){
+		const g_price = Number($("[g_price]").val().replace(/,/g, ''));
+		if(g_price >= 1000000000){
+			$("[g_price]").attr("style","color:#990099");
+		}else if(g_price >= 100000000){
+			$("[g_price]").attr("style","color:red");
+		} else if(g_price >= 10000000){
+			$("[g_price]").attr("style","color:#f78936");
+		} else if(g_price >= 1000000){
+			$("[g_price]").attr("style","color:#2b72ef");
+		}else{
+			$("[g_price]").removeAttr("style");
+		}
+	}
+
+	function get_now_g_price(){
+		//当前金价
+		let now_g_price = $("[now_g_price]").val();
+		//亿比例
+		return now_g_price/100000000;
+	}
+	function get_now_f_price(){
+		//当前金价
+		let now_f_price = $("[now_f_price]").val();
+		//千比例
+		return now_f_price/1000;
+	}
+
+	function g_input_price(){
+		//当前金价
+		let now_g_price = get_now_g_price();
+		//当前钻价
+		const now_f_price = get_now_f_price();
+		//金币
+		const g_price = Number($("[g_price]").val().replace(/,/g, ''));
+
+		//计算人民币 金币*当前金价
+		let new_r_price = parseFloat(g_price)*parseFloat(now_g_price);
+		new_r_price = new_r_price.toFixed(2);
+		$("[r_price]").val(r_formatNumberWithCommas(new_r_price));
+
+		//计算钻
+		let new_f_price = parseFloat(new_r_price) / parseFloat(now_f_price);
+		new_f_price = new_f_price.toFixed(0);
+		$("[f_price]").val(formatNumberWithCommas(new_f_price));
+
+		//颜色初始化
+		color_price_input();
+	}
+
+	function f_input_price(){
+		//当前金价
+		let now_g_price = get_now_g_price();
+		//当前钻价
+		const now_f_price = get_now_f_price();
+		//钻
+		const f_price = Number($("[f_price]").val().replace(/,/g, ''));
+
+		//计算人民币 =  钻*当前钻价
+		let new_r_price = parseFloat(f_price) * parseFloat(now_f_price);
+		new_r_price = new_r_price.toFixed(2);
+		$("[r_price]").val(r_formatNumberWithCommas(new_r_price));
+
+		//计算金币 = 人民币/当前金价
+		let new_g_price = parseFloat(new_r_price) / parseFloat(now_g_price);
+		new_g_price = new_g_price.toFixed(0);
+		$("[g_price]").val(formatNumberWithCommas(new_g_price));
+
+		//颜色初始化
+		color_price_input();
+	}
+
+	function r_input_price(){
+		//当前金价
+		let now_g_price = get_now_g_price();
+		//当前钻价
+		const now_f_price = get_now_f_price();
+		//人民币
+		const r_price = Number($("[r_price]").val().replace(/,/g, ''));
+		$("[r_price]").val(r_formatNumberWithCommas(r_price));
+
+		//计算金币
+		let new_g_price = parseFloat(r_price) / parseFloat(now_g_price);
+		new_g_price = new_g_price.toFixed(0);
+		$("[g_price]").val(formatNumberWithCommas(new_g_price));
+
+		//计算钻
+		let new_f_price = parseFloat(r_price) / parseFloat(now_f_price);
+		new_f_price = new_f_price.toFixed(0);
+		$("[f_price]").val(formatNumberWithCommas(new_f_price));
+
+		//颜色初始化
+		color_price_input();
+	}
+
+</script>
+
+</body>
+</html>
