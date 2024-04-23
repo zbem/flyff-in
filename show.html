@@ -401,7 +401,10 @@
 	}
 
 	function show_img(index){
-		let data = show_all_data[0].list[index];
+
+		const now_show_data = show_all_data.filter(e=>e.file_name==="Shadow_Hunter")[0];
+
+		let data = now_show_data.list[index];
 
 		const show_money = $(`[input_box_money_${index}]`).val();
 
@@ -413,10 +416,10 @@
 						<span style="color: red;font-size: 20px;font-weight: bold; ">${show_money}</span>
 					</div>
 					<div style="text-align: center">
-						<img src="img/show/${show_all_data[0].file_name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-						<img src="img/show/${show_all_data[0].file_name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
-						<img src="img/show/${show_all_data[0].file_name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-						<img src="img/show/${show_all_data[0].file_name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${now_show_data.file_name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${now_show_data.file_name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${now_show_data.file_name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${now_show_data.file_name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
 					</div>
 				</div>
 			</div>
@@ -427,8 +430,10 @@
 		let randomNum = Math.random().toFixed(2);
 		let luck_box_probability = 0;
 
-		for(let i=0 ; i < show_all_data[0].list.length ; i++) {
-			const data = show_all_data[0].list[i];
+		const new_show_data = show_all_data.filter(e=>e.file_name==="Shadow_Hunter")[0];
+
+		for(let i=0 ; i < new_show_data.list.length ; i++) {
+			const data = new_show_data.list[i];
 			if(i > 0){
 				luck_box_probability = parseFloat(data.probability) + parseFloat(luck_box_probability);
 			}else{
@@ -446,10 +451,10 @@
 							<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">
 							${i === 0 ? "运气太好了!" : ""}恭喜抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}!</span>
 							<br>
-							<img src="img/show/${show_all_data[0].file_name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${show_all_data[0].file_name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${show_all_data[0].file_name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${show_all_data[0].file_name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${new_show_data.file_name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${new_show_data.file_name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${new_show_data.file_name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${new_show_data.file_name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
 						</div>
 					</div>
 				`);
@@ -458,8 +463,8 @@
 		}
 
 		let str = `<div class="row">`;
-		for(let i=0 ; i < show_all_data[0].list.length ; i++) {
-			const data = show_all_data[0].list[i];
+		for(let i=0 ; i < new_show_data.list.length ; i++) {
+			const data = new_show_data.list[i];
 			if(data.open_num > 0){
 				str+=`
 				<div class="col-xs-12">
