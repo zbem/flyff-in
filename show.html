@@ -73,26 +73,62 @@
 					</div>
 				</div>
 				<div class="ibox-content" operation_div>
-					<div class="feed-element">
-						<div class="row">
-							<div class="form-group col-sm-6">
-								<select data-placeholder="请选择时装..." class="chosen-select col-xs-12" sel_now_show onchange="sel_img()" >
-									<option value="">请选择时装</option>
-								</select>
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<select data-placeholder="请选择时装..." class="chosen-select col-xs-12" sel_now_show onchange="sel_img()" >
+								<option value="">请选择时装</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row" img_input_div></div>
+
+					<div class="row">
+						<div class="input-group" >
+							<div class="input-group-btn open">
+								<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-danger" onclick="init_show_img()" >
+									重置数据
+								</button>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
 
-						<div class="row" img_input_div></div>
-
-						<div class="row">
-							<div class="input-group" >
-								<div class="input-group-btn open">
-									<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-danger" onclick="init_show_img()" >
-										重置数据
-									</button>
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>自定义上传区域</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-sm-4">
+							<label>名称</label>
+						</div>
+						<div class="col-sm-4">
+							<label>价格</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-4">
+								<div class="input-group" >
+									<input type="text" class="form-control" file_upload_name placeholder = "数字" value="时装" style="min-width: 100px;" >
 								</div>
 							</div>
-						</div>
+							<div class="form-group col-sm-4">
+								<div class="input-group" >
+									<input type="text" class="form-control" file_upload_money placeholder = "数字" value="11元" style="min-width: 100px;" >
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<button class="btn btn-success" onclick="$('#fileUpload').click();">上传文件</button>
+							</div>
+
+							<input type="file" id="fileUpload" accept="image/*" style="display: none;" >
 					</div>
 				</div>
 			</div>
@@ -242,6 +278,41 @@
 
 	init_show_img();
 
+	$("#fileUpload").on('change', function(e) {
+		$("#preview").removeClass("hide");
+
+		const file = e.target.files[0];
+		const reader = new FileReader();
+		reader.onloadend = function () {
+			$('#preview').attr("src",reader.result);
+
+			const upload_money = $("[file_upload_money]").val();
+			const upload_name = $("[file_upload_name]").val();
+
+
+			$("[show_txt_div]").prepend(`
+			<div class="col-xs-6">
+				<div style="border: 1px #e7eaec solid;margin-bottom: 10px">
+					<div style="text-align: center;">
+						<span style="font-weight: bold; ">${upload_name}</span>&nbsp;
+						<span style="color: red;font-size: 20px;font-weight: bold; ">${upload_money}</span>
+					</div>
+					<div style="text-align: center">
+						<img src="${reader.result}" style="height: 200px" alt="${upload_name}" onerror="error_img(this)">
+					</div>
+				</div>
+			</div>
+		`);
+		}
+
+		if (file) {
+			reader.readAsDataURL(file);
+		} else {
+			$('#preview').attr("src","");
+		}
+	});
+
+
 	function sel_img(){
 		$("[img_input_div]").html("'");
 
@@ -249,15 +320,15 @@
 		for(let i = 0 ; i < show_data.list.length ; i++) {
 			const  obj = show_data.list[i];
 			$("[img_input_div]").prepend(`
-			<div class="form-group col-sm-4">
-				<div class="input-group" >
-					<input type="text" class="form-control" placeholder = "数字" value="${i+10}元" style="min-width: 100px;"  input_box_money_${i} ><br>
-					<div class="input-group-btn open">
-						<button class="btn btn-success" onclick="show_img(${i})" style="min-width: 55px;" >${obj.btn_str}</button>
+				<div class="form-group col-sm-4">
+					<div class="input-group" >
+						<input type="text" class="form-control" placeholder = "数字" value="${i+10}元" style="min-width: 100px;"  input_box_money_${i} >
+						<div class="input-group-btn open">
+							<button class="btn btn-success" onclick="show_img(${i})" style="min-width: 55px;" >${obj.btn_str}</button>
+						</div>
 					</div>
 				</div>
-			</div>
-		`);
+			`);
 		}
 	}
 

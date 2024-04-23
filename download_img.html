@@ -28,11 +28,10 @@
 
 				<div class="ibox-content">
 					<div class="row">
-						<div class="form-group col-sm-6">
-							<select data-placeholder="请选择时装..." class="chosen-select col-xs-12" value="25" sel_img onchange="change_img()">
-								<option value="">请选择时装</option>
-							</select>
-						</div>
+						<input type="file" id="fileUpload" accept="image/*" style="display: none;">
+						<button type="button" id="customButton">选择文件</button>
+						<br>
+						<img id="preview" class="hide" src="#" alt="预览图片">
 					</div>
 
 					<div class="row" download_img >
@@ -45,7 +44,6 @@
 
 	</div>
 </div>
-<div  hide_div>
 </div>
 
 <!-- 全局js -->
@@ -69,54 +67,28 @@
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
 
-		for(let i=0 ; i < show_all_data.length ; i++) {
-			const show_data = show_all_data[i];
-			$("[hide_div]").append(`<h2>${show_data.cns_name}</h2>`);
-			for(let j=0 ; j < show_data.list.length ; j++) {
-				const show_data_now = show_data.list[j];
-				$("[hide_div]").append(`
-					<img show_img alt="${show_data.cns_name}" src="img/show/${show_data.file_name}(F)/${show_data_now.url}/1.png">
-					<img show_img alt="${show_data.cns_name}" src="img/show/${show_data.file_name}(M)/${show_data_now.url}/1.png">
-				`);
-			}
-			$("[hide_div]").append(`<br>`);
+	});
+
+	$('#customButton').on('click', function() {
+		$('#fileUpload').click();
+	});
+
+	$("#fileUpload").on('change', function(e) {
+		$("#preview").removeClass("hide");
+
+		const file = e.target.files[0];
+		const reader = new FileReader();
+		reader.onloadend = function () {
+			$('#preview').attr("src",reader.result);
 		}
 
-		for(let i = 1 ; i <= show_all_data.length ; i++){
-			$("[sel_img]").append(`<option ${i===1 ?'selected':''} value="${i}" hassubinfo="true">${show_all_data[i].en_name}&nbsp;${show_all_data[i].cns_name}</option>`);
+		if (file) {
+			reader.readAsDataURL(file);
+		} else {
+			$('#preview').attr("src","");
 		}
 	});
 
-	function change_img() {
-
-		const index = $("[sdel_img]").val;
-
-
-	}
-	function change_img2(){
-		// 创建一个新的容器元素，并设置其宽度和高度
-		const container =  $('<div>').attr({
-			position: 'relative',
-			overflow: 'hidden',// 确保图片不会超出容器
-			download: 'downloaded_image.png'
-		}).appendTo('[download_img]').append($("#myElement"));
-
-		// 使用 html2canvas 捕获容器元素的截图
-		html2canvas(container[0], {
-			scale: 1, // 如果你想提高截图的质量，可以增加 scale
-			width:120,
-			height:200
-		}).then(canvas => {
-			// 创建一个下载链接
-			$('<a>').attr({
-				href: canvas.toDataURL('image/png'),
-				download: 'downloaded_image.png'
-			}).html("下载图片").appendTo('[download_img]');
-		}).catch(error => {
-			console.error('捕获元素截图失败：', error);
-		});
-
-	}
 </script>
 
 </body>
