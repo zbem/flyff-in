@@ -74,63 +74,77 @@
 				</div>
 				<div class="ibox-content" operation_div>
 					<div class="feed-element">
-						<div class="form-group col-sm-4">
-							<div class="input-group" >
-								<input type="text" class="form-control" placeholder = "数字" input_box_money_3 value="20元" style="min-width: 50px;" ><br>
-								<div class="input-group-btn open">
-									<button class="btn btn-success" onclick="show_img(3)" >2速绿色时装</button>
-								</div>
-							</div>
-						</div>
-						<div class="form-group col-sm-4">
-							<div class="input-group" >
-								<input type="text" class="form-control" placeholder = "数字" input_box_money_4 value="25元" style="min-width: 50px;" ><br>
-								<div class="input-group-btn open">
-									<button class="btn btn-success" onclick="show_img(4)" >2速蓝色时装</button>
-								</div>
-							</div>
-						</div>
-						<div class="form-group col-sm-4">
-							<div class="input-group" >
-								<input type="text" class="form-control" placeholder = "数字" input_box_money_5 value="35元" style="min-width: 50px;" ><br>
-								<div class="input-group-btn open">
-									<button class="btn btn-success" onclick="show_img(5)" >4速灰色时装</button>
-								</div>
-							</div>
-						</div>
-						<div class="form-group col-sm-4">
-							<div class="input-group" >
-								<input type="text" class="form-control" placeholder = "数字" input_box_money_2 value="30元" style="min-width: 50px;" ><br>
-								<div class="input-group-btn open">
-									<button class="btn btn-success" onclick="show_img(2)" >6速紫色时装</button>
-								</div>
-							</div>
-						</div>
-						<div class="form-group col-sm-4">
-							<div class="input-group" >
-								<input type="text" class="form-control" placeholder = "数字" input_box_money_1 value="80元" style="min-width: 50px;" ><br>
-								<div class="input-group-btn open">
-									<button class="btn btn-success" onclick="show_img(1)" >8速白色时装</button>
-								</div>
-							</div>
-						</div>
-						<div class="form-group col-sm-4">
-							<div class="input-group" >
-								<input type="text" class="form-control" placeholder = "数字" input_box_money_0 value="220元" style="min-width: 50px;" ><br>
-								<div class="input-group-btn open">
-									<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-success" onclick="show_img(0)" >
-										10速黑色时装
-									</button>
+						<div class="row">
+							<div class="form-group col-sm-4">
+								<div class="input-group" >
+									<label>选择时装
+										<select data-placeholder="请选择时装..." class="chosen-select col-xs-12" sel_now_show >
+											<option value="">请选择时装</option>
+										</select>
+									</label>
 								</div>
 							</div>
 						</div>
 
-						<div class="form-group col-sm-12">
-							<div class="input-group" >
-								<div class="input-group-btn open">
-									<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-danger" onclick="init_show_img()" >
-										重置数据
-									</button>
+						<div class="row">
+							<div class="form-group col-sm-4">
+								<div class="input-group" >
+									<input type="text" class="form-control" placeholder = "数字" input_box_money_3 value="20元" style="min-width: 50px;" ><br>
+									<div class="input-group-btn open">
+										<button class="btn btn-success" onclick="show_img(3)" >2速绿色时装</button>
+									</div>
+								</div>
+							</div>
+							<div class="form-group col-sm-4">
+								<div class="input-group" >
+									<input type="text" class="form-control" placeholder = "数字" input_box_money_4 value="25元" style="min-width: 50px;" ><br>
+									<div class="input-group-btn open">
+										<button class="btn btn-success" onclick="show_img(4)" >2速蓝色时装</button>
+									</div>
+								</div>
+							</div>
+							<div class="form-group col-sm-4">
+								<div class="input-group" >
+									<input type="text" class="form-control" placeholder = "数字" input_box_money_5 value="35元" style="min-width: 50px;" ><br>
+									<div class="input-group-btn open">
+										<button class="btn btn-success" onclick="show_img(5)" >4速灰色时装</button>
+									</div>
+								</div>
+							</div>
+							<div class="form-group col-sm-4">
+								<div class="input-group" >
+									<input type="text" class="form-control" placeholder = "数字" input_box_money_2 value="30元" style="min-width: 50px;" ><br>
+									<div class="input-group-btn open">
+										<button class="btn btn-success" onclick="show_img(2)" >6速紫色时装</button>
+									</div>
+								</div>
+							</div>
+							<div class="form-group col-sm-4">
+								<div class="input-group" >
+									<input type="text" class="form-control" placeholder = "数字" input_box_money_1 value="80元" style="min-width: 50px;" ><br>
+									<div class="input-group-btn open">
+										<button class="btn btn-success" onclick="show_img(1)" >8速白色时装</button>
+									</div>
+								</div>
+							</div>
+							<div class="form-group col-sm-4">
+								<div class="input-group" >
+									<input type="text" class="form-control" placeholder = "数字" input_box_money_0 value="220元" style="min-width: 50px;" ><br>
+									<div class="input-group-btn open">
+										<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-success" onclick="show_img(0)" >
+											10速黑色时装
+										</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group col-sm-12">
+								<div class="input-group" >
+									<div class="input-group-btn open">
+										<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-danger" onclick="init_show_img()" >
+											重置数据
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -276,6 +290,10 @@
 		$("[now_g_price]").append(`<option ${i===22 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
 		$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
 	}
+	for(let i = 1 ; i <= show_all_data.length ; i++){
+		const obj = show_all_data[i];
+		$("[sel_now_show]").append(`<option ${obj.file_name === 'Shadow_Hunter' ?'selected':''} value="${obj.file_name}" hassubinfo="true">${obj.en_name}(${obj.cns_name})</option>`);
+	}
 
 	function init_show_img(){
 		$("[input_box_money_0]").val("220元");
@@ -400,11 +418,14 @@
 		color_price_input();
 	}
 
+	function error_img(obj){
+		obj.onerror=null; obj.src='img/show/none.png'
+	}
+
 	function show_img(index){
+		const sel_now_show = $("[sel_now_show]").val();
 
-		const now_show_data = show_all_data.filter(e=>e.file_name==="Shadow_Hunter")[0];
-
-		let data = now_show_data.list[index];
+		const now_show_data = show_all_data.filter(e=>e.file_name===sel_now_show)[0];
 
 		const show_money = $(`[input_box_money_${index}]`).val();
 
@@ -412,14 +433,14 @@
 			<div class="col-xs-6">
 				<div style="border: 1px #e7eaec solid;margin-bottom: 10px">
 					<div style="text-align: center;">
-						<span style="font-weight: bold; color: ${data.color}">${data.name}</span>&nbsp;
+						<span style="font-weight: bold; color: ${data.color}">${now_show_data.list[index].name}</span>&nbsp;
 						<span style="color: red;font-size: 20px;font-weight: bold; ">${show_money}</span>
 					</div>
 					<div style="text-align: center">
-						<img src="img/show/${now_show_data.file_name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-						<img src="img/show/${now_show_data.file_name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
-						<img src="img/show/${now_show_data.file_name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-						<img src="img/show/${now_show_data.file_name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+						<img src="img/show/${now_show_data.file_name}(F)/${now_show_data.list[index].url}/1.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
+						<img src="img/show/${now_show_data.file_name}(F)/${now_show_data.list[index].url}/2.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
+						<img src="img/show/${now_show_data.file_name}(M)/${now_show_data.list[index].url}/1.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
+						<img src="img/show/${now_show_data.file_name}(M)/${now_show_data.list[index].url}/2.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
 					</div>
 				</div>
 			</div>
