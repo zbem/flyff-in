@@ -76,75 +76,20 @@
 					<div class="feed-element">
 						<div class="row">
 							<div class="form-group col-sm-6">
-								<div class="input-group" >
-									<label>选择时装
-										<select data-placeholder="请选择时装..." class="chosen-select col-xs-12" sel_now_show >
-											<option value="">请选择时装</option>
-										</select>
-									</label>
-								</div>
+								<select data-placeholder="请选择时装..." class="chosen-select col-xs-12" sel_now_show onchange="sel_img()" >
+									<option value="">请选择时装</option>
+								</select>
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="form-group col-sm-4">
-								<div class="input-group" >
-									<input type="text" class="form-control" placeholder = "数字" input_box_money_3 value="20元" style="min-width: 50px;" ><br>
-									<div class="input-group-btn open">
-										<button class="btn btn-success" onclick="show_img(3)" >2速绿色时装</button>
-									</div>
-								</div>
-							</div>
-							<div class="form-group col-sm-4">
-								<div class="input-group" >
-									<input type="text" class="form-control" placeholder = "数字" input_box_money_4 value="25元" style="min-width: 50px;" ><br>
-									<div class="input-group-btn open">
-										<button class="btn btn-success" onclick="show_img(4)" >2速蓝色时装</button>
-									</div>
-								</div>
-							</div>
-							<div class="form-group col-sm-4">
-								<div class="input-group" >
-									<input type="text" class="form-control" placeholder = "数字" input_box_money_5 value="35元" style="min-width: 50px;" ><br>
-									<div class="input-group-btn open">
-										<button class="btn btn-success" onclick="show_img(5)" >4速灰色时装</button>
-									</div>
-								</div>
-							</div>
-							<div class="form-group col-sm-4">
-								<div class="input-group" >
-									<input type="text" class="form-control" placeholder = "数字" input_box_money_2 value="30元" style="min-width: 50px;" ><br>
-									<div class="input-group-btn open">
-										<button class="btn btn-success" onclick="show_img(2)" >6速紫色时装</button>
-									</div>
-								</div>
-							</div>
-							<div class="form-group col-sm-4">
-								<div class="input-group" >
-									<input type="text" class="form-control" placeholder = "数字" input_box_money_1 value="80元" style="min-width: 50px;" ><br>
-									<div class="input-group-btn open">
-										<button class="btn btn-success" onclick="show_img(1)" >8速白色时装</button>
-									</div>
-								</div>
-							</div>
-							<div class="form-group col-sm-4">
-								<div class="input-group" >
-									<input type="text" class="form-control" placeholder = "数字" input_box_money_0 value="220元" style="min-width: 50px;" ><br>
-									<div class="input-group-btn open">
-										<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-success" onclick="show_img(0)" >
-											10速黑色时装
-										</button>
-									</div>
-								</div>
-							</div>
+						<div class="row" img_input_div></div>
 
-							<div class="form-group col-sm-12">
-								<div class="input-group" >
-									<div class="input-group-btn open">
-										<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-danger" onclick="init_show_img()" >
-											重置数据
-										</button>
-									</div>
+						<div class="row">
+							<div class="input-group" >
+								<div class="input-group-btn open">
+									<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-danger" onclick="init_show_img()" >
+										重置数据
+									</button>
 								</div>
 							</div>
 						</div>
@@ -219,30 +164,30 @@
 	</div>
 </div>
 <div class="hide">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_2_Blue_Set/1.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_2_Blue_Set/2.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_2_Green_Set/1.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_2_Green_Set/2.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_4_Burgundy_Set/1.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_4_Burgundy_Set/2.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_6_Purple_Set/1.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_6_Purple_Set/2.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_8_Grey_Set/1.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_8_Grey_Set/2.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_10_Black_Set/1.png">
-	<img src="img/show/Shadow_Hunter(F)/Shadow_Hunter_10_Black_Set/2.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_2_Blue_Set/1.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_2_Blue_Set/2.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_2_Green_Set/1.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_2_Green_Set/2.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_4_Burgundy_Set/1.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_4_Burgundy_Set/2.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_6_Purple_Set/1.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_6_Purple_Set/2.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_8_Grey_Set/1.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_8_Grey_Set/2.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_10_Black_Set/1.png">
-	<img src="img/show/Shadow_Hunter(M)/Shadow_Hunter_10_Black_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_2_Blue_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_2_Blue_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_2_Green_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_2_Green_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_4_Burgundy_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_4_Burgundy_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_6_Purple_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_6_Purple_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_8_Grey_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_8_Grey_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_10_Black_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(F)/Shadow_Hunter_10_Black_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_2_Blue_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_2_Blue_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_2_Green_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_2_Green_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_4_Burgundy_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_4_Burgundy_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_6_Purple_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_6_Purple_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_8_Grey_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_8_Grey_Set/2.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_10_Black_Set/1.png">
+	<img src="img/show/Shadow_Hunter/Shadow_Hunter(M)/Shadow_Hunter_10_Black_Set/2.png">
 </div>
 
 <!-- 全局js -->
@@ -290,18 +235,34 @@
 		$("[now_g_price]").append(`<option ${i===22 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
 		$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
 	}
-	for(let i = 1 ; i <= show_all_data.length ; i++){
+	for(let i = 0 ; i < show_all_data.length ; i++){
 		const obj = show_all_data[i];
 		$("[sel_now_show]").append(`<option ${obj.file_name === 'Shadow_Hunter' ?'selected':''} value="${obj.file_name}" hassubinfo="true">${obj.en_name}(${obj.cns_name})</option>`);
 	}
 
+	init_show_img();
+
+	function sel_img(){
+		$("[img_input_div]").html("'");
+
+		const show_data = show_all_data.filter(e => e.file_name === $("[sel_now_show]").val())[0];
+		for(let i = 0 ; i < show_data.list.length ; i++) {
+			const  obj = show_data.list[i];
+			$("[img_input_div]").prepend(`
+			<div class="form-group col-sm-4">
+				<div class="input-group" >
+					<input type="text" class="form-control" placeholder = "数字" value="${i+10}元" style="min-width: 100px;"  input_box_money_${i} ><br>
+					<div class="input-group-btn open">
+						<button class="btn btn-success" onclick="show_img(${i})" style="min-width: 55px;" >${obj.btn_str}</button>
+					</div>
+				</div>
+			</div>
+		`);
+		}
+	}
+
 	function init_show_img(){
-		$("[input_box_money_0]").val("220元");
-		$("[input_box_money_1]").val("80元");
-		$("[input_box_money_2]").val("30元");
-		$("[input_box_money_3]").val("20元");
-		$("[input_box_money_4]").val("25元");
-		$("[input_box_money_5]").val("35元");
+		sel_img();
 		$("[show_txt_div]").html("");
 	}
 
@@ -437,10 +398,10 @@
 						<span style="color: red;font-size: 20px;font-weight: bold; ">${show_money}</span>
 					</div>
 					<div style="text-align: center">
-						<img src="img/show/${now_show_data.file_name}(F)/${now_show_data.list[index].url}/1.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
-						<img src="img/show/${now_show_data.file_name}(F)/${now_show_data.list[index].url}/2.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
-						<img src="img/show/${now_show_data.file_name}(M)/${now_show_data.list[index].url}/1.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
-						<img src="img/show/${now_show_data.file_name}(M)/${now_show_data.list[index].url}/2.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
+						<img src="img/show/${now_show_data.file_name}/${now_show_data.file_name}(F)/${now_show_data.list[index].url}/1.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
+						<img src="img/show/${now_show_data.file_name}/${now_show_data.file_name}(F)/${now_show_data.list[index].url}/2.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
+						<img src="img/show/${now_show_data.file_name}/${now_show_data.file_name}(M)/${now_show_data.list[index].url}/1.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
+						<img src="img/show/${now_show_data.file_name}/${now_show_data.file_name}(M)/${now_show_data.list[index].url}/2.png" style="width: 80px;height: 200px" alt="${now_show_data.list[index].name}" onerror="error_img(this)">
 					</div>
 				</div>
 			</div>

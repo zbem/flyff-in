@@ -10,6 +10,9 @@
 [operation_div] button{
     width: 111px;
 }
+[operation_div] {
+    min-height: 200px;
+}
 [float_left]{
     float: left !important;
 }

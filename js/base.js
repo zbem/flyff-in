@@ -45,12 +45,12 @@
 			"en_name":"Artificial",
 			"cns_name":"艺术创造套装",
 			"list":[
-				{"url":"Artificial_2_Red_Set"  		,"name":"Artificial 2% Red Set",	 "open_num":0,   "color":"black", "probability":0.2	 },
-				{"url":"Artificial_2_White_Set"		,"name":"Artificial 2% White Set",	 "open_num":0,   "color":"black", "probability":0.2	 },
-				{"url":"Artificial_4_Green_Set" 	,"name":"Artificial 4% Green Set",	 "open_num":0,   "color":"black", "probability":0.3	 },
-				{"url":"Artificial_6_Blue_Set"   	,"name":"Artificial 6% Blue Set",	 "open_num":0,   "color":"black", "probability":0.15 },
-				{"url":"Artificial_8_Orange_Set"	,"name":"Artificial 8% Orange Set",	 "open_num":0,   "color":"black", "probability":0.10 },
-				{"url":"Artificial_10_Purple_Set"	,"name":"Artificial 10% Purple Set", "open_num":0,   "color":"black", "probability":0.05 },
+				{"btn_str":"2%"		,"url":"Artificial_2_Red_Set"  		,"name":"Artificial 2% Red Set"		,"open_num":0,   "color":"black"	,"probability":0.2	 },
+				{"btn_str":"2%"		,"url":"Artificial_2_White_Set"		,"name":"Artificial 2% White Set"	,"open_num":0,   "color":"black"	,"probability":0.2	 },
+				{"btn_str":"4%"		,"url":"Artificial_4_Green_Set" 	,"name":"Artificial 4% Green Set"	,"open_num":0,   "color":"black"	,"probability":0.3	 },
+				{"btn_str":"6%"		,"url":"Artificial_6_Blue_Set"   	,"name":"Artificial 6% Blue Set"	,"open_num":0,   "color":"black"	,"probability":0.15 },
+				{"btn_str":"8%"		,"url":"Artificial_8_Orange_Set"	,"name":"Artificial 8% Orange Set"	,"open_num":0,   "color":"black"	,"probability":0.10 },
+				{"btn_str":"10%"	,"url":"Artificial_10_Purple_Set"	,"name":"Artificial 10% Purple Set"	,"open_num":0,   "color":"black"	,"probability":0.05 },
 			]
 		},
 		{
@@ -58,11 +58,11 @@
 			"en_name":"Casual Summer",
 			"cns_name":"夏日",
 			"list":[
-				{"url":"Casual_Summer_2_Orange_Set", "name":"Casual Summer 2% Orange Set",	"open_num":0,   "color":"black", 	"probability":0.2	},
-				{"url":"Casual_Summer_4_Purple_Set", "name":"Casual Summer 4% Purple Set",	"open_num":0,   "color":"black", 	"probability":0.3	},
-				{"url":"Casual_Summer_6_White_Set",	 "name":"Casual Summer 6% White Set",	"open_num":0,   "color":"black", 	"probability":0.15	},
-				{"url":"Casual_Summer_8_Blue_Set",   "name":"Casual Summer 8% Blue Set",	"open_num":0,   "color":"black", 	"probability":0.10	},
-				{"url":"Casual_Summer_10_Black_Set", "name":"Casual Summer 10% Black Set",	"open_num":0,   "color":"black", 	"probability":0.05	},
+				{"btn_str":"2%" 	,"url":"Casual_Summer_2_Orange_Set"		,"name":"Casual Summer 2% Orange Set"	,"open_num":0	,"color":"black"	,"probability":0.2	},
+				{"btn_str":"4%" 	,"url":"Casual_Summer_4_Purple_Set"		,"name":"Casual Summer 4% Purple Set"	,"open_num":0	,"color":"black"	,"probability":0.3	},
+				{"btn_str":"6%" 	,"url":"Casual_Summer_6_White_Set"		,"name":"Casual Summer 6% White Set"	,"open_num":0	,"color":"black"	,"probability":0.15	},
+				{"btn_str":"7%" 	,"url":"Casual_Summer_8_Blue_Set"		,"name":"Casual Summer 8% Blue Set"		,"open_num":0	,"color":"black"	,"probability":0.10	},
+				{"btn_str":"10%"	,"url":"Casual_Summer_10_Black_Set"		,"name":"Casual Summer 10% Black Set"	,"open_num":0	,"color":"black"	,"probability":0.05	},
 			]
 		},
 		{
@@ -70,12 +70,12 @@
 			"en_name":"Exorcist",
 			"cns_name":"驱魔人",
 			"list":[
-				{"url":"Exorcist_2_Red_Set",	 "name":"Exorcist 2% Red Set",		"open_num":0,   "color":"black", "probability":0.2	},
-				{"url":"Exorcist_2_White_Set",	 "name":"Exorcist 2% White Set",	"open_num":0,   "color":"black", "probability":0.2	},
-				{"url":"Exorcist_4_Black_Set",	 "name":"Exorcist 4% Black Set",	"open_num":0,   "color":"black", "probability":0.3	},
-				{"url":"Exorcist_6_Green_Set",	 "name":"Exorcist 6% Green Set",	"open_num":0,   "color":"black", "probability":0.15	},
-				{"url":"Exorcist_8_Blue_Set",  	 "name":"Exorcist 8% Blue Set",		"open_num":0,   "color":"black", "probability":0.10	},
-				{"url":"Exorcist_10_Purple_Set", "name":"Exorcist 10% Purple Set",	"open_num":0,   "color":"black", "probability":0.05	},
+				{"btn_str":"2%"    ,"url":"Exorcist_2_Red_Set"		,"name":"Exorcist 2% Red Set"		,"open_num":0	,"color":"black"	,"probability":0.2	},
+				{"btn_str":"2%"    ,"url":"Exorcist_2_White_Set"	,"name":"Exorcist 2% White Set"		,"open_num":0	,"color":"black"	,"probability":0.2	},
+				{"btn_str":"4%"    ,"url":"Exorcist_4_Black_Set"	,"name":"Exorcist 4% Black Set"		,"open_num":0	,"color":"black"	,"probability":0.3	},
+				{"btn_str":"6%"    ,"url":"Exorcist_6_Green_Set"	,"name":"Exorcist 6% Green Set"		,"open_num":0	,"color":"black"	,"probability":0.15	},
+				{"btn_str":"8%"    ,"url":"Exorcist_8_Blue_Set"		,"name":"Exorcist 8% Blue Set"		,"open_num":0	,"color":"black"	,"probability":0.10	},
+				{"btn_str":"10%"    ,"url":"Exorcist_10_Purple_Set"	,"name":"Exorcist 10% Purple Set"	,"open_num":0	,"color":"black"	,"probability":0.05	},
 			]
 		},
 		{
@@ -83,12 +83,12 @@
 			"en_name":"Future Easter",
 			"cns_name":"未来复活节",
 			"list":[
-				{"url":"Future_Easter_10_Blue_Set",	"name":"Shadow Hunter 10% Black Set",  "open_num":0 ,"color":"black" ,"probability":0.05	},
-				{"url":"Future_Easter_8_Red_Set",	"name":"Shadow Hunter 8% Grey Set",    "open_num":0 ,"color":"black" ,"probability":0.10	},
-				{"url":"Future_Easter_6_Green_Set",	"name":"Shadow Hunter 6% Purple Set",  "open_num":0 ,"color":"black" ,"probability":0.15	},
-				{"url":"Future_Easter_2_Yellow_Set","name":"Shadow Hunter 2% Green Set",   "open_num":0 ,"color":"black" ,"probability":0.2		},
-				{"url":"Future_Easter_2_Purple_Set","name":"Shadow Hunter 2% Blue Set",    "open_num":0 ,"color":"black" ,"probability":0.2		},
-				{"url":"Future_Easter_4_Pink_Set",	"name":"Shadow Hunter 4% Burgundy Set","open_num":0 ,"color":"black" ,"probability":0.3		}
+				{"btn_str":"2%"    ,"url":"Future_Easter_2_Purple_Set"	,"name":"Shadow Hunter 2% Blue Set"  		,"open_num":0 		,"color":"black" 		,"probability":0.2		},
+				{"btn_str":"2%"    ,"url":"Future_Easter_2_Yellow_Set"	,"name":"Shadow Hunter 2% Green Set" 		,"open_num":0 		,"color":"black" 		,"probability":0.2		},
+				{"btn_str":"4%"    ,"url":"Future_Easter_4_Pink_Set"	,"name":"Shadow Hunter 4% Burgundy Set" 	,"open_num":0 		,"color":"black" 		,"probability":0.3		},
+				{"btn_str":"6%"    ,"url":"Future_Easter_6_Green_Set"	,"name":"Shadow Hunter 6% Purple Set"		,"open_num":0 		,"color":"black" 		,"probability":0.15		},
+				{"btn_str":"8%"    ,"url":"Future_Easter_8_Red_Set"		,"name":"Shadow Hunter 8% Grey Set"  		,"open_num":0 		,"color":"black" 		,"probability":0.10		},
+				{"btn_str":"10%"    ,"url":"Future_Easter_10_Blue_Set"	,"name":"Shadow Hunter 10% Black Set"		,"open_num":0 		,"color":"black" 		,"probability":0.05		}
 			]
 		},
 		{
@@ -96,12 +96,12 @@
 			"en_name":"Glitch Pop",
 			"cns_name":"音乐脉冲",
 			"list":[
-				{"url":"Glitch_Pop_2_Black_Set",	"name":"Glitch Pop 2% Black Set",	"open_num":0,   "color":"black", "probability":0.2	},
-				{"url":"Glitch_Pop_2_Orange_Set",	"name":"Glitch Pop 2% Orange Set",	"open_num":0,   "color":"black", "probability":0.2	},
-				{"url":"Glitch_Pop_4_Red_Set",		"name":"Glitch Pop 4% Red Set",		"open_num":0,   "color":"black", "probability":0.3	},
-				{"url":"Glitch_Pop_6_Pink_Set",		"name":"Glitch Pop 6% Pink Set",	"open_num":0,   "color":"black", "probability":0.15	},
-				{"url":"Glitch_Pop_8_Green_Set", 	"name":"Glitch Pop 8% Green Set",	"open_num":0,   "color":"black", "probability":0.10	},
-				{"url":"Glitch_Pop_10_Blue_Set",	"name":"Glitch Pop 10% Blue Set",	"open_num":0,   "color":"black", "probability":0.05	},
+				{"btn_str":"2%"    ,"url":"Glitch_Pop_2_Black_Set"		,"name":"Glitch Pop 2% Black Set"	,"open_num":0,   "color":"black" ,"probability":0.2		},
+				{"btn_str":"2%"    ,"url":"Glitch_Pop_2_Orange_Set"		,"name":"Glitch Pop 2% Orange Set"	,"open_num":0,   "color":"black" ,"probability":0.2		},
+				{"btn_str":"4%"    ,"url":"Glitch_Pop_4_Red_Set"		,"name":"Glitch Pop 4% Red Set"		,"open_num":0,   "color":"black" ,"probability":0.3		},
+				{"btn_str":"6%"    ,"url":"Glitch_Pop_6_Pink_Set"		,"name":"Glitch Pop 6% Pink Set"	,"open_num":0,   "color":"black" ,"probability":0.15	},
+				{"btn_str":"8%"    ,"url":"Glitch_Pop_8_Green_Set" 		,"name":"Glitch Pop 8% Green Set"	,"open_num":0,   "color":"black" ,"probability":0.10	},
+				{"btn_str":"10%"    ,"url":"Glitch_Pop_10_Blue_Set"		,"name":"Glitch Pop 10% Blue Set"	,"open_num":0,   "color":"black" ,"probability":0.05	},
 			]
 		},
 		{
@@ -109,12 +109,12 @@
 			"en_name":"Luxury Tuxedo",
 			"cns_name":"奢华燕尾服",
 			"list":[
-				{"url":"Luxury_Tuxedo_2_Green_Set",		"name":"Luxury Tuxedo 2% White Set",	"open_num":0,   "color":"black", "probability":0.2	},
-				{"url":"Luxury_Tuxedo_2_Pink_Set",		"name":"Luxury Tuxedo 2% Red Set",		"open_num":0,   "color":"black", "probability":0.2	},
-				{"url":"Luxury_Tuxedo_4_Purple_Set",	"name":"Luxury Tuxedo 4% Black Set",	"open_num":0,   "color":"black", "probability":0.3	},
-				{"url":"Luxury_Tuxedo_6_Yellow_Set",	"name":"Luxury Tuxedo 6% Green Set",	"open_num":0,   "color":"black", "probability":0.15	},
-				{"url":"Luxury_Tuxedo_8_Black_Set", 	"name":"Luxury Tuxedo 8% Blue Set",		"open_num":0,   "color":"black", "probability":0.10	},
-				{"url":"Luxury_Tuxedo_10_White_Set",	"name":"Luxury Tuxedo 10% Purple Set",	"open_num":0,   "color":"black", "probability":0.05	},
+				{"btn_str":"2%"    ,"url":"Luxury_Tuxedo_2_Green_Set"		,"name":"Luxury Tuxedo 2% White Set"	,"open_num":0,   "color":"black" ,"probability":0.2	},
+				{"btn_str":"2%"    ,"url":"Luxury_Tuxedo_2_Pink_Set"		,"name":"Luxury Tuxedo 2% Red Set"		,"open_num":0,   "color":"black" ,"probability":0.2	},
+				{"btn_str":"4%"    ,"url":"Luxury_Tuxedo_4_Purple_Set"		,"name":"Luxury Tuxedo 4% Black Set"	,"open_num":0,   "color":"black" ,"probability":0.3	},
+				{"btn_str":"6%"    ,"url":"Luxury_Tuxedo_6_Yellow_Set"		,"name":"Luxury Tuxedo 6% Green Set"	,"open_num":0,   "color":"black" ,"probability":0.15	},
+				{"btn_str":"8%"    ,"url":"Luxury_Tuxedo_8_Black_Set" 		,"name":"Luxury Tuxedo 8% Blue Set"		,"open_num":0,   "color":"black" ,"probability":0.10	},
+				{"btn_str":"10%"    ,"url":"Luxury_Tuxedo_10_White_Set"		,"name":"Luxury Tuxedo 10% Purple Set"	,"open_num":0,   "color":"black" ,"probability":0.05	},
 			]
 		},
 		{
@@ -122,12 +122,12 @@
 			"en_name":"Oni",
 			"cns_name":"奢华燕尾服",
 			"list":[
-				{"url":"Oni_2_Black_Set",		"name":"Oni 2% Black Set",		"open_num":0,   "color":"black", "probability":0.2	},
-				{"url":"Oni_2_Blue_Set",		"name":"Oni 2% Blue Set",		"open_num":0,   "color":"black", "probability":0.2	},
-				{"url":"Oni_4_Red_Set",			"name":"Oni 4% Red Set",		"open_num":0,   "color":"black", "probability":0.3	},
-				{"url":"Oni_6_Green_Set",		"name":"Oni 6% Green Set",		"open_num":0,   "color":"black", "probability":0.15	},
-				{"url":"Oni_8_Blue_Set",		"name":"Oni 8% Blue Set",		"open_num":0,   "color":"black", "probability":0.10	},
-				{"url":"Oni_10_Purple_Set",		"name":"Oni 10% Purple Set",	"open_num":0,   "color":"black", "probability":0.05	},
+				{"btn_str":"2%"		,"url":"Oni_2_Black_Set"	,"name":"Oni 2% Black Set"		,"open_num":0,   "color":"black" ,"probability":0.2	},
+				{"btn_str":"2%"		,"url":"Oni_2_Blue_Set"		,"name":"Oni 2% Blue Set"		,"open_num":0,   "color":"black" ,"probability":0.2	},
+				{"btn_str":"4%"		,"url":"Oni_4_Red_Set"		,"name":"Oni 4% Red Set"		,"open_num":0,   "color":"black" ,"probability":0.3	},
+				{"btn_str":"6%"		,"url":"Oni_6_Green_Set"	,"name":"Oni 6% Green Set"		,"open_num":0,   "color":"black" ,"probability":0.15	},
+				{"btn_str":"8%"		,"url":"Oni_8_Blue_Set"		,"name":"Oni 8% Blue Set"		,"open_num":0,   "color":"black" ,"probability":0.10	},
+				{"btn_str":"10%"	,"url":"Oni_10_Purple_Set"	,"name":"Oni 10% Purple Set"	,"open_num":0,   "color":"black" ,"probability":0.05	},
 			]
 		},
 		{
@@ -135,12 +135,12 @@
 			"en_name":"Shadow Hunter",
 			"cns_name":"暗影猎手",
 			"list":[
-				{"url":"Shadow_Hunter_2_Blue_Set",      "name":"Shadow Hunter 2% Blue Set",    "open_num":0,"color":"black", "probability":0.2	},
-				{"url":"Shadow_Hunter_2_Green_Set",     "name":"Shadow Hunter 2% Green Set",   "open_num":0,"color":"black", "probability":0.2	},
-				{"url":"Shadow_Hunter_4_Burgundy_Set",  "name":"Shadow Hunter 4% Burgundy Set","open_num":0,"color":"black", "probability":0.3	},
-				{"url":"Shadow_Hunter_6_Purple_Set",    "name":"Shadow Hunter 6% Purple Set",  "open_num":0,"color":"black", "probability":0.15	},
-				{"url":"Shadow_Hunter_8_Grey_Set",      "name":"Shadow Hunter 8% Grey Set",    "open_num":0,"color":"black", "probability":0.10	},
-				{"url":"Shadow_Hunter_10_Black_Set",    "name":"Shadow Hunter 10% Black Set",  "open_num":0,"color":"black", "probability":0.05	}
+				{"btn_str":"2%"		,"url":"Shadow_Hunter_2_Blue_Set"     ,"name":"Shadow Hunter 2% Blue Set"    	,"open_num":0,"color":"black" ,"probability":0.2	},
+				{"btn_str":"2%"		,"url":"Shadow_Hunter_2_Green_Set"    ,"name":"Shadow Hunter 2% Green Set"   	,"open_num":0,"color":"black" ,"probability":0.2	},
+				{"btn_str":"4%"		,"url":"Shadow_Hunter_4_Burgundy_Set" ,"name":"Shadow Hunter 4% Burgundy Set"	,"open_num":0,"color":"black" ,"probability":0.3	},
+				{"btn_str":"6%"		,"url":"Shadow_Hunter_6_Purple_Set"   ,"name":"Shadow Hunter 6% Purple Set"  	,"open_num":0,"color":"black" ,"probability":0.15	},
+				{"btn_str":"8%"		,"url":"Shadow_Hunter_8_Grey_Set"     ,"name":"Shadow Hunter 8% Grey Set"    	,"open_num":0,"color":"black" ,"probability":0.10	},
+				{"btn_str":"10%"	,"url":"Shadow_Hunter_10_Black_Set"   ,"name":"Shadow Hunter 10% Black Set"  	,"open_num":0,"color":"black" ,"probability":0.05	}
 			]
 		},
 		{
@@ -148,12 +148,12 @@
 			"en_name":"Teddy Bear 2024",
 			"cns_name":"泰迪熊",
 			"list":[
-				{"url":"Teddy_Bear_2024_2_Black_Set",  "name":"Teddy Bear 2024 2% Black Set",	"open_num":0,"color":"black", 	"probability":0.2	},
-				{"url":"Teddy_Bear_2024_2_White_Set",  "name":"Teddy Bear 2024 2% White Set",	"open_num":0,"color":"black", 	"probability":0.2	},
-				{"url":"Teddy_Bear_2024_4_Green_Set",  "name":"Teddy Bear 2024 4% Green Set",	"open_num":0,"color":"black", 	"probability":0.3	},
-				{"url":"Teddy_Bear_2024_6_Blue_Set",   "name":"Teddy Bear 2024 6% Blue Set",  	"open_num":0,"color":"black", 	"probability":0.15	},
-				{"url":"Teddy_Bear_2024_8_Purple_Set", "name":"Teddy Bear 2024 8% Purple Set",  "open_num":0,"color":"black",	"probability":0.10	},
-				{"url":"Teddy_Bear_2024_10_Brown_Set", "name":"Teddy Bear 2024 10% Brown Set",  "open_num":0,"color":"black",	"probability":0.05	}
+				{"btn_str":"2%"		,"url":"Teddy_Bear_2024_2_Black_Set"  	,"name":"Teddy Bear 2024 2% Black Set"	 ,"open_num":0,"color":"black" 	,"probability":0.2	},
+				{"btn_str":"2%"		,"url":"Teddy_Bear_2024_2_White_Set"  	,"name":"Teddy Bear 2024 2% White Set"	 ,"open_num":0,"color":"black" 	,"probability":0.2	},
+				{"btn_str":"4%"		,"url":"Teddy_Bear_2024_4_Green_Set"  	,"name":"Teddy Bear 2024 4% Green Set"	 ,"open_num":0,"color":"black" 	,"probability":0.3	},
+				{"btn_str":"6%"		,"url":"Teddy_Bear_2024_6_Blue_Set"   	,"name":"Teddy Bear 2024 6% Blue Set"  	 ,"open_num":0,"color":"black" 	,"probability":0.15	},
+				{"btn_str":"8%"		,"url":"Teddy_Bear_2024_8_Purple_Set" 	,"name":"Teddy Bear 2024 8% Purple Set"  ,"open_num":0,"color":"black" 	,"probability":0.10	},
+				{"btn_str":"10%"    ,"url":"Teddy_Bear_2024_10_Brown_Set" 	,"name":"Teddy Bear 2024 10% Brown Set"  ,"open_num":0,"color":"black" 	,"probability":0.05	}
 			]
 		},
 		{
@@ -161,9 +161,9 @@
 			"en_name":"Valentine 2024",
 			"cns_name":"情人节2024",
 			"list":[
-				{"url":"Valentine_2024_2_Blue_Set",  	"name":"Valentine 2024 2% Blue Set",  		"open_num":0,"color":"black", "probability":0.2		},
-				{"url":"Valentine_2024_4_Orange_Set",  	"name":"Valentine 2024 4% Orange Set",  	"open_num":0,"color":"black", "probability":0.3		},
-				{"url":"Valentine_2024_6_Purple_Set",  	"name":"Valentine 2024 6% Purple Set",  	"open_num":0,"color":"black", "probability":0.15	},
+				{"btn_str":"2%"    ,"url":"Valentine_2024_2_Blue_Set"  	,"name":"Valentine 2024 2% Blue Set"  		,"open_num":0,"color":"black" ,"probability":0.2		},
+				{"btn_str":"4%"    ,"url":"Valentine_2024_4_Orange_Set"  	,"name":"Valentine 2024 4% Orange Set"  	,"open_num":0,"color":"black" ,"probability":0.3		},
+				{"btn_str":"6%"    ,"url":"Valentine_2024_6_Purple_Set"  	,"name":"Valentine 2024 6% Purple Set"  	,"open_num":0,"color":"black" ,"probability":0.15	},
 			]
 		},
 		{
@@ -171,12 +171,12 @@
 			"en_name":"Winter Casual",
 			"cns_name":"冬季休闲套",
 			"list":[
-				{"url":"Winter_Casual_2024_2_Cyan_Set"	 	,"name":"Winter Casual 2024 2% Cyan Set"		,"open_num":0  	,"color":"black" 	,"probability":0.2	},
-				{"url":"Winter_Casual_2024_2_Orange_Set"	,"name":"Winter Casual 2024 2% Orange Set"		,"open_num":0  	,"color":"black" 	,"probability":0.2	},
-				{"url":"Winter_Casual_2024_4_Purple_Set"	,"name":"Winter Casual 2024 4% Purple Set"		,"open_num":0  	,"color":"black" 	,"probability":0.3	},
-				{"url":"Winter_Casual_2024_6_Green_Set"  	,"name":"Winter Casual 2024 6% Green Set"		,"open_num":0  	,"color":"black" 	,"probability":0.15	},
-				{"url":"Winter_Casual_2024_8_Pink_Set" 		,"name":"Winter Casual 2024 8% Pink Set"		,"open_num":0  	,"color":"black"	,"probability":0.10	},
-				{"url":"Winter_Casual_2024_10_Black_Set"	,"name":"Winter Casual 2024 10% Black Set"		,"open_num":0  	,"color":"black"	,"probability":0.05	}
+				{"btn_str":"2%"		,"url":"Winter_Casual_2024_2_Cyan_Set"	 	,"name":"Winter Casual 2024 2% Cyan Set"		,"open_num":0  	,"color":"black" 	,"probability":0.2	},
+				{"btn_str":"2%"		,"url":"Winter_Casual_2024_2_Orange_Set"	,"name":"Winter Casual 2024 2% Orange Set"		,"open_num":0  	,"color":"black" 	,"probability":0.2	},
+				{"btn_str":"4%"		,"url":"Winter_Casual_2024_4_Purple_Set"	,"name":"Winter Casual 2024 4% Purple Set"		,"open_num":0  	,"color":"black" 	,"probability":0.3	},
+				{"btn_str":"6%"		,"url":"Winter_Casual_2024_6_Green_Set"  	,"name":"Winter Casual 2024 6% Green Set"		,"open_num":0  	,"color":"black" 	,"probability":0.15	},
+				{"btn_str":"8%"		,"url":"Winter_Casual_2024_8_Pink_Set"		,"name":"Winter Casual 2024 8% Pink Set"		,"open_num":0  	,"color":"black"	,"probability":0.10	},
+				{"btn_str":"10%"    ,"url":"Winter_Casual_2024_10_Black_Set"	,"name":"Winter Casual 2024 10% Black Set"		,"open_num":0  	,"color":"black"	,"probability":0.05	}
 			]
 		},
 	];
