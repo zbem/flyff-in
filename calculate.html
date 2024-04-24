@@ -51,7 +51,6 @@
 					<div class="row">
 						<div class="form-group col-sm-4">
 							<div class="input-group m-b">
-								<img src="img/items/agonyore01.png" alt="释放药水" />
 								<label>副本消耗药品:
 									<select data-placeholder="请选择药品..." class="form-control" sel_item onchange="r_input_price()">
 										<option value="">请选择药品</option>
@@ -103,6 +102,26 @@
 
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
+
+		const config = {
+			'.chosen-select': {},
+			'.chosen-select-deselect': {
+				allow_single_deselect: true
+			},
+			'.chosen-select-no-single': {
+				disable_search_threshold: 10
+			},
+			'.chosen-select-no-results': {
+				no_results_text: 'Oops, nothing found!'
+			},
+			'.chosen-select-width': {
+				width: "95%"
+			}
+		};
+		for (const selector in config) {
+			$(selector).chosen(config[selector]);
+		}
+
 	});
 
 	function formatNumberWithCommas(num) {

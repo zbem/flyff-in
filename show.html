@@ -26,37 +26,38 @@
 				</div>
 				<div class="ibox-content">
 					<div class="row">
-						<div class="col-sm-6">金币比例(1亿):</div>
-						<div class="col-sm-6">钻比例(1000钻):</div>
-						<div class="form-group col-sm-6">
-							<select data-placeholder="请选择比例..." class="chosen-select col-xs-12" value="25" now_g_price onchange="r_input_price()">
+						<div class="col-sm-4">金币比例(1亿):</div>
+						<div class="col-sm-4">钻比例(1000钻):</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-4">
+							<select data-placeholder="请选择比例..." class="chosen-select" style="min-width:200px" value="25" now_g_price onchange="r_input_price()">
 								<option value="">请选择比例</option>
 							</select>
 						</div>
-						<div class="form-group col-sm-6">
-							<select data-placeholder="请选择比例..." class="chosen-select col-xs-12" now_f_price onchange="r_input_price()">
+						<div class="form-group col-sm-4">
+							<select data-placeholder="请选择比例..." class="chosen-select" style="min-width:200px" now_f_price onchange="r_input_price()">
 								<option value="">请选择比例</option>
 							</select>
 						</div>
-						<div class="form-group col-sm-12">
-							<div class="input-group m-b">
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-4">
+							<div class="input-group">
 								<span class="input-group-addon" style="width: 81px;" >人民币:</span>
 								<input type="text" class="form-control" placeholder = "数字" value="25" r_price onblur="r_input_price()">
-								<span class="input-group-addon">元</span>
 							</div>
 						</div>
-						<div class="form-group col-sm-12">
-							<div class="input-group m-b">
+						<div class="form-group col-sm-4">
+							<div class="input-group">
 								<span class="input-group-addon" style="width: 81px;" >金币:</span>
 								<input type="text" class="form-control" placeholder = "数字" value="100,000,000"  style="color: red" g_price onblur="g_input_price()">
-								<span class="input-group-addon">个</span>
 							</div>
 						</div>
-						<div class="form-group col-sm-12">
-							<div class="input-group m-b">
+						<div class="form-group col-sm-4">
+							<div class="input-group">
 								<span class="input-group-addon" style="width: 81px;">钻石:</span>
 								<input type="text" class="form-control" placeholder = "数字" value="481" f_price onblur="f_input_price()">
-								<span class="input-group-addon">个</span>
 							</div>
 						</div>
 					</div>
@@ -74,22 +75,20 @@
 				</div>
 				<div class="ibox-content" operation_div>
 					<div class="row">
-						<div class="form-group col-sm-6">
-							<select data-placeholder="请选择时装..." class="chosen-select col-xs-12" sel_now_show onchange="sel_img()" >
-								<option value="">请选择时装</option>
-							</select>
+						<div class="form-group col-sm-4">
+							<input type="text" class="form-control" img_money placeholder="请输入价格" style="min-width: 100px;" >
+						</div>
+						<div class="form-group col-sm-4">
+							<select data-placeholder="请选择时装..." class="chosen-select" sel_now_show style="min-width: 220px" onchange="sel_img()" ></select>
+						</div>
+						<div class="form-group col-sm-4">
+							<select data-placeholder="请选择移速..." class="chosen-select" sel_img_show style="min-width: 220px"></select>
 						</div>
 					</div>
 
-					<div class="row" img_input_div></div>
-
 					<div class="row">
-						<div class="input-group" >
-							<div class="input-group-btn open">
-								<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-danger" onclick="init_show_img()" >
-									重置数据
-								</button>
-							</div>
+						<div class="form-group col-sm-4">
+							<button style="width: 104px;text-align: center;padding-left: 0;padding-right: 0;" class="btn btn-success" onclick="show_img()" >生成</button>
 						</div>
 					</div>
 				</div>
@@ -106,29 +105,21 @@
 				</div>
 				<div class="ibox-content">
 					<div class="row">
-						<div class="col-sm-4">
-							<label>名称</label>
-						</div>
-						<div class="col-sm-4">
-							<label>价格</label>
-						</div>
-					</div>
-					<div class="row">
 						<div class="form-group col-sm-4">
-								<div class="input-group" >
-									<input type="text" class="form-control" file_upload_name placeholder = "数字" value="时装" style="min-width: 100px;" >
-								</div>
+							<div class="input-group" >
+								<input type="text" class="form-control" file_upload_name placeholder = "请输入名称" style="min-width: 100px;" >
 							</div>
-							<div class="form-group col-sm-4">
-								<div class="input-group" >
-									<input type="text" class="form-control" file_upload_money placeholder = "数字" value="11元" style="min-width: 100px;" >
-								</div>
+						</div>
+						<div class="form-group col-sm-4">
+							<div class="input-group" >
+								<input type="text" class="form-control" file_upload_money placeholder = "请输入价格" style="min-width: 100px;" >
 							</div>
-							<div class="col-sm-4">
-								<button class="btn btn-success" onclick="$('#fileUpload').click();">上传文件</button>
-							</div>
+						</div>
+						<div class="col-sm-4">
+							<button class="btn btn-success" onclick="$('#fileUpload').click();">上传文件</button>
+						</div>
 
-							<input type="file" id="fileUpload" accept="image/*" style="display: none;" >
+						<input type="file" id="fileUpload" accept="image/*" style="display: none;" >
 					</div>
 				</div>
 			</div>
@@ -137,7 +128,10 @@
 				<div class="ibox-title">
 					<h5>时装销售区</h5>
 					<div class="ibox-tools">
-						<a class="collapse-link">
+						<a class="dropdown-toggle" onclick="init_show_img()">
+							<i class="fa fa-refresh"></i>
+						</a>
+						<a class="collapse-link" >
 							<i class="fa fa-chevron-up"></i>
 						</a>
 					</div>
@@ -248,7 +242,9 @@
 		$('body').addClass('custom-cursor');
 
 		const config = {
-			'.chosen-select': {},
+			'.chosen-select': {
+				allow_single_deselect: true
+			},
 			'.chosen-select-deselect': {
 				allow_single_deselect: true
 			},
@@ -314,22 +310,16 @@
 
 
 	function sel_img(){
-		$("[img_input_div]").html("'");
-
+		let str = ``;
 		const show_data = show_all_data.filter(e => e.file_name === $("[sel_now_show]").val())[0];
 		for(let i = 0 ; i < show_data.list.length ; i++) {
-			const  obj = show_data.list[i];
-			$("[img_input_div]").prepend(`
-				<div class="form-group col-sm-4">
-					<div class="input-group" >
-						<input type="text" class="form-control" placeholder = "数字" value="${i+10}元" style="min-width: 100px;"  input_box_money_${i} >
-						<div class="input-group-btn open">
-							<button class="btn btn-success" onclick="show_img(${i})" style="min-width: 55px;" >${obj.btn_str}</button>
-						</div>
-					</div>
-				</div>
-			`);
+			const obj = show_data.list[i];
+			str += `<option ${i === 0 ?'selected':''} value="${i}" hassubinfo="true">${obj.option_str}</option>`;
 		}
+
+		$("[sel_img_show]").html(str);
+
+		$("[sel_img_show]").trigger("chosen:updated");
 	}
 
 	function init_show_img(){
@@ -454,12 +444,14 @@
 		obj.onerror=null; obj.src='img/show/none.png'
 	}
 
-	function show_img(index){
+	function show_img(){
+
 		const sel_now_show = $("[sel_now_show]").val();
+		const index = $("[sel_img_show]").val();
 
 		const now_show_data = show_all_data.filter(e=>e.file_name===sel_now_show)[0];
 
-		const show_money = $(`[input_box_money_${index}]`).val();
+		const show_money = $(`[img_money]`).val();
 
 		$("[show_txt_div]").prepend(`
 			<div class="col-xs-6">
@@ -504,10 +496,10 @@
 							<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">
 							${i === 0 ? "运气太好了!" : ""}恭喜抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}!</span>
 							<br>
-							<img src="img/show/${new_show_data.file_name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${new_show_data.file_name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${new_show_data.file_name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${new_show_data.file_name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${new_show_data.file_name}/${new_show_data.file_name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${new_show_data.file_name}/${new_show_data.file_name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${new_show_data.file_name}/${new_show_data.file_name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
+							<img src="img/show/${new_show_data.file_name}/${new_show_data.file_name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
 						</div>
 					</div>
 				`);
