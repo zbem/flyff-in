@@ -31,7 +31,7 @@
 					</div>
 					<div class="row">
 						<div class="form-group col-sm-4">
-							<select data-placeholder="请选择比例..." class="chosen-select" style="min-width:200px" value="25" now_g_price onchange="r_input_price()">
+							<select data-placeholder="请选择比例..." class="chosen-select" style="min-width:200px" now_g_price onchange="r_input_price()">
 								<option value="">请选择比例</option>
 							</select>
 						</div>
@@ -45,7 +45,7 @@
 						<div class="form-group col-sm-4">
 							<div class="input-group">
 								<span class="input-group-addon" style="width: 81px;" >人民币:</span>
-								<input type="text" class="form-control" placeholder = "数字" value="25" r_price onblur="r_input_price()">
+								<input type="text" class="form-control" placeholder = "数字" r_price onblur="r_input_price()">
 							</div>
 						</div>
 						<div class="form-group col-sm-4">
@@ -57,7 +57,7 @@
 						<div class="form-group col-sm-4">
 							<div class="input-group">
 								<span class="input-group-addon" style="width: 81px;">钻石:</span>
-								<input type="text" class="form-control" placeholder = "数字" value="481" f_price onblur="f_input_price()">
+								<input type="text" class="form-control" placeholder = "数字" value="415" f_price onblur="f_input_price()">
 							</div>
 						</div>
 					</div>
@@ -263,8 +263,11 @@
 		}
 	});
 
+	const now_r = 22;
+	$("[r_price]").val(now_r);
+
 	for(let i = 1 ; i <= 100 ; i++){
-		$("[now_g_price]").append(`<option ${i===22 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
+		$("[now_g_price]").append(`<option ${i===now_r ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
 		$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
 	}
 	for(let i = 0 ; i < show_all_data.length ; i++){
