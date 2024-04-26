@@ -67,7 +67,7 @@
 						</a>
 					</div>
 				</div>
-				<div class="ibox-content">
+				<div class="ibox-content" item_div>
 
 				</div>
 			</div>
@@ -178,6 +178,13 @@
 			for (let i = 0; i < json_data.buff.length; i++) {
 				const obj = json_data.buff[i];
 				$(`[dungeon_buff] [value = "${obj}"]`).prop("checked","true");
+			}
+
+			for (let i = 0; i < json_data.item_list.length; i++) {
+				const obj = json_data.item_list[i];
+				$(`[item_div]`).prepend(`
+					<span>${obj.name}:数量${obj.num}</span>
+				`);
 			}
 		}
 	}
