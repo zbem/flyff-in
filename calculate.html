@@ -183,7 +183,7 @@
 			for (let i = 0; i < json_data.item_list.length; i++) {
 				const obj = json_data.item_list[i];
 				$(`[item_div]`).prepend(`
-					<span>${obj.name}:数量${obj.num}</span>
+					<span>${obj.name}:数量${obj.num}</span><br>
 				`);
 			}
 		}
@@ -228,7 +228,7 @@
 	for (let i = 0; i < 8; i++) {
 		$("[calculate_div]").append(`
 				<div class="row">
-					<div class="form-group col-sm-4 hide" job_div job_${i}>
+					<div class="form-group col-sm-4" job_div job_${i}>
 						<div class="input-group">
 						<span class="input-group-addon" style="width: 81px;" >职业:</span>
 						<select data-placeholder="请选择职业" class="form-control"  sel_job style="min-width: 100px" >
@@ -243,7 +243,7 @@
 						</select>
 					   </div>
 					</div>
-					<div class="form-group col-sm-4 hide" job_div job_${i}>
+					<div class="form-group col-sm-4" job_div job_${i}>
 					   <div class="input-group">
 						<span class="input-group-addon" style="width: 81px;" >游戏昵称:</span>
 						<input type="text" class="form-control" input_game_name >

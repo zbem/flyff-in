@@ -34,7 +34,34 @@
 		{
 			//id 年月日时分
 			id:202404262200,
-			title_str: "2024年4月26日 22点2连荒野本",
+			star_time:"2024年4月26日 22:03:21",
+			title_str: "2024年4月26日 22点荒野本",
+			buff:[],
+			//副本编号 dungeon_data_list  2.荒野
+			sel_dungeon:2,
+			//人数
+			sel_num: 8,
+			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
+			list:[
+				{job:"骑士",name:"牛骑士"},
+				{job:"精神",name:"牛精神"},
+				{job:"游侠",name:"黑咩咩"},
+				{job:"守护",name:"可爱的小游"},
+				{job:"暗杀",name:"狂奔的蜗牛"},
+				{job:"元素",name:"Cerous"},
+				{job:"暴力",name:"芝麻糊"},
+				{job:"守护",name:"雾海"},
+			],
+			//分红物品
+			item_list:[
+				{name:"晶石",num:1,money:88000000,r_money:0,item_img:"1.png"},
+			],
+		},
+		{
+			//id 年月日时分
+			id:202404272300,
+			star_time:"2024年4月26日 23:04:00",
+			title_str: "2024年4月26日 23点荒野本",
 			buff:[1,2,4,5],
 			//副本编号 dungeon_data_list  2.荒野
 			sel_dungeon:2,
@@ -44,37 +71,17 @@
 			list:[
 				{job:"骑士",name:"牛骑士"},
 				{job:"精神",name:"牛精神"},
-				{job:"游侠",name:"咩咩"},
-				{job:"守护",name:"小游"},
+				{job:"游侠",name:"黑咩咩"},
+				{job:"守护",name:"可爱的小游"},
 				{job:"暗杀",name:"狂奔的蜗牛"},
 				{job:"元素",name:"Cerous"},
 				{job:"暴力",name:"芝麻糊"},
-				{job:"守护",name:"雾天"},
+				{job:"守护",name:"雾海"},
 			],
 			//分红物品
 			item_list:[
-				{name:"晶石",num:1},
-			],
-		},
-		{
-			//id 年月日时分
-			id:202404270000,
-			title_str: "2024年4月27日 0点2连荒野本",
-			buff:[1,2,4,5],
-			//副本编号 dungeon_data_list  2.荒野
-			sel_dungeon:2,
-			//人数
-			sel_num: 8,
-			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
-			list:[
-				{job:"骑士",name:""},
-				{job:"守护",name:""},
-				{job:"守护",name:""},
-				{job:"元素",name:""},
-				{job:"精神",name:""},
-				{job:"游侠",name:""},
-				{job:"刀锋",name:""},
-				{job:"刀锋",name:""},
+				{name:"晶石",num:1,money:88000000,r_money:0,item_img:"1.png"},
+				{name:"S宠",num:1,money:0,r_money:12.5,item_img:"2.png"},
 			],
 		}
 	]

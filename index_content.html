@@ -26,7 +26,7 @@
 				</div>
 				<div class="ibox-content">
 					<div class="row">
-						<div class="form-group col-sm-4" dungeon_div></div>
+						<div class="form-group col-sm-12" dungeon_div></div>
 					</div>
 					<div class="row">
 						<div class="col-sm-12 form-group" dungeon_buff ></div>
@@ -60,7 +60,9 @@
 		for (let i = 0; i < dungeon_list.length; i++) {
 			const obj = dungeon_list[i];
 			$("[dungeon_div]").prepend(`
-				<a href="calculate.html?id=${obj.id}" target="_blank" onclick="cookie_json(${obj.id})">${obj.title_str}</a><br><br>
+				<a href="calculate.html?id=${obj.id}" target="_blank" onclick="cookie_json(${obj.id})">${obj.title_str}</a>
+				开始时间:${obj.star_time}
+				<br><br>
 			`);
 		}
 
