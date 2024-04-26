@@ -30,6 +30,26 @@
 	 https://api.flyff.com/image/monster/{fileName}
 	**/
 
+	const dungeon_buff_list=[
+		{"id":"1","num":"5","name":"痛楚幻象",	 		"description":"所有怪物有几率连续攻击两次，但掉率增加。"},
+		{"id":"2","num":"2","name":"谢丽德的庇护",      	"description":"所有怪物速度增加，但受到伤害增加。"},
+		{"id":"3","num":"2","name":"心魔",	      		"description":"所有怪物暴击率增加，但给予的经验增加。"},
+		{"id":"4","num":"4","name":"恶魔让特的诅咒",      	"description":"怪物们攻击力增加，承受伤害增加。"},
+		{"id":"5","num":"4","name":"谢丽德的肾上腺素", 	"description":"所有怪物攻击速度增加，但掉率增加。"},
+		{"id":"6","num":"5","name":"莱斯神的祝福",     	"description":"所有怪物都会不断回复一主百分比的生命值，但给予的经验增加。"},
+		{"id":"7","num":"5","name":"谢莉德的苦痛协议", 	"description":"所有怪物死亡时发生爆炸，但掉率增加。"},
+		{"id":"8","num":"5","name":"冰封亡灵的寒意", 		"description":"副本会被能使人减速的冰霜领域覆盖，但掉率增加。"},
+	];
+
+	const  dungeon_data_list =[
+		{"id":"1","name":"海底","buff":[1,2,3,5,7,6]},
+		{"id":"2","name":"荒野","buff":[1,2,3,4,5,6]},
+		{"id":"3","name":"莱斯","buff":[1,8,2,3,4,5,6]},
+		{"id":"4","name":"帕里","buff":[1,8,2,3,4,7,6]},
+		{"id":"5","name":"圣堂","buff":[1,2,3,4,5,6]},
+		{"id":"6","name":"雪地","buff":[1,2,3,4,5,6]},
+	]
+
 	const dungeon_consume_data = [
 		{"id":1171,		"name":"鲁莽药水"},
 		{"id":1295,		"name":"迅捷药水"},

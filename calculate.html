@@ -9,7 +9,9 @@
 <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
 <link href="css/plugins/chosen/chosen.css" rel="stylesheet">
 
+
 <link href="css/style.css?v=4.1.0" rel="stylesheet">
+<link href="css/fly.css?v=4.1.0" rel="stylesheet">
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -17,7 +19,7 @@
 		<div class="col-sm-6">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<h5>操作区</h5>
+					<h5 msg_title>操作区</h5>
 					<div class="ibox-tools">
 						<a class="collapse-link">
 							<i class="fa fa-chevron-up"></i>
@@ -28,15 +30,15 @@
 					<div class="row">
 						<div class="form-group col-sm-4">
 							<label>副本<br>
-								<select data-placeholder="请选择副本..." class="form-control" value="25" now_g_price style="min-width: 200px" onchange="r_input_price()">
-									<option value="1" selected>荒野</option>
-									<option value="2" >海底</option>
+								<select class="form-control" sel_dungeon style="min-width: 200px" >
+									<option value="">请选择副本</option>
 								</select>
 							</label>
 						</div>
 						<div class="form-group col-sm-4">
 							<label>人数<br>
-								<select data-placeholder="请选择人数..." class="form-control" now_f_price style="min-width: 200px" onchange="r_input_price()">
+								<select class="form-control" sel_num style="min-width: 200px">
+									<option value="">请选择人数</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -44,11 +46,29 @@
 									<option value="5">5</option>
 									<option value="6">6</option>
 									<option value="7">7</option>
-									<option value="8" selected>8</option>
+									<option value="8">8</option>
 								</select>
 							</label>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-sm-12 form-group" dungeon_buff >
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>分红物品</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+
 				</div>
 			</div>
 
@@ -57,6 +77,19 @@
 
 		<div class="col-sm-6">
 			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>人员</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content" calculate_div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins hide">
 				<div class="ibox-title">
 					<h5>消耗</h5>
 					<div class="ibox-tools">
@@ -116,7 +149,38 @@
 		for (const selector in config) {
 			$(selector).chosen(config[selector]);
 		}
+
+		$("[sel_num]").on('change',add_calculate);
+
+		get_cookie_json();
 	});
+
+	function get_cookie_json(){
+		// 获取cookie的值
+		const cookieValue = document.cookie.split('; ').find(row => row.startsWith('flyffData='));
+
+		// 如果找到了cookie的值，则解码并解析JSON数据
+		if (cookieValue) {
+			const decodedString = decodeURIComponent(cookieValue.split('=')[1]);
+			const json_data = JSON.parse(decodedString);
+			console.log(json_data); // 输出：{ name: "John Doe", age: 30, email: "johndoe@example.com" }
+
+			$("[sel_dungeon]").val(json_data.sel_dungeon).trigger('change');
+			$("[sel_num]").val(json_data.sel_num).trigger('change');
+			$("[msg_title]").html(json_data.title_str);
+
+			for (let i = 0; i < json_data.list.length; i++) {
+				const obj = json_data.list[i];
+				$(`[job_${i}] select`).val(obj.job);
+				$(`[job_${i}] [input_game_name]`).val(obj.name);
+			}
+
+			for (let i = 0; i < json_data.buff.length; i++) {
+				const obj = json_data.buff[i];
+				$(`[dungeon_buff] [value = "${obj}"]`).prop("checked","true");
+			}
+		}
+	}
 
 	$.getJSON(`json/receive.json`).success(function(data){
 		for(let i = 0 ; i < data.length ; i++){
@@ -124,6 +188,71 @@
 			$("[sel_item]").append(`<div class="col-sm-4" style="padding-bottom: 5px;"><img src="img/items/${obj.icon}" alt="${obj.name.cns}" />${obj.name.cns}</div>`);
 		}
 	});
+
+	for(let i = 0 ; i < dungeon_data_list.length ; i++){
+		const obj = dungeon_data_list[i];
+		$("[sel_dungeon]").append(`
+			<option value="${obj.id}" >${obj.name}</option>
+		`);
+	}
+
+	$("[sel_dungeon]").on("change",function (){
+		$("[dungeon_buff]").html("");
+
+		const dungeon_id = $("[sel_dungeon]").val();
+		const dungeon_buff = dungeon_data_list.filter(e=>e.id === dungeon_id)[0].buff;
+
+		for(let i = 0 ; i < dungeon_buff.length ; i++) {
+			const obj = dungeon_buff_list.filter(e=>e.id.toString() === dungeon_buff[i].toString())[0];
+
+			$("[dungeon_buff]").append(`
+				<div class="checkbox" >
+					<label >
+						<input type="checkbox" value="${obj.id}" >
+						<span style="font-weight: bold;">${obj.name}</span><br>
+						${obj.description}<br>
+						副本币*${obj.num}
+					</label>
+				</div>
+			`);
+		}
+	});
+
+	for (let i = 0; i < 8; i++) {
+		$("[calculate_div]").append(`
+				<div class="row">
+					<div class="form-group col-sm-4 hide" job_div job_${i}>
+						<div class="input-group">
+						<span class="input-group-addon" style="width: 81px;" >职业:</span>
+						<select data-placeholder="请选择职业" class="form-control"  sel_job style="min-width: 100px" >
+						 <option value="1" selected>骑士</option>
+						 <option value="2" >刀锋</option>
+						 <option value="3" >守护</option>
+						 <option value="4" >暴力</option>
+						 <option value="5" >元素</option>
+						 <option value="6" >精神</option>
+						 <option value="7" >游侠</option>
+						 <option value="8" >暗杀</option>
+						</select>
+					   </div>
+					</div>
+					<div class="form-group col-sm-4 hide" job_div job_${i}>
+					   <div class="input-group">
+						<span class="input-group-addon" style="width: 81px;" >游戏昵称:</span>
+						<input type="text" class="form-control" input_game_name >
+					   </div>
+					</div>
+				</div>
+			`);
+	}
+
+	function add_calculate() {
+		const sel_num = $("[sel_num]").val();
+		$('[job_div]').addClass("hide");
+		for (let i = 0; i < sel_num; i++) {
+			 $(`[job_${i}]`).removeClass("hide");
+		}
+	}
 
 </script>
 

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" xmlns="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>飞瘾犯了-首页内容</title>
+</head>
+
+<link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+
+<link href="css/style.css?v=4.1.0" rel="stylesheet">
+<link href="css/fly.css?v=4.1.0" rel="stylesheet">
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>小熊排班车</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="form-group col-sm-4">
+							<a href="calculate.html" target="_blank" onclick="cookie_json(202404262200)">2024年4月26日 22点荒野本</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 form-group" dungeon_buff >
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+	</div>
+</div>
+
+<!-- 全局js -->
+<script src="js/jquery.min.js?v=202404111603"></script>
+<script src="js/bootstrap.min.js?v=3.3.6"></script>
+<script src="js/base.js?v=202404111603"></script>
+
+<!-- 自定义js -->
+<script src="js/content.js?v=1.0.0"></script>
+<!-- jQuery UI -->
+<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		//页面元素可移动
+		WinMove();
+
+		// 当页面加载完成后，给 body 元素添加自定义光标样式
+		$('body').addClass('custom-cursor');
+
+	});
+
+	let dungeon_list = [
+		{
+			id:202404262200,
+			title_str: "2024年4月26日 22点荒野本",
+			buff:[1,2,4,5],
+			//副本编号 dungeon_data_list
+			sel_dungeon:2,
+			sel_num: 8,
+			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
+			list:[
+				{job:1,name:"牛骑士"},
+				{job:6,name:"牛精神"},
+				{job:3,name:"咩咩"},
+				{job:3,name:"小游"},
+				{job:8,name:"狂奔的蜗牛"},
+				{job:5,name:"Cerous"},
+				{job:4,name:"芝麻糊"},
+				{job:3,name:"雾天"},
+			],
+		}
+	]
+	function cookie_json(id) {
+		const data = dungeon_list.find(e=>e.id===id);
+
+		// 将JSON对象转换为字符串
+		const jsonString = JSON.stringify(data);
+
+		// 将字符串编码为适合存储到cookie的格式（如果需要的话）
+		// 这里我们使用encodeURIComponent来确保字符串是URL安全的
+		const encodedString = encodeURIComponent(jsonString);
+
+		// 设置cookie，假设cookie的名称为"myData"
+		document.cookie = "flyffData=" + encodedString + "; path=/";
+
+		$("[a_calculate]").trigger("click");
+	}
+
+
+</script>
+
+</body>
+</html>
