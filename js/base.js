@@ -30,6 +30,55 @@
 	 https://api.flyff.com/image/monster/{fileName}
 	**/
 
+	const dungeon_list = [
+		{
+			//id 年月日时分
+			id:202404262200,
+			title_str: "2024年4月26日 22点2连荒野本",
+			buff:[1,2,4,5],
+			//副本编号 dungeon_data_list  2.荒野
+			sel_dungeon:2,
+			//人数
+			sel_num: 8,
+			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
+			list:[
+				{job:"骑士",name:"牛骑士"},
+				{job:"精神",name:"牛精神"},
+				{job:"游侠",name:"咩咩"},
+				{job:"守护",name:"小游"},
+				{job:"暗杀",name:"狂奔的蜗牛"},
+				{job:"元素",name:"Cerous"},
+				{job:"暴力",name:"芝麻糊"},
+				{job:"守护",name:"雾天"},
+			],
+			//分红物品
+			item_list:[
+				{name:"分红道具1",num:1},
+			],
+		},
+		{
+			//id 年月日时分
+			id:202404270000,
+			title_str: "2024年4月27日 0点2连荒野本",
+			buff:[1,2,4,5],
+			//副本编号 dungeon_data_list  2.荒野
+			sel_dungeon:2,
+			//人数
+			sel_num: 8,
+			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
+			list:[
+				{job:"骑士",name:""},
+				{job:"守护",name:""},
+				{job:"守护",name:""},
+				{job:"元素",name:""},
+				{job:"精神",name:""},
+				{job:"游侠",name:""},
+				{job:"刀锋",name:""},
+				{job:"刀锋",name:""},
+			],
+		}
+	]
+
 	const dungeon_buff_list=[
 		{"id":"1","num":"5","name":"痛楚幻象",	 		"description":"所有怪物有几率连续攻击两次，但掉率增加。"},
 		{"id":"2","num":"2","name":"谢丽德的庇护",      	"description":"所有怪物速度增加，但受到伤害增加。"},

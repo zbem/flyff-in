@@ -17,7 +17,7 @@
 		<div class="col-sm-6">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<h5>小熊排班车</h5>
+					<h5>小游的排班车</h5>
 					<div class="ibox-tools">
 						<a class="collapse-link">
 							<i class="fa fa-chevron-up"></i>
@@ -26,13 +26,10 @@
 				</div>
 				<div class="ibox-content">
 					<div class="row">
-						<div class="form-group col-sm-4">
-							<a href="calculate.html" target="_blank" onclick="cookie_json(202404262200)">2024年4月26日 22点荒野本</a>
-						</div>
+						<div class="form-group col-sm-4" dungeon_div></div>
 					</div>
 					<div class="row">
-						<div class="col-sm-12 form-group" dungeon_buff >
-						</div>
+						<div class="col-sm-12 form-group" dungeon_buff ></div>
 					</div>
 				</div>
 			</div>
@@ -60,31 +57,15 @@
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
 
+		for (let i = 0; i < dungeon_list.length; i++) {
+			const obj = dungeon_list[i];
+			$("[dungeon_div]").prepend(`
+				<a href="calculate.html?id=${obj.id}" target="_blank" onclick="cookie_json(${obj.id})">${obj.title_str}</a><br><br>
+			`);
+		}
+
 	});
 
-	let dungeon_list = [
-		{
-			//id 年月日时分
-			id:202404262200,
-			title_str: "2024年4月26日 22点荒野本",
-			buff:[1,2,4,5],
-			//副本编号 dungeon_data_list  2.荒野
-			sel_dungeon:2,
-			//人数
-			sel_num: 8,
-			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
-			list:[
-				{job:1,name:"牛骑士"},
-				{job:6,name:"牛精神"},
-				{job:7,name:"咩咩"},
-				{job:3,name:"小游"},
-				{job:8,name:"狂奔的蜗牛"},
-				{job:5,name:"Cerous"},
-				{job:4,name:"芝麻糊"},
-				{job:3,name:"雾天"},
-			],
-		}
-	]
 	function cookie_json(id) {
 		const data = dungeon_list.find(e=>e.id===id);
 
