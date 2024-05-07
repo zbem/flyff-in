@@ -83,7 +83,56 @@
 				{name:"晶石",num:1,money:88000000,r_money:0,item_img:"1.png"},
 				{name:"S宠",num:1,money:0,r_money:12.5,item_img:"2.png"},
 			],
-		}
+		},
+		{
+			id:202405072200,
+			star_time:"2024年5月7日 22:00:00",
+			title_str: "2024年5月7日 22点荒野本",
+			buff:[1,2,4,5],
+			//副本编号 dungeon_data_list  2.荒野
+			sel_dungeon:2,
+			//人数
+			sel_num: 8,
+			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
+			list:[
+				{job:"骑士",name:"牛骑士"},
+				{job:"元素",name:"逮虾户"},
+				{job:"刀锋",name:"冠冠"},
+				{job:"刀锋",name:"黑刀"},
+				{job:"刀锋",name:"雾天"},
+				{job:"守护",name:"可爱的小游"},
+				{job:"暴力",name:"芝麻糊"},
+				{job:"守护",name:"玉笛弟弟"},
+			],
+			//分红物品
+			item_list:[
+			],
+		},
+		{
+			id:202405072300,
+			star_time:"2024年5月7日 23:00:00",
+			title_str: "2024年5月7日 23点荒野本",
+			buff:[1,2,4,5],
+			//副本编号 dungeon_data_list  2.荒野
+			sel_dungeon:2,
+			//人数
+			sel_num: 8,
+			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
+			list:[
+				{job:"骑士",name:"牛骑士"},
+				{job:"元素",name:"逮虾户"},
+				{job:"刀锋",name:"冠冠"},
+				{job:"刀锋",name:"黑刀"},
+				{job:"刀锋",name:"雾天"},
+				{job:"守护",name:"可爱的小游"},
+				{job:"暴力",name:"芝麻糊"},
+				{job:"守护",name:"玉笛弟弟"},
+			],
+			//分红物品
+			item_list:[
+				{name:"S宠",num:1,money:88000000,r_money:0,item_img:"1.png"},
+			],
+		},
 	]
 
 	const dungeon_buff_list=[
