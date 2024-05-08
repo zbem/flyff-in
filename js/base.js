@@ -178,7 +178,7 @@
 				{job:"骑士",name:"牛骑士"},
 				{job:"元素",name:"哆哆"},
 				{job:"刀锋",name:"冠冠"},
-				{job:"刀锋",name:"oneBer"},
+				{job:"刀锋",name:"oneBer(缺席_牛暗杀顶替)"},
 				{job:"刀锋",name:"黑刀"},
 				{job:"守护",name:"雾天"},
 				{job:"守护",name:"可爱的小游"},
