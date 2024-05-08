@@ -60,28 +60,28 @@
 		for (let i = 0; i < dungeon_list.length; i++) {
 			const obj = dungeon_list[i];
 			$("[dungeon_div]").prepend(`
-				<a href="calculate.html?id=${obj.id}" target="_blank" onclick="cookie_json(${obj.id})">${obj.title_str}</a>
+				<a href="calculate.html?id=${obj.id}" target="_blank" >${obj.title_str}</a>
 				开始时间:${obj.star_time}
 				<br><br>
 			`);
 		}
 	});
 
-	function cookie_json(id) {
-		const data = dungeon_list.find(e=>e.id===id);
-
-		// 将JSON对象转换为字符串
-		const jsonString = JSON.stringify(data);
-
-		// 将字符串编码为适合存储到cookie的格式（如果需要的话）
-		// 这里我们使用encodeURIComponent来确保字符串是URL安全的
-		const encodedString = encodeURIComponent(jsonString);
-
-		// 设置cookie，假设cookie的名称为"myData"
-		document.cookie = "flyffData=" + encodedString + "; path=/";
-
-		$("[a_calculate]").trigger("click");
-	}
+	// function cookie_json(id) {
+	// 	const data = dungeon_list.find(e=>e.id===id);
+	//
+	// 	// 将JSON对象转换为字符串
+	// 	const jsonString = JSON.stringify(data);
+	//
+	// 	// 将字符串编码为适合存储到cookie的格式（如果需要的话）
+	// 	// 这里我们使用encodeURIComponent来确保字符串是URL安全的
+	// 	const encodedString = encodeURIComponent(jsonString);
+	//
+	// 	// 设置cookie，假设cookie的名称为"myData"
+	// 	document.cookie = "flyffData=" + encodedString + "; path=/";
+	//
+	// 	$("[a_calculate]").trigger("click");
+	// }
 
 
 </script>
