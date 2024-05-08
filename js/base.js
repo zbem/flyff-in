@@ -162,7 +162,10 @@
 				{job:"暴力",name:"芝麻糊"},
 			],
 			item_list://分红物品
-				[],
+				[
+					{name:"A爆伤卡",num:1,money:0,r_money:0,item_img:"1.png"},
+					{name:"S宠",num:1,money:0,r_money:0,item_img:"2.png"},
+				],
 		},
 	]
 
