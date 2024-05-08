@@ -2,7 +2,7 @@
 <html lang="en" xmlns="">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>飞瘾犯了-幸运盒子</title>
+	<title>飞瘾犯了-角色属性计算器</title>
 </head>
 
 <link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
@@ -53,7 +53,7 @@
 		<div class="col-sm-6">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
-					<h5>消息</h5>
+					<h5>属性点</h5>
 					<div class="ibox-tools">
 						<a class="collapse-link">
 							<i class="fa fa-chevron-up"></i>
@@ -88,6 +88,61 @@
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
 	});
+
+	//https://api.flyff.com/class/9686
+
+	$("[role_panel]").append(`
+		<div class="row">
+			<div class="col-sm-4">最大HP</div><div class="col-sm-8" max_hp>23553</div>
+			<div class="col-sm-4">最大MP</div><div class="col-sm-2">8875</div>
+			<div class="col-sm-4">最大FP</div><div class="col-sm-2">457</div>
+			<div class="col-sm-4">移动速度</div><div class="col-sm-2">153%</div>
+			<div class="col-sm-4">跳跃高度</div><div class="col-sm-2">115%</div>
+			<div class="col-sm-4">释放速度</div><div class="col-sm-2">179%</div>
+			<div class="col-sm-4">HP恢复</div><div class="col-sm-2">32%</div>
+			<div class="col-sm-4">MP消耗降低</div><div class="col-sm-2">32%</div>
+			<div class="col-sm-4">FP消耗降低</div><div class="col-sm-2">32%</div>
+			<div class="col-sm-4">MP击杀恢复</div><div class="col-sm-2">640</div>
+			<div class="col-sm-4">HP击杀恢复</div><div class="col-sm-2">640</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-4">攻击力</div><div class="col-sm-2">4590</div>
+			<div class="col-sm-4">PvE伤害</div><div class="col-sm-2">3%</div>
+			<div class="col-sm-4">卡尔卡斯Boss伤害</div><div class="col-sm-2">0%</div>
+			<div class="col-sm-4">PvP伤害</div><div class="col-sm-2">26%</div>
+			<div class="col-sm-4">攻击速度</div><div class="col-sm-2">80.5%</div>
+			<div class="col-sm-4">命中率</div><div class="col-sm-2">50%</div>
+			<div class="col-sm-4">暴击率</div><div class="col-sm-2">80.5%</div>
+			<div class="col-sm-4"><img src="img/element/electricity.png" alt="雷">精通</div><div class="col-sm-2">50%</div>
+			<div class="col-sm-4"><img src="img/element/fire.png" alt="火">精通</div><div class="col-sm-2">50%</div>
+			<div class="col-sm-4"><img src="img/element/water.png" alt="水">精通</div><div class="col-sm-2">50%</div>
+			<div class="col-sm-4"><img src="img/element/wind.png" alt="风">精通</div><div class="col-sm-2">50%</div>
+			<div class="col-sm-4"><img src="img/element/earth.png" alt="土">精通</div><div class="col-sm-2">50%</div>
+			<div class="col-sm-4"><img src="img/element/electricity.png" alt="雷">攻击力</div><div class="col-sm-2">80.5%</div>
+			<div class="col-sm-4"><img src="img/element/fire.png" alt="火">攻击力</div><div class="col-sm-2">50%</div>
+			<div class="col-sm-4"><img src="img/element/water.png" alt="水">攻击力</div><div class="col-sm-2">50%</div>
+			<div class="col-sm-4"><img src="img/element/wind.png" alt="风">攻击力</div><div class="col-sm-2">50%</div>
+			<div class="col-sm-4"><img src="img/element/earth.png" alt="土">攻击力</div><div class="col-sm-2">50%</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-4">防御力</div><div class="col-sm-2">4268</div>
+			<div class="col-sm-4">魔法防御力</div><div class="col-sm-2">2461</div>
+			<div class="col-sm-4">暴击抗性</div><div class="col-sm-2">3%</div>
+			<div class="col-sm-4">PvP伤害减免</div><div class="col-sm-2">13%</div>
+			<div class="col-sm-4">PvE伤害减免</div><div class="col-sm-2">13%</div>
+			<div class="col-sm-4">闪避</div><div class="col-sm-2">11%</div>
+			<div class="col-sm-4">近距离格挡</div><div class="col-sm-2">26%</div>
+			<div class="col-sm-4">远距离格挡</div><div class="col-sm-2">26%</div>
+			<div class="col-sm-4"><img src="img/element/electricity.png" alt="雷">抵抗</div><div class="col-sm-2">-20%</div>
+			<div class="col-sm-4"><img src="img/element/fire.png" alt="火">抵抗</div><div class="col-sm-2">20%</div>
+			<div class="col-sm-4"><img src="img/element/water.png" alt="水">抵抗</div><div class="col-sm-2">8%</div>
+			<div class="col-sm-4"><img src="img/element/wind.png" alt="风">抵抗</div><div class="col-sm-2">20%</div>
+			<div class="col-sm-4"><img src="img/element/earth.png" alt="土">抵抗</div><div class="col-sm-2">8%</div>
+		</div>
+
+	`);
 
 </script>
 

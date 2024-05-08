@@ -129,7 +129,7 @@
 			sel_num: 8,//人数
 			list:[
 				{job:"骑士",name:"牛骑士"},
-				{job:"元素",name:"多多"},
+				{job:"元素",name:"哆哆"},
 				{job:"刀锋",name:"冠冠"},
 				{job:"暗杀",name:"狂奔的蜗牛"},
 				{job:"游侠",name:"玉笛弟弟"},
@@ -138,7 +138,10 @@
 				{job:"暴力",name:"芝麻糊"},
 			],
 			item_list://分红物品
-				[],
+				[
+					{name:"晶石",num:1,money:0,r_money:0,item_img:"1.png"},
+					{name:"A宠",num:1,money:0,r_money:0,item_img:"2.png"},
+				],
 		},
 
 		{
@@ -150,7 +153,7 @@
 			sel_num: 8,//人数
 			list:[
 				{job:"骑士",name:"牛骑士"},
-				{job:"元素",name:"多多"},
+				{job:"元素",name:"哆哆"},
 				{job:"刀锋",name:"冠冠"},
 				{job:"暗杀",name:"狂奔的蜗牛"},
 				{job:"游侠",name:"玉笛弟弟"},

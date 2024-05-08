@@ -262,7 +262,7 @@
 
 		for (let i = 0; i < json_data.item_list.length; i++) {
 			const obj = json_data.item_list[i];
-			$(`[item_div]`).prepend(`
+			$(`[item_div]`).append(`
 				<span style="font-weight: bold;font-size: 20px">${obj.name}:数量${obj.num}</span><br>
 				<img src="img/dungeon/${json_data.id}/${obj.item_img}" style="width: 600px;height: 600px" alt="${obj.name}"><br>
 			`);
