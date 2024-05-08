@@ -185,9 +185,27 @@
 				{job:"游侠",name:"玉笛弟弟"},
 			],
 			item_list://分红物品
-				[
-					//{name:"A爆伤卡",num:1,money:0,r_money:0,item_img:"1.png"},
-				],
+				[],
+		},
+		{
+			id:202405090100,
+			star_time:"2024年5月9日 01:00:00",
+			title_str: "2024年5月9日 1点荒野本",
+			buff:[1,2,4,5],
+			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
+			sel_num: 8,//人数
+			list:[
+				{job:"骑士",name:"牛骑士"},
+				{job:"元素",name:"哆哆"},
+				{job:"刀锋",name:"冠冠"},
+				{job:"刀锋",name:"oneBer(缺席_牛暗杀顶替)"},
+				{job:"刀锋",name:"黑刀"},
+				{job:"守护",name:"雾天"},
+				{job:"守护",name:"可爱的小游"},
+				{job:"游侠",name:"玉笛弟弟"},
+			],
+			item_list://分红物品
+				[],
 		},
 	]
 
