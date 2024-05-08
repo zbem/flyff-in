@@ -32,16 +32,12 @@
 
 	const dungeon_list = [
 		{
-			//id 年月日时分
 			id:202404262200,
 			star_time:"2024年4月26日 22:03:21",
 			title_str: "2024年4月26日 22点荒野本",
 			buff:[],
-			//副本编号 dungeon_data_list  2.荒野
-			sel_dungeon:2,
-			//人数
-			sel_num: 8,
-			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
+			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
+			sel_num: 8,//人数
 			list:[
 				{job:"骑士",name:"牛骑士"},
 				{job:"精神",name:"牛精神"},
@@ -52,22 +48,18 @@
 				{job:"暴力",name:"芝麻糊"},
 				{job:"守护",name:"雾海"},
 			],
-			//分红物品
-			item_list:[
+			item_list://分红物品
+			[
 				{name:"晶石",num:1,money:88000000,r_money:0,item_img:"1.png"},
 			],
 		},
 		{
-			//id 年月日时分
 			id:202404262300,
 			star_time:"2024年4月26日 23:04:00",
 			title_str: "2024年4月26日 23点荒野本",
 			buff:[1,2,4,5],
-			//副本编号 dungeon_data_list  2.荒野
-			sel_dungeon:2,
-			//人数
-			sel_num: 8,
-			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
+			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
+			sel_num: 8,//人数
 			list:[
 				{job:"骑士",name:"牛骑士"},
 				{job:"精神",name:"牛精神"},
@@ -78,8 +70,9 @@
 				{job:"暴力",name:"芝麻糊"},
 				{job:"守护",name:"雾海"},
 			],
-			//分红物品
-			item_list:[
+
+			item_list://分红物品
+			[
 				{name:"晶石",num:1,money:88000000,r_money:0,item_img:"1.png"},
 				{name:"S宠",num:1,money:0,r_money:12.5,item_img:"2.png"},
 			],
@@ -89,11 +82,8 @@
 			star_time:"2024年5月7日 22:00:00",
 			title_str: "2024年5月7日 22点荒野本",
 			buff:[1,2,4,5],
-			//副本编号 dungeon_data_list  2.荒野
-			sel_dungeon:2,
-			//人数
-			sel_num: 8,
-			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
+			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
+			sel_num: 8,//人数
 			list:[
 				{job:"骑士",name:"牛骑士"},
 				{job:"元素",name:"逮虾户"},
@@ -104,20 +94,15 @@
 				{job:"暴力",name:"芝麻糊"},
 				{job:"守护",name:"玉笛弟弟"},
 			],
-			//分红物品
-			item_list:[
-			],
+			item_list:[],//分红物品
 		},
 		{
 			id:202405072300,
 			star_time:"2024年5月7日 23:00:00",
 			title_str: "2024年5月7日 23点荒野本",
 			buff:[1,2,4,5],
-			//副本编号 dungeon_data_list  2.荒野
-			sel_dungeon:2,
-			//人数
-			sel_num: 8,
-			//1.骑士,2.刀锋,3.守护,4.暴力,5.元素,6.精神,7.游侠,8.暗杀
+			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
+			sel_num: 8,//人数
 			list:[
 				{job:"骑士",name:"牛骑士"},
 				{job:"元素",name:"逮虾户"},
@@ -128,10 +113,53 @@
 				{job:"暴力",name:"芝麻糊"},
 				{job:"守护",name:"玉笛弟弟"},
 			],
-			//分红物品
-			item_list:[
-				{name:"S宠",num:1,money:88000000,r_money:0,item_img:"1.png"},
+			item_list://分红物品
+				[
+					{name:"S宠",num:1,money:0,r_money:0,item_img:"1.png"}
+				],
+		},
+
+		//------------------------ 2024年5月8日 ------------------------//
+		{
+			id:202405082200,
+			star_time:"2024年5月8日 22:00:00",
+			title_str: "2024年5月8日 22点荒野本",
+			buff:[1,2,4,5],
+			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
+			sel_num: 8,//人数
+			list:[
+				{job:"骑士",name:"牛骑士"},
+				{job:"元素",name:"多多"},
+				{job:"刀锋",name:"冠冠"},
+				{job:"暗杀",name:"狂奔的蜗牛"},
+				{job:"游侠",name:"玉笛弟弟"},
+				{job:"守护",name:"雾天"},
+				{job:"守护",name:"可爱的小游"},
+				{job:"暴力",name:"芝麻糊"},
 			],
+			item_list://分红物品
+				[],
+		},
+
+		{
+			id:202405082300,
+			star_time:"2024年5月8日 23:00:00",
+			title_str: "2024年5月8日 23点荒野本",
+			buff:[1,2,4,5],
+			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
+			sel_num: 8,//人数
+			list:[
+				{job:"骑士",name:"牛骑士"},
+				{job:"元素",name:"多多"},
+				{job:"刀锋",name:"冠冠"},
+				{job:"暗杀",name:"狂奔的蜗牛"},
+				{job:"游侠",name:"玉笛弟弟"},
+				{job:"守护",name:"雾天"},
+				{job:"守护",name:"可爱的小游"},
+				{job:"暴力",name:"芝麻糊"},
+			],
+			item_list://分红物品
+				[],
 		},
 	]
 

@@ -5,6 +5,7 @@
 	<title>飞瘾犯了-计算</title>
 </head>
 
+<link rel="favicon icon" href="https://zbem.github.io/flyff-in/img/html/favicon.png">
 <link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
 <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
 <link href="css/plugins/chosen/chosen.css" rel="stylesheet">
@@ -39,14 +40,6 @@
 							<label>人数<br>
 								<select class="form-control" sel_num style="min-width: 200px">
 									<option value="">请选择人数</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
 								</select>
 							</label>
 						</div>
@@ -131,6 +124,7 @@
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
 
+		//下拉菜单配置项
 		const config = {
 			'.chosen-select': {},
 			'.chosen-select-deselect': {
@@ -150,48 +144,132 @@
 			$(selector).chosen(config[selector]);
 		}
 
+		//选中人员数量,改变数据显示
 		$("[sel_num]").on('change',add_calculate);
 
-		get_cookie_json();
+		//初始化数据
+		init_dungeon();
+
+		//初始化cookie中的数据
+		init_data();
+
 	});
 
-	function get_cookie_json(){
-		// 获取cookie的值
-		const cookieValue = document.cookie.split('; ').find(row => row.startsWith('flyffData='));
+	//初始化数据
+	function init_dungeon(){
+		//副本下拉菜单
+		for(let i = 0 ; i < dungeon_data_list.length ; i++){
+			const obj = dungeon_data_list[i];
+			$("[sel_dungeon]").append(`
+				<option value="${obj.id}" >${obj.name}</option>
+			`);
+		}
 
-		// 如果找到了cookie的值，则解码并解析JSON数据
-		if (cookieValue) {
-			const decodedString = decodeURIComponent(cookieValue.split('=')[1]);
-			const json_data = JSON.parse(decodedString);
-			console.log(json_data); // 输出：{ name: "John Doe", age: 30, email: "johndoe@example.com" }
+		//副本下拉菜单选择事件
+		$("[sel_dungeon]").on("change",function (){
+			$("[dungeon_buff]").html("");
 
-			$("[sel_dungeon]").val(json_data.sel_dungeon).trigger('change');
-			$("[sel_num]").val(json_data.sel_num).trigger('change');
-			$("[msg_title]").html(json_data.title_str);
+			const dungeon_id = $("[sel_dungeon]").val();
+			const dungeon_buff = dungeon_data_list.filter(e=>e.id === dungeon_id)[0].buff;
 
-			for (let i = 0; i < json_data.list.length; i++) {
-				const obj = json_data.list[i];
-				$(`[job_${i}] select`).val(obj.job);
-				$(`[job_${i}] [input_game_name]`).val(obj.name);
-			}
+			for(let i = 0 ; i < dungeon_buff.length ; i++) {
+				const obj = dungeon_buff_list.filter(e=>e.id.toString() === dungeon_buff[i].toString())[0];
 
-			for (let i = 0; i < json_data.buff.length; i++) {
-				const obj = json_data.buff[i];
-				$(`[dungeon_buff] [value = "${obj}"]`).prop("checked","true");
-			}
-
-			for (let i = 0; i < json_data.item_list.length; i++) {
-				const obj = json_data.item_list[i];
-				$(`[item_div]`).prepend(`
-					<span style="font-weight: bold;font-size: 20px">${obj.name}:数量${obj.num}</span><br>
-					<img src="img/dungeon/${json_data.id}/${obj.item_img}" style="width: 600px;height: 600px" alt="${obj.name}"><br>
+				$("[dungeon_buff]").append(`
+					<div class="checkbox" >
+						<label >
+							<input type="checkbox" value="${obj.id}" >
+							<span style="font-weight: bold;">${obj.name}</span><br>
+							${obj.description}<br>
+							副本币*${obj.num}
+						</label>
+					</div>
 				`);
 			}
+		});
 
-			 
+		for (let i = 0; i < 8; i++) {
+			//人数下拉菜单
+			const sel_num = i+1;
+			$("[sel_num]").append(`
+				<option value="${sel_num}" >${sel_num}</option>
+			`);
+
+			//人员数据
+			$("[calculate_div]").append(`
+					<div class="row">
+						<div class="form-group col-sm-4" job_div job_${i}>
+							<div class="input-group">
+							<span class="input-group-addon" style="width: 81px;" >职业:</span>
+							<select data-placeholder="请选择职业" class="form-control"  sel_job style="min-width: 100px" >
+							 <option value="骑士" >骑士</option>
+							 <option value="刀锋" >刀锋</option>
+							 <option value="守护" >守护</option>
+							 <option value="暴力" >暴力</option>
+							 <option value="元素" >元素</option>
+							 <option value="精神" >精神</option>
+							 <option value="游侠" >游侠</option>
+							 <option value="暗杀" >暗杀</option>
+							</select>
+						   </div>
+						</div>
+						<div class="form-group col-sm-4" job_div job_${i}>
+						   <div class="input-group">
+							<span class="input-group-addon" style="width: 81px;" >游戏昵称:</span>
+							<input type="text" class="form-control" input_game_name >
+						   </div>
+						</div>
+					</div>
+				`);
 		}
 	}
 
+	//获取url后的参数
+	function getQueryParam(name) {
+		const search = window.location.search;
+		const params = new URLSearchParams(search);
+		return params.get(name);
+	}
+
+	//初始化数据选中
+	function init_data(){
+		//获取url后的参数
+		const paramValue = getQueryParam('id');
+		if(paramValue == null){
+			console.log("id参数为空");
+			return ;
+		}
+		const json_data =dungeon_list.find(e=>e.id.toString() === paramValue);
+		if(json_data == null){
+			console.log("未找到数据");
+			return ;
+		}
+
+		$("[sel_dungeon]").val(json_data.sel_dungeon).trigger('change');
+		$("[sel_num]").val(json_data.sel_num).trigger('change');
+		$("[msg_title]").html(json_data.title_str);
+
+		for (let i = 0; i < json_data.list.length; i++) {
+			const obj = json_data.list[i];
+			$(`[job_${i}] select`).val(obj.job);
+			$(`[job_${i}] [input_game_name]`).val(obj.name);
+		}
+
+		for (let i = 0; i < json_data.buff.length; i++) {
+			const obj = json_data.buff[i];
+			$(`[dungeon_buff] [value = "${obj}"]`).prop("checked","true");
+		}
+
+		for (let i = 0; i < json_data.item_list.length; i++) {
+			const obj = json_data.item_list[i];
+			$(`[item_div]`).prepend(`
+				<span style="font-weight: bold;font-size: 20px">${obj.name}:数量${obj.num}</span><br>
+				<img src="img/dungeon/${json_data.id}/${obj.item_img}" style="width: 600px;height: 600px" alt="${obj.name}"><br>
+			`);
+		}
+	}
+
+	//消耗品列表
 	$.getJSON(`json/receive.json`).success(function(data){
 		for(let i = 0 ; i < data.length ; i++){
 			const obj = data[i];
@@ -199,63 +277,7 @@
 		}
 	});
 
-	for(let i = 0 ; i < dungeon_data_list.length ; i++){
-		const obj = dungeon_data_list[i];
-		$("[sel_dungeon]").append(`
-			<option value="${obj.id}" >${obj.name}</option>
-		`);
-	}
-
-	$("[sel_dungeon]").on("change",function (){
-		$("[dungeon_buff]").html("");
-
-		const dungeon_id = $("[sel_dungeon]").val();
-		const dungeon_buff = dungeon_data_list.filter(e=>e.id === dungeon_id)[0].buff;
-
-		for(let i = 0 ; i < dungeon_buff.length ; i++) {
-			const obj = dungeon_buff_list.filter(e=>e.id.toString() === dungeon_buff[i].toString())[0];
-
-			$("[dungeon_buff]").append(`
-				<div class="checkbox" >
-					<label >
-						<input type="checkbox" value="${obj.id}" >
-						<span style="font-weight: bold;">${obj.name}</span><br>
-						${obj.description}<br>
-						副本币*${obj.num}
-					</label>
-				</div>
-			`);
-		}
-	});
-
-	for (let i = 0; i < 8; i++) {
-		$("[calculate_div]").append(`
-				<div class="row">
-					<div class="form-group col-sm-4" job_div job_${i}>
-						<div class="input-group">
-						<span class="input-group-addon" style="width: 81px;" >职业:</span>
-						<select data-placeholder="请选择职业" class="form-control"  sel_job style="min-width: 100px" >
-						 <option value="骑士" selected>骑士</option>
-						 <option value="刀锋" >刀锋</option>
-						 <option value="守护" >守护</option>
-						 <option value="暴力" >暴力</option>
-						 <option value="元素" >元素</option>
-						 <option value="精神" >精神</option>
-						 <option value="游侠" >游侠</option>
-						 <option value="暗杀" >暗杀</option>
-						</select>
-					   </div>
-					</div>
-					<div class="form-group col-sm-4" job_div job_${i}>
-					   <div class="input-group">
-						<span class="input-group-addon" style="width: 81px;" >游戏昵称:</span>
-						<input type="text" class="form-control" input_game_name >
-					   </div>
-					</div>
-				</div>
-			`);
-	}
-
+	//选中人员数量,改变数据显示
 	function add_calculate() {
 		const sel_num = $("[sel_num]").val();
 		$('[job_div]').addClass("hide");
