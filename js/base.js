@@ -245,7 +245,9 @@
 				{job:"游侠",name:"热心市民峰峰侠"},
 			],
 			item_list://分红物品
-				[],
+				[
+					{name:"A宠",num:1,money:0,r_money:0,item_img:"1.png"},
+				],
 		},
 	]
 
