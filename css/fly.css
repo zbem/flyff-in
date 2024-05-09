@@ -1,3 +1,45 @@
+[attr_hr]{
+    background-color: #0e0a08;
+    height: 1px;
+    margin: 6px 2%;
+    float: left;
+    width: 96%;
+}
+
+[attr_div]{
+    margin: 10px;
+    /* 添加内阴影效果 */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+[role_panel]{
+    border: solid 1px #f6dacc;
+    border-radius: 5px;
+}
+
+[role_panel] [attr_name]{
+    margin-top: 2px;
+    color: #000000;
+    font-weight: bold;
+    height: 17px;
+}
+
+[attr_name] img{
+    width: 17px;
+    height: 17px;
+    margin-top: -3px;
+    margin-right: 3px;
+}
+
+[role_panel] [attr]{
+    padding-left: 2px !important;
+    margin-top: 2px;
+    background-color: #7e9db7;
+    color: #FFFFFF;
+    border-radius: 10px;
+    margin-right: -10px;
+}
 
 .checkbox input[type="checkbox"]{
     min-height:27px;

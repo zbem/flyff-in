@@ -39,7 +39,7 @@
 			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
 			sel_num: 8,//人数
 			list:[
-				{job:"骑士",name:"牛骑士"},
+				{job:"骑士",name:"我是你的牛爷爷"},
 				{job:"精神",name:"牛精神"},
 				{job:"游侠",name:"黑咩咩"},
 				{job:"守护",name:"可爱的小游"},
@@ -61,7 +61,7 @@
 			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
 			sel_num: 8,//人数
 			list:[
-				{job:"骑士",name:"牛骑士"},
+				{job:"骑士",name:"我是你的牛爷爷"},
 				{job:"精神",name:"牛精神"},
 				{job:"游侠",name:"黑咩咩"},
 				{job:"守护",name:"可爱的小游"},
@@ -85,9 +85,9 @@
 			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
 			sel_num: 8,//人数
 			list:[
-				{job:"骑士",name:"牛骑士"},
+				{job:"骑士",name:"我是你的牛爷爷"},
 				{job:"元素",name:"逮虾户"},
-				{job:"刀锋",name:"冠冠"},
+				{job:"刀锋",name:"雪夜悍刀行"},
 				{job:"刀锋",name:"黑刀"},
 				{job:"刀锋",name:"雾天"},
 				{job:"守护",name:"可爱的小游"},
@@ -104,9 +104,9 @@
 			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
 			sel_num: 8,//人数
 			list:[
-				{job:"骑士",name:"牛骑士"},
+				{job:"骑士",name:"我是你的牛爷爷"},
 				{job:"元素",name:"逮虾户"},
-				{job:"刀锋",name:"冠冠"},
+				{job:"刀锋",name:"雪夜悍刀行"},
 				{job:"刀锋",name:"黑刀"},
 				{job:"刀锋",name:"雾天"},
 				{job:"守护",name:"可爱的小游"},
@@ -128,9 +128,9 @@
 			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
 			sel_num: 8,//人数
 			list:[
-				{job:"骑士",name:"牛骑士"},
-				{job:"元素",name:"哆哆"},
-				{job:"刀锋",name:"冠冠"},
+				{job:"骑士",name:"我是你的牛爷爷"},
+				{job:"元素",name:"可爱的哆宝"},
+				{job:"刀锋",name:"雪夜悍刀行"},
 				{job:"暗杀",name:"狂奔的蜗牛"},
 				{job:"游侠",name:"玉笛弟弟"},
 				{job:"守护",name:"雾天"},
@@ -152,9 +152,9 @@
 			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
 			sel_num: 8,//人数
 			list:[
-				{job:"骑士",name:"牛骑士"},
-				{job:"元素",name:"哆哆"},
-				{job:"刀锋",name:"冠冠"},
+				{job:"骑士",name:"我是你的牛爷爷"},
+				{job:"元素",name:"可爱的哆宝"},
+				{job:"刀锋",name:"雪夜悍刀行"},
 				{job:"暗杀",name:"狂奔的蜗牛"},
 				{job:"游侠",name:"玉笛弟弟"},
 				{job:"守护",name:"雾天"},
@@ -175,9 +175,9 @@
 			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
 			sel_num: 8,//人数
 			list:[
-				{job:"骑士",name:"牛骑士"},
-				{job:"元素",name:"哆哆"},
-				{job:"刀锋",name:"冠冠"},
+				{job:"骑士",name:"我是你的牛爷爷"},
+				{job:"元素",name:"可爱的哆宝"},
+				{job:"刀锋",name:"雪夜悍刀行"},
 				{job:"刀锋",name:"oneBer(缺席_牛暗杀顶替)"},
 				{job:"刀锋",name:"黑刀"},
 				{job:"守护",name:"雾天"},
@@ -195,14 +195,54 @@
 			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
 			sel_num: 8,//人数
 			list:[
-				{job:"骑士",name:"牛骑士"},
-				{job:"元素",name:"哆哆"},
-				{job:"刀锋",name:"冠冠"},
+				{job:"骑士",name:"我是你的牛爷爷"},
+				{job:"元素",name:"可爱的哆宝"},
+				{job:"刀锋",name:"雪夜悍刀行"},
 				{job:"刀锋",name:"oneBer(缺席_牛暗杀顶替)"},
 				{job:"刀锋",name:"黑刀"},
 				{job:"守护",name:"雾天"},
 				{job:"守护",name:"可爱的小游"},
 				{job:"游侠",name:"玉笛弟弟"},
+			],
+			item_list://分红物品
+				[],
+		},
+		{
+			id:202405092200,
+			star_time:"2024年5月9日 22:00:00",
+			title_str: "2024年5月9日 22点荒野本",
+			buff:[1,2,4,5],
+			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
+			sel_num: 8,//人数
+			list:[
+				{job:"骑士",name:"我是你的牛爷爷"},
+				{job:"元素",name:"可爱的哆宝"},
+				{job:"刀锋",name:"雪夜悍刀行"},
+				{job:"暗杀",name:"狂奔的蜗牛"},
+				{job:"刀锋",name:"黑刀"},
+				{job:"守护",name:"雾天"},
+				{job:"守护",name:"可爱的小游"},
+				{job:"游侠",name:"热心市民峰峰侠"},
+			],
+			item_list://分红物品
+				[],
+		},
+		{
+			id:202405092300,
+			star_time:"2024年5月9日 23:00:00",
+			title_str: "2024年5月9日 23点荒野本",
+			buff:[1,2,4,5],
+			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
+			sel_num: 8,//人数
+			list:[
+				{job:"骑士",name:"我是你的牛爷爷"},
+				{job:"元素",name:"可爱的哆宝"},
+				{job:"刀锋",name:"雪夜悍刀行"},
+				{job:"暗杀",name:"狂奔的蜗牛"},
+				{job:"刀锋",name:"黑刀"},
+				{job:"守护",name:"雾天"},
+				{job:"守护",name:"可爱的小游"},
+				{job:"游侠",name:"热心市民峰峰侠"},
 			],
 			item_list://分红物品
 				[],
