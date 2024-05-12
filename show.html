@@ -339,13 +339,11 @@
 	}
 
 	function r_formatNumberWithCommas(num) {
-		let r_num = Number(num).toLocaleString('en-US', {
+		return Number(num).toLocaleString('en-US', {
 			style: 'decimal',
 			minimumFractionDigits: 2, // 如果需要小数部分，可以调整这个值
 			maximumFractionDigits: 2  // 如果需要小数部分，可以调整这个值
 		});
-
-		return Number(r_num).toString();
 	}
 
 	function color_price_input(){
