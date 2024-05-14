@@ -45,19 +45,19 @@
 						<div class="form-group col-sm-4">
 							<div class="input-group">
 								<span class="input-group-addon" style="width: 81px;" >人民币:</span>
-								<input type="text" class="form-control" placeholder = "数字" r_price onblur="r_input_price()">
+								<input type="text" class="form-control" placeholder = "数字" r_price value="1" onblur="r_input_price()">
 							</div>
 						</div>
 						<div class="form-group col-sm-4">
 							<div class="input-group">
 								<span class="input-group-addon" style="width: 81px;" >金币:</span>
-								<input type="text" class="form-control" placeholder = "数字" value="100,000,000"  style="color: red" g_price onblur="g_input_price()">
+								<input type="text" class="form-control" placeholder = "数字" style="color: red" g_price onblur="g_input_price()">
 							</div>
 						</div>
 						<div class="form-group col-sm-4">
 							<div class="input-group">
 								<span class="input-group-addon" style="width: 81px;">钻石:</span>
-								<input type="text" class="form-control" placeholder = "数字" value="415" f_price onblur="f_input_price()">
+								<input type="text" class="form-control" placeholder = "数字" f_price onblur="f_input_price()">
 							</div>
 						</div>
 					</div>
@@ -261,13 +261,12 @@
 		for (const selector in config) {
 			$(selector).chosen(config[selector]);
 		}
+
+		r_input_price();
 	});
 
-	const now_r = 22;
-	$("[r_price]").val(now_r);
-
 	for(let i = 1 ; i <= 100 ; i++){
-		$("[now_g_price]").append(`<option ${i===now_r ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
+		$("[now_g_price]").append(`<option ${i===16 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
 		$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
 	}
 	for(let i = 0 ; i < show_all_data.length ; i++){
@@ -339,11 +338,19 @@
 	}
 
 	function r_formatNumberWithCommas(num) {
-		return Number(num).toLocaleString('en-US', {
+		let str = Number(num).toLocaleString('en-US', {
 			style: 'decimal',
 			minimumFractionDigits: 2, // 如果需要小数部分，可以调整这个值
 			maximumFractionDigits: 2  // 如果需要小数部分，可以调整这个值
 		});
+
+		// 检查字符串是否以".00"结尾
+		if (str.endsWith('.00')) {
+			// 使用slice()方法移除最后三个字符（即".00"）
+			return str.slice(0, -3);
+		}
+
+		return str;
 	}
 
 	function color_price_input(){
