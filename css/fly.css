@@ -1,3 +1,14 @@
+[attr_footer_div]{
+    background-color: #7e9db7;
+    color: #FFFFFF;
+    border-radius: 10px;
+    line-height: 25px;
+    text-align: center;
+    float: left;
+    width: 98%;
+    margin: 0 1%;
+}
+
 [attr_hr]{
     background-color: #0e0a08;
     height: 1px;
