@@ -219,6 +219,12 @@
 							<input type="text" class="form-control" input_game_name >
 						   </div>
 						</div>
+						<div class="form-group col-sm-4" job_div job_${i}>
+						   <div class="input-group">
+							<span class="input-group-addon" style="width: 81px;" >开号人员:</span>
+							<input type="text" class="form-control" input_online_name >
+						   </div>
+						</div>
 					</div>
 				`);
 		}
@@ -253,6 +259,7 @@
 			const obj = json_data.list[i];
 			$(`[job_${i}] select`).val(obj.job);
 			$(`[job_${i}] [input_game_name]`).val(obj.name);
+			$(`[job_${i}] [input_online_name]`).val(obj.online_name);
 		}
 
 		for (let i = 0; i < json_data.buff.length; i++) {

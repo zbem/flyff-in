@@ -249,6 +249,27 @@
 					{name:"A宠",num:1,money:0,r_money:0,item_img:"1.png"},
 				],
 		},
+		{
+			id:202406071900,
+			star_time:"2024年6月7日 19:00:00",
+			title_str: "2024年6月7日 7点荒野本",
+			buff:[2,4],
+			sel_dungeon:2,//副本编号 dungeon_data_list  2.荒野
+			sel_num: 8,//人数
+			list:[
+				{job:"骑士",name:"桃子桃子",online_name:"鸡"},
+				{job:"守护",name:"DragonEmperpor"},
+				{job:"刀锋",name:"Aidan"},
+				{job:"游侠",name:"飞猪",online_name:"大梦"},
+				{job:"游侠",name:"Deepsea"},
+				{job:"精神",name:"随便搞"},
+				{job:"守护",name:"可爱的小游"},
+				{job:"暴力",name:"雷大头"},
+			],
+			item_list://分红物品
+				[
+				],
+		},
 	]
 
 	const dungeon_buff_list=[
