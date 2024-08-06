@@ -2460,7 +2460,7 @@
 	const jewelry_up_List = [
 		// {"eight_probability":0.8888888889,"ten_probability":1},
 		// {"eight_probability":0.8235294118,"ten_probability":1},
-		// {"eight_probability":0.4581044448,"ten_probability":0.5569985570*2},
+		// {"eight_probability":0.4581044448,"ten_probability":0.5569985570},
 		{"eight_probability":1,"ten_probability":1},
 		{"eight_probability":1,"ten_probability":1},
 		{"eight_probability":1,"ten_probability":1},

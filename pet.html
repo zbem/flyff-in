@@ -13,8 +13,30 @@
 <!-- Gritter -->
 <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet">
-
+<link href="js/layer/skin/default/layer.css" rel="stylesheet">
 <link href="css/fly.css?v=4.1.0" rel="stylesheet">
+
+<style>
+	.scroll-content {
+		position: absolute;
+		white-space: nowrap;
+		animation: scrollUpDown 1s linear forwards;
+		width: 100%;
+		text-align: center;
+	}
+
+	@keyframes scrollUpDown {
+		0% {
+			transform: translateY(100%);
+			opacity: 1;
+		}
+
+		100% {
+			transform: translateY(0);
+			opacity: 0;
+		}
+	}
+</style>
 
 
 <body class="gray-bg">
@@ -61,6 +83,8 @@
 								<div class="media-body ">
 									<img alt="image" class="img-circle" src="img/items/petbarbarylion01_02.png">
 									<button class="btn btn-success" pet_btn onclick="pet_show()" >洗宠物外观</button>
+
+									<button class="btn btn-success" id="startButton"  >测试</button>
 								</div>
 							</div>
 						</div>
@@ -137,6 +161,10 @@
 	<img alt="飞龙" img_飞龙 src="img/pet/飞龙.png">
 </div>
 
+<div class="scroll-content">
+	<span style=" color: red">你随机到了相同或较低等级，因此无事发生。</span>
+</div>
+
 <!-- 全局js -->
 <script src="js/jquery.min.js?v=2.1.4"></script>
 <script src="js/bootstrap.min.js?v=3.3.6"></script>
@@ -145,6 +173,7 @@
 <script src="js/content.js?v=1.0.0"></script>
 <!-- jQuery UI -->
 <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="js/layer/layer.js"></script>
 
 <script>
 	$(document).ready(function() {
@@ -153,6 +182,13 @@
 
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
+
+		// 假设你有一个按钮来触发动画
+		$('#startButton').click(function() {
+			$('#scrollMessage').css({
+				'animation': 'scroll 5s linear forwards, fadeOut 5s ease-out forwards 5s'
+			});
+		});
 	});
 
 	//洗外观
@@ -353,12 +389,16 @@
 		const pet = pet_lv_item[pet_lv];
 		if(now_lv >= pet.list.length){
 			sacrifice_stop = true;
+			layer.msg("已经是最高的等级!",{time:2000,skin:"layer_msg_s"});
 			return;
 		}
 
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random().toFixed(2);
 		let pet_probability = 0;
+
+		//是否成功
+		let is_suc = false;
 
 		for(var i=0 ; i <= pet.list.length ; i++) {
 			const lv = pet.list[i].pet_lv;
@@ -379,9 +419,18 @@
 				$("[lv_"+pet.lvStr+"]").remove();
 				var pet_lv_value =now_pet.value_list[pet.list[i].pet_lv-1];
 				$("[pet_img_div]").append('<label lv_'+pet.lvStr+' pet_val="'+pet_lv_value+'"><img img_lv src="img/pet/等级'+pet.list[i].pet_lv+'.png" alt="等级"><br>+'+pet_lv_value+now_pet.cur+'</label>');
+
+				is_suc = true;
 				break;
 			}
 		}
+
+		if(is_suc){
+			layer.msg("你的宠物提升到了新的，更高的等级!",{time:2000,skin:"layer_msg_s"});
+		}else{
+			layer.msg("你随机到了相同或较低等级，因此无事发生。",{time:2000,skin:"layer_msg_f"});
+		}
+
 
 		//献祭次数
 		pet_num++;
