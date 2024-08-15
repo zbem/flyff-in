@@ -389,7 +389,7 @@
 		const pet = pet_lv_item[pet_lv];
 		if(now_lv >= pet.list.length){
 			sacrifice_stop = true;
-			layer.msg("已经是最高的等级!",{time:2000,skin:"layer_msg_s"});
+			//layer.msg("已经是最高的等级!",{time:2000,skin:"layer_msg_s"});
 			return;
 		}
 
@@ -425,11 +425,11 @@
 			}
 		}
 
-		if(is_suc){
-			layer.msg("你的宠物提升到了新的，更高的等级!",{time:2000,skin:"layer_msg_s"});
-		}else{
-			layer.msg("你随机到了相同或较低等级，因此无事发生。",{time:2000,skin:"layer_msg_f"});
-		}
+		// if(is_suc){
+		// 	layer.msg("你的宠物提升到了新的，更高的等级!",{time:2000,skin:"layer_msg_s"});
+		// }else{
+		// 	layer.msg("你随机到了相同或较低等级，因此无事发生。",{time:2000,skin:"layer_msg_f"});
+		// }
 
 
 		//献祭次数
