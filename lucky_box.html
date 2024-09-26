@@ -93,8 +93,8 @@
 		let randomNum = Math.random().toFixed(2);
 		let luck_box_probability = 0;
 
-		for(let i=0 ; i < show_all_data[1].list.length ; i++) {
-			const data = show_all_data[1].list[i];
+		for(let i=0 ; i < show_all_data[0].list.length ; i++) {
+			const data = show_all_data[0].list[i];
 			if(i > 0){
 				luck_box_probability = parseFloat(data.probability) + parseFloat(luck_box_probability);
 			}else{
@@ -109,7 +109,7 @@
 				$("[txt_div]").prepend(`
 					<div class="row">
 						<div class="col-xs-12">
-							<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">${i === 0 ? "运气太好了!":""}恭喜抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>!
+							<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">恭喜抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>!
 						</div>
 					</div>
 				`);
@@ -118,8 +118,8 @@
 		}
 
 		let str = `<div class="row">`;
-		for(let i=0 ; i < show_all_data[1].list.length ; i++) {
-			const data = show_all_data[1].list[i];
+		for(let i=0 ; i < show_all_data[0].list.length ; i++) {
+			const data = show_all_data[0].list[i];
 			if(data.open_num > 0){
 				str+=`
 				<div class="col-xs-12">
