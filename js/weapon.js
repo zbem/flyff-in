@@ -316,7 +316,7 @@ function up_u_weapon(){
 	}
 
 	$("[up_u_weapon_div]").remove();
-	var arr = weaponObj.uList;
+	var arr = weaponObj.possibleRandomStats;
 	var value1 = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
 	var value2 = arr.splice(Math.floor(Math.random() * arr.length), 1)[0];
 
