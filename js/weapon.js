@@ -143,8 +143,8 @@ function get_weapon(index){
 		//组装单位(例如 百分号)
 		randomNum = randomNum+obj.cur;
 		//承受伤害是减
-		// const addStr = obj.name === "承受伤害" ? '-' : '+';
-		str +='<span style="color: #ffeaa5">'+ obj.name  + randomNum + ' (' + minNum+'~'+maxNum+')'+obj.cur+'</span><br>';
+		const addStr = obj.name === "承受伤害" ? '-' : '+';
+		str +='<span style="color: #ffeaa5">'+ obj.name  + addStr + randomNum + ' (' + minNum+'~'+maxNum+')'+obj.cur+'</span><br>';
 	}
 	//职业要求
 	str += '<span job_span style="color: aliceblue">职业要求:'+weaponObj.job+'</span></br>';
