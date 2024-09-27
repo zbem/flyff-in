@@ -414,7 +414,7 @@ function wake_up(){
 		$("[wake_btn]").attr("disabled",true);
 		layer.msg(`恭喜你,${wakeUp.name}洗出了最大值!`,{
 			icon:1,
-			time: 5000,
+			time: 0,
 			btn: ['确认'],
 			yes: function(index){
 				$("[wake_btn]").attr("disabled",false);
