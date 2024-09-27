@@ -173,7 +173,7 @@ function join_weapon_abilities(list){
 		randomNum = randomNum+obj.cur;
 		//承受伤害是减
 		const addStr = obj.name === "承受伤害" ? '' : '+';
-		str +=`<span style="color: #ffeaa5">${obj.name + addStr + randomNum}  (${minNum+'~'+maxNum})${obj.cur}</span><br>`;
+		str +=`<span style="color: #ffeaa5">${obj.name + addStr + randomNum}  (${obj.min+'~'+obj.max})${obj.cur}</span><br>`;
 	}
 	str+="</div>";
 	return str;
