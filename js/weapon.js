@@ -406,7 +406,22 @@ function wake_up(){
 	//随机数组中的值
 	const wakeUp = wakeUpList[Math.floor(Math.random() * wakeUpList.length)];
 	const percentage = wakeUp.item[Math.floor(Math.random() * wakeUp.item.length)];
+
 	$("[weapon_description]").after(`<span style="color: #fe0f7a;" wake_up>${wakeUp.name+(wakeUp.name ==='治疗' ? '+' : '造成伤害+')}${percentage}%</br></span>`);
+
+	//最大值
+	if(percentage === wakeUp.item[wakeUp.item.length-1]){
+		$("[wake_btn]").attr("disabled",true);
+		layer.msg(`恭喜你,${wakeUp.name}洗出了最大值!`,{
+			icon:1,
+			time: 5000,
+			btn: ['确认'],
+			yes: function(index){
+				$("[wake_btn]").attr("disabled",false);
+				layer.close(index);
+		}});
+	}
+
 }
 
 //防暴强化
