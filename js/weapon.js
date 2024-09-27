@@ -159,11 +159,10 @@ function join_weapon_abilities(list){
 	//组装属性值
 	for(var i=0 ; i < list.length ; i++){
 		var obj = list[i];
-		var num = Math.floor(Math.random()*(obj.max-obj.min+1));
-		var maxNum = obj.max;
-		var minNum = obj.min;
+		var maxNum = obj.name === "承受伤害" ? obj.min : obj.max;
+		var minNum = obj.name === "承受伤害" ? obj.max : obj.min;
 		//最终计算出来的随机值
-		var randomNum = obj.min + num;
+		var randomNum = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
 
 		//缩进小数位
 		maxNum = obj.fixed == null ? maxNum : (maxNum/obj.fixed);
