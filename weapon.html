@@ -16,7 +16,7 @@
 <link href="js/layer/skin/default/layer.css" rel="stylesheet">
 <link href="css/animate.css" rel="stylesheet">
 
-<link href="css/fly.css?v=4.1.0" rel="stylesheet">
+<link href="css/fly.css?v=4.2.0" rel="stylesheet">
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content">
@@ -100,47 +100,32 @@
 						</div>
 						<div class="feed-element">
 							<div class="media-body ">
-								<img alt="image"  src="img/items/scrollultimateawake2.png">
-								<button class="btn btn-success" weapon_up  onclick="up_u_weapon()" >洗黄字</button>
-								<img alt="image"  src="img/items/scrollultimateawake.png">
-								<button class="btn btn-success" weapon_up  onclick="weapon_clean_up()" >洗上词条</button>
-								<img alt="image"  src="img/items/scrollskillawake.png">
-								<button class="btn btn-success" weapon_up onclick="wake_up()" >技唤</button>
+								<button weapon_up_btn  onclick="up_u_weapon()"><img alt="image"  src="img/items/scrollultimateawake2.png"></button>
+								<button weapon_up_btn  onclick="weapon_clean_up()"><img alt="image"  src="img/items/scrollultimateawake.png"></button>
+								<button weapon_up_btn  onclick="wake_up()"><img alt="image"  src="img/items/scrollskillawake.png"></button>
 							</div>
 						</div>
 						<div class="feed-element">
 							<div class="media-body ">
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up_go(0)" >智唤</button>
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up_go(1)" >体唤</button>
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up_go(2)" >力唤</button>
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up_go(3)" >敏唤</button>
+								<button weapon_up_btn  onclick="attribute_wake_up_go(0)"><img alt="image"  src="img/items/syssysscrscroll01.png">智</button>
+								<button weapon_up_btn  onclick="attribute_wake_up_go(1)"><img alt="image"  src="img/items/syssysscrscroll01.png">体</button>
+								<button weapon_up_btn  onclick="attribute_wake_up_go(2)"><img alt="image"  src="img/items/syssysscrscroll01.png">力</button>
+								<button weapon_up_btn  onclick="attribute_wake_up_go(3)"><img alt="image"  src="img/items/syssysscrscroll01.png">敏</button>
 							</div>
 						</div>
 						<div class="feed-element">
 							<div class="media-body ">
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<!-- 0:智力 1:体质 2:力量 3:敏捷 -->
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up([1,2])" >力体唤</button>
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up([2,3])" >力敏唤</button>
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up([2,0])" >力智唤</button>
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up([1,3])" >敏体唤</button>
+								<button weapon_up_btn  onclick="attribute_wake_up([1,2])"><img alt="image"  src="img/items/syssysscrscroll01.png">力体</button>
+								<button weapon_up_btn  onclick="attribute_wake_up([2,3])"><img alt="image"  src="img/items/syssysscrscroll01.png">力敏</button>
+								<button weapon_up_btn  onclick="attribute_wake_up([2,0])"><img alt="image"  src="img/items/syssysscrscroll01.png">力智</button>
+								<button weapon_up_btn  onclick="attribute_wake_up([1,3])"><img alt="image"  src="img/items/syssysscrscroll01.png">敏体</button>
 							</div>
 						</div>
 						<div class="feed-element">
 							<div class="media-body ">
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up([0,1])" >智体唤</button>
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up([0,3])" >智敏唤</button>
-								<img alt="image"  src="img/items/syssysscrscroll01.png">
-								<button class="btn btn-success" attribute_up onclick="attribute_wake_up()" >混唤</button>
+								<button weapon_up_btn  onclick="attribute_wake_up([0,1])"><img alt="image"  src="img/items/syssysscrscroll01.png">智体</button>
+								<button weapon_up_btn  onclick="attribute_wake_up([0,3])"><img alt="image"  src="img/items/syssysscrscroll01.png">智敏</button>
+								<button weapon_up_btn  onclick="attribute_wake_up()"><img alt="image"  src="img/items/syssysscrscroll01.png">随机</button>
 							</div>
 						</div>
 					</div>

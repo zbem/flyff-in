@@ -481,10 +481,10 @@ function weapon_low_up(){
 		return ;
 	}
 
-	$("[weapon_up]").attr("disabled",true);
+	$("[weapon_up_btn]").attr("disabled",true);
 	if(weapon_low_up_stop){
 		weapon_low_up_stop = false;
-		$("[weapon_up]").removeAttr("disabled");
+		$("[weapon_up_btn]").removeAttr("disabled");
 		return ;
 	}
 

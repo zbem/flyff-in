@@ -1,3 +1,13 @@
+
+[weapon_up_btn]{
+    background-color: transparent;
+    border: 0
+}
+
+[weapon_up_btn]:focus-visible{
+    outline: none;
+}
+
 .layer_msg_f{
     color: red;
     border: none !important;
