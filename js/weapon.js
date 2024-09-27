@@ -72,6 +72,11 @@ let stop = false;
 let weapon_low_up_stop = false;
 let weapon_up_stop = false;
 
+let w_clean_num = 0;
+let w_clean_u_num = 0;
+let w_wake_up_num = 0;
+
+//获得武器
 function get_weapon_go(id){
 	boss_weapon_list.unshift(id);
 	$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`);
@@ -122,13 +127,38 @@ function get_weapon(index){
 	//武器基础攻击
 	str += '<span style="color: aliceblue">基础攻击力:'+weaponObj.minAttack+'~'+weaponObj.maxAttack+'</span></br>';
 	//攻击速度
-	str += '<span style="color: aliceblue">攻击速度:'+weaponObj.attackSpeed+'</span></br>';
-	const list = weaponObj.abilities;
+	str += '<span style="color: aliceblue" w_attack_speed>攻击速度:'+weaponObj.attackSpeed+'</span>';
+	//上词条属性
+	str += join_weapon_abilities(weaponObj.abilities);
+	//职业要求
+	str += '<span job_span style="color: aliceblue">职业要求:'+weaponObj.job+'</span></br>';
+	//等级要求
+	str += '<span style="color: aliceblue">等级要求:150</span></br>';
+	//品质
+	str += '<span style="color: aliceblue">品质: <span color_red>史诗</span></span></br>';
+	if(weaponObj.description != null){
+		//描述
+		str += '<span style="color: aliceblue" weapon_description>描述:</br> '+weaponObj.description+'</br></span>';
+	}
 
+	//洗词条次数
+	str += `</br><span style="color: #b3b3b3">洗基础次数: <span w_clean_num>0</span>`;
+	str += `</br><span style="color: #b3b3b3">洗黄字次数: <span w_clean_u_num>0</span>`;
+	str += `</br><span style="color: #b3b3b3">技能唤醒次数: <span w_wake_up_num>0</span>`;
+	// str += '</br><span style="color: #b3b3b3">穿洞次数: 0';
+
+	$("[weapon_bottom_text]").html(weaponObj.name);
+	$("[weapon_img]").attr("src",weaponObj.imgUrl)
+
+	$("[weapon-attributes]").prepend(str);
+	$("[weapon_roll_div]").removeClass("hide");
+}
+
+function join_weapon_abilities(list){
+	let str ="<div w_abilities>";
 	//组装属性值
 	for(var i=0 ; i < list.length ; i++){
 		var obj = list[i];
-
 		var num = Math.floor(Math.random()*(obj.max-obj.min+1));
 		var maxNum = obj.max;
 		var minNum = obj.min;
@@ -144,28 +174,10 @@ function get_weapon(index){
 		randomNum = randomNum+obj.cur;
 		//承受伤害是减
 		const addStr = obj.name === "承受伤害" ? '' : '+';
-		str +='<span style="color: #ffeaa5">'+ obj.name  + addStr + randomNum + ' (' + minNum+'~'+maxNum+')'+obj.cur+'</span><br>';
+		str +=`<span style="color: #ffeaa5">${obj.name + addStr + randomNum}  (${minNum+'~'+maxNum})${obj.cur}</span><br>`;
 	}
-	//职业要求
-	str += '<span job_span style="color: aliceblue">职业要求:'+weaponObj.job+'</span></br>';
-	//等级要求
-	str += '<span style="color: aliceblue">等级要求:150</span></br>';
-	//品质
-	str += '<span style="color: aliceblue">品质: <span color_red>史诗</span></span></br>';
-	if(weaponObj.description != null){
-		//描述
-		str += '<span style="color: aliceblue" weapon_description>描述:</br> '+weaponObj.description+'</span>';
-	}
-
-	//强化次数
-	// str += '</br></br><span style="color: #b3b3b3">强化次数: 0';
-	// str += '</br><span style="color: #b3b3b3">穿洞次数: 0';
-
-	$("[weapon_bottom_text]").html(weaponObj.name);
-	$("[weapon_img]").attr("src",weaponObj.imgUrl)
-
-	$("[weapon-attributes]").prepend(str);
-	$("[weapon_roll_div]").removeClass("hide");
+	str+="</div>";
+	return str;
 }
 
 function getRandomValues(array, numValues) {
@@ -303,7 +315,7 @@ function attribute_wake_up_go(num){
 	}
 }
 
-//升U
+//洗黄字
 function up_u_weapon(){
 	// if(Number($("[weapon_up_lv]").attr("weapon_up_lv")) !== 10){
 	// 	errorMsg("武器还没+10哦");
@@ -355,6 +367,29 @@ function up_u_weapon(){
 	}else{
 		$("[job_span]").before(str);
 	}
+
+	//洗黄字词条次数+1
+	w_clean_u_num++;
+	$("[w_clean_u_num]").html(w_clean_u_num);
+}
+
+//洗上词条
+function weapon_clean_up(){
+	const weaponObj = weapon_json_list.find(obj => obj.id === parseInt(weapon_index));
+	if(weaponObj == null){
+		layer.msg("没有对应的武器"+index);
+		console.log("没有对应的武器"+index);
+		return;
+	}
+	//移除上词条
+	$("[w_abilities]").remove();
+
+	//洗基础词条次数+1
+	w_clean_num++;
+	$("[w_clean_num]").html(w_clean_num);
+
+	//在攻击速度后面增加
+	$("[w_attack_speed]").after(join_weapon_abilities(weaponObj.abilities));
 }
 
 //技能唤醒
@@ -364,10 +399,14 @@ function wake_up(){
 	}
 	$("[wake_up]").remove();
 
+	//技能唤醒次数+1
+	w_wake_up_num++;
+	$("[w_wake_up_num]").html(w_wake_up_num);
+
 	//随机数组中的值
 	const wakeUp = wakeUpList[Math.floor(Math.random() * wakeUpList.length)];
 	const percentage = wakeUp.item[Math.floor(Math.random() * wakeUp.item.length)];
-	$("[weapon_description]").after('<div wake_up></br><span style="color: #fe0f7a;" >'+wakeUp.name+(wakeUp.name ==="治疗" ? '+' : ' 造成伤害+')+percentage+"%"+'</span></div>');
+	$("[weapon_description]").after(`<span style="color: #fe0f7a;" wake_up>${wakeUp.name+(wakeUp.name ==='治疗' ? '+' : '造成伤害+')}${percentage}%</br></span>`);
 }
 
 //防暴强化
