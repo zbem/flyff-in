@@ -141,6 +141,11 @@ function get_weapon(index){
 		str += '<span style="color: aliceblue" weapon_description>描述:</br> '+weaponObj.description+'</br></span>';
 	}
 
+	//初始化次数
+	w_clean_num = 0;
+	w_clean_u_num = 0;
+	w_wake_up_num = 0;
+
 	//洗词条次数
 	str += `</br><span style="color: #b3b3b3">洗基础次数: <span w_clean_num>0</span>`;
 	str += `</br><span style="color: #b3b3b3">洗黄字次数: <span w_clean_u_num>0</span>`;
