@@ -270,9 +270,17 @@
 	});
 
 	for(let i = 1 ; i <= 100 ; i++){
-		$("[now_g_price]").append(`<option ${i===25 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
-		$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
+		if(i > 10){
+			$("[now_g_price]").append(`<option ${i===25 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
+			$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
+		}else{
+			for(let d = 1 ; d <= 100*i ; d++){
+				$("[now_g_price]").append(`<option ${i===25 ?'selected':''} value="${d/100}" hassubinfo="true">${d/100}元</option>`);
+				$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${d/100}" hassubinfo="true">${d/100}元</option>`);
+			}
+		}
 	}
+
 	for(let i = 0 ; i < show_all_data.length ; i++){
 		const obj = show_all_data[i];
 		$("[sel_now_show]").append(`<option ${obj.file_name === 'Shadow_Hunter' ?'selected':''} value="${obj.file_name}" hassubinfo="true">${obj.en_name}(${obj.cns_name})</option>`);
