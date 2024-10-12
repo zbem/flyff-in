@@ -274,9 +274,9 @@
 			$("[now_g_price]").append(`<option ${i===25 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
 			$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
 		}else{
-			for(let d = 1 ; d <= 100*i ; d++){
-				$("[now_g_price]").append(`<option ${i===25 ?'selected':''} value="${d/100}" hassubinfo="true">${d/100}元</option>`);
-				$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${d/100}" hassubinfo="true">${d/100}元</option>`);
+			for(let d = 1 ; d <= 10*i ; d++){
+				$("[now_g_price]").append(`<option ${i===25 ?'selected':''} value="${d/10}" hassubinfo="true">${d/10}元</option>`);
+				$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${d/10}" hassubinfo="true">${d/10}元</option>`);
 			}
 		}
 	}
