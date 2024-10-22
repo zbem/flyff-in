@@ -111,9 +111,9 @@
 				lucky_box_num++
 				data.open_num++;
 				$("[txt_div]").prepend(`
-					<div class="row">
+					<div class="row" box_div>
 						<div class="col-xs-12">
-							<img src="img/items/${data.icon}" alt="幸运盒子">恭喜抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>!
+							<img src="img/items/${data.icon}" alt="幸运盒子" >恭喜第${lucky_box_num}次抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>!
 						</div>
 					</div>
 				`);
@@ -151,7 +151,7 @@
 			if(data.open_num > 0){
 				str+=`
 				<div class="col-xs-12">
-					<img src="img/items/${data.icon}" alt="幸运盒子">抽中 <span style="font-weight: bold;color: ${data.color}">${data.name}</span>*${data.open_num}个 !
+					<img src="img/items/${data.icon}" alt="幸运盒子"  >抽中<span style="font-weight: bold;color: ${data.color}">${data.name}</span>*${data.open_num}个 !
 				</div>
 			`;
 			}
@@ -160,6 +160,13 @@
 		str+=`</div>`;
 
 		$("[lucky_box_msg_div]").html(str);
+
+		const box_num = $("[box_div]").length;
+
+		if(box_num > 20){
+			for (let i = 20 ; i <box_num ; i ++)
+			$("[box_div]")[i].remove();
+		}
 
 		//继续抽
 		if(is_go){
