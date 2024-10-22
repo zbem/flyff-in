@@ -26,8 +26,8 @@
 				<div class="ibox-content">
 					<div class="feed-element">
 						<div class="media-body ">
-							<img alt="image" class="img-circle" src="img/items/syssysscrbxluck.png">
-							<button class="btn btn-success" onclick="lucky_box()" >抽本期时装盒子</button>
+							<img alt="image" src="img/items/jewelbox.png">
+							<button class="btn btn-success" onclick="lucky_box()" box_btn>宝石盒子</button>
 						</div>
 					</div>
 				</div>
@@ -79,6 +79,7 @@
 <script src="js/content.js?v=1.0.0"></script>
 <!-- jQuery UI -->
 <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="js/layer/layer.js"></script>
 
 <script>
 	$(document).ready(function() {
@@ -109,32 +110,48 @@
 				$("[txt_div]").prepend(`
 					<div class="row">
 						<div class="col-xs-12">
-							<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">恭喜抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>!
+							<img src="img/items/${data.icon}" alt="幸运盒子">恭喜抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>!
 						</div>
 					</div>
 				`);
+
+				//抽中符文
+				if(data.color === "#e8cd51"){
+					$("[box_btn]").attr("disabled",true);
+					layer.msg(`恭喜你,抽到了${data.name}符文!`,{
+						icon:1,
+						time: 0,
+						btn: ['确认'],
+						yes: function(index){
+							$("[box_btn]").attr("disabled",false);
+							layer.close(index);
+						}});
+				}
+
 				break;
 			}
 		}
 
 		let str = `<div class="row">`;
+
+		str+=`
+			<div class="col-xs-12" style="padding-bottom: 10px">
+				统计:总数${lucky_box_num}个
+			</div>
+		`
+
 		for(let i=0 ; i < show_all_data[0].list.length ; i++) {
 			const data = show_all_data[0].list[i];
 			if(data.open_num > 0){
 				str+=`
 				<div class="col-xs-12">
-					<img src="img/items/syssysscrbxluck.png" alt="幸运盒子">抽中 <span style="font-weight: bold;color: ${data.color}">${data.name}</span>*${data.open_num}个 !
+					<img src="img/items/${data.icon}" alt="幸运盒子">抽中 <span style="font-weight: bold;color: ${data.color}">${data.name}</span>*${data.open_num}个 !
 				</div>
 			`;
 			}
 		}
 
-		str+=`
-			<div class="col-xs-12" style="padding-top: 10px">
-				统计:总数${lucky_box_num}个
-			</div>
-		</div>
-		`
+		str+=`</div>`;
 
 		$("[lucky_box_msg_div]").html(str);
 	}
