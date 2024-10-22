@@ -90,6 +90,9 @@
 		$('body').addClass('custom-cursor');
 
 	});
+
+	let is_go = true;
+
 	function lucky_box(){
 		let randomNum = Math.random().toFixed(2);
 		let luck_box_probability = 0;
@@ -117,17 +120,20 @@
 
 				//抽中符文
 				if(data.color === "#e8cd51"){
+					is_go = false;
 					$("[box_btn]").attr("disabled",true);
 					layer.msg(`恭喜你,抽到了${data.name}符文!`,{
 						icon:1,
 						time: 0,
 						btn: ['确认'],
 						yes: function(index){
+							//点击确认后复原
+							is_go = true;
 							$("[box_btn]").attr("disabled",false);
 							layer.close(index);
-						}});
-				}
+					}});
 
+				}
 				break;
 			}
 		}
@@ -154,6 +160,14 @@
 		str+=`</div>`;
 
 		$("[lucky_box_msg_div]").html(str);
+
+		//继续抽
+		if(is_go){
+			setTimeout(function() {
+				lucky_box();
+			}, 20); // 1000毫秒等于1秒
+		}
+
 	}
 </script>
 
