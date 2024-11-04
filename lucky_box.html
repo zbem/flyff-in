@@ -28,6 +28,10 @@
 						<div class="media-body ">
 							<img alt="image" src="img/items/jewelbox.png">
 							<button class="btn btn-success" onclick="lucky_box()" box_btn>宝石盒子</button>
+							<br><br>
+							<button class="btn btn-success" onclick="rock_paper_scissors(0)" box_btn>石头</button>
+							<button class="btn btn-success" onclick="rock_paper_scissors(1)" box_btn>剪刀</button>
+							<button class="btn btn-success" onclick="rock_paper_scissors(2)" box_btn>布</button>
 						</div>
 					</div>
 				</div>
@@ -61,6 +65,7 @@
 					</div>
 				</div>
 				<div class="ibox-content">
+					<div box_top_div class="row"></div>
 					<div txt_div class="row"></div>
 				</div>
 			</div>
@@ -91,14 +96,53 @@
 
 	});
 
+
+	const aList = ["石头", "剪刀", "布"];
+	let win_num = 0;
+	let click_num = 0;
+
+	function rock_paper_scissors(you){
+
+		click_num++;
+
+		//随机数组中的值
+		const ai = Math.floor(Math.random() * aList.length);
+
+		let str = ``;
+		if(ai === you){
+			str += `<span style="font-weight: bold; color: gold">平手了</span>`;
+		}
+
+		if((you === 0 && ai === 1) || (you === 1 && ai === 2) || (you === 2 && ai === 0)){
+			win_num++;
+			str += `<span style="font-weight: bold; color: green">你赢了</span>`;
+		}
+
+		if((you === 0 && ai === 2) || (you === 1 && ai === 0) || (you === 2 && ai === 1)){
+			win_num=0
+			str += `<span style="font-weight: bold; color: red">你输了</span>`;
+		}
+		str += `,你出了:${aList[you]},系统出了:${aList[ai]}`;
+		$("[box_top_div]").html(`连赢次数:${win_num},总次数:${click_num}`);
+
+		$("[txt_div]").prepend(`
+			<div class="row" box_div>
+				<div class="col-xs-12">
+					${str}
+				</div>
+			</div>
+		`);
+	}
+
+
 	let is_go = true;
 
 	function lucky_box(){
 		let randomNum = Math.random().toFixed(4);
 		let luck_box_probability = 0;
 
-		for(let i=0 ; i < show_all_data[0].list.length ; i++) {
-			const data = show_all_data[0].list[i];
+		for(let i=0 ; i < jewel_box.list.length ; i++) {
+			const data = jewel_box.list[i];
 			if(i > 0){
 				luck_box_probability = parseFloat(data.probability) + parseFloat(luck_box_probability);
 			}else{
@@ -122,7 +166,7 @@
 				if(data.color === "#e8cd51"){
 					is_go = false;
 					$("[box_btn]").attr("disabled",true);
-					layer.msg(`恭喜你,抽到了${data.name}符文!`,{
+					layer.msg(`恭喜你,抽到了${data.name}!`,{
 						icon:1,
 						time: 0,
 						btn: ['确认'],
@@ -146,8 +190,8 @@
 			</div>
 		`
 
-		for(let i=0 ; i < show_all_data[0].list.length ; i++) {
-			const data = show_all_data[0].list[i];
+		for(let i=0 ; i < jewel_box.list.length ; i++) {
+			const data = jewel_box.list[i];
 			if(data.open_num > 0){
 				str+=`
 				<div class="col-xs-12">
