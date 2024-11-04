@@ -96,7 +96,6 @@
 
 	});
 
-
 	const aList = ["石头", "剪刀", "布"];
 	let win_num = 0;
 	let click_num = 0;
@@ -122,7 +121,7 @@
 			win_num=0
 			str += `<span style="font-weight: bold; color: red">你输了</span>`;
 		}
-		str += `,你出了:${aList[you]},系统出了:${aList[ai]}`;
+		str += `,你出了:<span style="font-weight: bold; color: green">${aList[you]}</span>,系统出了:<span style="font-weight: bold; color: red">${aList[ai]}</span>`;
 		$("[box_top_div]").html(`连赢次数:${win_num},总次数:${click_num}`);
 
 		$("[txt_div]").prepend(`
