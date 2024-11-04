@@ -73,7 +73,7 @@
 									<button class="btn btn-success" pet_btn onclick="sacrifice()" >献祭当前宠</button>
 								</div>
 							</div>
-							<div class="feed-element">
+							<div class="feed-element hide">
 								<div class="media-body ">
 									<img alt="image" class="img-circle" src="img/items/eveeasteregg.png">
 									<button class="btn btn-success" pet_btn onclick="one_pet()" >一键完美宠</button>
@@ -83,7 +83,6 @@
 								<div class="media-body ">
 									<img alt="image" class="img-circle" src="img/items/petbarbarylion01_02.png">
 									<button class="btn btn-success" pet_btn onclick="pet_show()" >洗宠物外观</button>
-
 									<button class="btn btn-success hide" id="startButton"  >测试</button>
 								</div>
 							</div>
@@ -309,7 +308,7 @@
 		now_pet = pet;
 
 		let str = `
-			<div class="alert alert-info" pet_info  pet_lv="1" >
+			<div class="alert alert-info" pet_info  pet_lv="0" >
 				<div class="row">
 					<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
 					<div class="col-xs-5" ><img style="width: 80px; height: 70px;" now_pet_img alt="${pet.name}" img_${pet.name} src="img/pet/${pet.name}.png"></div>
