@@ -264,19 +264,24 @@
 	}
 
 
-	//一键献祭
+	//一键完美宠
 	function one_pet(){
 		//孵化宠
 		incubate();
-		//宠物升级
-		pet_up_go();
+
+		setTimeout(function() {
+			//宠物升级
+			pet_up_go();
+		}, 100); // 1000毫秒等于1秒
 	}
 
 	function pet_up_go(){
-		//宠物升级
-		pet_up();
-		//献祭
-		sacrifice_go();
+		setTimeout(function() {
+			//宠物升级
+			pet_up();
+			//献祭
+			sacrifice_go();
+		}, 100); // 1000毫秒等于1秒
 	}
 
 	function sacrifice_go(){
@@ -291,9 +296,12 @@
 			pet_up_go()
 			return ;
 		}
-		//献祭
-		sacrifice();
-		sacrifice_go();
+
+		setTimeout(function() {
+			//献祭
+			sacrifice();
+			sacrifice_go();
+		}, 100); // 1000毫秒等于1秒
 	}
 
 	//孵化蛋
@@ -308,7 +316,7 @@
 		now_pet = pet;
 
 		let str = `
-			<div class="alert alert-info" pet_info  pet_lv="0" >
+			<div class="alert alert-info" pet_info  pet_lv="1" >
 				<div class="row">
 					<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
 					<div class="col-xs-5" ><img style="width: 80px; height: 70px;" now_pet_img alt="${pet.name}" img_${pet.name} src="img/pet/${pet.name}.png"></div>
@@ -328,7 +336,7 @@
 		//献祭次数清0
 		pet_num = 0;
 		pet_lv = $("[pet_lv]").attr("pet_lv");
-		if(pet_lv == null || pet_lv >= 6){
+		if(pet_lv == null || pet_lv > 6){
 			sacrifice_stop = true;
 			pet_up_stop = true;
 			return;
@@ -339,7 +347,6 @@
 		let randomNum = Math.random().toFixed(2);
 
 		let pet_probability =0;
-
 		for(let i=0 ; i < pet.list.length ; i++) {
 			if(i > 0){
 				pet_probability = parseFloat(pet.list[i].probability) + parseFloat(pet_probability);
@@ -352,31 +359,30 @@
 			if(randomNum < pet_probability){
 				now_lv = pet.list[i].pet_lv;
 				const pet_lv_value = now_pet.value_list[pet.list[i].pet_lv - 1];
-
 				const img_html = $("[img_lv_"+pet.list[i].pet_lv+"]")[0].outerHTML;
-
-				$("[pet_img_div]").append(`<label lv_${pet_lv_item[Number(pet_lv)+1].lvStr} pet_val="${pet_lv_value}">${img_html}<br>+${pet_lv_value+now_pet.cur}</label>`);
+				$("[pet_img_div]").append(`<label lv_${pet_lv_item[Number(pet_lv)].lvStr} pet_val="${pet_lv_value}">${img_html}<br>+${pet_lv_value+now_pet.cur}</label>`);
 				break;
 			}
 		}
 
-		$("[pet_lv_str]").html(pet_lv_item[Number(pet_lv)+1].lvStr);
+		$("[pet_lv_str]").html(pet_lv_item[Number(pet_lv)].lvStr);
 		pet_lv++;
 		$("[pet_lv]").attr("pet_lv",pet_lv);
 
+		console.log(pet_lv);
+
+		//属性更新
 		let now_pet_value = 0;
 		$("[pet_val]").each(function(){
 			now_pet_value+= parseInt($(this).attr("pet_val"));
 		});
-
-		//属性更新
 		$("[pet_value]").html(now_pet_value);
 	}
 
 	//献祭
 	function sacrifice(){
 		pet_lv = $("[pet_lv]").attr("pet_lv");
-		if(pet_lv == null || pet_lv === 0){
+		if(pet_lv == null || pet_lv === 1){
 			sacrifice_stop = true;
 			return;
 		}
@@ -385,8 +391,9 @@
 		if(pet_lv > 6){
 			pet_lv = 6;
 		}
+
 		const pet = pet_lv_item[pet_lv];
-		if(now_lv >= pet.list.length){
+		if(pet == null || now_lv >= pet.list.length){
 			sacrifice_stop = true;
 			//layer.msg("已经是最高的等级!",{time:2000,skin:"layer_msg_s"});
 			return;
@@ -395,9 +402,6 @@
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random().toFixed(2);
 		let pet_probability = 0;
-
-		//是否成功
-		let is_suc = false;
 
 		for(var i=0 ; i <= pet.list.length ; i++) {
 			const lv = pet.list[i].pet_lv;
@@ -418,8 +422,6 @@
 				$("[lv_"+pet.lvStr+"]").remove();
 				var pet_lv_value =now_pet.value_list[pet.list[i].pet_lv-1];
 				$("[pet_img_div]").append('<label lv_'+pet.lvStr+' pet_val="'+pet_lv_value+'"><img img_lv src="img/pet/等级'+pet.list[i].pet_lv+'.png" alt="等级"><br>+'+pet_lv_value+now_pet.cur+'</label>');
-
-				is_suc = true;
 				break;
 			}
 		}
@@ -435,7 +437,7 @@
 		pet_num++;
 		$("[pet_"+pet.lvStr+"]").remove();
 
-		let html_money = parseFloat(pet.money*0.00000026).toFixed(2);
+		let html_money = parseFloat(pet.money*0.00000021).toFixed(2);
 		//统计数据
 		$("[pet_msg_div]").append('<div class="col-xs-12" pet_'+pet.lvStr+' >'+pet.money+'金币/次,'+html_money+'元/次</br>'+pet.lvStr+'献祭次数:'+pet_num+'</div>');
 
