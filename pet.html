@@ -190,6 +190,22 @@
 		});
 	});
 
+
+	//当前等级
+	let now_pet_lv = 0;
+	//当前总属性
+	let now_all_attribute = 0;
+	//当前宠物名称
+	let now_pet_name = "";
+
+
+
+
+
+
+
+
+
 	//洗外观
 	function pet_show(){
 		if($("[now_pet_img]") == null || $("[now_pet_img]").length === 0){
@@ -421,17 +437,10 @@
 				now_lv = lv;
 				$("[lv_"+pet.lvStr+"]").remove();
 				var pet_lv_value =now_pet.value_list[pet.list[i].pet_lv-1];
-				$("[pet_img_div]").append('<label lv_'+pet.lvStr+' pet_val="'+pet_lv_value+'"><img img_lv src="img/pet/等级'+pet.list[i].pet_lv+'.png" alt="等级"><br>+'+pet_lv_value+now_pet.cur+'</label>');
+				$("[pet_img_div]").append(`<label lv_${pet.lvStr} pet_val="${pet_lv_value}"><img img_lv src="img/pet/等级${pet.list[i].pet_lv}.png" alt="等级"><br>+${pet_lv_value+now_pet.cur}</label>`);
 				break;
 			}
 		}
-
-		// if(is_suc){
-		// 	layer.msg("你的宠物提升到了新的，更高的等级!",{time:2000,skin:"layer_msg_s"});
-		// }else{
-		// 	layer.msg("你随机到了相同或较低等级，因此无事发生。",{time:2000,skin:"layer_msg_f"});
-		// }
-
 
 		//献祭次数
 		pet_num++;
