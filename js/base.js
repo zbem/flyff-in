@@ -543,6 +543,7 @@
 		"petprimgon.png",
 		"petskatingcat.png",
 		"pettonge.png",
+		"petgumi.png",
 		"petangel01_03.png",
 		"petbarbarylion01_02.png",
 		"petdragon01_02.png",
