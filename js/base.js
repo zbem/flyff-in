@@ -537,12 +537,6 @@
 	let pet_box_num = 0;
 
 	const pet_file_list = [
-		"petdraco.png",
-		"petcrystaliphrine.png",
-		"pethantiger.png",
-		"petprimgon.png",
-		"petskatingcat.png",
-		"pettonge.png",
 		"petgumi.png",
 		"petangel01_03.png",
 		"petbarbarylion01_02.png",
