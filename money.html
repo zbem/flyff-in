@@ -271,8 +271,8 @@
 
 	for(let i = 1 ; i <= 100 ; i++){
 		if(i > 10){
-			$("[now_g_price]").append(`<option ${i===25 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
-			$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
+			$("[now_g_price]").append(`<option ${i===20 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
+			$("[now_f_price]").append(`<option ${i===57 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
 		}else{
 			for(let d = 1 ; d <= 10*i ; d++){
 				$("[now_g_price]").append(`<option ${i===25 ?'selected':''} value="${d/10}" hassubinfo="true">${d/10}元</option>`);
@@ -352,8 +352,8 @@
 	function r_formatNumberWithCommas(num) {
 		let str = Number(num).toLocaleString('en-US', {
 			style: 'decimal',
-			minimumFractionDigits: 2, // 如果需要小数部分，可以调整这个值
-			maximumFractionDigits: 2  // 如果需要小数部分，可以调整这个值
+			minimumFractionDigits: 3, // 如果需要小数部分，可以调整这个值
+			maximumFractionDigits: 3  // 如果需要小数部分，可以调整这个值
 		});
 
 		// 检查字符串是否以".00"结尾
@@ -403,7 +403,7 @@
 
 		//计算人民币 金币*当前金价
 		let new_r_price = parseFloat(g_price)*parseFloat(now_g_price);
-		new_r_price = new_r_price.toFixed(2);
+		// new_r_price = new_r_price.toFixed(2);
 		$("[r_price]").val(r_formatNumberWithCommas(new_r_price));
 
 		//计算钻
@@ -425,7 +425,7 @@
 
 		//计算人民币 =  钻*当前钻价
 		let new_r_price = parseFloat(f_price) * parseFloat(now_f_price);
-		new_r_price = new_r_price.toFixed(2);
+		// new_r_price = new_r_price.toFixed(2);
 		$("[r_price]").val(r_formatNumberWithCommas(new_r_price));
 
 		//计算金币 = 人民币/当前金价
