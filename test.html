@@ -17,14 +17,6 @@
 <link href="css/fly.css?v=4.1.0" rel="stylesheet">
 
 <style>
-	.scroll-content {
-		position: absolute;
-		white-space: nowrap;
-		animation: scrollUpDown 3s linear forwards;
-		width: 100%;
-		text-align: center;
-	}
-
 	@keyframes scrollUpDown {
 		0% {
 			transform: translateY(100%);
@@ -68,7 +60,7 @@
 	</div>
 </div>
 
-<div class="scroll-content">
+<div id="scrollMessage">
 	<span style=" color: red">你随机到了相同或较低等级，因此无事发生。</span>
 </div>
 
@@ -90,12 +82,14 @@
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
 
-		// 假设你有一个按钮来触发动画
-		$('#startButton').click(function() {
-			$('#scrollMessage').css({
-				'animation': 'scroll 5s linear forwards, fadeOut 5s ease-out forwards 5s'
-			});
-		});
+	});
+
+	// 假设你有一个按钮来触发动画
+	$('#startButton').click(function() {
+		$('#scrollMessage').removeAttr("style");
+
+		$('#scrollMessage').attr("style",`animation:scroll 1s linear forwards, fadeOut 1s ease-out forwards 1s`);
+
 	});
 </script>
 

@@ -1,3 +1,10 @@
+$(document).ready(function() {
+	//页面元素可移动
+	WinMove();
+
+	// 当页面加载完成后，给 body 元素添加自定义光标样式
+	$('body').addClass('custom-cursor');
+});
 
 //属性唤醒
 const attribute_data=[
