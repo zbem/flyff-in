@@ -302,8 +302,21 @@ function attribute_wake_up_go(num){
 		if (randomNum < attribute_probability) {
 			now_attribute = data.name;
 			str +=`
-					<span  color_white>${attribute_data[num].name}${data.name === '+4' ? '+3' :data.name}<br></span>
+					<span  color_white>${attribute_data[num].name}${data.name}<br></span>
 				`;
+
+			if(data.name === '+4'){
+				$("[attribute_btn]").attr("disabled",true);
+				layer.msg(`恭喜你,${attribute_data[num].name}洗出了${data.name}!`,{
+					icon:1,
+					time: 0,
+					btn: ['确认'],
+					yes: function(index){
+						$("[attribute_btn]").attr("disabled",false);
+						layer.close(index);
+					}});
+			}
+
 			break;
 		}
 	}
