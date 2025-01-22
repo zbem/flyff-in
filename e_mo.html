@@ -103,8 +103,8 @@
 			<div class="row" box_div>
 				<div class="col-xs-12">
 					第${lucky_box_num}次洗出
-					<br><span style="font-weight: bold; color: ${data1.color}">${data1.name}</span>
-					<br><span style="font-weight: bold; color: ${data2.color}">${data2.name}</span>
+					<br><span style="font-weight: bold; color="${data1.color}">${data1.name}</span>
+					<br><span style="font-weight: bold; color="${data2.color}">${data2.name}</span>
 				</div>
 			</div>
 		`);
@@ -130,7 +130,7 @@
 	}
 
 	function e_mo(){
-		let randomNum = Math.random().toFixed(6);
+		let randomNum = Math.random().toFixed(5);
 		let luck_box_probability = 0;
 
 		for(let i=0 ; i < e_mo_box.list.length ; i++) {
@@ -140,7 +140,7 @@
 			}else{
 				luck_box_probability = parseFloat(data.probability);
 			}
-			luck_box_probability = luck_box_probability.toFixed(6);
+			luck_box_probability = luck_box_probability.toFixed(5);
 
 			//数字是否匹配
 			if(randomNum < luck_box_probability){
