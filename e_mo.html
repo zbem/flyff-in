@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" xmlns="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>飞瘾犯了-恶魔</title>
+</head>
+
+<link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="css/style.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<link href="css/fly.css?v=4.1.0" rel="stylesheet">
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>操作专区</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="feed-element">
+						<div class="media-body ">
+							<img alt="image" class="img-circle" src="img/items/syssysscrdemonblessing.png" onclick="e_mo_go()">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>成果</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div lucky_box_msg_div class="row"></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>消息</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div box_top_div class="row"></div>
+					<div txt_div class="row"></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+	</div>
+</div>
+
+<!-- 全局js -->
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.6"></script>
+<script src="js/base.js?v=202404020006"></script>
+
+<!-- 自定义js -->
+<script src="js/content.js?v=1.0.0"></script>
+<!-- jQuery UI -->
+<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="js/layer/layer.js"></script>
+
+<script>
+	$(document).ready(function() {
+		//页面元素可移动
+		WinMove();
+
+		// 当页面加载完成后，给 body 元素添加自定义光标样式
+		$('body').addClass('custom-cursor');
+
+	});
+
+	let is_go = true;
+
+	function e_mo_go(){
+		const data1 = e_mo();
+		const data2 = e_mo();
+
+		lucky_box_num++
+
+		$("[txt_div]").prepend(`
+			<div class="row" box_div>
+				<div class="col-xs-12">
+					第${lucky_box_num}次洗出
+					<br><span style="font-weight: bold; color: ${data1.color}">${data1.name}</span>
+					<br><span style="font-weight: bold; color: ${data2.color}">${data2.name}</span>
+				</div>
+			</div>
+		`);
+
+		let str = `<div class="row">`;
+
+		str+=`
+			<div class="col-xs-12" style="padding-bottom: 10px">
+				统计:总数${lucky_box_num}个
+			</div>
+		`
+
+		str+=`</div>`;
+
+		$("[lucky_box_msg_div]").html(str);
+
+		const box_num = $("[box_div]").length;
+
+		if(box_num > 10){
+			for (let i = 10 ; i <box_num ; i ++)
+				$("[box_div]")[i].remove();
+		}
+	}
+
+	function e_mo(){
+		let randomNum = Math.random().toFixed(6);
+		let luck_box_probability = 0;
+
+		for(let i=0 ; i < e_mo_box.list.length ; i++) {
+			const data = e_mo_box.list[i];
+			if(i > 0){
+				luck_box_probability = parseFloat(data.probability) + parseFloat(luck_box_probability);
+			}else{
+				luck_box_probability = parseFloat(data.probability);
+			}
+			luck_box_probability = luck_box_probability.toFixed(6);
+
+			//数字是否匹配
+			if(randomNum < luck_box_probability){
+				return data;
+			}
+		}
+
+		// if(lucky_box_num >100){
+		// 	is_go = false;
+		// }
+
+		//继续抽
+		// if(is_go){
+		// 	setTimeout(function() {
+		// 		e_mo_go();
+		// 	}, 1); // 1000毫秒等于1秒
+		// }
+
+	}
+</script>
+
+</body>
+</html>
