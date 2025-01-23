@@ -41,7 +41,6 @@
 		en_name:"Blessing of the Demon",
 		cns_name:"恶魔的祝福",
 		list:[
-
 			{name:"移速+3%"			,open_num:0			,color:"red" 		,probability:0.00005},
 			{name:"攻速+3%"			,open_num:0			,color:"red" 		,probability:0.00005},
 			{name:"释放+3%"			,open_num:0			,color:"red" 		,probability:0.00005},
