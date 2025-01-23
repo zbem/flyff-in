@@ -43,7 +43,13 @@
 					</div>
 				</div>
 				<div class="ibox-content">
-					<div lucky_box_msg_div class="row"></div>
+					<div class="row">
+						<div class="col-xs-12" style="padding-bottom: 10px">
+							统计:总数<span open_num>0</span>个
+						</div>
+						<div msg_div class="col-xs-12">
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -61,7 +67,6 @@
 					</div>
 				</div>
 				<div class="ibox-content">
-					<div box_top_div class="row"></div>
 					<div txt_div class="row"></div>
 				</div>
 			</div>
@@ -100,7 +105,7 @@
 
 		lucky_box_num++
 
-		$("[txt_div]").prepend(`
+		var str = `
 			<div class="row" box_div>
 				<div class="col-xs-12">
 					第${lucky_box_num}次洗出
@@ -109,19 +114,14 @@
 					<br><br>
 				</div>
 			</div>
-		`);
+		`;
 
-		let str = `<div class="row">`;
+		$("[txt_div]").prepend(str);
+		if(data1.color === "red" || data2.color === "red"){
+			$("[msg_div]").prepend(str);
+		}
 
-		str+=`
-			<div class="col-xs-12" style="padding-bottom: 10px">
-				统计:总数${lucky_box_num}个
-			</div>
-		`
-
-		str+=`</div>`;
-
-		$("[lucky_box_msg_div]").html(str);
+		$("[open_num]").html(lucky_box_num);
 
 		const box_num = $("[box_div]").length;
 
