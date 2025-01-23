@@ -233,13 +233,6 @@
 			}
 		}
 
-		if($("[e_mo_value]").val() === data1.name || $("[e_mo_value]").val() === data2.name
-			|| $("[nv_shen_value]").val() === data1.name || $("[nv_shen_value]").val() === data2.name
-		) {
-			is_go = 0;
-			$("[blessing]").attr("disabled", false);
-		}
-
 		if(is_go){
 			setTimeout(function() {
 				list_go(go,fixed);
