@@ -27,8 +27,8 @@
 				<div class="ibox-content">
 					<div class="row">
 						<div class="col-sm-4">
-							<img alt="image" blessing src="img/items/syssysscrdemonblessing.png" onclick="e_mo_go(0)"><br><br>
-							<button class="btn btn-success" onclick="e_mo_go(0)" blessing box_btn>点一次后按空格</button>
+							<img alt="image" blessing src="img/items/syssysscrdemonblessing.png" onclick="e_mo_go()"><br><br>
+							<button class="btn btn-success" onclick="e_mo_go()" blessing box_btn>点一次后按空格</button>
 						</div>
 						<div class="form-group col-sm-4">
 							<div class="input-group" >
@@ -143,10 +143,10 @@
 
 		$("[blessing]").attr("disabled",true);
 		is_go = 1;
-		e_mo_go(is_go);
+		e_mo_go();
 	}
 
-	function e_mo_go(is_go){
+	function e_mo_go(){
 		const data1 = e_mo();
 		const data2 = e_mo();
 
