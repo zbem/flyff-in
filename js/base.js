@@ -35,6 +35,86 @@
 	**/
 
 
+	const nv_shen_box={
+		id:7064,
+		file_name:"",
+		en_name:"Blessing of the Goddess",
+		cns_name:"女神的祝福",
+		list:[
+			{name:"力量+4"			,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"智力+4"			,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"体质+4"			,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"敏捷+4"			,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"暴击+2%"			,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"暴击伤害+2%"		,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"防御+14"			,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"魔法防御+14"		,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"攻击力+17"		,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"PVE伤害+25"		,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"PVE减免+25"		,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"HP+37"			,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"FP+37"			,open_num:0			,color:"red" 		,probability:0.0025},
+			{name:"MP+37"			,open_num:0			,color:"red" 		,probability:0.0025},
+
+			{name:"力量+3"			,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"智力+3"			,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"体质+3"			,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"敏捷+3"			,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"暴击+1.5%"		,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"暴击伤害+1.5%"	,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"防御+10"			,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"魔法防御+10"		,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"攻击力+13"		,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"PVE伤害+20"		,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"PVE减免+20"		,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"HP+28"			,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"FP+28"			,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"MP+28"			,open_num:0			,color:"#e8cd51" 		,probability:0.005},
+			{name:"移速+2%"			,open_num:0 		,color:"#e8cd51" 		,probability:0.005},
+			{name:"攻速+2%"			,open_num:0 		,color:"#e8cd51" 		,probability:0.005},
+			{name:"释放+2%"			,open_num:0 		,color:"#e8cd51" 		,probability:0.005},
+			{name:"闪避+2%"			,open_num:0 		,color:"#e8cd51" 		,probability:0.005},
+			{name:"近程格挡+2%"		,open_num:0 		,color:"#e8cd51" 		,probability:0.005},
+			{name:"远程格挡+2%"		,open_num:0 		,color:"#e8cd51" 		,probability:0.005},
+
+			{name:"力量+2"			,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"智力+2"			,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"体质+2"			,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"敏捷+2"			,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"暴击+1%"			,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"暴击伤害+1%"		,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"防御+6"			,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"魔法防御+6"		,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"攻击力+9"			,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"PVE伤害+15"		,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"PVE减免+15"		,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"HP+20"			,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"FP+20"			,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+			{name:"MP+20"			,open_num:0 		,color:"#e8cd51" 		,probability:0.0125},
+
+			{name:"力量+1"			,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"智力+1"			,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"体质+1"			,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"敏捷+1"			,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"暴击+0.5%"		,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"暴击伤害+0.5%"	,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"防御+2"			,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"魔法防御+2"		,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"攻击力+5"			,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"PVE伤害+10"		,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"PVE减免+10"		,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"HP+12"			,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"FP+12"			,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+			{name:"MP+12"			,open_num:0 		,color:"#7acccd" 		,probability:0.03},
+
+			{name:"移速+1%"			,open_num:0 		,color:"#7acccd" 		,probability:0.045},
+			{name:"攻速+1%"			,open_num:0 		,color:"#7acccd" 		,probability:0.045},
+			{name:"释放+1%"			,open_num:0 		,color:"#7acccd" 		,probability:0.045},
+			{name:"闪避+1%"			,open_num:0 		,color:"#7acccd" 		,probability:0.045},
+			{name:"近程格挡+1%"		,open_num:0 		,color:"#7acccd" 		,probability:0.045},
+			{name:"远程格挡+1%"		,open_num:0 		,color:"#7acccd" 		,probability:0.045},
+		]
+	};
 	const e_mo_box={
 		id:27754,
 		file_name:"",
@@ -1401,6 +1481,10 @@
 	let jewelry_failure_all_num = 0;
 	//抽取幸运礼盒次数
 	let lucky_box_num=0;
+	//洗恶魔次数
+	let e_mo_num=0;
+	//洗女神次数
+	let nv_shen_num=0;
 	//成功概率
 	let probability = 0.000000;
 	//首饰成功概率

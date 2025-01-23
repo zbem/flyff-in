@@ -26,13 +26,22 @@
 				</div>
 				<div class="ibox-content">
 					<div class="row">
-						<div class="col-sm-4">
-							<img alt="image" blessing src="img/items/syssysscrdemonblessing.png" onclick="e_mo_go()"><br><br>
-							<button class="btn btn-success" onclick="e_mo_go()" blessing box_btn>点一次后按空格</button>
+						<div class="col-sm-1">
+							<img alt="image" style="float:left;" blessing src="img/items/syssysscrdemonblessing.png" >
 						</div>
-						<div class="form-group col-sm-4">
+						<div class="col-sm-5">
 							<div class="input-group" >
-								<select data-placeholder="请选择比例..." blessing e_mo_value class="chosen-select" style="min-width:200px" onchange="e_mo_go_value()">
+								<select data-placeholder="请选择比例..."  blessing e_mo_value class="chosen-select" style="min-width:200px" onchange="e_mo_go_value()">
+									<option value="">请选择属性</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-1">
+							<img alt="image" style="float:left;" blessing src="img/items/syssysscrblessedness.png" >
+						</div>
+						<div class="col-sm-5">
+							<div class="input-group" >
+								<select data-placeholder="请选择比例..."  blessing nv_shen_value class="chosen-select" style="min-width:200px" onchange="nv_shen_go_value()">
 									<option value="">请选择属性</option>
 								</select>
 							</div>
@@ -53,7 +62,8 @@
 				<div class="ibox-content">
 					<div class="row">
 						<div class="col-xs-12" style="padding-bottom: 10px">
-							统计:总数<span open_num>0</span>个
+							恶魔的祝福总数:<span e_mo_num>0</span>个<br>
+							女神的祝福总数:<span nv_shen_num>0</span>个
 						</div>
 						<div msg_div class="col-xs-12">
 						</div>
@@ -110,6 +120,10 @@
 			const data = e_mo_box.list[i];
 			$("[e_mo_value]").append(`<option  value="${data.name}" hassubinfo="true">${data.name}</option>`);
 		}
+		for(let i=0 ; i < nv_shen_box.list.length ; i++) {
+			const data = nv_shen_box.list[i];
+			$("[nv_shen_value]").append(`<option  value="${data.name}" hassubinfo="true">${data.name}</option>`);
+		}
 
 		const config = {
 			'.chosen-select': {
@@ -135,6 +149,17 @@
 
 	let is_go = 0;
 
+	function nv_shen_go_value(){
+		if(is_go === 1){
+			layer.msg(`正在进行中,请等待`);
+			return;
+		}
+
+		$("[blessing]").attr("disabled",true);
+		is_go = 1;
+		list_go(nv_shen_box,4);
+	}
+
 	function e_mo_go_value(){
 		if(is_go === 1){
 			layer.msg(`正在进行中,请等待`);
@@ -143,19 +168,24 @@
 
 		$("[blessing]").attr("disabled",true);
 		is_go = 1;
-		e_mo_go();
+		list_go(e_mo_box,5);
 	}
 
-	function e_mo_go(){
-		const data1 = e_mo();
-		const data2 = e_mo();
+	function list_go(go,fixed){
+		const data1 = random_go(go.list,fixed);
+		const data2 = random_go(go.list,fixed);
 
-		lucky_box_num++
+		if(go.id === 27754){
+			e_mo_num++
+		}
+		if(go.id === 7064){
+			nv_shen_num++
+		}
 
 		var str = `
 			<div class="row" box_div>
 				<div class="col-xs-12">
-					第${lucky_box_num}次洗出
+					${go.cns_name}第${go.id === 27754?e_mo_num:nv_shen_num}次洗出
 					<br><span style="font-weight: bold;color:${data1.color}">${data1.name}</span>
 					<br><span style="font-weight: bold;color:${data2.color}">${data2.name}</span>
 					<br><br>
@@ -168,7 +198,7 @@
 			$("[msg_div]").prepend( `
 			<div class="row">
 				<div class="col-xs-12">
-					第${lucky_box_num}次洗出
+					${go.cns_name}第${go.id === 27754?e_mo_num:nv_shen_num}次洗出
 					<br><span style="font-weight: bold;color:${data1.color}">${data1.name}</span>
 					<br><span style="font-weight: bold;color:${data2.color}">${data2.name}</span>
 					<br><br>
@@ -177,7 +207,8 @@
 			`);
 		}
 
-		$("[open_num]").html(lucky_box_num);
+		$("[e_mo_num]").html(e_mo_num);
+		$("[nv_shen_num]").html(nv_shen_num);
 
 		const box_num = $("[box_div]").length;
 
@@ -189,48 +220,51 @@
 			}
 		}
 
-		if($("[e_mo_value]").val() === data1.name || $("[e_mo_value]").val() === data2.name){
+		if(go.id === 27754){
+			if($("[e_mo_value]").val() === data1.name || $("[e_mo_value]").val() === data2.name) {
+				is_go = 0;
+				$("[blessing]").attr("disabled", false);
+			}
+		}
+		if(go.id === 7064){
+			if($("[nv_shen_value]").val() === data1.name || $("[nv_shen_value]").val() === data2.name) {
+				is_go = 0;
+				$("[blessing]").attr("disabled", false);
+			}
+		}
+
+		if($("[e_mo_value]").val() === data1.name || $("[e_mo_value]").val() === data2.name
+			|| $("[nv_shen_value]").val() === data1.name || $("[nv_shen_value]").val() === data2.name
+		) {
 			is_go = 0;
-			$("[blessing]").attr("disabled",false);
+			$("[blessing]").attr("disabled", false);
 		}
 
 		if(is_go){
 			setTimeout(function() {
-				e_mo_go(is_go);
+				list_go(go,fixed);
 			}, 20); // 1000毫秒等于1秒
 		}
 	}
 
-	function e_mo(){
-		let randomNum = Math.random().toFixed(5);
-		let luck_box_probability = 0;
+	function random_go(go_list,fixed){
+		let randomNum = Math.random().toFixed(fixed);
+		let probability = 0;
 
-		for(let i=0 ; i < e_mo_box.list.length ; i++) {
-			const data = e_mo_box.list[i];
+		for(let i=0 ; i < go_list.length ; i++) {
+			const data = go_list[i];
 			if(i > 0){
-				luck_box_probability = parseFloat(data.probability) + parseFloat(luck_box_probability);
+				probability = parseFloat(data.probability) + parseFloat(probability);
 			}else{
-				luck_box_probability = parseFloat(data.probability);
+				probability = parseFloat(data.probability);
 			}
-			luck_box_probability = luck_box_probability.toFixed(5);
+			probability = probability.toFixed(fixed);
 
 			//数字是否匹配
-			if(randomNum < luck_box_probability){
+			if(randomNum < probability){
 				return data;
 			}
 		}
-
-		// if(lucky_box_num >100){
-		// 	is_go = false;
-		// }
-
-		//继续抽
-		// if(is_go){
-		// 	setTimeout(function() {
-		// 		e_mo_go();
-		// 	}, 1); // 1000毫秒等于1秒
-		// }
-
 	}
 </script>
 
