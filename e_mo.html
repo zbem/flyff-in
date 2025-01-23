@@ -134,6 +134,7 @@
 	});
 
 	let is_go = 0;
+
 	function e_mo_go_value(){
 		if(is_go === 1){
 			layer.msg(`正在进行中,请等待`);
@@ -164,7 +165,16 @@
 
 		$("[txt_div]").prepend(str);
 		if(data1.color === "red" || data2.color === "red"){
-			$("[msg_div]").prepend(str);
+			$("[msg_div]").prepend( `
+			<div class="row">
+				<div class="col-xs-12">
+					第${lucky_box_num}次洗出
+					<br><span style="font-weight: bold;color:${data1.color}">${data1.name}</span>
+					<br><span style="font-weight: bold;color:${data2.color}">${data2.name}</span>
+					<br><br>
+				</div>
+			</div>
+			`);
 		}
 
 		$("[open_num]").html(lucky_box_num);
