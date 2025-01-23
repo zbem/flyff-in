@@ -133,10 +133,15 @@
 		}
 	});
 
-
+	let is_go = 0;
 	function e_mo_go_value(){
+		if(is_go === 1){
+			layer.msg(`正在进行中,请等待`);
+			return;
+		}
+
 		$("[blessing]").attr("disabled",true);
-		let is_go = 1;
+		is_go = 1;
 		e_mo_go(is_go);
 	}
 
