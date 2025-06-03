@@ -154,6 +154,9 @@
 			layer.msg(`正在进行中,请等待`);
 			return;
 		}
+		if($("[nv_shen_value]").val() === ""){
+			return;
+		}
 
 		$("[blessing]").attr("disabled",true);
 		is_go = 1;
@@ -163,6 +166,9 @@
 	function e_mo_go_value(){
 		if(is_go === 1){
 			layer.msg(`正在进行中,请等待`);
+			return;
+		}
+		if($("[e_mo_value]").val() === ""){
 			return;
 		}
 
