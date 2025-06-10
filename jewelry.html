@@ -263,10 +263,10 @@
 		//第一次强化初始值
 		if(jewelry_probability === 0.0000000000){
 			if(parseInt(dice) === 8){
-				jewelry_probability = jewelry_up_obj.eight_probability;
+				jewelry_probability = jewelry_up_obj.fwc_eight_probability;
 			}
 			if(parseInt(dice) === 10){
-				jewelry_probability = jewelry_up_obj.ten_probability;
+				jewelry_probability = jewelry_up_obj.fwc_ten_probability;
 			}
 		}
 
@@ -293,10 +293,10 @@
 			if(jewelry_lv !== 20){
 				//成功后重置概率
 				if(parseInt(dice) === 8){
-					jewelry_probability = jewelry_up_List[jewelry_lv].eight_probability;
+					jewelry_probability = jewelry_up_List[jewelry_lv].fwc_eight_probability;
 				}
 				if(parseInt(dice) === 10){
-					jewelry_probability = jewelry_up_List[jewelry_lv].ten_probability;
+					jewelry_probability = jewelry_up_List[jewelry_lv].fwc_ten_probability;
 				}
 			}
 
@@ -324,11 +324,11 @@
 			jewelry_failure_all_num++;
 			if(parseInt(dice) === 8){
 				//失败累加基础强化概率
-				jewelry_probability = upObj.eight_probability+jewelry_probability;
+				jewelry_probability = upObj.fwc_eight_probability+jewelry_probability;
 			}
 			if(parseInt(dice) === 10){
 				//失败累加基础强化概率
-				jewelry_probability = upObj.ten_probability+jewelry_probability;
+				jewelry_probability = upObj.fwc_ten_probability+jewelry_probability;
 			}
 
 			//成功概率不能大于1
