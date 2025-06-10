@@ -314,7 +314,8 @@ function attribute_wake_up_go(num){
 					yes: function(index){
 						$("[attribute_btn]").attr("disabled",false);
 						layer.close(index);
-					}});
+					}
+				});
 			}
 
 			break;

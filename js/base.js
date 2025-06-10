@@ -1502,9 +1502,12 @@
 	const get_150_weapon_probability = 0.00001;
 	//120制作武器基础概率 1.5%  闪亮12点 2%
 	const get_120_weapon_probability = 0.015;
+	//150制作武器基础概率 闪亮12点 3%
+	const get_150_weapon_probability_3 = 0.03;
 	//var get_weapon_probability_12 = 0.000015;
 	let get_150_weapon_num = 0;
 	let get_120_weapon_num = 0;
+	let mark_150_weapon_num = 0;
 	let stop = false;
 	let sacrifice_stop = false;
 	let pet_up_stop = false;

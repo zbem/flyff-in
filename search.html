@@ -47,15 +47,11 @@
   let monster_json_list = [];
 
 
-
-
-
-
   $(document).ready(function() {
     // 当页面加载完成后，给 body 元素添加自定义光标样式
     $('body').addClass('custom-cursor');
 
-    $.getJSON(`https://api.flyff.com/monster/3947,175`).success(function(data){
+    $.getJSON(`json/jewelry.json`).success(function(data){
       item_json_list.push(data);
     });
 
@@ -84,7 +80,6 @@
 					<span>名称:${item.name.cns}</span><br>
 					<span>描述:${item.description.cns}</span><br>
 					<span>当前等级:${item.level}</span><br>
-					<span style="word-break: break-all;">${JSON.stringify(item)}</span>
 				</div>
 				`);
       }

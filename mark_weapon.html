@@ -41,6 +41,12 @@
 							<button class="btn btn-success" onclick="get_120_weapon()" >制作120史诗武器</button>
 						</div>
 					</div>
+					<div class="feed-element">
+						<div class="media-body ">
+							<img alt="image" class="img-circle" src="img/items/syssysscrscrapamethystbrilliant.png">
+							<button btn_150_weapon class="btn btn-success" onclick="mark_150_weapon()" >制作150史诗武器</button>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -89,6 +95,8 @@
 <script src="js/content.js?v=1.0.0"></script>
 <!-- jQuery UI -->
 <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<script src="js/layer/layer.js"></script>
 
 <script>
 	$(document).ready(function() {
@@ -153,6 +161,33 @@
 				</div><br>
 			`);
 		}
+	}
+	function mark_150_weapon(){
+		// 生成一个0到1之间的随机数
+		let randomNum = Math.random().toFixed(6);
+		mark_150_weapon_num++;
+		if (randomNum < get_150_weapon_probability_3) {
+			$("[btn_150_weapon]").attr("disabled",true);
+			layer.msg(`恭喜你,史诗武器制作成功!`,{
+				icon:1,
+				time: 0,
+				btn: ['确认'],
+				yes: function(index){
+					$("[btn_150_weapon]").attr("disabled",false);
+					layer.close(index);
+				}});
+
+			$("[suc_div]").prepend(`
+				<div class="col-xs-12">
+					<span color_green>第${mark_150_weapon_num}次史诗武器制作成功!</span>
+				</div><br>
+			`);
+		}
+		$("[txt_div]").html(`
+			<div get_120_weapon class="col-xs-12">
+				<span color_red>史诗武器制作${mark_150_weapon_num}次</span>
+			</div><br>
+		`);
 	}
 </script>
 
