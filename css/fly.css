@@ -1,4 +1,11 @@
-
+.col-md-2_4 {
+    width: 20%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
 [weapon_up_btn]{
     background-color: transparent;
     border: 0

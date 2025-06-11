@@ -97,7 +97,7 @@ $.getJSON(`json/weapon.json`).success(function(data){
 
 	$(data).each(function(i,obj){
 		$("[weapon_list]").append(`
-			<div class="col-xs-3" btn_weapon onclick="get_weapon_go(${obj.id})">
+			<div class="col-md-2_4" btn_weapon onclick="get_weapon_go(${obj.id})">
 				<img src="${obj.imgUrl}" alt="${obj.name}">
 			</div>
 		`);
