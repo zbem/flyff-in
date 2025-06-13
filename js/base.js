@@ -1392,6 +1392,15 @@
 		{eight_probability:0.0000015698,ten_probability:0.0000022601,fwc_eight_probability:0.0000015698*2,fwc_ten_probability:0.0000022601*2},
 	];
 
+
+	const new_jewelry_up_list = [
+		{probability:0.0073587053,fwc_probability:0.0073587053*2},
+		{probability:0.0038016583,fwc_probability:0.0038016583*2},
+		{probability:0.0013861777,fwc_probability:0.0013861777*2},
+		{probability:0.0003499415,fwc_probability:0.0003499415*2},
+		{probability:0.0001560417,fwc_probability:0.0001560417*2},
+	];
+
 	const jewelry_data_enums = [
 		{"cur":"","name":"str","cns":"力量",},
 		{"cur":"","name":"int","cns":"智力",},
@@ -1467,6 +1476,8 @@
 	let up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0 ,weapon_index = 0;
 	//首饰当前强化等级
 	let jewelry_lv = 0;
+	//太阳石+防暴卷使用数量
+	let new_jewelry_sun_num = 0;
 	//8点使用数量
 	let jewelry_eight_num = 0;
 	//10点使用数量

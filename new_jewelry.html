@@ -2,7 +2,7 @@
 <html lang="en" xmlns="">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>小游飞瘾犯了-首饰</title>
+	<title>小游飞瘾犯了-新首饰</title>
 </head>
 
 <link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
@@ -48,11 +48,9 @@
 					<div class="row">
 						<div class="form-group col-sm-6">
 							<div class="input-group" >
-								<input type="text" class="form-control" placeholder = "强化数字" input_jewelry_up_num  maxlength="2" value="20"  ><br>
-								<div class="input-group-btn open">
-									<img alt="image" style="padding-right: 10px;" class="img-circle" src="img/items/genmatdieeight.png" onclick="jewelry_up_go(8)">
-									<img alt="image" class="img-circle" src="img/items/genmatdieten.png" onclick="jewelry_up_go(10)">
-								</div>
+								<button weapon_up_btn onclick="jewelry_up(999)">
+									<img alt="image" style="padding-right: 10px;" class="img-circle" src="img/items/genmatorichalcum01.png" >
+								</button>
 							</div>
 						</div>
 					</div>
@@ -116,22 +114,21 @@
 		// 当页面加载完成后，给 body 元素添加自定义光标样式
 		$('body').addClass('custom-cursor');
 
-		$(jewelry_data).each(function(i,obj){
-			if(obj == null){
-				return ;
-			}
-			$("[jewelry_list]").append(`
-				<div class="col-xs-4" btn_weapon onclick="get_jewelry(${obj.id})" style="text-align: center;">
-					<img src="img/items/${obj.icon}" alt="${obj.name.cns}"><br>
-					<span class="hide">${obj.id}</span><br>
-				</div>
-			`);
-		});
-
-		$.getJSON(`json/jewelry.json`).success(function(data){
+		$.getJSON(`json/jewelry/jewelry.json`).success(function(data){
 			item_json_list.push(data);
-		});
 
+			$(item_json_list.flat()).each(function(i,obj){
+				if(obj == null){
+					return ;
+				}
+				$("[jewelry_list]").append(`
+					<div class="col-xs-2" btn_weapon onclick="get_jewelry(${obj.id})" style="text-align: center;">
+						<img src="img/items/${obj.icon}" alt="${obj.name.cns}"><br>
+						<span class="hide">${obj.id}</span><br>
+					</div>
+				`);
+			});
+		});
 	});
 
 	function find_item_json(keyword){
@@ -193,46 +190,20 @@
 		$("[weapon-attributes]").prepend(`
 			<div class="alert alert-info" jewelry_div  id="${jewelry_Obj.id}">
 				<img src="img/items/${jewelry_Obj.icon}" alt="${jewelry_Obj.cns}"><br>
-				<span style="color: #ad5917" jewelry_name>${jewelry_Obj.name.cns}</span><span style="color: #ad5917" jewelry_lv="0"></span></br>
+				<span style="color: #8000ff;" jewelry_name>${jewelry_Obj.name.cns}</span>
+				<span style="color: #8000ff" jewelry_lv="0"></span></br>
 				<div jewelry_value>${htmlStr}</div>
-				<span style="color: #ecebea" >等级要求:15</span></br>
-				<span style="color: #ecebea" >品质:</span><span style="color: #ad5917">精良</span></br>
-				<span style="color: #ecebea" jewelry_description>描述:</br>${jewelry_Obj.description.cns}</span></br>
+				<span style="color: #ecebea" >等级要求 : ${jewelry_Obj.upgradeLevels[0].requiredLevel}</span></br>
+				<span style="color: #ecebea" >品质 : </span><span style="color: #8000ff;text-transform: capitalize;margin-left: 3px;">${jewelry_Obj.rarity}</span></br>
+				<span style="color: #ecebea" jewelry_description>描述 : </br>${jewelry_Obj.description.cns}</span></br>
 				<span style="color: #9f9e9b" >精炼次数:</span><span jewelry_num style="color: #9f9e9b">${jewelry_failure_num}</span></br>
 			</div>
 		 `);
 	}
 
-	let input_jewelry_up_num = 0;
-
-	function jewelry_up_go(dice){
-		const num = $("[input_jewelry_up_num]").val();
-		if(num === null || num === '' || num.trim() ==='' ){
-			jewelry_up(dice);
-			return ;
-		}
-
-		input_jewelry_up_num = parseInt(num);
-
-		if(input_jewelry_up_num > 20){
-			input_jewelry_up_num = 20;
-		}
-
-		$("[jewelry_up]").attr("disabled",true);
-		if(jewelry_up_stop || input_jewelry_up_num === jewelry_lv){
-			jewelry_up_stop = false;
-			$("[jewelry_up]").removeAttr("disabled");
-			return ;
-		}
-		jewelry_up(dice);
-		setTimeout(function() {
-			jewelry_up_go(dice);
-		}, 20); // 1000毫秒等于1秒
-	}
-
 	function jewelry_up(dice){
-		//首饰已经强化到+20啦
-		if(Number($("[jewelry_lv]").attr("jewelry_lv")) === 20 || $("[jewelry_lv]").length === 0){
+		//首饰已经强化到+5啦
+		if(Number($("[jewelry_lv]").attr("jewelry_lv")) === 5 || $("[jewelry_lv]").length === 0){
 			jewelry_up_stop = true;
 			return ;
 		}
@@ -240,15 +211,12 @@
 		jewelry_lv = $("[jewelry_lv]").attr("jewelry_lv");
 		jewelry_lv = Number(jewelry_lv);
 
-		if(parseInt(dice) === 8){
-			jewelry_eight_num++;
-		}
-		if(parseInt(dice) === 10){
-			jewelry_ten_num++;
+		if(parseInt(dice) === 999){
+			new_jewelry_sun_num++;
 		}
 
 		//获取强化精炼数据
-		const jewelry_up_obj = jewelry_up_List[jewelry_lv];
+		const jewelry_up_obj = new_jewelry_up_list[jewelry_lv];
 		if(jewelry_up_obj == null){
 			jewelry_up_stop = true;
 			return ;
@@ -260,20 +228,17 @@
 
 		//第一次强化初始值
 		if(jewelry_probability === 0.0000000000){
-			if(parseInt(dice) === 8){
-				jewelry_probability = jewelry_up_obj.fwc_eight_probability;
-			}
-			if(parseInt(dice) === 10){
-				jewelry_probability = jewelry_up_obj.fwc_ten_probability;
+			if(parseInt(dice) === 999){
+				jewelry_probability = jewelry_up_obj.fwc_probability;
 			}
 		}
 
 		let str = '';
 		// 生成一个0到1之间的随机数
 		let randomNum = Math.random().toFixed(10);
+
 		//是否精炼成功
 		if(randomNum <= jewelry_probability){
-
 			let jewelry_probability_str = jewelry_probability*100;
 			jewelry_probability_str = parseFloat(jewelry_probability_str).toFixed(5);
 			//成功后统计数据
@@ -288,13 +253,10 @@
 			jewelry_up_num=0
 			jewelry_lv++;
 			str+='<div class="col-xs-6" color_green>精炼+'+jewelry_lv+'成功!<br></div>';
-			if(jewelry_lv !== 20){
-				//成功后重置概率
-				if(parseInt(dice) === 8){
-					jewelry_probability = jewelry_up_List[jewelry_lv].fwc_eight_probability;
-				}
-				if(parseInt(dice) === 10){
-					jewelry_probability = jewelry_up_List[jewelry_lv].fwc_ten_probability;
+			if(jewelry_lv !== 5){
+				if(parseInt(dice) === 999){
+					//成功后重置概率
+					jewelry_probability = new_jewelry_up_list[jewelry_lv].fwc_probability;
 				}
 			}
 
@@ -314,19 +276,13 @@
 				}
 			}
 		}else {
-			//获取强化精炼数据
-			const upObj = jewelry_up_List[jewelry_lv];
 			//失败次数
 			jewelry_failure_num++;
 			//失败总次数
 			jewelry_failure_all_num++;
-			if(parseInt(dice) === 8){
+			if(parseInt(dice) === 999){
 				//失败累加基础强化概率
-				jewelry_probability = upObj.fwc_eight_probability+jewelry_probability;
-			}
-			if(parseInt(dice) === 10){
-				//失败累加基础强化概率
-				jewelry_probability = upObj.fwc_ten_probability+jewelry_probability;
+				jewelry_probability = jewelry_up_obj.fwc_probability+jewelry_probability;
 			}
 
 			//成功概率不能大于1
