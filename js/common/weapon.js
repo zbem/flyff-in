@@ -143,10 +143,13 @@ function get_weapon(index){
 	str += '<span style="color: aliceblue">等级要求:150</span></br>';
 	//品质
 	str += '<span style="color: aliceblue">品质: <span color_red>史诗</span></span></br>';
+
+	str += '<div  weapon_description_div>';
 	if(weaponObj.description != null){
 		//描述
 		str += '<span style="color: aliceblue" weapon_description>描述:</br> '+weaponObj.description+'</br></span>';
 	}
+	str += '</div>';
 
 	//初始化次数
 	w_clean_num = 0;
@@ -432,7 +435,7 @@ function wake_up(){
 	const wakeUp = wakeUpList[Math.floor(Math.random() * wakeUpList.length)];
 	const percentage = wakeUp.item[Math.floor(Math.random() * wakeUp.item.length)];
 
-	$("[weapon_description]").after(`<span style="color: #fe0f7a;" wake_up>${wakeUp.name+(wakeUp.name ==='治疗' ? '+' : '造成伤害+')}${percentage}%</br></span>`);
+	$("[weapon_description_div]").after(`<span style="color: #fe0f7a;" wake_up>${wakeUp.name+(wakeUp.name ==='治疗' ? '+' : '造成伤害+')}${percentage}%</br></span>`);
 
 	//最大值
 	if(percentage === wakeUp.item[wakeUp.item.length-1]){
