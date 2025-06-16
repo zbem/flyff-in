@@ -1,0 +1,311 @@
+{
+  "activeBuffs": {
+    "1029": 20,
+    "1129": 20,
+    "2678": 20,
+    "3721": 20,
+    "3964": 20,
+    "579": 10,
+    "6845": 10,
+    "6858": 20,
+    "690": 20,
+    "7661": 20,
+    "9047": 10,
+    "9852": 20
+  },
+  "activeItems": [
+    8691
+  ],
+  "activePartyBuffs": [
+    1093,
+    4686,
+    5942
+  ],
+  "activePersonalHousingNpcs": [
+    4
+  ],
+  "bufferInt": 600,
+  "buildName": "元素-测试",
+  "equipment": {
+    "boots": {
+      "id": 10926,
+      "statAwake": [
+        {
+          "parameter": "int",
+          "value": 2
+        },
+        null
+      ],
+      "upgradeLevel": 10
+    },
+    "cloak": {
+      "id": 1513,
+      "randomStats": [
+        {
+          "add": 0,
+          "id": "decreasedcastingtime",
+          "parameter": "decreasedcastingtime",
+          "rate": true,
+          "value": 3
+        },
+        null
+      ]
+    },
+    "earring1": {
+      "id": 16090
+    },
+    "earring2": {
+      "id": 16090
+    },
+    "fashBoots": {
+      "id": 18882,
+      "randomStats": [
+        {
+          "add": 0,
+          "id": "decreasedcastingtime",
+          "parameter": "decreasedcastingtime",
+          "rate": true,
+          "value": 3
+        },
+        null
+      ]
+    },
+    "fashGauntlets": {
+      "id": 13935,
+      "randomStats": [
+        {
+          "add": 0,
+          "id": "decreasedcastingtime",
+          "parameter": "decreasedcastingtime",
+          "rate": true,
+          "value": 3
+        },
+        null
+      ]
+    },
+    "fashHelmet": {
+      "id": 17740,
+      "randomStats": [
+        {
+          "add": 0,
+          "id": "decreasedcastingtime",
+          "parameter": "decreasedcastingtime",
+          "rate": true,
+          "value": 3
+        },
+        null
+      ]
+    },
+    "fashSuit": {
+      "id": 15881,
+      "randomStats": [
+        {
+          "add": 0,
+          "id": "decreasedcastingtime",
+          "parameter": "decreasedcastingtime",
+          "rate": true,
+          "value": 3
+        },
+        null
+      ]
+    },
+    "gauntlets": {
+      "id": 18552,
+      "statAwake": [
+        null,
+        {
+          "parameter": "int",
+          "value": 2
+        }
+      ],
+      "upgradeLevel": 10
+    },
+    "helmet": {
+      "id": 18935,
+      "statAwake": [
+        {
+          "parameter": "int",
+          "value": 2
+        },
+        null
+      ],
+      "upgradeLevel": 10
+    },
+    "mainhand": {
+      "element": "fire",
+      "elementUpgradeLevel": 10,
+      "id": 25341,
+      "piercings": [
+        4565,
+        4565,
+        4565,
+        4565,
+        4565,
+        4565,
+        4565,
+        4565,
+        4565,
+        4565
+      ],
+      "randomStats": [
+        {
+          "add": 3,
+          "addMax": 8,
+          "id": "6",
+          "parameter": "pvpdamage",
+          "rate": true,
+          "value": 5
+        },
+        {
+          "add": 3,
+          "addMax": 11,
+          "id": "8",
+          "parameter": "decreasedcastingtime",
+          "rate": true,
+          "value": 10
+        }
+      ],
+      "skillAwake": {
+        "add": 23,
+        "id": "835",
+        "skill": "835"
+      },
+      "statAwake": [
+        {
+          "parameter": "int",
+          "value": 3
+        },
+        null
+      ],
+      "statRanges": [
+        {
+          "add": 20,
+          "addMax": 27,
+          "parameter": "allelementsmastery",
+          "rate": true,
+          "value": 26
+        },
+        {
+          "add": 28,
+          "addMax": 36,
+          "parameter": "decreasedcastingtime",
+          "rate": true,
+          "value": 35
+        },
+        {
+          "add": 25,
+          "addMax": 33,
+          "parameter": "int",
+          "rate": false,
+          "value": 30
+        },
+        {
+          "add": 4,
+          "addMax": 9,
+          "parameter": "skillchance",
+          "pve": true,
+          "pvp": true,
+          "rate": true,
+          "skill": 14967,
+          "skillLevel": 1,
+          "value": 9
+        }
+      ],
+      "ultimateJewels": [
+        11097,
+        17545
+      ],
+      "upgradeLevel": 5
+    },
+    "mask": {
+      "id": 17772
+    },
+    "necklace": {
+      "id": 14476
+    },
+    "pet": {
+      "id": 4817,
+      "petStats": {
+        "A": 6,
+        "B": 5,
+        "C": 4,
+        "D": 3,
+        "E": 2,
+        "F": 1,
+        "S": 6
+      }
+    },
+    "ring1": {
+      "id": 17780,
+      "upgradeLevel": 3
+    },
+    "ring2": {
+      "id": 17780,
+      "upgradeLevel": 3
+    },
+    "suit": {
+      "element": "electricity",
+      "elementUpgradeLevel": 8,
+      "id": 15047,
+      "piercings": [
+        576,
+        576,
+        576,
+        576
+      ],
+      "statAwake": [
+        {
+          "parameter": "int",
+          "value": 2
+        },
+        null
+      ],
+      "upgradeLevel": 10
+    }
+  },
+  "int": 328,
+  "job": 9150,
+  "level": 165,
+  "skillLevels": {
+    "1515": 20,
+    "1783": 20,
+    "2082": 10,
+    "2619": 20,
+    "2704": 20,
+    "3177": 20,
+    "3592": 20,
+    "3623": 10,
+    "3685": 10,
+    "3754": 20,
+    "3956": 10,
+    "3974": 20,
+    "4088": 10,
+    "4688": 10,
+    "4720": 20,
+    "4729": 20,
+    "5171": 10,
+    "527": 20,
+    "5458": 20,
+    "5637": 20,
+    "6034": 20,
+    "6320": 10,
+    "6390": 10,
+    "6741": 10,
+    "6808": 10,
+    "7080": 10,
+    "7266": 20,
+    "7442": 10,
+    "7701": 10,
+    "8059": 10,
+    "8102": 10,
+    "835": 10,
+    "8454": 10,
+    "8946": 20,
+    "9293": 10,
+    "935": 10,
+    "9628": 10,
+    "9660": 10,
+    "9683": 1,
+    "997": 20
+  }
+}

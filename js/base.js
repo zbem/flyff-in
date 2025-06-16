@@ -1369,38 +1369,6 @@
 		{"name":"帝王蟹","value":2,"attributeStr":"暴击伤害","value_list":[2,3,4,5,6,7,9,11,16],"cur":"%"}
 	]
 
-	const jewelry_up_List = [
-		{eight_probability:0.8888888889,ten_probability:1,fwc_eight_probability:1,fwc_ten_probability:1},
-		{eight_probability:0.8235294118,ten_probability:1,fwc_eight_probability:1,fwc_ten_probability:1},
-		{eight_probability:0.4581044448,ten_probability:0.5569985570,fwc_eight_probability:0.4581044448*2,fwc_ten_probability:1},
-		{eight_probability:0.2493069984,ten_probability:0.2968258491,fwc_eight_probability:0.2493069984*2,fwc_ten_probability:0.2968258491*2},
-		{eight_probability:0.1418051957,ten_probability:0.1688875608,fwc_eight_probability:0.1418051957*2,fwc_ten_probability:0.1688875608*2},
-		{eight_probability:0.0911834689,ten_probability:0.1088714130,fwc_eight_probability:0.0911834689*2,fwc_ten_probability:0.1088714130*2},
-		{eight_probability:0.0610808317,ten_probability:0.0724875434,fwc_eight_probability:0.0610808317*2,fwc_ten_probability:0.0724875434*2},
-		{eight_probability:0.0409199117,ten_probability:0.0505493442,fwc_eight_probability:0.0409199117*2,fwc_ten_probability:0.0505493442*2},
-		{eight_probability:0.0282296525,ten_probability:0.0322209144,fwc_eight_probability:0.0282296525*2,fwc_ten_probability:0.0322209144*2},
-		{eight_probability:0.0177362748,ten_probability:0.0209832282,fwc_eight_probability:0.0177362748*2,fwc_ten_probability:0.0209832282*2},
-		{eight_probability:0.0120163682,ten_probability:0.0171175271,fwc_eight_probability:0.0120163682*2,fwc_ten_probability:0.0171175271*2},
-		{eight_probability:0.0095524157,ten_probability:0.0136224870,fwc_eight_probability:0.0095524157*2,fwc_ten_probability:0.0136224870*2},
-		{eight_probability:0.0054401086,ten_probability:0.0077755964,fwc_eight_probability:0.0054401086*2,fwc_ten_probability:0.0077755964*2},
-		{eight_probability:0.0038016583,ten_probability:0.0054401086,fwc_eight_probability:0.0038016583*2,fwc_ten_probability:0.0054401086*2},
-		{eight_probability:0.0024485555,ten_probability:0.0035080404,fwc_eight_probability:0.0024485555*2,fwc_ten_probability:0.0035080404*2},
-		{eight_probability:0.0013861777,ten_probability:0.0019884101,fwc_eight_probability:0.0013861777*2,fwc_ten_probability:0.0019884101*2},
-		{eight_probability:0.0006288876,ten_probability:0.0008906052,fwc_eight_probability:0.0006288876*2,fwc_ten_probability:0.0008906052*2},
-		{eight_probability:0.0001560417,ten_probability:0.0002244043,fwc_eight_probability:0.0001560417*2,fwc_ten_probability:0.0002244043*2},
-		{eight_probability:0.0000766121,ten_probability:0.0001102193,fwc_eight_probability:0.0000766121*2,fwc_ten_probability:0.0001102193*2},
-		{eight_probability:0.0000015698,ten_probability:0.0000022601,fwc_eight_probability:0.0000015698*2,fwc_ten_probability:0.0000022601*2},
-	];
-
-
-	const new_jewelry_up_list = [
-		{probability:0.0073587053,fwc_probability:0.0073587053*2},
-		{probability:0.0038016583,fwc_probability:0.0038016583*2},
-		{probability:0.0013861777,fwc_probability:0.0013861777*2},
-		{probability:0.0003499415,fwc_probability:0.0003499415*2},
-		{probability:0.0001560417,fwc_probability:0.0001560417*2},
-	];
-
 	const jewelry_data_enums = [
 		{"cur":"","name":"str","cns":"力量",},
 		{"cur":"","name":"int","cns":"智力",},
@@ -1474,22 +1442,6 @@
 	
 	//强化次数,金币,黄矿,绿矿,失败次数,武器强化等级,4点数量,8点数量,武器索引值
 	let up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0 ,weapon_index = 0;
-	//首饰当前强化等级
-	let jewelry_lv = 0;
-	//太阳石+防暴卷使用数量
-	let new_jewelry_sun_num = 0;
-	//8点使用数量
-	let jewelry_eight_num = 0;
-	//10点使用数量
-	let jewelry_ten_num = 0;
-	//首饰精炼次数
-	let jewelry_up_num = 0;
-	//首饰精炼总次数
-	let jewelry_up_all_num = 0;
-	//首饰精炼失败次数
-	let jewelry_failure_num = 0;
-	//首饰精炼失败总次数
-	let jewelry_failure_all_num = 0;
 	//抽取幸运礼盒次数
 	let lucky_box_num=0;
 	//洗恶魔次数
@@ -1524,7 +1476,6 @@
 	let pet_up_stop = false;
 	let kill_hai_boss_stop = false;
 	let kill_boss_stop = false;
-	let jewelry_up_stop = false;
 
 	let weapon_json_list = [];
 	$.getJSON(`json/weapon.json`).success(function(data){
