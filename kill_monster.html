@@ -29,13 +29,13 @@
 							<div class="feed-element">
 								<div class="media-body ">
 									<img alt="image" class="img-circle" src="img/monster/beastkingkhan1.png">
-									<button class="btn btn-danger" kill_boss_btn onclick="kill_boss()" >自动击杀兽王可汗</button>
+									<button class="btn btn-danger" kill_boss_btn onclick="kill_boss()" >兽王可汗</button>
 								</div>
 							</div>
 							<div class="feed-element">
 								<div class="media-body ">
-									<img alt="image" class="img-circle" src="img/items/petbarbarylion01_01.png">
-									<button class="btn btn-success" kill_boss_btn onclick="kill_hai_boss()" >自动击杀海岛Boss</button>
+									<img alt="image" class="img-circle" src="img/monster/creper4.png">
+									<button class="btn btn-success" kill_boss_btn onclick="kill_hai_boss()" >海岛Boss</button>
 								</div>
 							</div>
 						</div>
@@ -134,133 +134,13 @@
 <!-- 全局js -->
 <script src="js/jquery.min.js?v=2.1.4"></script>
 <script src="js/bootstrap.min.js?v=3.3.6"></script>
-<script src="js/base.js?v=202404020006"></script>
+<script src="js/layer/layer.js"></script>
 <!-- 自定义js -->
 <script src="js/content.js?v=1.0.0"></script>
+<script src="js/common/kill_boss.js"></script>
+<script src="js/common/boss_drop.js"></script>
 <!-- jQuery UI -->
 <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
-
-<script>
-	$(document).ready(function() {
-		//页面元素可移动
-		WinMove();
-
-		// 当页面加载完成后，给 body 元素添加自定义光标样式
-		$('body').addClass('custom-cursor');
-
-	});
-
-	function kill_hai_boss(){
-		$("[txt_div]").html("");
-		$("[kill_boss_btn]").attr("disabled",true);
-		if(kill_hai_boss_stop){
-			kill_hai_boss_stop = false;
-			$("[kill_boss_btn]").removeAttr("disabled");
-			return ;
-		}
-		kill_hai_boss_go();
-		setTimeout(function() {
-			kill_hai_boss();
-		}, 20); // 1000毫秒等于1秒
-	}
-
-	function kill_hai_boss_go(){
-		let color_str;
-		//清空兽王可汗击杀数量
-		kill_num = 0;
-		kill_hai_num++;
-
-		let randomValue = 0;
-
-		for (var i = 0; i < hai_boss_drop.length; i++) {
-			let randomNum = Math.random().toFixed(3);
-			const items = hai_boss_drop[i];
-
-			if (randomNum < items.probability) {
-				items.num++;
-				randomValue++;
-				//武器
-				if(items.rarity === 'unique' && items.category === 'WEAPON'){
-					get_weapon_go(items.id);
-					kill_hai_boss_stop = true;
-				}
-			}
-		}
-
-		//升序排序
-		hai_boss_drop = hai_boss_drop.sort((a, b)=> b.num - a.num);
-		let item_str = '<div class="col-xs-12">统计:<br>';
-		item_str += "击杀数量:"+kill_hai_num+"<br>";
-		for (var t = 0; t < hai_boss_drop.length; t++) {
-			const items = hai_boss_drop[t];
-			if(items.num > 0){
-				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				item_str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
-			}
-		}
-		item_str += '</div>';
-		$("[item_msg_div]").html(item_str);
-	}
-
-	function kill_boss(){
-		$("[txt_div]").html("");
-		$("[kill_boss_btn]").attr("disabled",true);
-		if(kill_boss_stop){
-			kill_boss_stop = false;
-			$("[kill_boss_btn]").removeAttr("disabled");
-			return ;
-		}
-		kill_boss_go();
-		setTimeout(function() {
-			kill_boss();
-		}, 20); // 1000毫秒等于1秒
-	}
-	function kill_boss_go() {
-		$("[pet_msg_div]").html("");
-
-		let color_str;
-		//清空海岛boss击杀数量
-		kill_hai_num = 0;
-		kill_num++;
-
-		let randomValue = 0;
-
-		for (var i = 0; i < boss_drop.length; i++) {
-			let randomNum = Math.random().toFixed(3);
-			const items = boss_drop[i];
-
-			if (randomNum < items.probability) {
-				items.num = items.probability === 1 ? items.num + getRandomInt(8, 12) : items.num + 1;
-				randomValue++;
-				//武器
-				if (items.rarity === 'unique' && items.category === 'WEAPON') {
-					get_weapon_go(items.id);
-					kill_boss_stop = true;
-				}
-			}
-		}
-
-		//升序排序
-		boss_drop = boss_drop.sort((a, b) => b.num - a.num);
-		let item_str = '<div class="col-xs-12">统计:<br>';
-		item_str += "击杀数量:" + kill_num + "<br>";
-		for (var t = 0; t < boss_drop.length; t++) {
-			const items = boss_drop[t];
-			if (items.num > 0) {
-				color_str = 'style="color:' + (items.rarity === 'common' ? '#78d9ff' : items.rarity === 'uncommon' ? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				item_str += '<img src="img/items/' + items.icon + '" style="width: 20px; height: 20px;" alt="' + items.name + '"><span ' + color_str + '>' + items.name + '</span>*' + items.num + '<br>';
-			}
-		}
-		item_str += '</div>';
-		$("[item_msg_div]").html(item_str);
-	}
-
-	function getRandomInt(min, max) {
-		min = Math.ceil(min);
-		max = Math.floor(max);
-		return Math.floor(Math.random() * (max - min + 1)) + min;
-	}
-</script>
 
 </body>
 </html>
