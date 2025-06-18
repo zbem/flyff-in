@@ -556,7 +556,7 @@ let boss_drop = [
 	{"id":"14100","name":"卢萨卡的水晶拳","icon":"weaknucrystal.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
 	{"id":"9319","name":"卢萨卡法杖","icon":"weastalusika.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
 	{"id":"17625","name":"卢萨卡的水晶法杖","icon":"weastacrystal.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
-	{"id":"15880","name":"卢萨卡魔棒","icon":"weachelusika.png","category":"WEAPON","rarity":"unique","probability":0.1001,"num":0},
+	{"id":"15880","name":"卢萨卡魔棒","icon":"weachelusika.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
 	{"id":"18022","name":"卢萨卡的水晶魔棒","icon":"weachecrystal.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
 	{"id":"19508","name":"卢萨卡之剑","icon":"weaswolusika.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
 	{"id":"13556","name":"卢萨卡的水晶剑","icon":"weaswocrystal.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0},
