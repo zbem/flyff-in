@@ -220,9 +220,9 @@ function jewelry_up(dice,max_lv){
         jewelry_probability_str = parseFloat(jewelry_probability_str).toFixed(5);
         //成功后统计数据
         $("[jewelry_all_msg]").prepend(`
-				<div class="col-xs-6">+${jewelry_lv+1}${jewelry_lv >= 9 ? '&nbsp;' : '&nbsp;&nbsp;&nbsp;'}次数:${jewelry_up_num}</div>
-				<div class="col-xs-6">概率:${jewelry_probability_str}%</div>
-			`);
+            <div class="col-xs-6">+${jewelry_lv+1}${jewelry_lv >= 9 ? '&nbsp;' : '&nbsp;&nbsp;&nbsp;'}次数:${jewelry_up_num}</div>
+            <div class="col-xs-6">概率:${jewelry_probability_str}%</div>
+        `);
 
         //成功后精炼次数清0;
         jewelry_failure_num =0;
@@ -230,7 +230,7 @@ function jewelry_up(dice,max_lv){
         jewelry_up_num=0
         jewelry_lv++;
         str+='<div class="col-xs-6" color_green>精炼+'+jewelry_lv+'成功!<br></div>';
-        if(jewelry_lv !== 5){
+        if(jewelry_lv !== max_lv){
             //成功后重置新的概率
             jewelry_up_obj = get_jewelry_up_obj(dice);
             jewelry_probability = jewelry_up_obj.fwc_probability;
@@ -256,10 +256,8 @@ function jewelry_up(dice,max_lv){
         jewelry_failure_num++;
         //失败总次数
         jewelry_failure_all_num++;
-        if(parseInt(dice) === 999){
-            //失败累加基础强化概率
-            jewelry_probability = jewelry_up_obj.fwc_probability+jewelry_probability;
-        }
+        //失败累加基础强化概率
+        jewelry_probability = jewelry_up_obj.fwc_probability+jewelry_probability;
 
         //成功概率不能大于1
         jewelry_probability = jewelry_probability >= 1 ? 1 : jewelry_probability;
