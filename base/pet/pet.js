@@ -65,7 +65,7 @@ function pet_show(){
 
 	const pet_box = blindBox().drawItem();
 
-	$("[now_pet_img]").attr("src","/img/items/"+pet_box.name);
+	$("[now_pet_img]").attr("src","../../img/items/"+pet_box.name);
 	$("[now_pet_img]").attr("alt",pet_box.id);
 }
 
@@ -108,7 +108,7 @@ function blindBox() {
 					//洗出了稀有宠
 					$("[show_pet_msg_div]").prepend(`
 						<div class="col-xs-12" >
-							<img style="width: 30px; height: 30px;" alt="${items[i].id}" src="/img/items/${items[i].name}">第${pet_box_num}次洗出了稀有宠,概率:${item_probability}%
+							<img style="width: 30px; height: 30px;" alt="${items[i].id}" src="../../img/items/${items[i].name}">第${pet_box_num}次洗出了稀有宠,概率:${item_probability}%
 						</div>`);
 
 					$("[pet_btn]").attr("disabled",true);
@@ -125,7 +125,7 @@ function blindBox() {
 					//洗了几次
 					$("[show_pet_msg_div]").prepend(`
 						<div class="col-xs-12" >
-							<img style="width: 30px; height: 30px;" alt="${items[i].id}" src="/img/items/${items[i].name}">第${pet_box_num}次,概率:${item_probability}%
+							<img style="width: 30px; height: 30px;" alt="${items[i].id}" src="../../img/items/${items[i].name}">第${pet_box_num}次,概率:${item_probability}%
 						</div>`);
 				}
 

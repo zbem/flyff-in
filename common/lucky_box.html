@@ -26,7 +26,7 @@
 				<div class="ibox-content">
 					<div class="feed-element">
 						<div class="media-body ">
-							<img alt="image" src="/img/items/jewelbox.png">
+							<img alt="image" src="../img/items/jewelbox.png">
 							<button class="btn btn-success" onclick="lucky_box()" box_btn>宝石盒子</button>
 							<br><br>
 							<button class="btn btn-success" onclick="rock_paper_scissors(0)" box_btn>石头</button>
@@ -156,7 +156,7 @@
 				$("[txt_div]").prepend(`
 					<div class="row" box_div>
 						<div class="col-xs-12">
-							<img src="/img/items/${data.icon}" alt="幸运盒子" >恭喜第${lucky_box_num}次抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>!
+							<img src="../img/items/${data.icon}" alt="幸运盒子" >恭喜第${lucky_box_num}次抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>!
 						</div>
 					</div>
 				`);
@@ -194,7 +194,7 @@
 			if(data.open_num > 0){
 				str+=`
 				<div class="col-xs-12">
-					<img src="/img/items/${data.icon}" alt="幸运盒子"  >抽中<span style="font-weight: bold;color: ${data.color}">${data.name}</span>*${data.open_num}个 !
+					<img src="../img/items/${data.icon}" alt="幸运盒子"  >抽中<span style="font-weight: bold;color: ${data.color}">${data.name}</span>*${data.open_num}个 !
 				</div>
 			`;
 			}

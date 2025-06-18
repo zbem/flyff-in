@@ -74,7 +74,7 @@
         const color_str = 'style="color:' + (item.rarity === 'common' ? '#78d9ff' : item.rarity === 'uncommon' ? '#c46200' : item.rarity === 'veryrare' || item.rarity === 'unique' ? '#d20000' : item.rarity === 'probability' ? 'green' : '') + '"';
         $("[txt_div]").append(`
 				<div class="col-xs-12" json_id_${item.id} >
-					<img src="img/items/${item.icon}" style="width: 20px; height: 20px;" alt="${item.name.cns}">
+					<img src="../img/items/${item.icon}" style="width: 20px; height: 20px;" alt="${item.name.cns}">
 					<span ${color_str}>${item.id}---${item.name.cns}</span><br>
 					<span>id:${item.id}</span><br>
 					<span>名称:${item.name.cns}</span><br>

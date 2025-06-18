@@ -181,7 +181,7 @@
 		`;
 
 		$("[weapon_bottom_text]").html(weaponObj.name.cns);
-		$("[weapon_img]").attr("src","/img/items/"+weaponObj.icon);
+		$("[weapon_img]").attr("src","../../img/items/"+weaponObj.icon);
 
 		$("[weapon-attributes]").prepend(str);
 		$("[weapon_roll_div]").removeClass("hide");
@@ -232,7 +232,7 @@
 			const items = hai_boss_drop[t];
 			if(items.num > 0){
 				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				item_str += `<img peter src="/img/items/${items.icon}" style="width: 20px; height: 20px;" alt="${items.name}"><span ${color_str}>${items.name}</span>*${items.num}<br>`;
+				item_str += `<img peter src="../../img/items/${items.icon}" style="width: 20px; height: 20px;" alt="${items.name}"><span ${color_str}>${items.name}</span>*${items.num}<br>`;
 			}
 		}
 		item_str += '</div>';
@@ -286,7 +286,7 @@
 			const items = boss_drop[t];
 			if (items.num > 0) {
 				color_str = 'style="color:' + (items.rarity === 'common' ? '#78d9ff' : items.rarity === 'uncommon' ? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				item_str += `<img peter src="/img/items/${items.icon}" style="width: 20px; height: 20px;" alt="${items.name}"><span ${color_str}>${items.name}</span>*${items.num}<br>`;
+				item_str += `<img peter src="../../img/items/${items.icon}" style="width: 20px; height: 20px;" alt="${items.name}"><span ${color_str}>${items.name}</span>*${items.num}<br>`;
 			}
 		}
 		item_str += '</div>';

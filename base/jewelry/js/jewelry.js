@@ -85,7 +85,7 @@ $(document).ready(function() {
             }
             $("[jewelry_list]").append(`
                 <div class="col-xs-2" btn_weapon onclick="get_jewelry(${obj.id})" style="text-align: center;">
-                    <img src="/img/items/${obj.icon}" alt="${obj.name.cns}"><br>
+                    <img src="../../img/items/${obj.icon}" alt="${obj.name.cns}"><br>
                     <span class="hide">${obj.id}</span><br>
                 </div>
             `);
@@ -164,7 +164,7 @@ function get_jewelry(index){
 
     $("[weapon-attributes]").prepend(`
         <div class="alert alert-info" jewelry_div  id="${jewelry_Obj.id}">
-            <img src="img/items/${jewelry_Obj.icon}" alt="${jewelry_Obj.cns}"><br>
+            <img src="../../img/items/${jewelry_Obj.icon}" alt="${jewelry_Obj.cns}"><br>
             <span style="color: ${jewelry_color};" jewelry_name>${jewelry_Obj.name.cns}</span>
             <span style="color: ${jewelry_color}" jewelry_lv="0"></span></br>
             <div jewelry_value>${htmlStr}</div>
