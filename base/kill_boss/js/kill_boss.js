@@ -52,17 +52,17 @@
 		$('body').addClass('custom-cursor');
 	});
 
-	$.getJSON(`json/kill_boss/kill_boss.json`).success(function(data){
+	$.getJSON(`json/kill_boss.json`).success(function(data){
 		weapon_json_list = data;
 		console.log(weapon_json_list);
 	});
 
-	$.getJSON(`json/skill/skill.json`).success(function(data){
+	$.getJSON(`json/skill.json`).success(function(data){
 		skill_json_list = data;
 		console.log(skill_json_list);
 	});
 
-	$.getJSON(`json/class/class.json`).success(function(data){
+	$.getJSON(`json/class.json`).success(function(data){
 		class_json_list = data;
 		console.log(class_json_list);
 	});
@@ -139,14 +139,18 @@
 		//组装属性值
 		for(var i=0 ; i < list.length ; i++){
 			var obj = list[i];
-
-			var num = Math.floor(Math.random()*(obj.addMax-obj.add+1));
-			var maxNum = obj.name === "承受伤害" ? obj.add : obj.addMax;
-			var minNum = obj.name === "承受伤害" ? obj.addMax : obj.add;
-			//最终计算出来的随机值
-			var randomNum = obj.add + num;
 			//属性
 			var parameterObj = PARAMETER_ENUM[obj.parameter];
+
+			var maxNum = parameterObj.name === "承受伤害" ? obj.add : obj.addMax;
+			var minNum = parameterObj.name === "承受伤害" ? obj.addMax : obj.add;
+			//小数变整数
+			maxNum = parameterObj.fixed == null ? maxNum : (maxNum * parameterObj.fixed);
+			minNum = parameterObj.fixed == null ? minNum : (minNum * parameterObj.fixed);
+
+			//最终计算出来的随机值
+			var randomNum = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+
 			const skill = obj.skill;
 			if(skill != null){
 				const skillObj = skill_json_list.find(skill_obj => skill_obj.id === skill);
@@ -158,7 +162,7 @@
 				}
 			}
 
-			//缩进小数位
+			//整数变小数
 			maxNum = parameterObj.fixed == null ? maxNum : (maxNum/parameterObj.fixed);
 			minNum = parameterObj.fixed == null ? minNum : (minNum/parameterObj.fixed);
 			randomNum = parameterObj.fixed == null ? randomNum : (randomNum/parameterObj.fixed);
@@ -167,7 +171,7 @@
 			randomNum = randomNum+parameterObj.cur;
 			//承受伤害是减
 			const addStr = parameterObj.name === "承受伤害" ? '' : '+';
-			str +=`<span style="color: #ffeaa5">${parameterObj.name + addStr + randomNum} (${minNum}~${maxNum})${parameterObj.cur}</span><br>`;
+			str +=`<span style="color: #ffeaa5">${parameterObj.name + addStr + randomNum} (${obj.add}~${obj.addMax})${parameterObj.cur}</span><br>`;
 		}
 		str += `
 			<span job_span style="color: aliceblue">职业要求:${getClassName(weaponObj.class)}</span></br>
@@ -177,7 +181,7 @@
 		`;
 
 		$("[weapon_bottom_text]").html(weaponObj.name.cns);
-		$("[weapon_img]").attr("src","img/items/"+weaponObj.icon);
+		$("[weapon_img]").attr("src","/img/items/"+weaponObj.icon);
 
 		$("[weapon-attributes]").prepend(str);
 		$("[weapon_roll_div]").removeClass("hide");
@@ -228,7 +232,7 @@
 			const items = hai_boss_drop[t];
 			if(items.num > 0){
 				color_str = 'style="color:' + (items.rarity==='common' ? '#78d9ff' : items.rarity === 'uncommon'? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				item_str += '<img src="img/items/'+items.icon+'" style="width: 20px; height: 20px;" alt="'+items.name+'"><span '+color_str+'>'+items.name+'</span>*'+items.num+'<br>';
+				item_str += `<img peter src="/img/items/${items.icon}" style="width: 20px; height: 20px;" alt="${items.name}"><span ${color_str}>${items.name}</span>*${items.num}<br>`;
 			}
 		}
 		item_str += '</div>';
@@ -275,14 +279,14 @@
 		}
 
 		//升序排序
-		boss_drop = boss_drop.sort((a, b) => b.num - a.num);
+		boss_drop = boss_drop.sort((a, b) => a.num - b.num);
 		let item_str = `<div class="col-xs-12">统计:<br>`;
 		item_str += "击杀数量:" + kill_num + "<br>";
 		for (let t = 0; t < boss_drop.length; t++) {
 			const items = boss_drop[t];
 			if (items.num > 0) {
 				color_str = 'style="color:' + (items.rarity === 'common' ? '#78d9ff' : items.rarity === 'uncommon' ? '#c46200' : items.rarity === 'veryrare' || items.rarity === 'unique' ? '#d20000' : items.rarity === 'probability' ? 'green' : '') + '"';
-				item_str += '<img src="img/items/' + items.icon + '" style="width: 20px; height: 20px;" alt="' + items.name + '"><span ' + color_str + '>' + items.name + '</span>*' + items.num + '<br>';
+				item_str += `<img peter src="/img/items/${items.icon}" style="width: 20px; height: 20px;" alt="${items.name}"><span ${color_str}>${items.name}</span>*${items.num}<br>`;
 			}
 		}
 		item_str += '</div>';

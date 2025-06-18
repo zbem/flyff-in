@@ -1,11 +1,3 @@
-$(document).ready(function() {
-	//页面元素可移动
-	WinMove();
-
-	// 当页面加载完成后，给 body 元素添加自定义光标样式
-	$('body').addClass('custom-cursor');
-});
-
 //属性唤醒
 const attribute_data=[
 	{
@@ -83,13 +75,13 @@ let w_clean_num = 0;
 let w_clean_u_num = 0;
 let w_wake_up_num = 0;
 
-//获得武器
-function get_weapon_go(id){
-	boss_weapon_list.unshift(id);
-	$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`);
-	$("[weapon_num_text]").attr("now_num",0);
-	get_weapon(id);
-}
+$(document).ready(function() {
+	//页面元素可移动
+	WinMove();
+
+	// 当页面加载完成后，给 body 元素添加自定义光标样式
+	$('body').addClass('custom-cursor');
+});
 
 let weapon_json_list = [];
 $.getJSON(`json/weapon.json`).success(function(data){
@@ -103,6 +95,14 @@ $.getJSON(`json/weapon.json`).success(function(data){
 		`);
 	});
 });
+
+//获得武器
+function get_weapon_go(id){
+	boss_weapon_list.unshift(id);
+	$("[weapon_num_text]").html(`物品(1/${boss_weapon_list.length})`);
+	$("[weapon_num_text]").attr("now_num",0);
+	get_weapon(id);
+}
 
 function get_weapon(index){
 	$("[txt_div]").html("");
@@ -186,9 +186,9 @@ function join_weapon_abilities(list){
 
 		//组装单位(例如 百分号)
 		randomNum = randomNum+obj.cur;
-		//承受伤害是减
+		//承受伤害
 		const addStr = obj.name === "承受伤害" ? '' : '+';
-		str +=`<span style="color: #ffeaa5">${obj.name + addStr + randomNum}  (${minNum+'~'+maxNum})${obj.cur}</span><br>`;
+		str +=`<span style="color: #ffeaa5">${obj.name + addStr + randomNum}  (${obj.min}~${obj.max})${obj.cur}</span><br>`;
 	}
 	str+="</div>";
 	return str;

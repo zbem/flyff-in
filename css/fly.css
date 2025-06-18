@@ -143,7 +143,7 @@ input[type="checkbox"]:focus {
     background-color: #0e0a08;
     border: 2px solid #e8c685 ;
     border-radius: 3px;
-    width: 250px;
+    max-width: 250px;
 }
 [pet_info]{
     background-color: #e6e0e1;

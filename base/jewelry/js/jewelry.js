@@ -14,7 +14,7 @@ let jewelry_up_all_num = 0;
 let jewelry_failure_num = 0;
 //首饰精炼失败总次数
 let jewelry_failure_all_num = 0;
-const new_jewelry_up_list = [
+const jewelry = [
     {probability: 0.0073587053, fwc_probability: 0.0073587053 * 2},
     {probability: 0.0038016583, fwc_probability: 0.0038016583 * 2},
     {probability: 0.0013861777, fwc_probability: 0.0013861777 * 2},
@@ -76,7 +76,7 @@ $(document).ready(function() {
     // 当页面加载完成后，给 body 元素添加自定义光标样式
     $('body').addClass('custom-cursor');
 
-    $.getJSON(`json/jewelry/jewelry.json`).success(function(data){
+    $.getJSON(`json/jewelry.json`).success(function(data){
         item_json_list.push(data);
 
         $(item_json_list.flat()).each(function(i,obj){
@@ -85,7 +85,7 @@ $(document).ready(function() {
             }
             $("[jewelry_list]").append(`
                 <div class="col-xs-2" btn_weapon onclick="get_jewelry(${obj.id})" style="text-align: center;">
-                    <img src="img/items/${obj.icon}" alt="${obj.name.cns}"><br>
+                    <img src="/img/items/${obj.icon}" alt="${obj.name.cns}"><br>
                     <span class="hide">${obj.id}</span><br>
                 </div>
             `);
@@ -283,7 +283,7 @@ function jewelry_up(dice,max_lv){
 
 function get_jewelry_up_obj(dice){
     if(parseInt(dice) === 999){
-        return new_jewelry_up_list[jewelry_lv];
+        return jewelry[jewelry_lv];
     }
     if(parseInt(dice) === 8){
         return jewelry_up_eight_List[jewelry_lv];

@@ -5,10 +5,10 @@
 	<title>飞瘾犯了-幸运盒子</title>
 </head>
 
-<link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
-<link href="css/style.css?v=202404020006" rel="stylesheet" type="text/css">
-<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-<link href="css/fly.css?v=4.1.0" rel="stylesheet">
+<link href="../css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="../css/style.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<link href="../css/fly.css?v=4.1.0" rel="stylesheet">
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content">
@@ -26,7 +26,7 @@
 				<div class="ibox-content">
 					<div class="feed-element">
 						<div class="media-body ">
-							<img alt="image" src="img/items/jewelbox.png">
+							<img alt="image" src="/img/items/jewelbox.png">
 							<button class="btn btn-success" onclick="lucky_box()" box_btn>宝石盒子</button>
 							<br><br>
 							<button class="btn btn-success" onclick="rock_paper_scissors(0)" box_btn>石头</button>
@@ -76,15 +76,15 @@
 </div>
 
 <!-- 全局js -->
-<script src="js/jquery.min.js?v=2.1.4"></script>
-<script src="js/bootstrap.min.js?v=3.3.6"></script>
-<script src="js/base.js?v=202404020006"></script>
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/base.js?v=202404020006"></script>
 
 <!-- 自定义js -->
-<script src="js/content.js?v=1.0.0"></script>
+<script src="../js/content.js?v=1.0.0"></script>
 <!-- jQuery UI -->
-<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="js/layer/layer.js"></script>
+<script src="../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../js/layer/layer.js"></script>
 
 <script>
 	$(document).ready(function() {
@@ -156,7 +156,7 @@
 				$("[txt_div]").prepend(`
 					<div class="row" box_div>
 						<div class="col-xs-12">
-							<img src="img/items/${data.icon}" alt="幸运盒子" >恭喜第${lucky_box_num}次抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>!
+							<img src="/img/items/${data.icon}" alt="幸运盒子" >恭喜第${lucky_box_num}次抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}</span>!
 						</div>
 					</div>
 				`);
@@ -194,7 +194,7 @@
 			if(data.open_num > 0){
 				str+=`
 				<div class="col-xs-12">
-					<img src="img/items/${data.icon}" alt="幸运盒子"  >抽中<span style="font-weight: bold;color: ${data.color}">${data.name}</span>*${data.open_num}个 !
+					<img src="/img/items/${data.icon}" alt="幸运盒子"  >抽中<span style="font-weight: bold;color: ${data.color}">${data.name}</span>*${data.open_num}个 !
 				</div>
 			`;
 			}

@@ -5,15 +5,15 @@
 	<title>飞瘾犯了-怪物</title>
 </head>
 
-<link href="css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
-<link href="css/style.css?v=202404020006" rel="stylesheet" type="text/css">
-<link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-<link href="css/fly.css?v=4.1.0" rel="stylesheet">
+<link href="../../css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="../../css/style.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="../../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<link href="../../css/fly.css?v=4.1.0" rel="stylesheet">
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content">
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-lg-4">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>怪物专区</h5>
@@ -28,13 +28,13 @@
 						<div class="feed-activity-list">
 							<div class="feed-element">
 								<div class="media-body ">
-									<img alt="image" class="img-circle" src="img/monster/beastkingkhan1.png">
+									<img alt="image" class="img-circle" src="/img/monster/beastkingkhan1.png">
 									<button class="btn btn-danger" kill_boss_btn onclick="kill_boss()" >兽王可汗</button>
 								</div>
 							</div>
 							<div class="feed-element">
 								<div class="media-body ">
-									<img alt="image" class="img-circle" src="img/monster/creper4.png">
+									<img alt="image" class="img-circle" src="/img/monster/creper4.png">
 									<button class="btn btn-success" kill_boss_btn onclick="kill_hai_boss()" >海岛Boss</button>
 								</div>
 							</div>
@@ -45,7 +45,7 @@
 			<div class="ibox float-e-margins"></div>
 		</div>
 
-		<div class="col-sm-4">
+		<div class="col-lg-4">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>弹框</h5>
@@ -69,7 +69,7 @@
 								<div weapon_num_text>
 									物品(1/1)
 								</div>
-								<img weapon_img src="img/weapon/卢萨卡之剑.png" alt="Weapon Image" />
+								<img weapon_img src="/img/weapon/卢萨卡之剑.png" alt="Weapon Image" />
 								<div weapon_bottom_text></div>
 								<div weapon_remark_text>
 									为以上物品roll一个随机数，或者如果<br>
@@ -104,7 +104,7 @@
 			<div class="ibox float-e-margins"></div>
 		</div>
 
-		<div class="col-sm-4">
+		<div class="col-lg-4">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>成果</h5>
@@ -126,15 +126,14 @@
 </div>
 
 <!-- 全局js -->
-<script src="js/jquery.min.js?v=2.1.4"></script>
-<script src="js/bootstrap.min.js?v=3.3.6"></script>
-<script src="js/layer/layer.js"></script>
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/content.js?v=1.0.0"></script>
+<script src="../../js/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- 自定义js -->
-<script src="js/content.js?v=1.0.0"></script>
-<script src="js/common/kill_boss.js"></script>
-<script src="js/common/boss_drop.js"></script>
-<!-- jQuery UI -->
-<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="js/kill_boss.js"></script>
+<script src="js/boss_drop.js"></script>
 
 </body>
 </html>
