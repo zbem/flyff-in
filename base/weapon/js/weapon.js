@@ -184,11 +184,14 @@ function join_weapon_abilities(list){
 		minNum = obj.fixed == null ? minNum : (minNum/obj.fixed);
 		randomNum = obj.fixed == null ? randomNum : (randomNum/obj.fixed);
 
+		const o_max = obj.fixed == null ? obj.max : (obj.max / obj.fixed);
+		const o_mix = obj.fixed == null ? obj.min : (obj.min / obj.fixed);
+
 		//组装单位(例如 百分号)
 		randomNum = randomNum+obj.cur;
 		//承受伤害
 		const addStr = obj.name === "承受伤害" ? '' : '+';
-		str +=`<span style="color: #ffeaa5">${obj.name + addStr + randomNum}  (${obj.min}~${obj.max})${obj.cur}</span><br>`;
+		str +=`<span style="color: #ffeaa5">${obj.name + addStr + randomNum}  (${o_mix}~${o_max})${obj.cur}</span><br>`;
 	}
 	str+="</div>";
 	return str;
