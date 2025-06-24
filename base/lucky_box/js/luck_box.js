@@ -42,7 +42,7 @@ const egg_list = [
 			color: "#78d9ff"
 			}
 		],
-		success: 1.6,
+		success: 0.6,
 		break: 0,
 		failure: 0.4
 	},
@@ -66,7 +66,7 @@ const egg_list = [
 				color: "#78d9ff"
 			}
 		],
-		success: 1.5,
+		success: 0.5,
 		break: 0,
 		failure: 0.5
 	},
@@ -85,7 +85,7 @@ const egg_list = [
 				color: "#78d9ff"
 			}
 		],
-		success: 1.4,
+		success: 0.4,
 		break: 0.01,
 		failure: 0.59
 	},
@@ -104,7 +104,7 @@ const egg_list = [
 				color: "#78d9ff"
 			}
 		],
-		success: 1.2,
+		success: 0.2,
 		break: 0.03,
 		failure: 0.77
 	},
@@ -133,7 +133,7 @@ const egg_list = [
 				color: "#78d9ff"
 			}
 		],
-		success: 1.15,
+		success: 0.15,
 		break: 0.05,
 		failure: 0.8
 	},
@@ -167,7 +167,7 @@ const egg_list = [
 				color: "#78d9ff"
 			}
 		],
-		success: 1.05,
+		success: 0.05,
 		break: 0.1,
 		failure: 0.85
 	},
