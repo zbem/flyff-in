@@ -303,6 +303,16 @@ function egg_go(){
 			`);
 			egg_init(egg_id);
 		}else{
+			$("[box_btn]").attr("disabled",true);
+			layer.msg(`蛋碎了!重来吧!`,{
+				icon:1,
+				time: 0,
+				btn: ['确认'],
+				yes: function(index){
+					//点击确认后复原
+					$("[box_btn]").attr("disabled",false);
+					layer.close(index);
+			}});
 			$("[txt_div]").prepend(`
 			<div class="row" box_div>
 				<div class="col-xs-12">
