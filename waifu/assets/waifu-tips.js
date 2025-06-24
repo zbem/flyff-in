@@ -21,7 +21,7 @@ String.prototype.render = function (context) {
 
 const model = [
     {"modelId":1,"modelTexturesId":[1,2,3,4,51,53,66,82,83,84,85,86,87]},
-    //{"modelId":2,"modelTexturesId":[1,2]},
+    {"modelId":2,"modelTexturesId":[1,2]},
 ];
 
 var re = /x/;
@@ -201,6 +201,7 @@ function loadModel(modelId, modelTexturesId){
     if (modelTexturesId === undefined) modelTexturesId = 0;
     localStorage.setItem('modelTexturesId', modelTexturesId);
     loadlive2d('live2d', 'waifu/assets/json/model_'+modelId+'_'+modelTexturesId+'.json', console.log('live2d','模型 '+modelId+'-'+modelTexturesId+' 加载完成'));
+    // loadlive2d('live2d', 'waifu/assets/model/ShizukuTalk/shizuku-pajama/index.json', console.log('live2d','模型 '+modelId+'-'+modelTexturesId+' 加载完成'));
 }
 
 function loadRandModel(){
