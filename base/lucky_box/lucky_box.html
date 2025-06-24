@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" xmlns="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>飞瘾犯了-幸运盒子</title>
+</head>
+
+<link href="../../css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="../../css/style.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="../../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<link href="../../css/fly.css?v=4.1.0" rel="stylesheet">
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>操作专区</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="feed-element">
+						<div class="media-body ">
+							<img alt="image" src="../../img/items/thirdanniversaryegg.png">
+							<button class="btn btn-success" onclick="egg_init(0)" box_btn>I蛋</button>&nbsp;&nbsp;&nbsp;
+							<img alt="image" src="../../img/items/scroll3anniversaryegg.png">
+							<button class="btn btn-success" onclick="egg_go()" box_btn>升蛋</button>
+							<br><br><br><br>
+							<img alt="image" src="../../img/items/jewelbox.png">
+							<button class="btn btn-success" onclick="lucky_box()" box_btn>宝石盒子</button>
+							<br><br><br><br>
+							<button class="btn btn-success" onclick="rock_paper_scissors(0)" box_btn>石头</button>
+							<button class="btn btn-success" onclick="rock_paper_scissors(1)" box_btn>剪刀</button>
+							<button class="btn btn-success" onclick="rock_paper_scissors(2)" box_btn>布</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>成果</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div lucky_box_msg_div class="row"></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>消息</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div box_top_div class="row"></div>
+					<div txt_div class="row"></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+	</div>
+</div>
+</body>
+
+<!-- 全局js -->
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../../js/base.js?v=202404020006"></script>
+<script src="../../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/content.js?v=1.0.0"></script>
+<!-- 自定义js -->
+<script src="js/luck_box.js"></script>
+
+</html>

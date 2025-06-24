@@ -37,7 +37,6 @@ const attribute_data=[
 		],
 	},
 ];
-
 //武器强化数值
 const upList = [
 	{"probability":0.888888,"low_probability":0.9,"gold":2000,"yellow":10,"green":10,"four_num":1,"eight_num":0},
@@ -51,7 +50,6 @@ const upList = [
 	{"probability":0.003089,"low_probability":0.045,"gold":250000,"yellow":148,"green":148,"four_num":0,"eight_num":1},
 	{"probability":0.000502,"low_probability":0.018,"gold":500000,"yellow":207,"green":207,"four_num":0,"eight_num":1},
 ];
-
 //强化次数,金币,黄矿,绿矿,失败次数,武器强化等级,4点数量,8点数量,武器索引值
 let up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0 ,weapon_index = 0;
 //使用low卷数量
@@ -108,14 +106,12 @@ function get_weapon(index){
 	$("[txt_div]").html("");
 	if(index == null){
 		layer.msg("武器id为空");
-		console.log("武器id为空");
 		return;
 	}
 
 	const weaponObj = weapon_json_list.find(obj => obj.id === parseInt(index));
 	if(weaponObj == null){
 		layer.msg("没有对应的武器"+index);
-		console.log("没有对应的武器"+index);
 		return;
 	}
 	up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0;
@@ -157,9 +153,11 @@ function get_weapon(index){
 	w_wake_up_num = 0;
 
 	//洗词条次数
-	str += `</br><span style="color: #b3b3b3">洗基础次数: <span w_clean_num>0</span>`;
-	str += `</br><span style="color: #b3b3b3">洗黄字次数: <span w_clean_u_num>0</span>`;
-	str += `</br><span style="color: #b3b3b3">技能唤醒次数: <span w_wake_up_num>0</span>`;
+	str += `
+		</br><span style="color: #b3b3b3">洗基础次数: <span w_clean_num>0</span>
+		</br><span style="color: #b3b3b3">洗黄字次数: <span w_clean_u_num>0</span>
+		</br><span style="color: #b3b3b3">技能唤醒次数: <span w_wake_up_num>0</span>
+	`;
 	// str += '</br><span style="color: #b3b3b3">穿洞次数: 0';
 
 	$("[weapon_bottom_text]").html(weaponObj.name);
