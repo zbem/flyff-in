@@ -19,9 +19,34 @@ String.prototype.render = function (context) {
     });
 };
 
-const model = [
-    {"modelId":1,"modelTexturesId":[1,2,3,4,51,53,66,82,83,84,85,86,87]},
-    {"modelId":2,"modelTexturesId":[1,2]},
+const model_url_list = [
+    "bilibili-live/22/index.json",
+    "bilibili-live/33/index.json",
+    "HyperdimensionNeptunia/blanc_classic/index.json",
+    "HyperdimensionNeptunia/blanc_normal/index.json",
+    "HyperdimensionNeptunia/blanc_swimwear/index.json",
+    "HyperdimensionNeptunia/histoire/index.json",
+    "HyperdimensionNeptunia/histoirenohover/index.json",
+    "HyperdimensionNeptunia/nepgear/index.json",
+    "HyperdimensionNeptunia/nepgear_extra/index.json",
+    "HyperdimensionNeptunia/nepgearswim/index.json",
+    "HyperdimensionNeptunia/nepmaid/index.json",
+    "HyperdimensionNeptunia/nepnep/index.json",
+    "HyperdimensionNeptunia/nepswim/index.json",
+    "HyperdimensionNeptunia/neptune_classic/index.json",
+    "HyperdimensionNeptunia/neptune_santa/index.json",
+    "HyperdimensionNeptunia/noir/index.json",
+    "HyperdimensionNeptunia/noir_classic/index.json",
+    "HyperdimensionNeptunia/noir_santa/index.json",
+    "HyperdimensionNeptunia/noireswim/index.json",
+    "HyperdimensionNeptunia/vert_classic/index.json",
+    "HyperdimensionNeptunia/vert_normal/index.json",
+    "HyperdimensionNeptunia/vert_swimwear/index.json",
+    "KantaiCollection/murakumo/index.json",
+    "Potion-Maker/Pio/index.json",
+    "Potion-Maker/Tia/index.json",
+    "ShizukuTalk/shizuku-48/index.json",
+    "ShizukuTalk/shizuku-pajama/index.json"
 ];
 
 var re = /x/;
@@ -40,7 +65,7 @@ $('.waifu-tool .fui-home').click(function (){
 });
 
 $('.waifu-tool .fui-eye').click(function (){
-    loadOtherModel();
+    loadRandModel();
 });
 
 $('.waifu-tool .fui-chat').click(function (){
@@ -196,35 +221,14 @@ function initModel(waifuPath){
 
 //https://api.fghrsh.net/live2d/get/?id=modelId-modelTexturesId
 //https://api.fghrsh.net/live2d/get/?id=1-53
-function loadModel(modelId, modelTexturesId){
-    localStorage.setItem('modelId', modelId);
-    if (modelTexturesId === undefined) modelTexturesId = 0;
-    localStorage.setItem('modelTexturesId', modelTexturesId);
-    loadlive2d('live2d', 'waifu/assets/json/model_'+modelId+'_'+modelTexturesId+'.json', console.log('live2d','模型 '+modelId+'-'+modelTexturesId+' 加载完成'));
-    // loadlive2d('live2d', 'waifu/assets/model/ShizukuTalk/shizuku-pajama/index.json', console.log('live2d','模型 '+modelId+'-'+modelTexturesId+' 加载完成'));
+function loadModel(model_url){
+    loadlive2d('live2d', 'waifu/assets/model/'+model_url, console.log('live2d','模型加载完成'));
 }
 
 function loadRandModel(){
     //随机一个数组长度内的数字
-    const modelRand = Math.floor(Math.random() * model.length);
-    const model_obj = model[modelRand];
-    const modelTexturesRand = Math.floor(Math.random() * model_obj.modelTexturesId.length);
+    const modelRand = Math.floor(Math.random() * model_url_list.length);
+    const model_url = model_url_list[modelRand];
     //随机一个模型
-    loadModel(model_obj.modelId, model_obj.modelTexturesId[modelTexturesRand]);
-}
-
-function loadOtherModel(){
-    var modelId = localStorage.getItem('modelId');
-    
-    var modelTexturesRandMode = 'switch';     // 可选 'rand'(随机), 'switch'(顺序)
-    
-    $.ajax({
-        cache: false,
-        url: '/live2d/'+modelTexturesRandMode+'/?id='+modelId,
-        dataType: "json",
-        success: function (result){
-            loadModel(result.model['id']);
-            showMessage(result.model['message'], 3000, true);
-        }
-    });
+    loadModel(model_url);
 }

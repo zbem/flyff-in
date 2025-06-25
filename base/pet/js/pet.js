@@ -55,6 +55,16 @@ const incubate_pet = [
 ];
 
 let pet_box_num = 0;
+//是否停止升级
+let pet_up_stop = false;
+//是否停止献祭
+let sacrifice_stop = false;
+let pet_lv;
+let now_lv = 0;
+//献祭次数
+let pet_num = 0;
+//当前宠物
+let now_pet;
 
 //洗外观
 function pet_show(){
@@ -140,18 +150,18 @@ function blindBox() {
 	};
 }
 
-
 //一键完美宠
 function one_pet(){
 	//孵化宠
 	incubate();
 
 	setTimeout(function() {
-		//宠物升级
+		//宠物升级+献祭
 		pet_up_go();
 	}, 100); // 1000毫秒等于1秒
 }
 
+//宠物升级+献祭
 function pet_up_go(){
 	setTimeout(function() {
 		//宠物升级
@@ -161,6 +171,7 @@ function pet_up_go(){
 	}, 100); // 1000毫秒等于1秒
 }
 
+//献祭
 function sacrifice_go(){
 	if(pet_up_stop && sacrifice_stop){
 		sacrifice_stop = false;
@@ -193,18 +204,18 @@ function incubate(){
 	now_pet = pet;
 
 	let str = `
-			<div class="alert alert-info" pet_info  pet_lv="1" >
-				<div class="row">
-					<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
-					<div class="col-xs-5" ><img style="width: 80px; height: 70px;" now_pet_img alt="${pet.name}" img_${pet.name} src="img/pet/${pet.name}.png"></div>
-					<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>
-					<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
-				</div>
-				<div class="row">
-					<div pet_img_div><label lv_f级 pet_val="${pet.value}"><img img_lv img_lv_1  src="img/pet/等级1.png" alt="1"><br>+${pet.value}${pet.cur}</label></div>
-				</div>
+		<div class="alert alert-info" pet_info  pet_lv="1" >
+			<div class="row">
+				<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
+				<div class="col-xs-5" ><img style="width: 80px; height: 70px;" now_pet_img alt="${pet.name}" img_${pet.name} src="../../img/pet/${pet.name}.png"></div>
+				<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>
+				<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
 			</div>
-		`;
+			<div class="row">
+				<div pet_img_div><label lv_f级 pet_val="${pet.value}"><img img_lv img_lv_1  src="../../img/pet/等级1.png" alt="1"><br>+${pet.value}${pet.cur}</label></div>
+			</div>
+		</div>
+	`;
 	$("[txt_div]").prepend(str);
 }
 

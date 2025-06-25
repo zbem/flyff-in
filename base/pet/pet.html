@@ -16,28 +16,6 @@
 <link href="../../js/layer/skin/default/layer.css" rel="stylesheet">
 <link href="../../css/fly.css?v=4.1.0" rel="stylesheet">
 
-<style>
-	.scroll-content {
-		position: absolute;
-		white-space: nowrap;
-		animation: scrollUpDown 1s linear forwards;
-		width: 100%;
-		text-align: center;
-	}
-
-	@keyframes scrollUpDown {
-		0% {
-			transform: translateY(100%);
-			opacity: 1;
-		}
-
-		100% {
-			transform: translateY(0);
-			opacity: 0;
-		}
-	}
-</style>
-
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content">
@@ -159,19 +137,17 @@
 	<img alt="飞龙" img_飞龙 src="../../img/pet/飞龙.png">
 </div>
 
-<div class="scroll-content">
-	<span style=" color: red">你随机到了相同或较低等级，因此无事发生。</span>
-</div>
-
 <!-- 全局js -->
 <script src="../../js/jquery.min.js?v=2.1.4"></script>
 <script src="../../js/bootstrap.min.js?v=3.3.6"></script>
-<script src="pet.js?v=20241114"></script>
-<!-- 自定义js -->
-<script src="../../js/content.js?v=1.0.0"></script>
 <!-- jQuery UI -->
 <script src="../../js/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="../../js/layer/layer.js"></script>
+<script src="../../js/content.js?v=1.0.0"></script>
+
+<!-- 自定义js -->
+<script src="js/pet.js"></script>
+
 
 </body>
 </html>

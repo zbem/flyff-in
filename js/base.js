@@ -550,25 +550,8 @@
 	let probability = 0.000000;
 	//首饰成功概率
 	let jewelry_probability = 0.0000000000;
-	let pet_lv;
-	let now_lv = 0;
-	//献祭次数
-	let pet_num = 0;
-	//当前宠物
-	let now_pet;
-	//150制作武器基础概率 0.001%  闪亮12点 0.0015%
-	const get_150_weapon_probability = 0.00001;
-	//120制作武器基础概率 1.5%  闪亮12点 2%
-	const get_120_weapon_probability = 0.015;
-	//150制作武器基础概率 闪亮12点 3%
-	const get_150_weapon_probability_3 = 0.03;
-	let get_150_weapon_num = 0;
-	let get_120_weapon_num = 0;
-	let mark_150_weapon_num = 0;
-	let stop = false;
-	let sacrifice_stop = false;
-	let pet_up_stop = false;
 
-	function errorMsg(str){
-		$("[txt_div]").prepend("<p class='alert alert-info' error_msg>"+str+"</p>");
-	}
+
+
+
+

@@ -117,13 +117,13 @@ function get_jewelry(index){
     $("[jewelry_msg_div]").html("");
     $("[jewelry_all_msg]").html("");
     if(index == null){
-        errorMsg("get_jewelry没有对应的index:"+index);
+        layer.msg("get_jewelry没有对应的index:"+index);
         return;
     }
 
     const jewelry_Obj = find_item_json(index);
     if(jewelry_Obj == null){
-        errorMsg("get_jewelry没有对应的类型"+index);
+        layer.msg("get_jewelry没有对应的类型"+index);
         return;
     }
     //首饰当前强化等级
