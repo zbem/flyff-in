@@ -48,7 +48,7 @@ const egg_list = [
 	},
 	{
 		id:2,
-		name: "3rd AnniversaryEgg III",
+		name: "3rd Anniversary Egg III",
 		items:[
 			{
 				name: "Gold Pill (B)*5",
@@ -72,7 +72,7 @@ const egg_list = [
 	},
 	{
 		id:3,
-		name: "3rd AnniversaryEgg IV",
+		name: "3rd Anniversary Egg IV",
 		items:[
 			{
 				name: "无敌技能卷",
@@ -91,7 +91,7 @@ const egg_list = [
 	},
 	{
 		id:4,
-		name: "3rd AnniversaryEgg V",
+		name: "3rd Anniversary Egg V",
 		items:[
 			{
 				name: "祝福卷轴",
@@ -110,7 +110,7 @@ const egg_list = [
 	},
 	{
 		id:5,
-		name: "3rd AnniversaryEgg VI",
+		name: "3rd Anniversary Egg VI",
 		items:[
 			{
 				name: "复活卷轴*2",
@@ -139,7 +139,7 @@ const egg_list = [
 	},
 	{
 		id:6,
-		name: "3rd AnniversaryEgg VII",
+		name: "3rd Anniversary Egg VII",
 		items:[
 			{
 				name: "武器唤醒卷轴*5",
@@ -173,7 +173,7 @@ const egg_list = [
 	},
 	{
 		id:7,
-		name: "3rd AnniversaryEgg VIII",
+		name: "3rd Anniversary Egg VIII",
 		items:[
 			{
 				name: "武器唤醒卷轴*5",
