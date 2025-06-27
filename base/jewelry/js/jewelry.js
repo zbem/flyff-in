@@ -14,6 +14,26 @@ let jewelry_up_all_num = 0;
 let jewelry_failure_num = 0;
 //首饰精炼失败总次数
 let jewelry_failure_all_num = 0;
+//首饰成功概率
+let jewelry_probability = 0.0000000000;
+
+const jewelry_data_enums = [
+    {"cur":"","name":"str","cns":"力量",},
+    {"cur":"","name":"int","cns":"智力",},
+    {"cur":"","name":"dex","cns":"敏捷",},
+    {"cur":"","name":"sta","cns":"体质",},
+    {"cur":"","name":"maxhp","cns":"最大HP",},
+    {"cur":"%","name":"hprestoration","cns":"HP恢复"},
+    {"cur":"","name":"maxmp","cns":"最大MP"},
+    {"cur":"%","name":"decreasedmpconsumption","cns":"MP消耗降低"},
+    {"cur":"","name":"mprecoveryafterkill","cns":"击杀后MP恢复"},
+    {"cur":"","name":"maxfp","cns":"最大FP"},
+    {"cur":"%","name":"fprecoveryautoattack","cns":"FP消耗降低"},
+    {"cur":"","name":"damage","cns":"追加伤害"},
+    {"cur":"","name":"def","cns":"防御"},
+    {"cur":"","name":"magicdefense","cns":"魔法防御"},
+];
+
 const jewelry = [
     {probability: 0.0073587053, fwc_probability: 0.0073587053 * 2},
     {probability: 0.0038016583, fwc_probability: 0.0038016583 * 2},

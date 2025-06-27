@@ -116,12 +116,9 @@
 			console.log("get_weapon没有对应的武器类型"+index);
 			return;
 		}
-		up_num = 0,gold = 0,yellow = 0,green = 0, failure_num = 0,weapon_lv = 0,four_num = 0,eight_num = 0;
 		//重置武器面板数值
 		$("[bb_info]").remove();
 		$("[up_u_weapon]").remove();
-
-		weapon_index = index;
 
 		//武器类型
 		var typeObj = TYPE_ENUM[weaponObj.subcategory];

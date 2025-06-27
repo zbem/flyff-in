@@ -13,6 +13,44 @@ let click_num = 0;
 let egg_id ;
 //升蛋次数
 let egg_num = 0;
+//抽取幸运礼盒次数
+let lucky_box_num=0;
+
+const jewel_box={
+	id:17866,
+	file_name:"",
+	en_name:"Ultimate Jewel Box",
+	cns_name:"宝石盒子",
+	list:[
+		{id:18376,name:"防御符文"					,icon:"itm_syssysbarunarune04.png"			,open_num:0 		,"color":"#e8cd51" 		,"probability":0.0004},
+		{id:17105,name:"攻击符文"					,icon:"itm_syssysbarunarune09-32.png"		,open_num:0 		,"color":"#e8cd51" 		,"probability":0.0004},
+		{id:17409,name:"魔法抗性符文"					,icon:"itm_syssysbarunarune08-32.png"		,open_num:0 		,"color":"#e8cd51" 		,"probability":0.0004},
+		{id:16150,name:"暴击抗性符文"					,icon:"itm_syssysbarunarune03.png"			,open_num:0 		,"color":"#e8cd51" 		,"probability":0.0004},
+		{id:18554,name:"攻速符文"					,icon:"itm_syssysbarunarune01.png"			,open_num:0 		,"color":"#e8cd51" 		,"probability":0.0004},
+		{id:10787,name:"攻击宝石 (2)"    			,icon:"syssysscrshnonyx(2).png"				,open_num:0 		,"color":"#c3631a" 		,"probability":0.01},
+		{id:12984,name:"体质宝石 (2)"    			,icon:"syssysscrshnamethyst(2).png"			,open_num:0 		,"color":"#c3631a" 		,"probability":0.01},
+		{id:17958,name:"防御宝石(2)"    				,icon:"syssysscrshndiamond(2).png"			,open_num:0 		,"color":"#c3631a" 		,"probability":0.01},
+		{id:14657,name:"敏捷宝石(2)"    				,icon:"syssysscrshnemerald(2).png"			,open_num:0 		,"color":"#c3631a" 		,"probability":0.01},
+		{id:19989,name:"智力宝石(2)"   				,icon:"syssysscrshnsapphire(2).png"			,open_num:0 		,"color":"#c3631a" 		,"probability":0.01},
+		{id:19834,name:"力量宝石(2)"    				,icon:"syssysscrshnruby(2).png"				,open_num:0 		,"color":"#c3631a" 		,"probability":0.01},
+		{id:18320,name:"防御宝石(2)"    				,icon:"syssysscrshntopaz(2).png"			,open_num:0 		,"color":"#c3631a" 		,"probability":0.01},
+		{id:17472,name:"攻击宝石 (1)"    			,icon:"syssysscrshnonyx(1).png"				,open_num:0 		,"color":"#c36321" 		,"probability":0.02},
+		{id:16881,name:"体质宝石 (1)"    			,icon:"syssysscrshnamethyst(1).png"			,open_num:0 		,"color":"#c36321" 		,"probability":0.02},
+		{id:10730,name:"防御宝石(1)"    				,icon:"syssysscrshndiamond(1).png"			,open_num:0 		,"color":"#c36321" 		,"probability":0.02},
+		{id:13964,name:"敏捷宝石(1)"    				,icon:"syssysscrshnemerald(1).png"			,open_num:0 		,"color":"#c36321" 		,"probability":0.02},
+		{id:17873,name:"智力宝石(1)"   				,icon:"syssysscrshnsapphire(1).png"			,open_num:0 		,"color":"#c36321" 		,"probability":0.02},
+		{id:11570,name:"力量宝石(1)"    				,icon:"syssysscrshnruby(1).png"				,open_num:0 		,"color":"#c36321" 		,"probability":0.02},
+		{id:10726,name:"防御宝石(1)"    				,icon:"syssysscrshntopaz(1).png"	 		,open_num:0 		,"color":"#c36321" 		,"probability":0.02},
+		{id:17190,name:"攻击宝石碎片"    				,icon:"genmatshnonyxfrag.png"		 		,open_num:0 		,"color":"#7acccd" 		,"probability":0.1126},
+		{id:12471,name:"体质宝石碎片"    				,icon:"genmatshnamethystfrag.png"	 		,open_num:0 		,"color":"#7acccd" 		,"probability":0.1126},
+		{id:11621,name:"防御宝石碎片"    				,icon:"genmatshndiamondfrag.png"	 		,open_num:0 		,"color":"#7acccd" 		,"probability":0.1126},
+		{id:12880,name:"敏捷宝石碎片"    				,icon:"genmatshnemeraldfrag.png"	 		,open_num:0 		,"color":"#7acccd" 		,"probability":0.1126},
+		{id:12768,name:"智力宝石碎片"   				,icon:"genmatshnsapphirefrag.png"	 		,open_num:0 		,"color":"#7acccd" 		,"probability":0.1126},
+		{id:11764,name:"力量宝石碎片"    				,icon:"genmatshnrubyfrag.png"		 		,open_num:0 		,"color":"#7acccd" 		,"probability":0.1126},
+		{id:15920,name:"防御宝石碎片"    				,icon:"genmatshntopazfrag.png"		 		,open_num:0 		,"color":"#7acccd" 		,"probability":0.1126},
+	]
+};
+
 
 const egg_list = [
 	{

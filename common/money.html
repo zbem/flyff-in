@@ -147,54 +147,6 @@
 
 			<div class="ibox float-e-margins"></div>
 		</div>
-
-		<div class="col-sm-6 hide" >
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>幸运礼盒</h5>
-					<div class="ibox-tools">
-						<a class="collapse-link">
-							<i class="fa fa-chevron-up"></i>
-						</a>
-					</div>
-				</div>
-				<div class="ibox-content">
-					<div class="row">
-						<img alt="image" class="img-circle" src="../img/items/syssysscrbxluck.png">
-						<button class="btn btn-success" onclick="lucky_box()" >本期时装</button>
-					</div>
-				</div>
-			</div>
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>成果</h5>
-					<div class="ibox-tools">
-						<a class="collapse-link">
-							<i class="fa fa-chevron-up"></i>
-						</a>
-					</div>
-				</div>
-				<div class="ibox-content">
-					<div lucky_box_msg_div class="row"></div>
-				</div>
-			</div>
-
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>消息</h5>
-					<div class="ibox-tools">
-						<a class="collapse-link">
-							<i class="fa fa-chevron-up"></i>
-						</a>
-					</div>
-				</div>
-				<div class="ibox-content">
-					<div txt_div class="row"></div>
-				</div>
-			</div>
-
-			<div class="ibox float-e-margins"></div>
-		</div>
 	</div>
 </div>
 <div class="hide">
@@ -227,14 +179,9 @@
 <!-- 全局js -->
 <script src="../js/jquery.min.js?v=202404111603"></script>
 <script src="../js/bootstrap.min.js?v=3.3.6"></script>
-<script src="../js/base.js?v=202404111603"></script>
-
 <!-- Chosen -->
 <script src="../js/plugins/chosen/chosen.jquery.js"></script>
-
-<!-- 自定义js -->
 <script src="../js/content.js?v=1.0.0"></script>
-<!-- jQuery UI -->
 <script src="../js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
 <script>
@@ -268,10 +215,166 @@
 
 		r_input_price();
 	});
+	const show_all_data=
+			[
+				{
+					"file_name":"",
+					"en_name":"Banana Hero",
+					"cns_name":"香蕉英雄",
+					"list":[
+						{"option_str":"2% White"	,"url":"Banana_Hero_2_White_Set"	,"name":"Banana Hero 2% White Set"		,"open_num":0  	,"color":"black" 	,"probability":0.2	},
+						{"option_str":"2% Pink"		,"url":"Banana_Hero_2_Pink_Set"		,"name":"Banana Hero 2% Pink Set"		,"open_num":0  	,"color":"black" 	,"probability":0.2	},
+						{"option_str":"4% Green"	,"url":"Banana_Hero_4_Green_Set"	,"name":"Banana Hero 4% Green Set"		,"open_num":0  	,"color":"black" 	,"probability":0.3	},
+						{"option_str":"6% Blue"     ,"url":"Banana_Hero_6_Blue_Set"  	,"name":"Banana Hero 6% Blue Set"		,"open_num":0  	,"color":"black" 	,"probability":0.15	},
+						{"option_str":"8% Orange"   ,"url":"Banana_Hero_8_Orange_Set"   ,"name":"Banana Hero 8% Orange Set"		,"open_num":0  	,"color":"black"	,"probability":0.10	},
+						{"option_str":"10% Purple"	,"url":"Banana_Hero_10_Purple_Set"	,"name":"Banana Hero 10% Purple Set"    ,"open_num":0  	,"color":"black"	,"probability":0.03	},
+						{"option_str":"10% Yellow"	,"url":"Banana_Hero_10_Yellow_Set"	,"name":"Banana Hero 10% Yellow Set"    ,"open_num":0  	,"color":"black"	,"probability":0.02	},
+					]
+				},
+				{
+					"file_name":"Artificial",
+					"en_name":"Artificial",
+					"cns_name":"艺术创造套装",
+					"list":[
+						{"option_str":"2% Red"		,"url":"Artificial_2_Red_Set"  		,"name":"Artificial 2% Red Set"		,"open_num":0,   "color":"black"	,"probability":0.2	 },
+						{"option_str":"2% White"	,"url":"Artificial_2_White_Set"		,"name":"Artificial 2% White Set"	,"open_num":0,   "color":"black"	,"probability":0.2	 },
+						{"option_str":"4% Green"	,"url":"Artificial_4_Green_Set" 	,"name":"Artificial 4% Green Set"	,"open_num":0,   "color":"black"	,"probability":0.3	 },
+						{"option_str":"6% Blue"		,"url":"Artificial_6_Blue_Set"   	,"name":"Artificial 6% Blue Set"	,"open_num":0,   "color":"black"	,"probability":0.15 },
+						{"option_str":"8% Orange"	,"url":"Artificial_8_Orange_Set"	,"name":"Artificial 8% Orange Set"	,"open_num":0,   "color":"black"	,"probability":0.10 },
+						{"option_str":"10% Purple"	,"url":"Artificial_10_Purple_Set"	,"name":"Artificial 10% Purple Set"	,"open_num":0,   "color":"black"	,"probability":0.05 },
+					]
+				},
+				{
+					"file_name":"Casual_Summer",
+					"en_name":"Casual Summer",
+					"cns_name":"夏日",
+					"list":[
+						{"option_str":"2% Orange" 	,"url":"Casual_Summer_2_Orange_Set"		,"name":"Casual Summer 2% Orange Set"	,"open_num":0	,"color":"black"	,"probability":0.2	},
+						{"option_str":"4% Purple" 	,"url":"Casual_Summer_4_Purple_Set"		,"name":"Casual Summer 4% Purple Set"	,"open_num":0	,"color":"black"	,"probability":0.3	},
+						{"option_str":"6% White" 	,"url":"Casual_Summer_6_White_Set"		,"name":"Casual Summer 6% White Set"	,"open_num":0	,"color":"black"	,"probability":0.15	},
+						{"option_str":"7% Blue" 	,"url":"Casual_Summer_8_Blue_Set"		,"name":"Casual Summer 8% Blue Set"		,"open_num":0	,"color":"black"	,"probability":0.10	},
+						{"option_str":"10% Black"	,"url":"Casual_Summer_10_Black_Set"		,"name":"Casual Summer 10% Black Set"	,"open_num":0	,"color":"black"	,"probability":0.05	},
+					]
+				},
+				{
+					"file_name":"Exorcist",
+					"en_name":"Exorcist",
+					"cns_name":"驱魔人",
+					"list":[
+						{"option_str":"2% Red"		,"url":"Exorcist_2_Red_Set"			,"name":"Exorcist 2% Red Set"		,"open_num":0	,"color":"black"	,"probability":0.2	},
+						{"option_str":"2% White"    ,"url":"Exorcist_2_White_Set"		,"name":"Exorcist 2% White Set"		,"open_num":0	,"color":"black"	,"probability":0.2	},
+						{"option_str":"4% Black"    ,"url":"Exorcist_4_Black_Set"		,"name":"Exorcist 4% Black Set"		,"open_num":0	,"color":"black"	,"probability":0.3	},
+						{"option_str":"6% Green"    ,"url":"Exorcist_6_Green_Set"		,"name":"Exorcist 6% Green Set"		,"open_num":0	,"color":"black"	,"probability":0.15	},
+						{"option_str":"8% Blue"		,"url":"Exorcist_8_Blue_Set"		,"name":"Exorcist 8% Blue Set"		,"open_num":0	,"color":"black"	,"probability":0.10	},
+						{"option_str":"10% Purple"	,"url":"Exorcist_10_Purple_Set"		,"name":"Exorcist 10% Purple Set"	,"open_num":0	,"color":"black"	,"probability":0.05	},
+					]
+				},
+				{
+					"file_name":"Future_Easter",
+					"en_name":"Future Easter",
+					"cns_name":"未来复活节",
+					"list":[
+						{"option_str":"2% Blue"		,"url":"Future_Easter_2_Purple_Set"	,"name":"Future Easter 2% Blue Set"  		,"open_num":0 		,"color":"black" 		,"probability":0.2		},
+						{"option_str":"2% Green"	,"url":"Future_Easter_2_Yellow_Set"	,"name":"Future Easter 2% Green Set" 		,"open_num":0 		,"color":"black" 		,"probability":0.2		},
+						{"option_str":"4% Burgundy"	,"url":"Future_Easter_4_Pink_Set"	,"name":"Future Easter 4% Burgundy Set" 	,"open_num":0 		,"color":"black" 		,"probability":0.3		},
+						{"option_str":"6% Purple"	,"url":"Future_Easter_6_Green_Set"	,"name":"Future Easter 6% Purple Set"		,"open_num":0 		,"color":"black" 		,"probability":0.15		},
+						{"option_str":"8% Grey"		,"url":"Future_Easter_8_Red_Set"	,"name":"Future Easter 8% Grey Set"  		,"open_num":0 		,"color":"black" 		,"probability":0.10		},
+						{"option_str":"10% Black"	,"url":"Future_Easter_10_Blue_Set"	,"name":"Future Easter 10% Black Set"		,"open_num":0 		,"color":"black" 		,"probability":0.05		}
+					]
+				},
+				{
+					"file_name":"Glitch_Pop",
+					"en_name":"Glitch Pop",
+					"cns_name":"音乐脉冲",
+					"list":[
+						{"option_str":"2% Black"	,"url":"Glitch_Pop_2_Black_Set"		,"name":"Glitch Pop 2% Black Set"	,"open_num":0,   "color":"black" ,"probability":0.2		},
+						{"option_str":"2% Orange"	,"url":"Glitch_Pop_2_Orange_Set"	,"name":"Glitch Pop 2% Orange Set"	,"open_num":0,   "color":"black" ,"probability":0.2		},
+						{"option_str":"4% Red"		,"url":"Glitch_Pop_4_Red_Set"		,"name":"Glitch Pop 4% Red Set"		,"open_num":0,   "color":"black" ,"probability":0.3		},
+						{"option_str":"6% Pink"		,"url":"Glitch_Pop_6_Pink_Set"		,"name":"Glitch Pop 6% Pink Set"	,"open_num":0,   "color":"black" ,"probability":0.15	},
+						{"option_str":"8% Green"	,"url":"Glitch_Pop_8_Green_Set"		,"name":"Glitch Pop 8% Green Set"	,"open_num":0,   "color":"black" ,"probability":0.10	},
+						{"option_str":"10% Blue"	,"url":"Glitch_Pop_10_Blue_Set"		,"name":"Glitch Pop 10% Blue Set"	,"open_num":0,   "color":"black" ,"probability":0.05	},
+					]
+				},
+				{
+					"file_name":"Luxury_Tuxedo",
+					"en_name":"Luxury Tuxedo",
+					"cns_name":"奢华燕尾服",
+					"list":[
+						{"option_str":"2% White"	,"url":"Luxury_Tuxedo_2_Green_Set"		,"name":"Luxury Tuxedo 2% White Set"	,"open_num":0,   "color":"black" ,"probability":0.2	},
+						{"option_str":"2% Red"		,"url":"Luxury_Tuxedo_2_Pink_Set"		,"name":"Luxury Tuxedo 2% Red Set"		,"open_num":0,   "color":"black" ,"probability":0.2	},
+						{"option_str":"4% Black"	,"url":"Luxury_Tuxedo_4_Purple_Set"		,"name":"Luxury Tuxedo 4% Black Set"	,"open_num":0,   "color":"black" ,"probability":0.3	},
+						{"option_str":"6% Green"	,"url":"Luxury_Tuxedo_6_Yellow_Set"		,"name":"Luxury Tuxedo 6% Green Set"	,"open_num":0,   "color":"black" ,"probability":0.15	},
+						{"option_str":"8% Blue"		,"url":"Luxury_Tuxedo_8_Black_Set" 		,"name":"Luxury Tuxedo 8% Blue Set"		,"open_num":0,   "color":"black" ,"probability":0.10	},
+						{"option_str":"10% Purple"	,"url":"Luxury_Tuxedo_10_White_Set"		,"name":"Luxury Tuxedo 10% Purple Set"	,"open_num":0,   "color":"black" ,"probability":0.05	},
+					]
+				},
+				{
+					"file_name":"Oni",
+					"en_name":"Oni",
+					"cns_name":"奢华燕尾服",
+					"list":[
+						{"option_str":"2% Black"	,"url":"Oni_2_Black_Set"	,"name":"Oni 2% Black Set"		,"open_num":0,   "color":"black" ,"probability":0.2	},
+						{"option_str":"2% Blue"		,"url":"Oni_2_Blue_Set"		,"name":"Oni 2% Blue Set"		,"open_num":0,   "color":"black" ,"probability":0.2	},
+						{"option_str":"4% Red"		,"url":"Oni_4_Red_Set"		,"name":"Oni 4% Red Set"		,"open_num":0,   "color":"black" ,"probability":0.3	},
+						{"option_str":"6% Green"	,"url":"Oni_6_Green_Set"	,"name":"Oni 6% Green Set"		,"open_num":0,   "color":"black" ,"probability":0.15	},
+						{"option_str":"8% Blue"		,"url":"Oni_8_Blue_Set"		,"name":"Oni 8% Blue Set"		,"open_num":0,   "color":"black" ,"probability":0.10	},
+						{"option_str":"10% Purple"	,"url":"Oni_10_Purple_Set"	,"name":"Oni 10% Purple Set"	,"open_num":0,   "color":"black" ,"probability":0.05	},
+					]
+				},
+				{
+					"file_name":"Shadow_Hunter",
+					"en_name":"Shadow Hunter",
+					"cns_name":"暗影猎手",
+					"list":[
+						{"option_str":"2% Blue"		,"url":"Shadow_Hunter_2_Blue_Set"     ,"name":"Shadow Hunter 2% Blue Set"    	,"open_num":0,"color":"black" ,"probability":0.2	},
+						{"option_str":"2% Green"	,"url":"Shadow_Hunter_2_Green_Set"    ,"name":"Shadow Hunter 2% Green Set"   	,"open_num":0,"color":"black" ,"probability":0.2	},
+						{"option_str":"4% Burgundy"	,"url":"Shadow_Hunter_4_Burgundy_Set" ,"name":"Shadow Hunter 4% Burgundy Set"	,"open_num":0,"color":"black" ,"probability":0.3	},
+						{"option_str":"6% Purple"	,"url":"Shadow_Hunter_6_Purple_Set"   ,"name":"Shadow Hunter 6% Purple Set"  	,"open_num":0,"color":"black" ,"probability":0.15	},
+						{"option_str":"8% Grey"		,"url":"Shadow_Hunter_8_Grey_Set"     ,"name":"Shadow Hunter 8% Grey Set"    	,"open_num":0,"color":"black" ,"probability":0.10	},
+						{"option_str":"10% Black"	,"url":"Shadow_Hunter_10_Black_Set"   ,"name":"Shadow Hunter 10% Black Set"  	,"open_num":0,"color":"black" ,"probability":0.05	}
+					]
+				},
+				{
+					"file_name":"Teddy_Bear_2024",
+					"en_name":"Teddy Bear 2024",
+					"cns_name":"泰迪熊",
+					"list":[
+						{"option_str":"2% Black"	,"url":"Teddy_Bear_2024_2_Black_Set"  	,"name":"Teddy Bear 2024 2% Black Set"	 ,"open_num":0,"color":"black" 	,"probability":0.2	},
+						{"option_str":"2% White"	,"url":"Teddy_Bear_2024_2_White_Set"  	,"name":"Teddy Bear 2024 2% White Set"	 ,"open_num":0,"color":"black" 	,"probability":0.2	},
+						{"option_str":"4% Green"	,"url":"Teddy_Bear_2024_4_Green_Set"  	,"name":"Teddy Bear 2024 4% Green Set"	 ,"open_num":0,"color":"black" 	,"probability":0.3	},
+						{"option_str":"6% Blue"		,"url":"Teddy_Bear_2024_6_Blue_Set"   	,"name":"Teddy Bear 2024 6% Blue Set"  	 ,"open_num":0,"color":"black" 	,"probability":0.15	},
+						{"option_str":"8% Purple"	,"url":"Teddy_Bear_2024_8_Purple_Set" 	,"name":"Teddy Bear 2024 8% Purple Set"  ,"open_num":0,"color":"black" 	,"probability":0.10	},
+						{"option_str":"10% Brown" 	,"url":"Teddy_Bear_2024_10_Brown_Set" 	,"name":"Teddy Bear 2024 10% Brown Set"  ,"open_num":0,"color":"black" 	,"probability":0.05	}
+					]
+				},
+				{
+					"file_name":"Valentine_2024",
+					"en_name":"Valentine 2024",
+					"cns_name":"情人节2024",
+					"list":[
+						{"option_str":"2% Blue"		,"url":"Valentine_2024_2_Blue_Set"  	,"name":"Valentine 2024 2% Blue Set"  		,"open_num":0,"color":"black" ,"probability":0.2		},
+						{"option_str":"4% Orange"	,"url":"Valentine_2024_4_Orange_Set"  	,"name":"Valentine 2024 4% Orange Set"  	,"open_num":0,"color":"black" ,"probability":0.3		},
+						{"option_str":"6% Purple"	,"url":"Valentine_2024_6_Purple_Set"  	,"name":"Valentine 2024 6% Purple Set"  	,"open_num":0,"color":"black" ,"probability":0.15	},
+					]
+				},
+				{
+					"file_name":"Winter_Casual",
+					"en_name":"Winter Casual",
+					"cns_name":"冬季休闲套",
+					"list":[
+						{"option_str":"2% Cyan"		,"url":"Winter_Casual_2024_2_Cyan_Set"	 	,"name":"Winter Casual 2024 2% Cyan Set"		,"open_num":0  	,"color":"black" 	,"probability":0.2	},
+						{"option_str":"2% Orange"	,"url":"Winter_Casual_2024_2_Orange_Set"	,"name":"Winter Casual 2024 2% Orange Set"		,"open_num":0  	,"color":"black" 	,"probability":0.2	},
+						{"option_str":"4% Purple"	,"url":"Winter_Casual_2024_4_Purple_Set"	,"name":"Winter Casual 2024 4% Purple Set"		,"open_num":0  	,"color":"black" 	,"probability":0.3	},
+						{"option_str":"6% Green"	,"url":"Winter_Casual_2024_6_Green_Set"  	,"name":"Winter Casual 2024 6% Green Set"		,"open_num":0  	,"color":"black" 	,"probability":0.15	},
+						{"option_str":"8% Pink"		,"url":"Winter_Casual_2024_8_Pink_Set"		,"name":"Winter Casual 2024 8% Pink Set"		,"open_num":0  	,"color":"black"	,"probability":0.10	},
+						{"option_str":"10% Black"	,"url":"Winter_Casual_2024_10_Black_Set"	,"name":"Winter Casual 2024 10% Black Set"		,"open_num":0  	,"color":"black"	,"probability":0.05	}
+					]
+				},
+			];
 
 	for(let i = 1 ; i <= 200 ; i++){
 		if(i > 10){
-			$("[now_g_price]").append(`<option ${i===30 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
+			$("[now_g_price]").append(`<option ${i===22 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
 			$("[now_f_price]").append(`<option ${i===60 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
 		}else{
 			for(let d = 1 ; d <= 10*i ; d++){
@@ -488,63 +591,6 @@
 		`);
 	}
 
-	function lucky_box(){
-		let randomNum = Math.random().toFixed(2);
-		let luck_box_probability = 0;
-
-		const new_show_data = show_all_data.filter(e=>e.file_name==="Shadow_Hunter")[0];
-
-		for(let i=0 ; i < new_show_data.list.length ; i++) {
-			const data = new_show_data.list[i];
-			if(i > 0){
-				luck_box_probability = parseFloat(data.probability) + parseFloat(luck_box_probability);
-			}else{
-				luck_box_probability = parseFloat(data.probability);
-			}
-			luck_box_probability = luck_box_probability.toFixed(2);
-
-			//数字是否匹配
-			if(randomNum < luck_box_probability){
-				lucky_box_num++
-				data.open_num++;
-				$("[txt_div]").prepend(`
-					<div class="row">
-						<div class="col-xs-12">
-							<img src="../img/items/syssysscrbxluck.png" alt="幸运盒子">
-							${i === 0 ? "运气太好了!" : ""}恭喜抽中 <span style="font-weight: bold; color: ${data.color}">${data.name}!</span>
-							<br>
-							<img src="img/show/${new_show_data.file_name}/${new_show_data.file_name}(F)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${new_show_data.file_name}/${new_show_data.file_name}(F)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${new_show_data.file_name}/${new_show_data.file_name}(M)/${data.url}/1.png" style="width: 80px;height: 200px" alt="${data.name}">
-							<img src="img/show/${new_show_data.file_name}/${new_show_data.file_name}(M)/${data.url}/2.png" style="width: 80px;height: 200px" alt="${data.name}">
-						</div>
-					</div>
-				`);
-				break;
-			}
-		}
-
-		let str = `<div class="row">`;
-		for(let i=0 ; i < new_show_data.list.length ; i++) {
-			const data = new_show_data.list[i];
-			if(data.open_num > 0){
-				str+=`
-				<div class="col-xs-12">
-					<img src="../img/items/syssysscrbxluck.png" alt="幸运盒子">抽中 <span style="font-weight: bold;color: ${data.color}">${data.name}</span>*${data.open_num}个 !
-				</div>
-			`;
-			}
-		}
-
-		str+=`
-			<div class="col-xs-12" style="padding-top: 10px">
-				统计:总数${lucky_box_num}个
-			</div>
-		</div>
-		`
-
-		$("[lucky_box_msg_div]").html(str);
-	}
 </script>
 
 </body>
