@@ -274,7 +274,7 @@ let hai_boss_drop = [
 	{"id":"13024","name":"涡旋","icon":"weayoyhernes.png","category":"WEAPON","rarity":"unique","probability":0.0001,"num":0}
 ]
 let boss_drop = [
-	// 8-12个
+	// 8-14个
 	{"id":"19291","name":"被诅咒的首饰碎片","icon":"syssysscrscrapgarnet.png","category":"MATERIAL","rarity":"common","probability":1.00,"num":0},
 	{"id":"7867","name":"8点精炼骰子","icon":"genmatdieeight.png","category":"MATERIAL","rarity":"uncommon","probability":0.60,"num":0},
 	{"id":"1250","name":"6点精炼骰子","icon":"genmatdiesix.png","category":"MATERIAL","rarity":"uncommon","probability":0.60,"num":0},

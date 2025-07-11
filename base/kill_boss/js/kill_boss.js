@@ -265,9 +265,10 @@
 			const items = boss_drop[i];
 
 			if (randomNum < items.probability) {
-				items.num = items.probability === 1 ? items.num + getRandomInt(8, 12) : items.num + 1;
+				//诅咒碎片
+				items.num = items.probability === 1 ? items.num + getRandomInt(8, 14) : items.num + 1;
 				randomValue++;
-				//武器
+				//掉落武器
 				if (items.rarity === 'unique' && items.category === 'WEAPON') {
 					get_weapon_go(items.id);
 					kill_boss_stop = true;
