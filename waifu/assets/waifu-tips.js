@@ -42,7 +42,6 @@ const model_url_list = [
     "HyperdimensionNeptunia/vert_classic/index.json",
     "HyperdimensionNeptunia/vert_normal/index.json",
     "HyperdimensionNeptunia/vert_swimwear/index.json",
-    "KantaiCollection/murakumo/index.json",
     "Potion-Maker/Pio/index.json",
     "Potion-Maker/Tia/index.json",
     "ShizukuTalk/shizuku-48/index.json",
