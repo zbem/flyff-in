@@ -224,7 +224,7 @@ function incubate(){
 		<div class="alert alert-info" pet_info  pet_lv="${pet_lv}" >
 			<div class="row">
 				<div class="col-xs-12" ><span style="color: #da6443">${pet.name}</span></div><br>
-				<div class="col-xs-5" ><img style="width: 80px; height: 70px;" now_pet_img alt="${pet.name}" img_${pet.name} src="../../../img/pet/${pet.name}.png"></div>
+				<div class="col-xs-5" ><img style="width: 80px; height: 70px;" now_pet_img alt="${pet.name}" img_${pet.name} src="../../img/pet/${pet.name}.png"></div>
 				<div class="col-xs-7">等级:<span style="color: #fb37b1" pet_lv_str>F级</span></div><br>
 				<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
 			</div>
@@ -343,7 +343,7 @@ function sacrifice(){
 			var pet_lv_value =now_pet.value_list[pet.list[i].pet_lv-1];
 			$("[pet_img_div]").append(`
 				<label lv_${pet.lvStr} pet_val="${pet_lv_value}">
-					<img img_lv src="../../../img/pet/${pet.list[i].pet_lv}.png" alt="等级"><br>
+					<img img_lv src="../../img/pet/${pet.list[i].pet_lv}.png" alt="等级"><br>
 					+${pet_lv_value+now_pet.cur}
 				</label>
 			`);
