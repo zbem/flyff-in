@@ -229,7 +229,7 @@ function incubate(){
 				<div class="col-xs-7">属性:<span style="color: #fb37b1" >${pet.attributeStr}+</span><span pet_value>${pet.value}</span><span pet_cur>${pet.cur}</span></div>
 			</div>
 			<div class="row">
-				<div pet_img_div><label lv_F级 pet_val="${pet.value}"><img img_lv img_lv_1  src="../../../img/pet/等级1.png" alt="1"><br>+${pet.value}${pet.cur}</label></div>
+				<div pet_img_div><label lv_F级 pet_val="${pet.value}"><img img_lv img_lv_1  src="../../img/pet/1.png" alt="1"><br>+${pet.value}${pet.cur}</label></div>
 			</div>
 		</div>
 	`;
@@ -343,19 +343,16 @@ function sacrifice(){
 			var pet_lv_value =now_pet.value_list[pet.list[i].pet_lv-1];
 			$("[pet_img_div]").append(`
 				<label lv_${pet.lvStr} pet_val="${pet_lv_value}">
-					<img img_lv src="../../../img/pet/等级${pet.list[i].pet_lv}.png" alt="等级"><br>
+					<img img_lv src="../../../img/pet/${pet.list[i].pet_lv}.png" alt="等级"><br>
 					+${pet_lv_value+now_pet.cur}
 				</label>
 			`);
-			layer.msg("献祭成功!新的等级是:"+now_lv+"!");
 			//已经是最高的等级
 			if(now_lv >= pet_last_obj.pet_lv){
 				//禁用献祭按钮
 				$("[sacrifice_btn]").attr("disabled",true);
 			}
 			break;
-		}else{
-			layer.msg("失败了,等级没有发生变化!");
 		}
 	}
 
