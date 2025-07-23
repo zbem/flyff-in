@@ -348,13 +348,11 @@ function sacrifice(){
 				</label>
 			`);
 			layer.msg("献祭成功!新的等级是:"+now_lv+"!");
-
 			//已经是最高的等级
 			if(now_lv >= pet_last_obj.pet_lv){
 				//禁用献祭按钮
 				$("[sacrifice_btn]").attr("disabled",true);
 			}
-
 			break;
 		}else{
 			layer.msg("失败了,等级没有发生变化!");
