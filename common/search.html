@@ -7,28 +7,17 @@
 
 <body>
 
-<script src="../js/jquery.min.js?v=202404020006"></script>
-<script src="../js/bootstrap.min.js?v=202404020006"></script>
 <link href="../css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
-<link href="../css/style.css?v=202404020006" rel="stylesheet" type="text/css">
-
-<style>
-  .punctuation::after {
-    content: " ";
-  }
-</style>
+<link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<link href="../css/plugins/chosen/chosen.css" rel="stylesheet">
+<link href="../css/style.css?v=4.1.0" rel="stylesheet">
 
 <div class="container" >
   <div class="row" >
-    <div class="col-xs-7 pull-left">
+    <div class="col-xs-3 pull-left">
       <div class="row" style="padding-top: 50%">
         <div class="col-xs-12">
-          <p>This is a sentence<span class="punctuation">.</span> Next sentence starts here.</p>
-          <p>I like apples<span class="punctuation">,</span> bananas<span class="punctuation">,</span> and oranges.</p>
-          <p>How are you<span class="punctuation">?</span> I hope you're doing well.</p>
-          <p>What a beautiful day<span class="punctuation">!</span> Let's go outside.</p>
-          <p>There are three colors<span class="punctuation">:</span> red, green, and blue.</p>
-          <p>I have a meeting at 10<span class="punctuation">;</span> after that, I'll be free.</p>
+          <input type="text" class="form-control" keyword onblur="find_item()" maxlength="30" placeholder="id/怪物名称/物品名称" name="position"/>
         </div>
       </div>
     </div>
@@ -36,32 +25,28 @@
       <div txt_div class="row"></div>
     </div>
   </div>
-  <div class="waifu hide">
-    <div class="waifu-tips"></div>
-    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
-    <div class="waifu-tool">
-      <span class="fui-home"></span>
-      <span class="fui-chat"></span>
-      <span class="fui-eye"></span>
-      <span class="fui-user"></span>
-      <span class="fui-photo"></span>
-      <span class="fui-info-circle"></span>
-      <span class="fui-cross"></span>
-    </div>
-  </div>
 </div>
+
+
+<!-- 全局js -->
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/plugins/chosen/chosen.jquery.js"></script>
+<script src="../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../js/layer/layer.js"></script>
+<!-- 自定义js -->
+<script src="../js/content.js?v=1.0.0"></script>
 
 <script>
 
   let item_json_list = [];
   let monster_json_list = [];
 
-
   $(document).ready(function() {
     // 当页面加载完成后，给 body 元素添加自定义光标样式
     $('body').addClass('custom-cursor');
 
-    $.getJSON(`json/jewelry.json`).success(function(data){
+    $.getJSON(`../base/jewelry/json/jewelry.json`).success(function(data){
       item_json_list.push(data);
     });
 

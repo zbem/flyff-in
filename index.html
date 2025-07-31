@@ -38,6 +38,7 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="base/flyff/fly_in.html">角色属性模拟</a></li>
                             <li><a class="J_menuItem" href="base/pet/pet.html">宠物</a></li>
                             <li><a class="J_menuItem" href="base/lucky_box/lucky_box.html">幸运盒子</a></li>
                             <li><a class="J_menuItem" href="base/kill_boss/kill_boss.html">怪物</a></li>
@@ -60,14 +61,14 @@
                 </button>
                 <nav class="page-tabs J_menuTabs">
                     <div class="page-tabs-content">
-                        <a href="javascript:" class="active J_menuTab" data-id="pet.html">小游的飞瘾犯了</a>
+                        <a href="javascript:" class="active J_menuTab" data-id="fly_in.html">小游的飞瘾犯了</a>
                     </div>
                 </nav>
                 <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
                 </button>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="base/pet/pet.html" data-id="pet.html" seamless></iframe>
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="base/flyff/fly_in.html" data-id="fly_in.html" seamless></iframe>
             </div>
         </div>
 
@@ -102,31 +103,5 @@
     <!-- 看板娘 -->
     <script src="waifu/assets/autoload.js" type="text/javascript"></script>
 
-    <script>
-
-        cookie_json();
-
-        function cookie_json() {
-            // 假设我们有一个JSON对象
-            const data = {
-                sel_dungeon:1,
-                sel_num: 1,
-            };
-
-            // 将JSON对象转换为字符串
-            const jsonString = JSON.stringify(data);
-
-            // 将字符串编码为适合存储到cookie的格式（如果需要的话）
-            // 这里我们使用encodeURIComponent来确保字符串是URL安全的
-            const encodedString = encodeURIComponent(jsonString);
-
-            // 设置cookie，假设cookie的名称为"myData"
-            document.cookie = "flyffData=" + encodedString + "; path=/";
-        }
-
-    </script>
-
 </body>
-
-
 </html>

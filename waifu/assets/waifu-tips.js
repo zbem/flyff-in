@@ -20,8 +20,6 @@ String.prototype.render = function (context) {
 };
 
 const model_url_list = [
-    "bilibili-live/22/index.json",
-    "bilibili-live/33/index.json",
     "HyperdimensionNeptunia/blanc_classic/index.json",
     "HyperdimensionNeptunia/blanc_normal/index.json",
     "HyperdimensionNeptunia/blanc_swimwear/index.json",
@@ -40,7 +38,6 @@ const model_url_list = [
     "HyperdimensionNeptunia/noir_santa/index.json",
     "HyperdimensionNeptunia/noireswim/index.json",
     "HyperdimensionNeptunia/vert_classic/index.json",
-    "HyperdimensionNeptunia/vert_normal/index.json",
     "HyperdimensionNeptunia/vert_swimwear/index.json",
     "Potion-Maker/Pio/index.json",
     "Potion-Maker/Tia/index.json",
@@ -95,7 +92,7 @@ $('.waifu-tool .fui-photo').click(function (){
     var text;
     var SiteIndexUrl = 'https://zbem.github.io/flyff-in/';  // 手动指定主页
 
-    if (window.location.href == SiteIndexUrl) {      // 如果是主页
+    if (window.location.href === SiteIndexUrl) {      // 如果是主页
         var now = (new Date()).getHours();
         if (now > 23 || now <= 5) {
             text = '你是夜猫子呀？这么晚还不睡觉，明天起的来嘛';

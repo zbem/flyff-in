@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" xmlns="">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>小游飞瘾犯了</title>
+</head>
+
+<link href="../../css/bootstrap.min.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="../../css/style.css?v=202404020006" rel="stylesheet" type="text/css">
+<link href="../../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+<!-- Morris -->
+<link href="../../css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+<!-- Gritter -->
+<link href="../../js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+<link href="../../css/animate.css" rel="stylesheet">
+<link href="../../css/fly.css?v=4.1.0" rel="stylesheet">
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+	<div class="row">
+		<div class="col-xs-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>面板</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="feed-element">
+						<div class="media-body" role_panel>
+							<div class="row" style="background-color: #c5937a;">
+								<span class="col-sm-8" style="color: #FFFFFF;margin-left: 5px; ">角色</span>
+							</div>
+							<div attr_div class="row">
+								<!-- 基础属性 -->
+								<div id="basicStats"></div>
+								<!-- 分隔 -->
+								<div attr_hr></div>
+								<!-- 攻击属性 -->
+								<div id="attackStats"></div>
+								<!-- 元素精通属性 -->
+								<div id="elementMastery"></div>
+								<!-- 元素攻击力属性 -->
+								<div id="elementAttackPower"></div>
+								<!-- 分隔 -->
+								<div class="col-sm-12" attr_hr></div>
+								<!-- 防御属性 -->
+								<div id="defenseStats"></div>
+								<!-- 元素抗性属性 -->
+								<div id="elementResistance"></div>
+								<!-- 属性页 -->
+								<div id="characterInfo"></div>
+								<!-- 保存 -->
+								<div id="saveDiv" style="margin-bottom: 5px;">
+									<div class="row">
+										<div class="col-xs-6 text-center">
+											<button class="btn btn-default" onclick="save_attr()">保存</button>
+										</div>
+										<div class="col-xs-6 text-center">
+											<button class="btn btn-default" onclick="reload_attr()">重置</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+		<div class="col-xs-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>操作</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<div class="input-group" >
+								<div class="input-group-btn open">
+									<button class="btn btn-success" onclick="remove_init_data()">重置数据</button>
+								</div>
+								<div class="input-group-btn open">
+									<button class="btn btn-success" onclick="level_up()">升级</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+	</div>
+</div>
+
+<!-- 全局js -->
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/jquery.cookie.min.js"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/content.js?v=1.0.0"></script>
+<script src="../../js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- 自定义js -->
+<script src="js/fly_in.js"></script>
+
+</body>
+</html>
