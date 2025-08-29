@@ -374,10 +374,10 @@
 
 	for(let i = 1 ; i <= 200 ; i++){
 		if(i > 10){
-			$("[now_g_price]").append(`<option ${i===22 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
+			$("[now_g_price]").append(`<option ${i===13 ?'selected':''} value="${i}" hassubinfo="true">${i}元</option>`);
 			$("[now_f_price]").append(`<option ${i===60 ?'selected':''}  value="${i}" hassubinfo="true">${i}元</option>`);
 		}else{
-			for(let d = 1 ; d <= 10*i ; d++){
+			for(let d = 1 ; d <= 13*i ; d++){
 				$("[now_g_price]").append(`<option ${i===25 ?'selected':''} value="${d/10}" hassubinfo="true">${d/10}元</option>`);
 				$("[now_f_price]").append(`<option ${i===53 ?'selected':''}  value="${d/10}" hassubinfo="true">${d/10}元</option>`);
 			}
