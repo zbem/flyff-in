@@ -116,12 +116,79 @@ const role_init = [
 
 let class_data;
 let now_role_init;
+let item_json_list = [];
+let monster_json_list = [];
 //职业数据 初心者:9686
 $.getJSON(`json/class.json`).success(function(data){
     class_data = data;
     console.log("职业数据:");
     console.log(data);
 });
+
+$(document).ready(function() {
+    // 当页面加载完成后，给 body 元素添加自定义光标样式
+    $('body').addClass('custom-cursor');
+
+    $.getJSON(`../jewelry/json/jewelry0_20.json`).success(function(data){
+        item_json_list.push(data.items);
+    });
+});
+
+function find_keyword(){
+    $("[txt_div]").html("");
+
+    const keyword = $("[keyword]").val();
+    if(keyword.trim() === ""){
+        return ;
+    }
+
+    $(item_json_list.flat()).each(function(e,item){
+        //已经存在的物品
+        if($("[json_id_"+item.id+"]").length !== 0){
+            return ;
+        }
+        if (item.name != null && item.name.cns != null && item.name.cns.includes(keyword) || item.id === parseInt(keyword)) {
+            //物品颜色
+            const color_str =  getItemNameColor(item) ;
+            $("[txt_div]").append(`
+                <div class="col-xs-12" json_id_${item.id} >
+                    <img src="../../../img/items/${item.icon}" style="max-width: 20px; max-height: 20px;" alt="${item.name.cns}">
+                    <span style="color:${color_str}">${item.name.cns}</span><br>
+                </div>
+            `);
+        }
+    });
+
+    $(monster_json_list.flat()).each(function(e,item){
+        if($("[json_id_"+item.id+"]").length !== 0){
+            return ;
+        }
+
+        if (item.name != null && item.name.cns != null && item.name.cns.includes(keyword)) {
+            //物品颜色
+            const color_str =  getItemNameColor(item) ;
+            $("[txt_div]").append(`
+				<div class="col-xs-12" json_id_${item.id} >
+					<img src="../../../img/monster/${item.icon}" style="width: 20px; height: 20px;" alt="${item.name.cns}">
+					<span style="color:${color_str}">${item.id}---${item.name.cns}</span><br>
+				</div>
+            `);
+        }
+    });
+}
+
+//获取物品名称颜色
+function getItemNameColor(itemProp) {
+    switch (itemProp.rarity) {
+        case "uncommon": return "#c46200";
+        case "rare": return "#00aa00";
+        case "veryrare":
+        case "unique":
+            return "#d20000";
+        case "ultimate": return "#7f00ff";
+        default: return "#78d9ff";
+    }
+}
 
 function getWeaponAttack(subcategory) {
     let levelFactor = 0;
@@ -284,11 +351,9 @@ function init_data(){
         }
     });
 
-
     $("#characterInfo").html(str);
-    layer.msg("数据已更新");
+    console.log("数据已更新");
 }
-
 
 //保存属性
 function save_attr(){

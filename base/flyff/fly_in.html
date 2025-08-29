@@ -84,7 +84,7 @@
 				</div>
 				<div class="ibox-content">
 					<div class="row">
-						<div class="form-group col-sm-6">
+						<div class="form-group col-xs-12">
 							<div class="input-group" >
 								<div class="input-group-btn open">
 									<button class="btn btn-success" onclick="remove_init_data()">重置数据</button>
@@ -93,6 +93,37 @@
 									<button class="btn btn-success" onclick="level_up()">升级</button>
 								</div>
 							</div>
+							<br>
+							<div class="input-group" >
+								<div class="input-group-btn open">
+									搜索<br>
+									<label>
+										<input type="text" class="form-control" keyword onblur="find_keyword()" maxlength="30" placeholder="id/怪物名称/物品名称" name="position"/>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins"></div>
+		</div>
+
+		<div class="col-xs-6">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>搜索内容</h5>
+					<div class="ibox-tools">
+						<a class="collapse-link">
+							<i class="fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-xs-9" >
+							<div txt_div class="row"></div>
 						</div>
 					</div>
 				</div>
